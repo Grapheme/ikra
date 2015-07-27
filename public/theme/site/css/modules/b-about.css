@@ -1,0 +1,71 @@
+/*
+------------------------------ О нас (начало) --------------------------*/
+.b-about__directions > li {
+  min-height: 295px;
+}
+.b-about__directions > li .fa-caret-up {
+  display: inline;
+}
+.b-about__directions > li .fa-caret-down {
+  display: none;
+}
+.b-about__directions > li a,
+.b-about__directions > li a > span {
+  display: block;
+}
+.b-about__directions > li a.collapsed span {
+  color: #404041 !important;
+}
+.b-about__directions > li a.collapsed .fa-caret-up {
+  display: none;
+}
+.b-about__directions > li a.collapsed .fa-caret-down {
+  display: inline;
+}
+.b-about__top {
+  min-height: 90px;
+}
+.b-about__course-list {
+  background: url(../img/bg/4types.png) center top no-repeat;
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  padding-top: 80px;
+}
+.b-about__course-text {
+  min-height: 190px;
+}
+.b-about__course-text p {
+  font: 300 italic 14px/20px 'open sans', sans-serif !important;
+}
+.b-about__step-caption {
+  height: 110px;
+  padding: 0 25px;
+  border: 2px dashed #ef4949;
+}
+.b-about__step-caption span {
+  line-height: 19px !important;
+}
+.b-about__step-name {
+  padding: 20px 0;
+}
+.b-about__step-list b {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.b-about__step-list p {
+  text-align: left;
+  margin-bottom: 50px;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+/*---------------------------------- до 768 ---------------------------------*/
+/*---------------------------------- до 480 ---------------------------------*/

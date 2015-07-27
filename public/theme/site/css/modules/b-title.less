@@ -1,0 +1,145 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ Первый слайд страниц (начало) --------------------------*/
+
+.b-title {
+	width: 100%;
+	height: 600px;
+	padding-top: 40px;
+	background: @red;
+	.background-size(cover);
+	background-position: center center;
+	// .text-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+
+	&._long { min-height: 700px }
+	&._short { height: 440px; padding-top: 20px;}
+
+	&._violet { background: @violet; }
+	&._yellow { background: @yellow; .b-title__text { color: @gray }}
+
+	&._invert { .b-title__text { color: @gray } }
+}
+
+.b-title__logo {
+	width: 130px;
+	height: 100px;
+	padding: 40px auto 100px;
+	margin: auto;
+}
+
+.b-title__text {
+	padding: 100px;
+	color: #fff;
+	text-align: center;
+}
+
+.b-title__text-small {
+	.italic();
+	font-size: 24px;
+	padding: 30px 0;
+}
+
+.b-title__action {
+	text-align: center;
+	color: #fff;
+	padding: 50px 0;
+}
+
+// .b-title__text-medium {
+// 	font-size: 50px;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	.b-title__text {
+		padding: 0 20px;
+	}
+
+	.b-title__logo {
+		margin: 20px auto;
+	}
+}
+
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ Первый слайд страниц (конец) ---------------------------*/

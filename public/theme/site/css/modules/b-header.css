@@ -1,0 +1,154 @@
+/*
+------------------------------ Шапка (начало) --------------------------*/
+.b-header {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.b-header._light {
+  color: #fff;
+}
+.b-header._light a {
+  color: #fff;
+}
+.b-header._dark {
+  color: #404041;
+}
+.b-header._dark a {
+  color: #404041;
+}
+.b-header__nav {
+  position: absolute;
+  left: 30px;
+  top: 30px;
+  padding: 20px;
+  margin-left: -20px;
+  margin-top: -20px;
+  background: none;
+  border: none;
+  /* text-transform: uppercase;
+	letter-spacing: 0.11em;
+	font-family: 'museo sans', 'trebuchet ms', sans-serif;
+	font-weight: 900; */
+  font-weight: 700;
+}
+.b-header__menu-button {
+  display: inline-block;
+  cursor: pointer;
+}
+.b-header__menu-button i {
+  display: none;
+  font-size: 24px;
+  position: relative;
+  top: -5px;
+}
+.b-header__breadcrumps {
+  display: inline-block;
+}
+.b-header__breadcrumps a {
+  text-decoration: none;
+  opacity: 0.6;
+}
+.b-header__breadcrumps a:hover {
+  opacity: 1;
+}
+.b-header__city {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+/* .b-header__city-select {
+	.font();
+	font-weight: 700;
+	cursor: pointer;
+
+	option { color: #000;}
+}
+ */
+.b-header__city-select-wrapper {
+  position: relative;
+}
+.b-header__city-select {
+  display: none;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  padding: 23px 30px;
+  width: 190px;
+  background: #fff;
+  color: #404041;
+}
+.b-header__city-select li {
+  white-space: nowrap;
+}
+.b-header__city-select li a {
+  display: inline-block;
+  line-height: 30px;
+  color: #404041 !important;
+}
+.b-header__city-select li a:hover {
+  font-weight: 900;
+}
+.b-menu {
+  background: rgba(62, 62, 62, 0.9);
+  position: fixed;
+  z-index: 2;
+  left: -640px;
+  top: 0;
+  height: 100%;
+  width: 640px;
+  padding-left: 100px;
+  padding-top: 30px;
+  color: #fff;
+  transition: left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  overflow: auto;
+}
+.b-menu._open {
+  left: 0;
+}
+.b-menu__list {
+  margin-bottom: 145px;
+}
+.b-menu__list a {
+  color: #fff;
+}
+.b-menu__close {
+  margin-bottom: 180px;
+  color: #fff;
+}
+.b-menu__close a {
+  color: #ffffff;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+  .b-header {
+    position: absolute;
+    padding: 30px;
+  }
+  .b-header + .b-title {
+    padding-top: 120px;
+  }
+  .b-header__menu-button i {
+    display: block;
+  }
+  .b-header__menu-button span {
+    display: none;
+  }
+  .b-header__breadcrumps {
+    display: none;
+  }
+  .b-menu {
+    padding-left: 30px;
+  }
+}
+/*---------------------------------- до 480 ---------------------------------*/

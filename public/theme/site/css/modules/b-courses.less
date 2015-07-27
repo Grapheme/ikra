@@ -1,0 +1,131 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ Курсы (начало) --------------------------*/
+
+.b-courses._time-at-bottom {
+	a { position: relative; }
+	time { position: absolute; width: 100%; left: 0; bottom: 25px; }
+}
+
+.b-courses._modules {
+	a { height: 100%; min-height: 120px; &._all { min-height: 120px; }}
+}
+
+
+.b-courses__link {
+	display: block;
+	text-decoration: none !important;
+	// color: #fff; &:hover { color: #fff }
+	padding: 25px;
+	min-height: 180px;
+	height: 100%;
+
+	&._all {
+		.centering-the-unknown();
+		// height: 180px - 25px*2;
+		min-height: 180px;
+		height: 100%;
+		color: @blue !important;
+		border: 2px solid @blue;
+		background: #fff;
+	}
+}
+
+.b-courses__descr {
+	display: block;
+	// .italic();
+	.centering-the-unknown();
+	height: 80px;
+}
+
+.b-courses__small {
+	height: 90px;
+	// h3 { font-size: 24px; }
+}
+
+
+
+
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ Курсы (конец) ---------------------------*/

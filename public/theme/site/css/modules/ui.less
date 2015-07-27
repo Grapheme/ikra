@@ -1,0 +1,513 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ UI (начало) --------------------------*/
+
+
+/* стили для тегов */
+
+body {
+	font: normal 14px/20px 'open sans', sans-serif;
+	color: @gray;
+}
+
+p {
+	margin: 0;
+}
+
+a {
+	@color: @gray;
+	color: @color;
+	text-decoration: none;
+	outline: none !important;
+
+	&:visited { color: @color }
+	&:hover,
+	&:focus { color: @gray-hover; text-decoration: none;}
+	&:active { color: lighten(@color, 30%); text-decoration: none; }
+}
+
+b {
+	font-weight: 900;
+}
+
+select {
+	background: transparent;
+	border: 0;
+	text-transform: inherit;
+	letter-spacing: inherit;
+}
+
+img {
+	max-width: 100%;
+}
+
+blockquote {
+	position: relative;
+	padding: 0 100px;
+	border: 0;
+	
+	&:before { content: "“"; position: absolute; left: 0; bottom: 100%; font-size: 100px }
+	&:after { content: "”"; position: absolute; right: 0; top: 100%; font-size: 100px; margin-top: 50px }
+}
+
+
+/* вспомогательные классы */
+
+._hidden      { display: none; }
+._block       { display: block; }
+._invisible   { visibility: hidden; }
+
+._float-right { float: right;  }
+._float-left  { float: left;   }
+._clearfix    { .clearfix();   }
+
+._vertical-center { .centering-the-unknown(); }
+._block-justify   { .inline-block-justify(); }
+._block-nowrap    { .inline-block-nowrap(); }
+._nowrap { white-space: nowrap; }
+
+._max-text { max-width: 550px }
+._max-form { max-width: 420px }
+._margin-auto { margin-left: auto; margin-right: auto; }
+
+
+
+
+
+
+/* огромный заголовок */
+h1,
+.h1 {
+	font: 900 80px/96px 'museo sans', sans-serif;
+	letter-spacing: 12.8px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+/* названия разделов и секций */
+h2,
+.h2 {
+	font: 900 50px/60px 'museo sans', sans-serif;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	margin: 0 0 60px; 
+	&._with-subtitle { margin-bottom: 20px }
+
+	&._cta {
+		font: 700 30px/36px 'museo sans', sans-serif;
+		letter-spacing: 3px;
+		margin: 0;
+	}
+}
+
+/* имена людей, названия кейсов */
+h3,
+.h3 {
+	font: 700 20px/24px 'museo sans', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	margin: 0;
+
+	// названия курсов
+	strong {
+		font: 900 18px/22px 'museo sans', sans-serif;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+	}
+}
+
+/* должность, компания */
+small,
+.small {
+	font: 700 10px/12px 'museo sans', sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+
+/* подзаголовки */
+h4,
+.h4 {
+	font: 700 16px/24px 'museo sans', sans-serif;
+	letter-spacing: 1.3px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+
+/* курсивный большой */
+i strong { font: 400 italic 24px/33px 'open sans', sans-serif; }
+
+/* курсивный малый */
+i { font: 400 italic 16px/22px 'open sans', sans-serif }
+
+/* курсивный из обычного */
+// i small { font: 300 italic 14px/inherit 'open sans', sans-serif !important }
+
+
+h5,
+.h5 {
+	font: 400 14px/17px 'museo sans', sans-serif;
+	letter-spacing: 2.6px;
+	text-transform: uppercase;
+}
+
+
+
+
+/* Фоны */
+
+._bg-gray   { background-color: @gray;   color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-blue   { background-color: @blue;   color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-cyan   { background-color: @cyan;   color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-yellow { background-color: @yellow; color: @gray;a { color: @gray; &:hover{ color: @gray } } }
+._bg-red    { background-color: @red;    color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-violet { background-color: @violet; color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-purple { background-color: @purple; color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-green  { background-color: @green;  color: #fff; a { color: #fff; &:hover { color: #fff } } }
+
+a._bg-gray:hover   { color:#fff; background-color: @gray-hover }
+a._bg-blue:hover   { color:#fff; background-color: @blue-hover }
+a._bg-cyan:hover   { color:#fff; background-color: @cyan-hover }
+a._bg-yellow:hover { color:@gray; background-color: @yellow-hover }
+a._bg-red:hover    { color:#fff; background-color: @red-hover }
+a._bg-violet:hover { color:#fff; background-color: @violet-hover }
+a._bg-purple:hover { color:#fff; background-color: @purple-hover }
+a._bg-green:hover  { color:#fff; background-color: @green-hover }
+
+
+
+/* Цветные тексты */
+
+._text-gray   { color:@gray;   a { color:@gray;   &:hover { color:@gray-hover   } } }
+._text-blue   { color:@blue;   a { color:@blue;   &:hover { color:@blue-hover   } } }
+._text-cyan   { color:@cyan;   a { color:@cyan;   &:hover { color:@cyan-hover   } } }
+._text-yellow { color:@yellow; a { color:@yellow; &:hover { color:@yellow-hover } } }
+._text-red    { color:@red;    a { color:@red;    &:hover { color:@red-hover    } } }
+._text-violet { color:@violet; a { color:@violet; &:hover { color:@violet-hover } } }
+._text-purple { color:@purple; a { color:@purple; &:hover { color:@purple-hover } } }
+._text-green  { color:@green;  a { color:@green;  &:hover { color:@green-hover  } } }
+._text-white  { color:#fff;    a { color:#fff;    &:hover { color:#fff  } } }
+
+a._text-gray:hover   { color:@gray-hover   }
+a._text-blue:hover   { color:@blue-hover   }
+a._text-cyan:hover   { color:@cyan-hover   }
+a._text-yellow:hover { color:@yellow-hover }
+a._text-red:hover    { color:@red-hover    }
+a._text-violet:hover { color:@violet-hover }
+a._text-purple:hover { color:@purple-hover }
+a._text-green:hover  { color:@green-hover  }
+a._text-white:hover  { color:#fff  }
+
+
+
+
+/* Кнопки */
+
+.btn {
+	font: 700 20px/58px 'museo sans', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-decoration: none !important;
+	height: 60px;
+	padding: 0 30px;
+	min-width: 270px;
+	background: transparent;
+	color: #fff !important;
+	border-radius: 0;
+	border: 2px solid #fff;
+	.box-sizing(border-box);
+	.box-shadow(none) !important;
+	.transition(all 0.3s);
+
+	&:hover {
+		background: #fff;
+		color: inherit !important
+	}
+
+	&:active {
+		.opacity(0.9);
+		outline: none !important;
+	}
+
+	&.btn-blue {
+		border: 2px solid @blue;
+		color: @blue !important;
+		&:hover { background: @blue; color: #fff !important }
+	}
+
+	&.btn-wide {
+		width: 100%;
+		min-width: 0;
+	}
+
+	&.btn-readmore {
+		font-weight: 900;
+		font-size: 14px;
+		padding: 0;
+		min-width: 0;
+		color: inherit !important;
+	}
+}
+
+
+
+
+/* Формы */
+
+#cta_form {
+	padding-top: 90px;
+}
+
+.form-control {
+	height: 56px;
+	padding-top: 0;
+	padding-bottom: 0;
+	border: 0;
+	border-bottom: 2px solid @blue;
+	border-radius: 0;
+	.box-shadow(none) !important;
+	font: 700 20px/normal 'museo sans', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	text-align: center;
+	background: none;
+	color: @blue;
+
+	.native-placeholder(lighten(@blue, 30%));
+
+	._white & { color: #fff; border-color: #fff; .native-placeholder(rgba(255,255,255,0.5)); }
+}
+
+
+
+
+
+
+/* отступы */
+
+._mb0   { margin-bottom: 0px; }
+._mb5   { margin-bottom: 5px; }
+._mb10  { margin-bottom: 10px; }
+._mb15  { margin-bottom: 15px; }
+._mb20  { margin-bottom: 20px; }
+._mb25  { margin-bottom: 25px; }
+._mb30  { margin-bottom: 30px; }
+._mb35  { margin-bottom: 35px; }
+._mb40  { margin-bottom: 40px; }
+._mb45  { margin-bottom: 45px; }
+._mb50  { margin-bottom: 50px; }
+._mb55  { margin-bottom: 55px; }
+._mb60  { margin-bottom: 60px; }
+._mb65  { margin-bottom: 65px; }
+._mb70  { margin-bottom: 70px; }
+._mb75  { margin-bottom: 75px; }
+._mb80  { margin-bottom: 80px; }
+._mb85  { margin-bottom: 85px; }
+._mb90  { margin-bottom: 90px; }
+._mb95  { margin-bottom: 95px; }
+._mb100 { margin-bottom: 100px; }
+
+
+
+
+
+
+
+
+
+
+/* прочие тексты */
+
+._txt3 {
+	font: 700 30px/36px 'museo sans', sans-serif;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+._txt4 {
+	font: 700 26px/31px 'museo sans', sans-serif;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+._txt5 {
+	font: 700 20px/24px 'museo sans', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+._txt6 {
+	font: 900 18px/22px 'museo sans', sans-serif;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+}
+
+._txt7 {
+	font: 700 15px/24px 'museo sans', sans-serif;
+	letter-spacing: 1.3px;
+	text-transform: uppercase;
+}
+
+._txt8 {
+	font: 700 16px/19px 'museo sans', sans-serif;
+	letter-spacing: 0px;
+	text-transform: uppercase;
+}
+
+._txt9 {
+	font: 700 14px/17px 'museo sans', sans-serif;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+}
+
+._txt10 {
+	font: 700 10px/12px 'museo sans', sans-serif;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	h1,
+	.h1 {
+		font-size: 0.5*80px;
+		line-height: 0.5*96px;
+		letter-spacing: 12.0.5*8px;
+	}
+
+	h2,
+	.h2 {
+		font-size: 0.5*50px;
+		line-height: 0.5*60px;
+		letter-spacing: 0.5*8px;
+		margin: 0 0 0.5*60px; 
+		&._with-subtitle { margin-bottom: 0.5*20px }
+
+		&._cta {
+			font-size: 0.5*30px;
+			line-height: 0.5*36px;
+			letter-spacing: 0.5*3px;
+		}
+	}
+
+	h3,
+	.h3 {
+		font-size: 0.75*20px;
+		line-height: 0.75*24px;
+		letter-spacing: 0.75*2px;
+
+		strong {
+			font-size: 0.75*18px;
+			line-height: 0.75*22px;
+			letter-spacing: 0.75*3px;
+		}
+	}
+
+	h4,
+	.h4 {
+		font-size: 0.75*16px;
+		line-height: 0.75*24px;
+		letter-spacing: 0.75*3px;
+	}
+
+	h5,
+	.h5 {
+		font-size: 0.75*14px;
+		line-height: 0.75*17px;
+		letter-spacing: 2.0.75*6px;
+	}
+
+	.btn {
+		font-size: 0.75*20px;
+		line-height: 0.75*58px;
+		letter-spacing: 0.75*2px;
+		height: 0.75*60px;
+		padding: 0 0.75*30px;
+	}
+
+}
+
+
+
+/*-------------------------------------- 600 --------------------------------------*/
+@media screen and (max-width: 599px) {
+	
+}
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ UI (конец) ---------------------------*/

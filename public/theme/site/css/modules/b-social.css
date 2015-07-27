@@ -1,0 +1,85 @@
+/*
+------------------------------ Соцкнопки (начало) --------------------------*/
+.b-social {
+  font-size: 18px;
+}
+.b-social a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 35px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #fff;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  border: 2px solid #fff;
+  position: relative;
+  transition: all 0.2s linear;
+}
+.b-social a:active {
+  opacity: 0.9;
+}
+.b-social a._facebook {
+  background-color: #3b5998;
+}
+.b-social a._facebook:hover {
+  border-color: #3b5998;
+  color: #3b5998;
+}
+.b-social a._vkontakte {
+  background-color: #4c75a3;
+}
+.b-social a._vkontakte:hover {
+  border-color: #4c75a3;
+  color: #4c75a3;
+}
+.b-social a._instagram {
+  background-color: #a17056;
+}
+.b-social a._instagram:hover {
+  border-color: #a17056;
+  color: #a17056;
+}
+.b-social a._youtube {
+  background-color: #e22a22;
+}
+.b-social a._youtube:hover {
+  border-color: #e22a22;
+  color: #e22a22;
+}
+.b-social a._twitter {
+  background-color: #0084b4;
+}
+.b-social a._twitter:hover {
+  border-color: #0084b4;
+  color: #0084b4;
+}
+.b-social a:before {
+  content: "";
+  position: absolute;
+  background: #fff;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transition: all 0.2s linear;
+}
+.b-social a:hover:before {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+/*---------------------------------- до 768 ---------------------------------*/
+/*---------------------------------- до 480 ---------------------------------*/
