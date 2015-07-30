@@ -1,0 +1,558 @@
+
+// ---------------------------------- Индивидуально для текущего проекта -----------------------------------
+
+
+@gray:   #404041;
+@blue:   #2b9eed;
+@cyan:   #00bf9b;
+@yellow: #ffc626;
+@red:    #ef4949;
+@violet: #7a77cc;
+@purple: #da8eea;
+@green:  #bac10c;
+@pink:   #ffa583;
+
+
+@gray-hover:   #666668;
+@blue-hover:   #2a8ed4;
+@cyan-hover:   #02b392;
+@yellow-hover: #f0b91f;
+@red-hover:    #df3535;
+@violet-hover: #6e6bbf;
+@purple-hover: #cc82dc;
+@green-hover:  #afb60b;
+@pink-hover:   darken(@pink, 5%);
+
+
+@facebook-color:      #3b5998;
+@vkontakte-color:     #4c75a3;
+@lastfm-color:        #d21309;
+@instagram-color:     #a17056;
+@foursquare-color:    #fa4778;
+@googleplus-color:    #C63D2D;
+@twitter-color:       #0084b4;
+@youtube-color:       #e22a22;
+@github-color:        #62e3ff;
+@slideshare-color:    #f7941e;
+@stackoverflow-color: #f67a00;
+@soundcloud-color:    #f84a0e;
+@linkedin-color:      #0177b5;
+@vimeo-color:         #aad450;
+
+
+
+.font() {
+	/* text-transform: uppercase;
+	letter-spacing: 0.11em;
+	font-family: 'museo sans', 'trebuchet ms', sans-serif;
+	font-weight: 900; */
+}
+
+.italic() {
+	/* font-style: italic;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: 'trebuchet ms';
+	letter-spacing: 0;
+	text-transform: none; */
+}
+
+
+
+// ----------------------------------------------- Сглаживания ---------------------------------------------
+
+@sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+@quad-out:  cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@cubic-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@quart-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+@quint-out: cubic-bezier(0.23, 1, 0.32, 1);
+@expo-out:  cubic-bezier(0.19, 1, 0.22, 1);
+@back-out:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+@sine-in: cubic-bezier(0.47, 0, 0.745, 0.715);
+@quad-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+@cubic-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+@quart-in: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+@quint-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+@expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+@back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+
+@sine-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+@quad-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+@cubic-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+@quart-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+@quint-in-out: cubic-bezier(0.86, 0, 0.07, 1);
+@expo-in-out: cubic-bezier(1, 0, 0, 1);
+@back-in-out: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+
+
+// ----------------------------------------------- Кроссбраузерность -----------------------------------------------
+
+.border-radius(@args)
+{
+	-webkit-border-radius: @args;
+	   -moz-border-radius: @args;
+			border-radius: @args;
+}
+
+
+
+.opacity(@opacity: 0.5) {
+	-webkit-opacity: @opacity;
+	   -moz-opacity: @opacity;
+			opacity: @opacity;
+
+	@ie: @opacity * 100;
+	filter: alpha(opacity=@ie);
+	-ms-filter: ~"progid:DXImageTransform.Microsoft.Alpha(Opacity=@{ie})";
+	filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=@ie);
+}
+
+
+
+.box-shadow(@args) {
+	-webkit-box-shadow: @args;
+	   -moz-box-shadow: @args;
+			box-shadow: @args;
+}
+
+
+
+.columns(@args)
+{
+	-webkit-columns: @args;
+	   -moz-columns: @args;
+			columns: @args;
+}
+
+
+
+.column-count(@cols)
+{
+	-webkit-column-count: @cols;
+	   -moz-column-count: @cols;
+			column-count: @cols;
+}
+
+
+
+.text-shadow(@args) {
+	-webkit-text-shadow: @args;
+	   -moz-text-shadow: @args;
+			text-shadow: @args;
+}
+
+
+
+.user-select(@arg) {
+	-webkit-user-select: @arg;
+	   -moz-user-select: @arg;
+		-ms-user-select: @arg;
+			user-select: @arg;
+}
+
+
+
+.ellipsis()
+{
+	-ms-text-overflow: ellipsis;
+	 -o-text-overflow: ellipsis;
+		text-overflow: ellipsis;
+}
+
+
+
+.box-sizing(@arg)
+{
+	-webkit-box-sizing: @arg;
+	   -moz-box-sizing: @arg;
+			box-sizing: @arg;
+}
+
+
+
+.background-clip(@arg)
+{
+	-webkit-background-clip: @arg;
+	   -moz-background-clip: @arg;
+			background-clip: @arg;
+}
+
+
+
+.background-size(@args)
+{
+	-webkit-background-size: @args;
+	   -moz-background-size: @args;
+		 -o-background-size: @args;
+			background-size: @args;
+}
+
+
+
+.vertical-gradient(@top, @bottom) {
+	background: mix(@top, @bottom); // совсем старые браузеры
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, @bottom), color-stop(1, @top)); // старые вебкиты
+	background: -webkit-linear-gradient(top, @top 0%, @bottom 100%); // новые вебкиты
+	background: -ms-linear-gradient(bottom, @bottom, @top); // новые ИЕ
+	background: -moz-linear-gradient(center bottom, @bottom 0%, @top 100%); // фокс
+	background: -o-linear-gradient(center bottom, @bottom 0%, @top 100%); // опера
+	background: linear-gradient(to bottom, @top 0%, @bottom 100%); // стандарт
+	filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)", @top, @bottom)); // старые ИЕ
+}
+
+
+
+.horizontal-gradient(@l, @r)
+{
+	background: -moz-linear-gradient(left,  @r 0%, @l 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, right top, left top, color-stop(0%,@r), color-stop(100%,@l)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(right,  @r 0%,@l 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(right,  @r 0%,@l 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(right,  @r 0%,@l 100%); /* IE10+ */
+	background: linear-gradient(to left,  @r 0%,@l 100%); /* W3C */
+	filter: e("progid:DXImageTransform.Microsoft.gradient( startColorstr='@{r}', endColorstr=@{l}, GradientType=1 )"); /* IE6-9 */
+}
+
+
+
+.backface()
+{
+	-webkit-backface-visibility: hidden;
+	   -moz-backface-visibility: hidden;
+		-ms-backface-visibility: hidden;
+			backface-visibility: hidden;
+}
+
+
+
+.preserve-3d()
+{
+	-webkit-transform-style: preserve-3d;
+	   -moz-transform-style: preserve-3d;
+		-ms-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+}
+
+
+
+.perspective(@perspective:300px)
+{
+	-webkit-perspective: @perspective;
+	   -moz-perspective: @perspective;
+		-ms-perspective: @perspective;
+			perspective: @perspective;
+}
+
+
+
+.transform(@args, @perspective:300px)
+{
+	-webkit-transform: @args;
+	   -moz-transform: @args;
+		-ms-transform: @args;
+			transform: @args;
+
+	// .backface();
+	// .preserve-3d();
+	// .perspective(@perspective)
+}
+
+
+
+.transition(@args) {
+	-webkit-transition: @args;
+	   -moz-transition: @args;
+			transition: @args;
+}
+
+
+
+.transform-origin(@args)
+{
+	-webkit-transform-origin: @args;
+	   -moz-transform-origin: @args;
+		-ms-transform-origin: @args;
+			transform-origin: @args;
+}
+
+
+
+.rotate(@deg)
+{
+	@value: ~"@{deg}deg";
+	-webkit-transform: rotate(@value);
+	   -moz-transform: rotate(@value);
+		-ms-transform: rotate(@value);
+			transform: rotate(@value);
+}
+
+
+
+.grab()
+{
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+
+	&:active
+	{
+		cursor: grabbing;
+		cursor: -moz-grabbing;
+		cursor: -webkit-grabbing;
+	}
+}
+
+
+
+.native-placeholder(@color: black)
+{
+	&:-moz-placeholder            { color: @color; } // Firefox 4-18
+	&::-moz-placeholder           { color: @color; } // Firefox 19+
+	&:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+	&::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+
+	&:focus:-moz-placeholder            { color: transparent; }
+	&:focus::-moz-placeholder           { color: transparent; }
+	&:focus:-ms-input-placeholder       { color: transparent; }
+	&:focus::-webkit-input-placeholder  { color: transparent; }
+}
+
+
+
+
+
+
+// ----------------------------------------------- Типовые решения -----------------------------------------------
+
+// очистка потока
+.clearfix()
+{
+	&:after
+	{
+		clear: both;
+		content: "";
+		display: block;
+		width: 100%;
+	}
+}
+
+
+
+// короткая запись шрифта
+.font(@size, @line-height:normal)
+{
+	font-size: @size;
+	line-height: @line-height;
+}
+
+
+
+// короткая запись инлайн-блока
+.inline-block(@valign: auto)
+{
+	display: inline-block;
+	vertical-align: @valign;
+}
+
+
+
+// стрелки
+.arrow-down(@w, @h, @color){
+	width: 0;
+	height: 0;
+	border-left: @w/2 solid transparent;
+	border-right: @w/2 solid transparent;
+	border-top: @h solid @color;}
+.arrow-up(@w, @h, @color){
+	width: 0;
+	height: 0;
+	border-left: @w/2 solid transparent;
+	border-right: @w/2 solid transparent;
+	border-bottom: @h solid @color;}
+.arrow-right(@w, @h, @color){
+	width: 0;
+	height: 0;
+	border-top: @h/2 solid transparent;
+	border-bottom: @h/2 solid transparent;
+	border-left: @w solid @color;}
+.arrow-left(@w, @h, @color){
+	width: 0;
+	height: 0;
+	border-top: @h/2 solid transparent;
+	border-bottom: @h/2 solid transparent;
+	border-right: @w solid @color;}
+
+
+
+// круг
+.circle(@r)
+{
+	width: @r;
+	height: @r;
+	-webkit-border-radius: 50%;
+	   -moz-border-radius: 50%;
+			border-radius: 50%;
+	overflow: hidden;
+}
+
+
+
+// вытащить картинку из спрайта по координатам
+.sprite(@x, @y, @w, @h)
+{
+	@bg-x: -@x*@w;
+	@bg-y: -@y*@h;
+	background-position: @bg-x @bg-y;
+}
+
+
+
+// накрыть элемент картинкой
+.image-overlay(@url, @bgcolor:transparent)
+{
+	position: relative;
+
+	&:after
+	{
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: @bgcolor url(@url) center center no-repeat;
+	}
+}
+
+
+
+// Вдавленный текст http://jsfiddle.net/mbHB4/3/
+.inset-text-shadow(@textcolor, @bgcolor, @opacity: 0.5, @size: 1px)
+{
+	background: @bgcolor;
+	color: rgba(red(@textcolor), green(@textcolor), blue(@textcolor), @opacity);
+	text-shadow: @size @size @size @bgcolor, 0 0 0 #000, @size @size @size @bgcolor;
+
+	&::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+	&::selection { background: #5af; color: #fff; text-shadow: none; }
+}
+
+
+
+// Доп. картинка под ретину
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+
+
+
+// Выравнивание по вертикали блока неизвестной высоты http://css-tricks.com/centering-in-the-unknown/
+.centering-the-unknown()
+{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	font-size: 0;
+
+	&:before
+	{
+	  content: '';
+	  display: inline-block;
+	  width: 0;
+	  height: 100%;
+	  vertical-align: middle;
+	}
+
+	& > *
+	{
+		display: inline-block;
+		vertical-align: middle;
+		font-size: medium;
+		max-width: 100%;
+	}
+}
+
+
+
+// Выравнивание по вертикали блока известной высоты 
+.centering-the-known(@width, @height)
+{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: block;
+	width: @width;
+	height: @height;
+	margin-left: -@width/2;
+	margin-top: -@height/2;
+}
+
+
+
+// Блоки в ряд 
+.inline-block-nowrap(@valign:middle)
+{
+	white-space: nowrap;
+	font-size: 0;
+
+	& > *
+	{
+		white-space: normal;
+		display: inline-block;
+		vertical-align: @valign;
+	}
+}
+
+
+
+// Блоки в колонки по ширине
+.inline-block-justify()
+{
+	text-align: justify;
+	text-align-last: justify;
+	line-height: 0;
+
+	& > *
+	{
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	&:after
+	{
+		content: "";
+		display: inline-block;
+		vertical-align: top;
+		width: 100%;
+	}
+}
+
+
+
+// Ч/Б-фильтр
+.grayscale()
+{
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%);
+}
+.grayscale-off()
+{
+	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+	filter: none;
+	-webkit-filter: grayscale(0%); 
+}

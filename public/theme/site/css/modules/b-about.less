@@ -1,0 +1,150 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ О нас (начало) --------------------------*/
+
+
+.b-about__directions {
+	& > li {
+		min-height: 295px;
+		.fa-caret-up { display: inline; }
+		.fa-caret-down { display: none; }
+
+		a, a > span { display: block;}
+
+		a.collapsed {
+			span { color: @gray !important; }
+			.fa-caret-up { display: none; }
+			.fa-caret-down { display: inline; }
+		}
+	}
+}
+
+.b-about__top {
+	min-height: 90px;
+}
+
+.b-about__course-list {
+	background: url(../img/bg/4types.png) center top no-repeat;
+	.background-size(100%);
+	padding-top: 80px;
+}
+
+
+.b-about__course-text {
+	min-height: 190px;
+
+	p {
+		font: 300 italic 14px/20px 'open sans', sans-serif !important;
+	}
+}
+
+
+.b-about__step-caption {
+	height: 110px;
+	padding: 0 25px;
+	border: 2px	dashed @red;
+	span { line-height: 19px !important; }
+}
+
+.b-about__step-name {
+	padding: 20px 0;
+}
+
+.b-about__step-list {
+	b {
+		display: block;
+		margin-top: 20px;
+		margin-bottom: 10px;
+	}
+
+	p {
+		text-align: left;
+		margin-bottom: 50px;
+	}
+}
+
+
+
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ О нас (конец) ---------------------------*/

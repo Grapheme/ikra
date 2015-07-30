@@ -1,0 +1,82 @@
+/*
+------------------------------ Курсы (начало) --------------------------*/
+.b-courses._time-at-bottom a {
+  position: relative;
+}
+.b-courses._time-at-bottom time {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 25px;
+}
+.b-courses._modules a {
+  height: 100%;
+  min-height: 120px;
+}
+.b-courses._modules a._all {
+  min-height: 120px;
+}
+.b-courses__link {
+  display: block;
+  text-decoration: none !important;
+  padding: 25px;
+  min-height: 180px;
+  height: 100%;
+}
+.b-courses__link._all {
+  width: 100%;
+  text-align: center;
+  font-size: 0;
+  min-height: 180px;
+  height: 100%;
+  color: #2b9eed !important;
+  border: 2px solid #2b9eed;
+  background: #fff;
+}
+.b-courses__link._all:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.b-courses__link._all > * {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: medium;
+  max-width: 100%;
+}
+.b-courses__descr {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  font-size: 0;
+  height: 80px;
+}
+.b-courses__descr:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100%;
+  vertical-align: middle;
+}
+.b-courses__descr > * {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: medium;
+  max-width: 100%;
+}
+.b-courses__small {
+  height: 90px;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+/*---------------------------------- до 768 ---------------------------------*/
+/*---------------------------------- до 480 ---------------------------------*/

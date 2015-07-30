@@ -1,0 +1,225 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ Шапка (начало) --------------------------*/
+
+
+
+
+
+.b-header {
+	width: 100%;
+	position: relative;
+	z-index: 1;
+
+	&._light {
+		color: #fff;
+		a { color: #fff; }
+	}
+
+	&._dark {
+		color: @gray;
+		a { color: @gray; }
+	}
+}
+
+.b-header__nav {
+	position: absolute;
+	left: 30px;
+	top: 30px;
+	padding: 20px;
+	margin-left: -20px;
+	margin-top: -20px;
+	background: none;
+	border: none;
+	.font();
+	font-weight: 700;
+}
+
+.b-header__menu-button {
+	display: inline-block;
+	cursor: pointer;
+	i {
+		display: none;
+		font-size: 24px;
+		position: relative;
+    	top: -5px;
+	}
+}
+
+.b-header__breadcrumps {
+	display: inline-block;
+	a {
+		// color: #fff;
+		text-decoration: none;
+		opacity: 0.6;
+		&:hover { opacity: 1 }
+	}
+}
+
+.b-header__city {
+	position: absolute;
+	right: 30px;
+	top: 30px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+/* .b-header__city-select {
+	.font();
+	font-weight: 700;
+	cursor: pointer;
+
+	option { color: #000;}
+}
+ */
+
+.b-header__city-select-wrapper {
+	position: relative;
+}
+
+.b-header__city-select {
+	display: none;
+	position: absolute;
+	top: -30px;
+	left: -30px;
+	padding: 23px 30px;
+	width: 190px;
+	background: #fff;
+	color: @gray;
+
+	li {
+		white-space: nowrap;
+		a {
+			display: inline-block;
+			line-height: 30px;
+			color: @gray !important;
+
+			&:hover { font-weight: 900;}
+		}
+	}
+}
+
+
+
+
+
+.b-menu {
+	background: rgba(62,62,62,0.9);
+	position: fixed;
+	z-index: 2;
+	left: -640px; 
+	top: 0;
+	height: 100%;
+	width: 640px;
+	padding-left: 100px;
+	padding-top: 30px;
+	color: #fff;
+	transition: left 0.3s @expo-out;
+	overflow: auto;
+	
+	&._open { left: 0; }
+}
+
+.b-menu__list {
+	margin-bottom: 145px;
+	a { color: #fff; }
+}
+
+.b-menu__close {
+	margin-bottom: 180px;
+	color: #fff;
+	a { color: #fff }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	.b-header { position: absolute; padding: 30px }
+	.b-header + .b-title { padding-top: 120px }
+	.b-header__menu-button i { display: block; }
+	.b-header__menu-button span { display: none; }
+	.b-header__breadcrumps { display: none;  }
+	.b-menu { padding-left: 30px }
+}
+
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ Шапка (конец) ---------------------------*/

@@ -1,0 +1,147 @@
+@import "../default/mixins.less";
+
+
+
+/*
+------------------------------ Соцкнопки (начало) --------------------------*/
+
+
+
+
+
+.b-social {
+	font-size: 18px;
+
+	a {
+		display: inline-block;
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		margin-right: 35px;
+		margin-bottom: 40px;
+		text-align: center;
+		color: #fff;
+		.box-sizing(content-box);
+		border: 2px solid #fff;
+
+		&:active { opacity: 0.9;}
+
+		&._facebook  { background-color: @facebook-color; &:hover { border-color: @facebook-color; color: @facebook-color; } }
+		&._vkontakte { background-color: @vkontakte-color; &:hover { border-color: @vkontakte-color; color: @vkontakte-color; } }
+		&._instagram { background-color: @instagram-color; &:hover { border-color: @instagram-color; color: @instagram-color; } }
+		&._youtube   { background-color: @youtube-color; &:hover { border-color: @youtube-color; color: @youtube-color; } }
+		&._twitter   { background-color: @twitter-color; &:hover { border-color: @twitter-color; color: @twitter-color; } }
+
+	
+		position: relative;
+		transition: all 0.2s linear;
+
+		&:before {
+			content: "";
+			position: absolute;
+			background: #fff;
+			width: 0;
+			height: 0;
+			left: 50%;
+			top: 50%;
+			transition: all 0.2s linear;
+		}
+
+		&:hover {
+			&:before {
+				width: 100%;
+				height: 100%;
+				left: 0;
+				top: 0;
+
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+@media screen and (min-width: 480px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 768 ------------------------------------*/
+@media screen and (min-width: 768px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1024 -----------------------------------*/
+@media screen and (min-width: 1024px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- от 1366 -----------------------------------*/
+@media screen and (min-width: 1366px) {
+	
+}
+
+
+
+
+
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+@media screen and (max-width: 1365px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 768 ---------------------------------*/
+@media screen and (max-width: 767px) {
+	
+}
+
+
+
+
+
+/*---------------------------------- до 480 ---------------------------------*/
+@media screen and (max-width: 479px) {
+	
+}
+
+
+
+
+/*------------------------------ Соцкнопки (конец) ---------------------------*/
