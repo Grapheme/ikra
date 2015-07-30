@@ -67,7 +67,7 @@
 /*---------------------------------- до 768 ---------------------------------*/
 @media screen and (max-width: 767px) {
   .b-title__text {
-    padding: 0 20px;
+    padding: 50px 20px 10px;
   }
   .b-title__logo {
     margin: 20px auto;

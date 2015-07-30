@@ -53,6 +53,23 @@ blockquote {
 	&:after { content: "”"; position: absolute; right: 0; top: 100%; font-size: 100px; margin-top: 50px }
 }
 
+article {
+	h3,
+	p,
+	ul,
+	ol {
+		margin-bottom: 10px;
+	}
+
+	ul > li {
+		&:before {
+			content: "• ";
+			color: @red;
+			margin-right: 5px;
+		}
+	}
+}
+
 
 /* вспомогательные классы */
 
@@ -168,6 +185,7 @@ h5,
 ._bg-violet { background-color: @violet; color: #fff; a { color: #fff; &:hover { color: #fff } } }
 ._bg-purple { background-color: @purple; color: #fff; a { color: #fff; &:hover { color: #fff } } }
 ._bg-green  { background-color: @green;  color: #fff; a { color: #fff; &:hover { color: #fff } } }
+._bg-pink    { background-color: @pink;  color: @gray;a { color: @gray; &:hover{ color: @gray } } }
 
 a._bg-gray:hover   { color:#fff; background-color: @gray-hover }
 a._bg-blue:hover   { color:#fff; background-color: @blue-hover }
@@ -177,7 +195,7 @@ a._bg-red:hover    { color:#fff; background-color: @red-hover }
 a._bg-violet:hover { color:#fff; background-color: @violet-hover }
 a._bg-purple:hover { color:#fff; background-color: @purple-hover }
 a._bg-green:hover  { color:#fff; background-color: @green-hover }
-
+a._bg-pink:hover { color:@gray; background-color: @pink-hover }
 
 
 /* Цветные тексты */
@@ -191,6 +209,7 @@ a._bg-green:hover  { color:#fff; background-color: @green-hover }
 ._text-purple { color:@purple; a { color:@purple; &:hover { color:@purple-hover } } }
 ._text-green  { color:@green;  a { color:@green;  &:hover { color:@green-hover  } } }
 ._text-white  { color:#fff;    a { color:#fff;    &:hover { color:#fff  } } }
+._text-pink   { color:@pink;   a { color:@pink;   &:hover { color:@pink-hover } } }
 
 a._text-gray:hover   { color:@gray-hover   }
 a._text-blue:hover   { color:@blue-hover   }
@@ -201,6 +220,7 @@ a._text-violet:hover { color:@violet-hover }
 a._text-purple:hover { color:@purple-hover }
 a._text-green:hover  { color:@green-hover  }
 a._text-white:hover  { color:#fff  }
+a._text-pink:hover { color:@pink-hover }
 
 
 
@@ -318,6 +338,22 @@ a._text-white:hover  { color:#fff  }
 
 
 
+/* Расхлопы */
+
+[data-toggle=collapse] {
+	& > .fa-caret-down { display: none; }
+	& > .fa-caret-up { display: inline-block; }
+
+	&.collapsed {
+		& > .fa-caret-down { display: inline-block; }
+		& > .fa-caret-up { display: none; }
+	}
+}
+
+
+
+
+
 
 
 /* прочие тексты */
@@ -424,7 +460,10 @@ a._text-white:hover  { color:#fff  }
 
 /*---------------------------------- до 1024 --------------------------------*/
 @media screen and (max-width: 1023px) {
-	
+	blockquote {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 
 
@@ -488,6 +527,11 @@ a._text-white:hover  { color:#fff  }
 		letter-spacing: 0.75*2px;
 		height: 0.75*60px;
 		padding: 0 0.75*30px;
+	}
+
+	i strong {
+		font-size: 0.75*24px;
+		line-height: 0.75*33px ;
 	}
 
 }

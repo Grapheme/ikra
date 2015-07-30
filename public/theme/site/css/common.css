@@ -57,6 +57,17 @@ blockquote:after {
   font-size: 100px;
   margin-top: 50px;
 }
+article h3,
+article p,
+article ul,
+article ol {
+  margin-bottom: 10px;
+}
+article ul > li:before {
+  content: "• ";
+  color: #ef4949;
+  margin-right: 5px;
+}
 /* вспомогательные классы */
 ._hidden {
   display: none;
@@ -286,6 +297,16 @@ h5,
 ._bg-green a:hover {
   color: #ffffff;
 }
+._bg-pink {
+  background-color: #ffa583;
+  color: #404041;
+}
+._bg-pink a {
+  color: #404041;
+}
+._bg-pink a:hover {
+  color: #404041;
+}
 a._bg-gray:hover {
   color: #fff;
   background-color: #666668;
@@ -317,6 +338,10 @@ a._bg-purple:hover {
 a._bg-green:hover {
   color: #fff;
   background-color: #afb60b;
+}
+a._bg-pink:hover {
+  color: #404041;
+  background-color: #ff9269;
 }
 /* Цветные тексты */
 ._text-gray {
@@ -400,6 +425,15 @@ a._bg-green:hover {
 ._text-white a:hover {
   color: #ffffff;
 }
+._text-pink {
+  color: #ffa583;
+}
+._text-pink a {
+  color: #ffa583;
+}
+._text-pink a:hover {
+  color: #ff9269;
+}
 a._text-gray:hover {
   color: #666668;
 }
@@ -426,6 +460,9 @@ a._text-green:hover {
 }
 a._text-white:hover {
   color: #ffffff;
+}
+a._text-pink:hover {
+  color: #ff9269;
 }
 /* Кнопки */
 .btn {
@@ -619,6 +656,19 @@ a._text-white:hover {
 ._mb100 {
   margin-bottom: 100px;
 }
+/* Расхлопы */
+[data-toggle=collapse] > .fa-caret-down {
+  display: none;
+}
+[data-toggle=collapse] > .fa-caret-up {
+  display: inline-block;
+}
+[data-toggle=collapse].collapsed > .fa-caret-down {
+  display: inline-block;
+}
+[data-toggle=collapse].collapsed > .fa-caret-up {
+  display: none;
+}
 /* прочие тексты */
 ._txt3 {
   font: 700 30px/36px 'museo sans', sans-serif;
@@ -668,6 +718,12 @@ a._text-white:hover {
 /* MOBILE LAST */
 /*---------------------------------- до 1366 --------------------------------*/
 /*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+  blockquote {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
 /*---------------------------------- до 768 ---------------------------------*/
 @media screen and (max-width: 767px) {
   h1,
@@ -723,6 +779,10 @@ a._text-white:hover {
     letter-spacing: 1.5px;
     height: 45px;
     padding: 0 22.5px;
+  }
+  i strong {
+    font-size: 18px;
+    line-height: 24.75px;
   }
 }
 /*-------------------------------------- 600 --------------------------------------*/
@@ -1052,7 +1112,7 @@ a._text-white:hover {
 /*---------------------------------- до 768 ---------------------------------*/
 @media screen and (max-width: 767px) {
   .b-title__text {
-    padding: 0 20px;
+    padding: 50px 20px 10px;
   }
   .b-title__logo {
     margin: 20px auto;
@@ -1358,6 +1418,98 @@ a._text-white:hover {
 .b-about__step-list p {
   text-align: left;
   margin-bottom: 50px;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+/*---------------------------------- до 768 ---------------------------------*/
+/*---------------------------------- до 480 ---------------------------------*/
+/*
+------------------------------ Основной курс (начало) --------------------------*/
+.b-primary > li {
+  clear: both;
+  margin-bottom: 30px;
+}
+.b-primary__title {
+  position: relative;
+  display: block;
+  min-height: 60px;
+  padding-left: 85px;
+}
+.b-primary__title .fa-caret-down {
+  display: none;
+}
+.b-primary__title .fa-caret-up {
+  display: inline-block;
+}
+.b-primary__title.collapsed span {
+  color: #404041 !important;
+}
+.b-primary__title.collapsed .fa-caret-down {
+  display: inline-block;
+}
+.b-primary__title.collapsed .fa-caret-up {
+  display: none;
+}
+.b-primary__title img {
+  position: absolute;
+  left: 0;
+  top: -15px;
+}
+.b-primary__title span {
+  vertical-align: middle;
+  line-height: normal;
+}
+.b-primary__step {
+  padding-left: 85px;
+}
+/* MOBILE FIRST */
+/*---------------------------------- от 480 ------------------------------------*/
+/*---------------------------------- от 768 ------------------------------------*/
+/*---------------------------------- от 1024 -----------------------------------*/
+/*---------------------------------- от 1366 -----------------------------------*/
+/* MOBILE LAST */
+/*---------------------------------- до 1366 --------------------------------*/
+/*---------------------------------- до 1024 --------------------------------*/
+@media screen and (max-width: 1023px) {
+  .b-primary__step {
+    padding-left: 0;
+  }
+  .b-primary__all-teachers {
+    text-align: left;
+  }
+}
+/*---------------------------------- до 768 ---------------------------------*/
+/*---------------------------------- до 480 ---------------------------------*/
+/*
+------------------------------ Раскрывающиеся отзывы (начало) --------------------------*/
+.b-textroll {
+  height: 640px;
+  overflow: hidden;
+}
+.b-textroll .b-textroll__show {
+  display: inline-block;
+}
+.b-textroll .b-textroll__hide {
+  display: none;
+}
+.b-textroll._open .b-textroll__content {
+  max-height: none;
+}
+.b-textroll._open .b-textroll__show {
+  display: none;
+}
+.b-textroll._open .b-textroll__hide {
+  display: inline-block;
+}
+.b-textroll__content {
+  max-height: 80px;
+  overflow: hidden;
 }
 /* MOBILE FIRST */
 /*---------------------------------- от 480 ------------------------------------*/

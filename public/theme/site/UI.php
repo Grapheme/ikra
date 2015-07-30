@@ -21,7 +21,58 @@
 	<br>
 	<br>
 	<p class="_max-text _margin-auto">._max-text._margin-auto <br> Текст, ограниченный по ширине и центрированный. <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ducimus doloribus dolor officia nesciunt sequi eveniet laborum ipsum, quisquam perferendis obcaecati officiis quidem magnam repellat dicta perspiciatis. Quo, adipisci, aut!</p>
+	<br>
+	<br>
+	<article>
+		<ul>
+			<li>элемент списка</li>
+			<li>элемент списка</li>
+			<li>элемент списка</li>
+		</ul>
+	</article>
 </section>
+
+
+
+
+
+<section class="b-section">
+
+	<div class="_mb50">
+		<div class="_txt4 _mb20">
+			<a href="#collapse1" class="collapsed" data-toggle="collapse">
+				 расхлоп закрытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+			</a>
+		</div>
+		<div class="collapse" id="collapse1">
+			<p class="_max-text">
+				<b>data-toggle[collapse].collapsed</b> &mdash; кнопка расхлопа <br>
+				<b>.collapse</b> &mdash; контент расхлопа <br>
+				а еще нужны <b>id</b> и <b>href</b><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="">
+		<div class="_txt4 _mb20">
+			<a href="#collapse2" class="" data-toggle="collapse">
+				 расхлоп открытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+			</a>
+		</div>
+		<div class="collapse in" id="collapse2">
+			<p class="_max-text">
+				<b>data-toggle[collapse]</b> &mdash; кнопка расхлопа <br>
+				<b>.collapse.in</b> &mdash; контент расхлопа <br>
+				а еще нужны <b>id</b> и <b>href</b><br>
+			</p>
+		</div>
+	</div>
+
+</section>
+
+
+
+
 
 <section class="b-section">
 	<h2>Цвета</h2>
@@ -33,6 +84,7 @@
 	<div class="_bg-violet"><h3>._bg-violet</h3></div>
 	<div class="_bg-purple"><h3>._bg-purple</h3></div>
 	<div class="_bg-green"><h3>._bg-green</h3></div>
+	<div class="_bg-pink"><h3>._bg-pink</h3></div>
 	<br>
 	<div class="_text-gray"><h3>._text-gray  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
 	<div class="_text-blue"><h3>._text-blue  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
@@ -42,6 +94,7 @@
 	<div class="_text-violet"><h3>._text-violet  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
 	<div class="_text-purple"><h3>._text-purple  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
 	<div class="_text-green"><h3>._text-green  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
+	<div class="_text-pink"><h3>._text-pink  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">a:hover</a></h3></div>
 </section>
 
 
@@ -245,6 +298,7 @@
 
 
 
+
 <section class="b-section _bg-blue">
 	<div class="_vertical-center">
 		<div>
@@ -276,6 +330,33 @@
 		</div>
 	</div>
 </section>
+
+
+
+
+<section class="b-section">
+	<div class="row">
+		<div class="b-textroll col-md-4 _mb50">
+			<a class="b-textroll__img _block _mb20" href="">
+				<img src="img/content/512.jpg" alt="">
+			</a>
+			<h3 class="_mb5">.b-rolling-text</h3>
+			<small class="_block _mb25">картинка скрывается, текст раскрывается</small>
+			<p class="b-textroll__content">
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex laboriosam excepturi et perferendis eius ratione doloremque iste laudantium velit eligendi quidem nesciunt, officiis qui alias animi, suscipit architecto fuga tempore.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex laboriosam excepturi et perferendis eius ratione doloremque iste laudantium velit eligendi quidem nesciunt, officiis qui alias animi, suscipit architecto fuga tempore.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex laboriosam excepturi et perferendis eius ratione doloremque iste laudantium velit eligendi quidem nesciunt, officiis qui alias animi, suscipit architecto fuga tempore.
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex laboriosam excepturi et perferendis eius ratione doloremque iste laudantium velit eligendi quidem nesciunt, officiis qui alias animi, suscipit architecto fuga tempore.
+			</p>
+			<div class="text-right">
+				<a href="#" class="btn btn-readmore b-textroll__show">Показать полностью</a>
+				<a href="#" class="btn btn-readmore b-textroll__hide">Свернуть</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+
 
 
 

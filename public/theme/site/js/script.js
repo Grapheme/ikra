@@ -94,4 +94,39 @@ $(function()
 
 
 
+
+	
+
+	// Разворачивающиеся отзывы
+	(function TextRoll()
+	{
+		$('.b-textroll').each(function(index, element)
+		{
+			var $this = $(element),
+				$img = $this.find('.b-textroll__img'),
+				$show = $this.find('.b-textroll__show'),
+				$hide = $this.find('.b-textroll__hide');
+
+			$show.on("click", function(event)
+			{
+				event.preventDefault();
+				$this.addClass('_open');
+				$img.slideUp(500);
+			});
+
+			$hide.on("click", function(event)
+			{
+				event.preventDefault();
+				$this.removeClass('_open');
+				$img.slideDown(500);
+			});
+		});
+		
+	})();
+
+
+
+
+
+
 });
