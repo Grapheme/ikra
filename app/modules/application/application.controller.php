@@ -49,7 +49,8 @@ class ApplicationController extends BaseController {
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         $city = Session::get($user_city_cache_key);
-        Helper::tad($city);
+        #Helper::tad($city);
+        var_dump($city);
         #Session::forget($user_city_cache_key); die;
         if (!$city || $refresh_city) {
             Session::forget($user_city_cache_key);
@@ -57,14 +58,18 @@ class ApplicationController extends BaseController {
                 #$city = Dic::valueBySlugAndId('city', $_COOKIE['city_id'], []);
                 $city = @$dic_city[$_COOKIE['city_id']];
             }
+            var_dump($city);
             if (!$city || $refresh_city) {
                 #$city = @$dic_city[$_COOKIE['city_id']];
                 $city = @$dic_city[Config::get('site.default_city_id')];
             }
+            var_dump($city);
             #Helper::tad($city);
             Session::set($user_city_cache_key, $city);
         }
-        Helper::tad($city);
+        var_dump($city);
+        die;
+        #Helper::tad($city);
         View::share($user_city_cache_key, $city);
 
 
