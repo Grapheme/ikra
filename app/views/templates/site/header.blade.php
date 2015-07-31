@@ -12,10 +12,19 @@
         <div class="b-header__city-select-wrapper _txt9">
             <span id="city_button">Икра Москва <i class="fa fa-caret-down"></i></span>
             <ul id="city_list" class="b-header__city-select">
-                <li><a href="#">Икра Москва</a></li>
-                <li><a href="#">Икра Спб</a></li>
-                <li><a href="#">Икра Минск</a></li>
-                <li><a href="#">Икра Екб</a></li>
+                @foreach ($dic_city as $city)
+                    <?
+                    if (!$city->important)
+                        continue;
+                    ?>
+                    <li><a href="{{ URL::route('app.city_direct', $city->slug) }}">Икра {{ $city->name_mini ?: $city->name }}</a></li>
+                @endforeach
+                @if (0)
+                    <li><a href="#">Икра Москва</a></li>
+                    <li><a href="#">Икра Спб</a></li>
+                    <li><a href="#">Икра Минск</a></li>
+                    <li><a href="#">Икра Екб</a></li>
+                @endif
             </ul>
             <!-- <form action="" method="get">
                 <select class="b-header__city-select" name="city_select" id="city_select">

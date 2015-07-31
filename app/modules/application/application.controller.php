@@ -38,7 +38,7 @@ class ApplicationController extends BaseController {
 
             #Helper::d($dic_name); Helper::ta($dic_{$dic_name});
         }
-        #Helper::ta($dic_{'city'});
+        #Helper::tad($dic_{'city'});
         #die;
 
 
@@ -47,10 +47,13 @@ class ApplicationController extends BaseController {
          * Предзагружаем из сессии, кешируем в сессию, делаем глобальным для шаблонизатора.
          */
         $dic_city = $dic_{'city'};
-        $refresh_city = 0;
+        $refresh_city = false;
+        $refresh_city = true;
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         $city = Session::get($user_city_cache_key);
+        if ($refresh_city)
+            Session::forget($user_city_cache_key);
         #Helper::tad($city);
         #var_dump($city);
         #Session::forget($user_city_cache_key); die;
@@ -71,6 +74,7 @@ class ApplicationController extends BaseController {
         }
         #var_dump($city);
         #Helper::tad($dic_city);
+        #Helper::tad($city);
         #die;
         View::share($user_city_cache_key, $city);
 
@@ -79,6 +83,8 @@ class ApplicationController extends BaseController {
          * Роуты, контент которых зависит от текущего города
          */
         Route::group(array('prefix' => $city->slug), function() {
+
+            Route::any('/', array('as' => 'app.city', 'uses' => __CLASS__.'@appCity'));
 
             Route::any('/courses', array('as' => 'app.courses', 'uses' => __CLASS__.'@appCourses'));
             Route::any('/courses/{id}', array('as' => 'app.course', 'uses' => __CLASS__.'@appCourse'));
@@ -89,6 +95,8 @@ class ApplicationController extends BaseController {
             Route::any('/story', array('as' => 'app.stories', 'uses' => __CLASS__.'@appStories'));
             Route::any('/story/{id}', array('as' => 'app.story', 'uses' => __CLASS__.'@appStory'));
         });
+
+        Route::any('/{city_slug}', array('as' => 'app.city_direct', 'uses' => __CLASS__.'@appCity'));
 
         Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
         Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
@@ -179,6 +187,17 @@ class ApplicationController extends BaseController {
 
         #Helper::dd($result);
         return Response::json($json_request, 200);
+    }
+
+
+    ###########################################################################
+
+
+    public function appCity() {
+
+        #dd(func_get_args());
+        $city = $this->getCity(func_get_args());
+        Helper::ta($city);
     }
 
 

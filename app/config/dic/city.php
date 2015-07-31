@@ -9,6 +9,10 @@ return array(
                 'title' => 'Предложный падеж (например: Москве)',
                 'type' => 'text',
             ),
+            'name_mini' => array(
+                'title' => 'Краткое название (Москва, Спб, Екб)',
+                'type' => 'text',
+            ),
             'important' => array(
                 'no_label' => true,
                 'title' => 'Важный город (будет выводиться в футере с контактами)',

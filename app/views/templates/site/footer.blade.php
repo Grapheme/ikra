@@ -10,36 +10,76 @@
     <div class="h2 _mb35">Икра
         <form class="nl-form _text-red" data-nl>
             <select>
-                <option value="1">Москва</option>
-                <option value="2">Спб</option>
-                <option value="3">Минск</option>
-                <option value="4">Екб</option>
+                @foreach ($dic_city as $city)
+                    <?
+                    if (!$city->important)
+                        continue;
+                    ?>
+                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                @endforeach
+                @if (0)
+                    <option value="1">Москва</option>
+                    <option value="2">Спб</option>
+                    <option value="3">Минск</option>
+                    <option value="4">Екб</option>
+                @endif
             </select>
 
             <div class="nl-overlay"></div>
     </div>
 
+    {{ Helper::ta_($current_city) }}
+
     <div class="row">
         <div class="col-md-6 _mb30">
-            <div class="_mb30">
-                <h3>+7 931 369-48-66 / <strong class="_text-red">
-                        <a href="mailto:info@ikraikra.ru">info@ikraikra.ru</a>
-                    </strong></h3>
-                <small>Менеджер курсов, Оля Зотова</small>
-            </div>
-            <div class="_mb35">
-                <h3>+7 931 369-48-66 / <strong class="_text-red">
-                        <a href="mailto:ss@ikraikra.ru">ss@ikraikra.ru</a>
-                    </strong></h3>
-                <small>Руководитель проекта, Соня Смыслова</small>
-            </div>
+            @if ($current_city->manager_1_fio)
+                <div class="_mb30">
+                    <h3>
+                        {{ $current_city->manager_1_phone }} /
+                        <strong class="_text-red">
+                            <a href="mailto:{{ $current_city->manager_1_email }}">{{ $current_city->manager_1_email }}</a>
+                        </strong>
+                    </h3>
+                    <small>{{ $current_city->manager_1_position }}, {{ $current_city->manager_1_fio }}</small>
+                </div>
+            @endif
+            @if ($current_city->manager_2_fio)
+                <div class="_mb30">
+                    <h3>
+                        {{ $current_city->manager_2_phone }} /
+                        <strong class="_text-red">
+                            <a href="mailto:{{ $current_city->manager_2_email }}">{{ $current_city->manager_2_email }}</a>
+                        </strong>
+                    </h3>
+                    <small>{{ $current_city->manager_2_position }}, {{ $current_city->manager_2_fio }}</small>
+                </div>
+            @endif
+            @if ($current_city->manager_3_fio)
+                <div class="_mb30">
+                    <h3>
+                        {{ $current_city->manager_3_phone }} /
+                        <strong class="_text-red">
+                            <a href="mailto:{{ $current_city->manager_3_email }}">{{ $current_city->manager_3_email }}</a>
+                        </strong>
+                    </h3>
+                    <small>{{ $current_city->manager_3_position }}, {{ $current_city->manager_3_fio }}</small>
+                </div>
+            @endif
 
-            <small class="_block _mb60 _text-blue">С радостью отвечаем с 11:00 до 20:00 <br>в будние дни</small>
+            @if ($current_city->comment)
+                <small class="_block _mb60 _text-blue">{{ nl2br($current_city->comment) }}</small>
+            @endif
 
             <div class="b-social">
-                <a class="_facebook" href="#"><i class="fa fa-facebook"></i></a>
-                <a class="_vkontakte" href="#"><i class="fa fa-vk"></i></a>
-                <a class="_instagram" href="#"><i class="fa fa-instagram"></i></a>
+                @if ($current_city->fb_link)
+                    <a class="_facebook" href="{{ $current_city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                @endif
+                @if ($current_city->vk_link)
+                    <a class="_vkontakte" href="{{ $current_city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                @endif
+                @if ($current_city->ig_link)
+                    <a class="_instagram" href="{{ $current_city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                @endif
             </div>
         </div>
 
@@ -62,10 +102,10 @@
 </section>
 
 <footer class="b-footer">
-    <div class="b-footer__map">
+    <div class="b-footer__map" data-lat="{{ $current_city->lat }}" data-lng="{{ $current_city->lng }}">
         <div class="b-footer__map-text">
             <div class="b-footer__map-text-valign h4">
-                Москва, <br> Бауманская улица, 11с8 <br> Блок 1
+                {{ $current_city->name }}, <br> {{ $current_city->address }}
             </div>
         </div>
     </div>
