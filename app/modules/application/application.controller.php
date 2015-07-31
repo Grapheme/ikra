@@ -36,7 +36,7 @@ class ApplicationController extends BaseController {
             }
             View::share('dic_' . $dic_name, $dic_{$dic_name});
 
-            #Helper::d($dic_name); Helper::ta($dic_{$dic_name});
+            Helper::d($dic_name); Helper::ta($dic_{$dic_name});
         }
         #die;
 
