@@ -38,7 +38,7 @@ class ApplicationController extends BaseController {
 
             Helper::d($dic_name); Helper::ta($dic_{$dic_name});
         }
-        Helper::ta($dic_city);
+        Helper::ta($dic_{'city'});
         #die;
 
 
