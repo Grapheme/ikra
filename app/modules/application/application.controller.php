@@ -68,8 +68,8 @@ class ApplicationController extends BaseController {
             Session::set($user_city_cache_key, $city);
         }
         var_dump($city);
+        Helper::tad($dic_city);
         die;
-        #Helper::tad($city);
         View::share($user_city_cache_key, $city);
 
 
