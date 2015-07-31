@@ -5,7 +5,7 @@ class ApplicationController extends BaseController {
     public static $name = 'application';
     public static $group = 'application';
     public static $user_city_cache_key = 'current_city';
-    public static $user_city_cache_min = 60*24*365;
+    public static $user_city_cache_min = 525600; #60*24*365;
     public static $global_cache_min = 10;
 
     /****************************************************************************/
