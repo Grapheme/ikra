@@ -1,0 +1,185 @@
+<?php
+
+return array(
+
+    'fields' => function($dicval) {
+
+        return array(
+            'dp' => array(
+                'title' => 'Предложный падеж (например: Москве)',
+                'type' => 'text',
+            ),
+            'important' => array(
+                'no_label' => true,
+                'title' => 'Важный город (будет выводиться в футере с контактами)',
+                'type' => 'checkbox',
+                'label_class' => 'normal_checkbox',
+            ),
+
+            'address' => array(
+                'title' => 'Адрес',
+                'type' => 'text',
+            ),
+            ## КАРТА ДЛЯ ГЕОКОДИНГА
+            'map' => array(
+                'type' => 'custom',
+                'content' => View::make('system.views.map_google_block', [
+                    'element' => $dicval,
+
+                    #'map_id' => 'map',
+                    #'map_style' => 'height:300px;',
+                ])->render(),
+                'scripts' => View::make('system.views.map_google_script', [
+                    'element' => $dicval,
+
+                    #'map_id' => 'map',
+                    #'map_type' => 'google.maps.MapTypeId.ROADMAP',
+                    #'field_address' => 'address',
+                    #'field_lat' => 'lat',
+                    #'field_lng' => 'lng',
+                    #'keyup_timer' => 1200,
+
+                    'geo_prefix' => '"Россия, " + $("input[name=name]").val() + ", "',
+                    'default_lat' => '47.25221300',
+                    'default_lng' => '39.69359700',
+                    'default_zoom' => '11',
+                ])->render(),
+            ),
+            'lat' => array(
+                'title' => 'Широта',
+                'type' => 'text',
+            ),
+            'lng' => array(
+                'title' => 'Долгота',
+                'type' => 'text',
+            ),
+
+
+            '-1' => array(
+                'type' => 'custom',
+                'content' => '<br/>',
+            ),
+
+            'manager_1_fio' => array(
+                'title' => 'Менеджер 1 - Имя Фамилия',
+                'type' => 'text',
+            ),
+            'manager_1_position' => array(
+                'title' => 'Менеджер 1 - должность',
+                'type' => 'text',
+            ),
+            'manager_1_phone' => array(
+                'title' => 'Менеджер 1 - телефон',
+                'type' => 'text',
+            ),
+            'manager_1_email' => array(
+                'title' => 'Менеджер 1 - e-mail',
+                'type' => 'text',
+            ),
+
+            '-2' => array(
+                'type' => 'custom',
+                'content' => '<br/>',
+            ),
+
+            'manager_2_fio' => array(
+                'title' => 'Менеджер 2 - Имя Фамилия',
+                'type' => 'text',
+            ),
+            'manager_2_position' => array(
+                'title' => 'Менеджер 2 - должность',
+                'type' => 'text',
+            ),
+            'manager_2_phone' => array(
+                'title' => 'Менеджер 2 - телефон',
+                'type' => 'text',
+            ),
+            'manager_2_email' => array(
+                'title' => 'Менеджер 2 - e-mail',
+                'type' => 'text',
+            ),
+
+            '-3' => array(
+                'type' => 'custom',
+                'content' => '<br/>',
+            ),
+
+            'manager_3_fio' => array(
+                'title' => 'Менеджер 3 - Имя Фамилия',
+                'type' => 'text',
+            ),
+            'manager_3_position' => array(
+                'title' => 'Менеджер 3 - должность',
+                'type' => 'text',
+            ),
+            'manager_3_phone' => array(
+                'title' => 'Менеджер 3 - телефон',
+                'type' => 'text',
+            ),
+            'manager_3_email' => array(
+                'title' => 'Менеджер 3 - e-mail',
+                'type' => 'text',
+            ),
+
+            '-4' => array(
+                'type' => 'custom',
+                'content' => '<br/>',
+            ),
+
+            'comment' => array(
+                'title' => 'Комментарий',
+                'type' => 'textarea',
+                'others' => [
+                    'placeholder' => 'Например: С РАДОСТЬЮ ОТВЕЧАЕМ С 11:00 ДО 20:00 В БУДНИЕ ДНИ',
+                ],
+            ),
+
+            'fb_link' => array(
+                'title' => 'Facebook',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'vk_link' => array(
+                'title' => 'VKontakte',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'ig_link' => array(
+                'title' => 'Instagram',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+        );
+    },
+
+
+    /**
+     * HOOKS - набор функций-замыканий, которые вызываются в некоторых местах кода модуля словарей, для выполнения нужных действий.
+     */
+    'hooks' => array(
+
+        /**
+         * Вызывается после создания, обновления, удаления записи, изменения порядка сортировки
+         */
+        'after_store_update_destroy_order' => function ($dic = NULL, $dicval = NULL) {
+
+            Cache::forget('dic_' . $dic->slug);
+        },
+    ),
+
+
+    /*
+    'second_line_modifier' => function($line, $dic, $dicval) {
+        #Helper::ta($dicval);
+        return (isset($dicval->answer) && $dicval->answer ? strip_tags($dicval->answer) : '');
+    },
+    */
+
+    #'seo' => ['title', 'description', 'keywords'],
+);

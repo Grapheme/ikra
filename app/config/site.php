@@ -2,7 +2,7 @@
 
 return array(
 
-    'theme_path' => URL::to('/theme/site/dist'),
+    'theme_path' => URL::to('/theme/site'),
     #'theme_path' => URL::to('/theme/' . Config::get('app.template') . '/dist'),
     #'mobile_theme_path' => URL::to('/theme/mobile/dist'),
 
@@ -71,4 +71,11 @@ return array(
         'theme_path' => URL::to('/theme/mobile/dist'),
     ],
 
+
+    'default_city_id' => 1,
+
+    'genders' => [
+        'm' => 'Мужской',
+        'f' => 'Женский',
+    ],
 );

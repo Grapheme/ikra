@@ -4,5 +4,13 @@
  */
 ?>
 
-    {{ HTML::scriptmod(Config::get('site.theme_path').'/scripts/vendor.js') }}
-    {{ HTML::scriptmod(Config::get('site.theme_path').'/scripts/main.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/libs/jquery-1.10.2.min.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/libs/underscore-1.7.0.min.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/bootstrap/js/bootstrap.min.js') }}
+
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/libs/nlform.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/libs/owl.carousel.min.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/script.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/modules/resize.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/modules/equalheight.js') }}
+{{ HTML::scriptmod(Config::get('site.theme_path').'/js/modules/stickyscroll.js') }}

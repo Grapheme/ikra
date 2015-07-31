@@ -649,4 +649,13 @@ HTML
      */
     'disable_ordering_without_filter' => 'brand_type',
 
+    /**
+     * Запретить отображение списка записей, если не выбраны элементы для фильтрации
+     * Список указывается массивом: ['city', 'category']
+     */
+    'disable_listing_without_filter' => [
+        'fields' => ['course_id'],
+        'message' => 'Сначала выберите курс.',
+    ],
+
 );

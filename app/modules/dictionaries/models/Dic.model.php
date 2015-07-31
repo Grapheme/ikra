@@ -533,6 +533,8 @@ class Dic extends BaseModel {
             $values->remember($db_remember_timeout);
         }
 
+        #dd($values->toSql());
+
         $values = $values->get();
 
         if (is_object($values) && $values->count()) {
