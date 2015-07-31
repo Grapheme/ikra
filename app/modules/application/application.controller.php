@@ -36,9 +36,9 @@ class ApplicationController extends BaseController {
             }
             View::share('dic_' . $dic_name, $dic_{$dic_name});
 
-            Helper::d($dic_name); Helper::ta($dic_{$dic_name});
+            #Helper::d($dic_name); Helper::ta($dic_{$dic_name});
         }
-        Helper::ta($dic_{'city'});
+        #Helper::ta($dic_{'city'});
         #die;
 
 
@@ -46,12 +46,13 @@ class ApplicationController extends BaseController {
          * Определяем город юзера, если есть пометка в COOKIES. Иначе - Москва (id из конфига).
          * Предзагружаем из сессии, кешируем в сессию, делаем глобальным для шаблонизатора.
          */
+        $dic_city = $dic_{'city'};
         $refresh_city = 0;
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         $city = Session::get($user_city_cache_key);
         #Helper::tad($city);
-        var_dump($city);
+        #var_dump($city);
         #Session::forget($user_city_cache_key); die;
         if (!$city || $refresh_city) {
             Session::forget($user_city_cache_key);
@@ -59,16 +60,16 @@ class ApplicationController extends BaseController {
                 #$city = Dic::valueBySlugAndId('city', $_COOKIE['city_id'], []);
                 $city = @$dic_city[$_COOKIE['city_id']];
             }
-            var_dump($city);
+            #var_dump($city);
             if (!$city || $refresh_city) {
                 #$city = @$dic_city[$_COOKIE['city_id']];
                 $city = @$dic_city[Config::get('site.default_city_id')];
             }
-            var_dump($city);
+            #var_dump($city);
             #Helper::tad($city);
             Session::set($user_city_cache_key, $city);
         }
-        var_dump($city);
+        #var_dump($city);
         Helper::tad($dic_city);
         die;
         View::share($user_city_cache_key, $city);
