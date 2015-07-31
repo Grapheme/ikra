@@ -36,7 +36,7 @@ class ApplicationController extends BaseController {
             }
             View::share('dic_' . $dic_name, $dic_{$dic_name});
 
-            Helper::d($dic_name); Helper::ta($dic_{$dic_name});
+            #Helper::d($dic_name); Helper::ta($dic_{$dic_name});
         }
         #die;
 
@@ -49,7 +49,7 @@ class ApplicationController extends BaseController {
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         $city = Session::get($user_city_cache_key);
-        #Helper::tad($city);
+        Helper::tad($city);
         #Session::forget($user_city_cache_key); die;
         if (!$city || $refresh_city) {
             Session::forget($user_city_cache_key);
