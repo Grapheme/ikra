@@ -45,6 +45,20 @@ return array(
                 ),
             ];
 
+        $settings['content'] = [
+            'title' => 'Контент',
+            'options' => array(
+                'metodology_link' => array(
+                    'title' => 'Ссылка на методологию',
+                    'type' => 'text',
+                    'others' => [
+                        'placeholder' => 'http://'
+                    ],
+                ),
+            ),
+        ];
+
+
         if (Allow::action('catalog', 'catalog_allow', true, false))
             $settings['catalog'] = [
                 'title' => 'Магазин',

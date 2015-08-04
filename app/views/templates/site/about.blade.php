@@ -8,6 +8,10 @@
 <?php
 #$temp = Dic::valueBySlugAndId('equipments', 1);
 #Helper::ta($temp);
+#Helper::tad($dic_direction);
+#Helper::ta($page);
+#echo $page->block('about');
+#die;
 ?>
 
 
@@ -24,7 +28,7 @@
         </div>
 
         <div class="b-title__text">
-            <h1>Об Икре</h1>
+            <h1>{{ $page->h1_or_name() }}</h1>
         </div>
 
     </section>
@@ -33,148 +37,63 @@
     <section class="b-section _no-padding-bottom">
         <h2>Наши направления</h2>
 
-        <ul class="b-about__directions row text-center">
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_str">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/str.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-yellow">
-						<b>
-							<span class="_nowrap">
-								Стратегия&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-                </a>
-                </b>
-                </span>
-                </a>
-                <p id="about_str" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam ea cumque, magnam enim. Fugit adipisci temporibus doloremque officiis doloribus accusantium inventore iste nesciunt sit necessitatibus, obcaecati, enim minima praesentium. Similique.</p>
-            </li>
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_cre">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/cre.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-violet">
-						<b>
-							<span class="_nowrap">
-								Креатив&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</span>
-                        </b>
-					</span>
-                </a>
-                <p id="about_cre" class="collapse">Описание</p>
-            </li>
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_art">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/art.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-blue">
-						<b>
-							<span class="_nowrap">
-								Арт-дирекшн&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-                </a>
-                </b>
-                </span>
-                </a>
-                <p id="about_art" class="collapse">Описание</p>
-            </li>
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_pro">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/pro.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-cyan">
-						<b>
-							<span class="_nowrap">
-								Продюсирование&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-                </a>
-                </b>
-                </span>
-                </a>
-                <p id="about_pro" class="collapse">Описание. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde, possimus amet quod ab nesciunt modi sit eius eos a dolores ullam rem reprehenderit magnam consequatur porro qui pariatur delectus provident.</p>
-            </li>
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_med">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/med.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-purple">
-						<b>
-							<span class="_nowrap">
-								Медиа&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-                </a>
-                </b>
-                </span>
-                </a>
-                <p id="about_med" class="collapse">Описание</p>
-            </li>
-            <li class="col-sm-6 col-md-4">
-                <a class="collapsed" data-toggle="collapse" href="#about_man">
-                    <span class="_mb35"> <img src="{{ Config::get('site.theme_path') }}/img/icon/directions/man.png" alt=""> </span>
-					<span class="_txt4 _mb20 _text-green">
-						<b>
-							<span class="_nowrap">
-								Менеджмент&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-                </a>
-                </b>
-                </span>
-                </a>
-                <p id="about_man" class="collapse">Описание</p>
-            </li>
-        </ul>
+        @if (isset($dic_direction) && is_object($dic_direction) && $dic_direction->count())
+
+            <ul class="b-about__directions row text-center">
+
+                @foreach ($dic_direction as $direction)
+
+                    <li class="col-sm-6 col-md-4">
+                        <a class="collapsed" data-toggle="collapse" href="#about_{{ $direction->slug }}">
+                            <span class="_mb35">
+                                @if (is_object($direction->image))
+                                    <img src="{{ $direction->image->thumb()  }}" alt="">
+                                @endif
+                            </span>
+        					<span class="_txt4 _mb20" style="color: {{ $direction->color }}">
+		        				<b>
+				        			<span class="_nowrap">
+						        		{{ $direction->name }}&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+                                    </span>
+                                </b>
+                            </span>
+                        </a>
+                        <p id="about_{{ $direction->slug }}" class="collapse">
+                            {{ nl2br($direction->short) }}
+                        </p>
+                    </li>
+                @endforeach
+
+            </ul>
+
+        @endif
+
     </section>
 
 
 
-    <section class="b-section _no-padding-bottom">
-        <h2>О школе</h2>
 
-        <div class="row _mb30">
-            <div class="b-about__col col-md-4">
-                <div class="b-about__top">
-                    <h4 class="_mb30">Икра - это школа интерактивных коммуникаций в рекламе</h4>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam explicabo atque sunt provident ea eum veniam ipsam quibusdam vitae consequatur possimus placeat laborum amet, aliquid, culpa qui magnam ducimus eaque.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ullam facilis eveniet, animi, numquam magni maxime consectetur autem quod impedit modi odio, maiores optio quisquam saepe ab aliquid deserunt necessitatibus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut minima officiis molestias magnam placeat rerum ipsum ullam repellendus delectus esse. Saepe quae accusantium nam blanditiis consectetur odio, voluptatum maxime cumque.</p>
-            </div>
-            <div class="b-about__col col-md-4">
-                <div class="b-about__top">
-                    <div class="text-left _mb30"><img src="{{ Config::get('site.theme_path') }}/img/bg/oralo.jpg" height="87" width="82" alt=""></div>
-                </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam explicabo atque sunt provident ea eum veniam ipsam quibusdam vitae consequatur possimus placeat laborum amet, aliquid, culpa qui magnam ducimus eaque.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam ullam facilis eveniet, animi, numquam magni maxime consectetur autem quod impedit modi odio, maiores optio quisquam saepe ab aliquid deserunt necessitatibus!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut minima officiis molestias magnam placeat rerum ipsum ullam repellendus delectus esse. Saepe quae accusantium nam blanditiis consectetur odio, voluptatum maxime cumque.</p>
-            </div>
-            <div class="b-about__col col-md-4">
-                <img src="{{ Config::get('site.theme_path') }}/img/bg/lips.png"  alt="">
-            </div>
-        </div>
-    </section>
-
-    <section class="b-section">
-        <div class="_txt3 text-center _mb40"><b>Школа предлагает четыре типа курсов</b></div>
-
-        <ul class="b-about__course-list row">
-            <li class="col-md-3">
-                <h3 class="text-center _text-red _mb20"><strong>Основной курс</strong></h3>
-                <div class="b-about__course-text">
-                    <p class="_mb20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque temporibus eligendi sint quisquam a quas, delectus expedita iusto cupiditate laudantium cumque molestias numquam blanditiis voluptatem aut aperiam, rerum iure aliquid.</p>
-                    <b>Средняя продолжительность &mdash; <br>3 месяца</b>
-                </div>
-            </li>
-            <li class="col-md-3">
-                <h3 class="text-center _text-red _mb20"><strong>Левел-ап</strong></h3>
-                <div class="b-about__course-text">
-                    <p class="_mb20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum harum temporibus optio eos quo doloremque reprehenderit, iure pariatur itaque iusto minima. Labore pariatur nisi repudiandae ea, nemo doloribus nostrum impedit.</p>
-                    <b>Средняя продолжительность &mdash; <br>3 месяца</b>
-                </div>
-            </li>
-            <li class="col-md-3">
-                <h3 class="text-center _text-red _mb20"><strong>Интенсив</strong></h3>
-                <div class="b-about__course-text">
-                    <p class="_mb20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet id inventore reiciendis illo, earum voluptate et tenetur ad impedit ea! Tempore iusto, eaque in quis inventore ratione quam ipsum quaerat.</p>
-                    <b>Средняя продолжительность &mdash; <br>3 месяца</b>
-                </div>
-            </li>
-            <li class="col-md-3">
-                <h3 class="text-center _text-red _mb20"><strong>Выездной кампус</strong></h3>
-                <div class="b-about__course-text">
-                    <p class="_mb20">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores iusto sunt tempore eius excepturi minus quidem itaque unde laudantium non illo harum nam officiis, incidunt modi possimus minima vel? Adipisci?</p>
-                    <b>Средняя продолжительность &mdash; <br>3 месяца</b>
-                </div>
-            </li>
-        </ul>
-    </section>
+    {{ $page->block('about') }}
 
 
+
+    @if (isset($dic_type) && is_object($dic_type) && $dic_type->count())
+        <section class="b-section">
+            <div class="_txt3 text-center _mb40"><b>Школа предлагает четыре типа курсов</b></div>
+
+            <ul class="b-about__course-list row">
+                @foreach ($dic_type as $type)
+                    <li class="col-md-3">
+                        <h3 class="text-center _text-red _mb20"><strong>{{ $type->name }}</strong></h3>
+                        <div class="b-about__course-text">
+                            <p class="_mb20">{{ $type->short }}</p>
+                            <b>{{ $type->howlong }}</b>
+                        </div>
+                    </li>
+                @endforeach
+            </ul>
+        </section>
+    @endif
 
 
 
@@ -186,12 +105,10 @@
                     Сегодня отличный день попробовать что-то новое!
                 </h2>
                 <br><br>
-                <span class="_text-blue"><a href="#" class="btn btn-white">Записаться на курс</a></span>
+                <span class="_text-blue"><a href="{{ URL::route('app.courses') }}" class="btn btn-white">Записаться на курс</a></span>
             </div>
         </div>
     </section>
-
-
 
 
 
@@ -243,12 +160,11 @@
 
 
 
-
     <section class="b-section _bg-blue">
         <div class="_vertical-center">
             <div>
                 <h2 class="_cta">
-                    Хотите узнать поподробнее о нашей <span class="_text-yellow"><a href="#cta_form" data-toggle="collapse">методологии</a>?
+                    Хотите узнать поподробнее о нашей <span class="_text-yellow"><a href="{{ Config::get('app.settings.content.metodology_link') }}" target="_blank">методологии</a>?
                 </h2>
                 <br><br>
                 <span class="_text-blue"><a href="#cta_form" data-toggle="collapse" class="btn">Да!</a></span>
@@ -279,32 +195,48 @@
 
 
 
+    @if (isset($dic_partners) && is_object($dic_partners) && $dic_partners->count())
+        <section class="b-section">
+            <h2>Наши партнеры</h2>
 
-    <section class="b-section">
-        <h2>Наши партнеры</h2>
+            <div class="b-slider _mb20 owl-carousel">
+                @foreach ($dic_partners as $client)
+                    <?php
+                    if (!is_object($client->logo))
+                        continue;
+                    ?>
+                    <div class="owl-item">
+                        <a href="{{ $client->url }}" class="" target="_blank">
+                            <img src="{{ $client->logo->thumb() }}" alt="{{ $client->name }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
 
-        <div class="b-slider owl-carousel">
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/partners/1.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/partners/2.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/partners/3.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/partners/1.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/partners/3.png" alt=""></a></div>
-        </div>
 
-    </section>
 
-    <section class="b-section">
-        <h2>Наши клиенты</h2>
 
-        <div class="b-slider _mb20 owl-carousel">
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/clients/1.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/clients/2.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/clients/3.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/clients/4.png" alt=""></a></div>
-            <div class="owl-item"><a href="#" class=""><img src="{{ Config::get('site.theme_path') }}/img/content/clients/5.png" alt=""></a></div>
-        </div>
-    </section>
+    @if (isset($dic_clients) && is_object($dic_clients) && $dic_clients->count())
+        <section class="b-section">
+            <h2>Наши клиенты</h2>
 
+            <div class="b-slider _mb20 owl-carousel">
+                @foreach ($dic_clients as $client)
+                    <?php
+                    if (!is_object($client->logo))
+                        continue;
+                    ?>
+                    <div class="owl-item">
+                        <a href="{{ $client->url }}" class="" target="_blank">
+                            <img src="{{ $client->logo->thumb() }}" alt="{{ $client->name }}">
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+    @endif
 
 @stop
 

@@ -135,6 +135,15 @@ return array(
             #Helper::dd($counts);
             Config::set('temp.index_counts', $counts);
         },
+
+
+        /**
+         * Вызывается после создания, обновления, удаления записи, изменения порядка сортировки
+         */
+        'after_store_update_destroy_order' => function ($dic = NULL, $dicval = NULL) {
+
+            Cache::forget('dic_' . $dic->slug);
+        },
     ),
 
 

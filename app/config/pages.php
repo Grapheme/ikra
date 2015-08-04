@@ -31,28 +31,19 @@ return array(
 
         $block_tpls = [
 
-            'first' => [
-                'title' => 'Первый тип блока',
+            'about__about' => [
+                'title' => 'Об икре - О школе',
                 'fields' => [
                     'text' => [
                         'title' => 'Заголовок',
                         'type' => 'text',
                     ],
-                    'image' => [
-                        'title' => 'Картинка',
-                        'type' => 'image',
+                    'short' => [
+                        'title' => 'Краткое описание',
+                        'type' => 'textarea',
                     ],
-                ],
-            ],
-            'second' => [
-                'title' => 'Второй тип блока',
-                'fields' => [
-                    'text' => [
-                        'title' => 'Заголовок',
-                        'type' => 'text',
-                    ],
-                    'content' => [
-                        'title' => 'Текст',
+                    'full' => [
+                        'title' => 'Полное описание',
                         'type' => 'textarea',
                     ],
                 ],
