@@ -15,6 +15,9 @@ class AdminSystemController extends BaseController {
             Route::get($class::$group . '/phpinfo', array('as' => 'system.phpinfo', 'uses' => $class.'@getPhpInfo'));
         });
         #*/
+
+        #Helper::routes();
+        #die;
     }
 
     ## Actions of module (for distribution rights of users)

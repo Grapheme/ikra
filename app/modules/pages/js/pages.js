@@ -65,8 +65,13 @@ function runFormValidation() {
                 options.success = function (response, status, xhr, jqForm) {
                     $(form).find('.btn-form-submit').elementDisabled(false);
                     if (response.status) {
+                        console.log(response);
+
                         if (response.redirect !== false) {
                             BASIC.RedirectTO(response.redirect);
+                        }
+                        if (response.pageSlug != '') {
+                            $('[name=slug]').val(response.pageSlug);
                         }
                         showMessage.constructor(response.responseText, '');
                         showMessage.smallSuccess();

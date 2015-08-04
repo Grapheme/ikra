@@ -82,7 +82,7 @@ class ApplicationController extends BaseController {
         /**
          * Роуты, контент которых зависит от текущего города
          */
-        Route::group(array('prefix' => $city->slug), function() {
+        Route::group(array('prefix' => 'city/' . $city->slug), function() {
 
             Route::any('/', array('as' => 'app.city', 'uses' => __CLASS__.'@appCity'));
 
@@ -96,16 +96,20 @@ class ApplicationController extends BaseController {
             Route::any('/story/{id}', array('as' => 'app.story', 'uses' => __CLASS__.'@appStory'));
         });
 
-        Route::any('/{city_slug}', array('as' => 'app.city_direct', 'uses' => __CLASS__.'@appCity'));
 
-        Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
-        Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
+        Route::group(array('prefix' => 'city'), function() {
 
-        Route::any('/{city_slug}/teachers', array('as' => 'app.teachers_direct', 'uses' => __CLASS__.'@appTeachers'));
-        Route::any('/{city_slug}/teachers/{id}', array('as' => 'app.teacher_direct', 'uses' => __CLASS__.'@appTeacher'));
+            Route::any('/{city_slug}', array('as' => 'app.city_direct', 'uses' => __CLASS__.'@appCity'));
 
-        Route::any('/{city_slug}/story', array('as' => 'app.stories_direct', 'uses' => __CLASS__.'@appStories'));
-        Route::any('/{city_slug}/story/{id}', array('as' => 'app.story_direct', 'uses' => __CLASS__.'@appStory'));
+            Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
+            Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
+
+            Route::any('/{city_slug}/teachers', array('as' => 'app.teachers_direct', 'uses' => __CLASS__.'@appTeachers'));
+            Route::any('/{city_slug}/teachers/{id}', array('as' => 'app.teacher_direct', 'uses' => __CLASS__.'@appTeacher'));
+
+            Route::any('/{city_slug}/story', array('as' => 'app.stories_direct', 'uses' => __CLASS__.'@appStories'));
+            Route::any('/{city_slug}/story/{id}', array('as' => 'app.story_direct', 'uses' => __CLASS__.'@appStory'));
+        });
 
         /**
          * Общие роуты
@@ -213,6 +217,7 @@ class ApplicationController extends BaseController {
 
     public function appCourse() {
 
+        #dd(func_get_args());
         $city = $this->getCity(func_get_args());
         $id   = $this->getId(func_get_args());
         Helper::ta($city);
@@ -286,15 +291,21 @@ class ApplicationController extends BaseController {
             if ($direct_route) {
                 $city_slug = $args[0];
             } else {
-                $temp = Session::get(self::$user_city_cache_key);
-                $city_slug = $temp->slug;
+                $city = Session::get(self::$user_city_cache_key);
+                #Helper::tad($city);
+                $city_slug = $city->slug;
             }
+        }
+
+        if (is_object($city)) {
+            return $city;
         }
 
         #dd($city_slug);
         if ($city_slug) {
             $city = Dic::valueBySlugs('city', $city_slug, ['fields']);
         }
+        #Helper::tad($city);
 
         return $city;
     }

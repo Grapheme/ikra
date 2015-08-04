@@ -257,10 +257,11 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
             <ul class="_mb50 row">
                 @foreach ($stories as $story)
                     <li class="col-sm-6 _mb30">
-                        <a class="_block _mb20" href="{{ URL::route('app.story_direct', ['spb', '111']) }}">
+                        <a class="_block _mb20" href="{{ URL::route('app.story_direct', [$dic_city[$story->city_id]->slug, $story->id]) }}">
                             @if (isset($story->avatar) && is_object($story->avatar))
                                 <img src="{{ $story->avatar->full() }}" alt="{{ $story->name }}">
                             @endif
+{{--                            {{ $dic_city[$story->city_id] }}--}}
                         </a>
                         <div class="h3 _mb5">{{ $story->name }}</div>
                         <div class="small _mb20">
