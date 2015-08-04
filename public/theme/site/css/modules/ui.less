@@ -49,8 +49,8 @@ blockquote {
 	padding: 0 100px;
 	border: 0;
 	
-	&:before { content: "“"; position: absolute; left: 0; bottom: 100%; font-size: 100px }
-	&:after { content: "”"; position: absolute; right: 0; top: 100%; font-size: 100px; margin-top: 50px }
+	&:before { content: "“"; position: absolute; left: 0; bottom: 100%; margin-bottom: -20px; font-size: 100px }
+	&:after { content: "”"; position: absolute; right: 0; top: 100%; font-size: 100px; margin-top: 30px }
 }
 
 article {
@@ -451,7 +451,10 @@ a._text-pink:hover { color:@pink-hover }
 /* MOBILE LAST */
 /*---------------------------------- до 1366 --------------------------------*/
 @media screen and (max-width: 1365px) {
-	
+	blockquote {
+		padding-left: 40px;
+		padding-right: 20px;
+	}
 }
 
 
@@ -460,10 +463,7 @@ a._text-pink:hover { color:@pink-hover }
 
 /*---------------------------------- до 1024 --------------------------------*/
 @media screen and (max-width: 1023px) {
-	blockquote {
-		padding-left: 20px;
-		padding-right: 20px;
-	}
+
 }
 
 
@@ -532,6 +532,12 @@ a._text-pink:hover { color:@pink-hover }
 	i strong {
 		font-size: 0.75*24px;
 		line-height: 0.75*33px ;
+	}
+
+	._txt4 {
+		font-size: 0.5*26px;
+		line-height: 0.5*31px;
+		letter-spacing: 0.5*3px;
 	}
 
 }

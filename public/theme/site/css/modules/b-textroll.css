@@ -1,7 +1,6 @@
 /*
 ------------------------------ Раскрывающиеся отзывы (начало) --------------------------*/
 .b-textroll {
-  height: 640px;
   overflow: hidden;
 }
 .b-textroll .b-textroll__show {
