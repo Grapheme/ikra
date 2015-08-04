@@ -109,7 +109,7 @@
 	<br>
 	<i>i &mdash; мелкий курсив</i>
 	<br>
-	<i><strong>h3 strong &mdash; крупный курсив</strong></i>
+	<i><strong>i strong &mdash; крупный курсив</strong></i>
 	<br>
 	<br>
 	<small>small - должность, компания</small>

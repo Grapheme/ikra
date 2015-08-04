@@ -196,28 +196,8 @@
 		<div class="_vertical-center">
 			<div>
 				<h2 class="_cta">
-					Хочу учиться! На какой <span class="_text-yellow"><a href="#cta_form" data-toggle="collapse">курс</a></span> мне пойти?
+					Хочу учиться! На какой <span class="_text-yellow"><a href="#">курс</a></span> мне пойти?
 				</h2>
-			</div>
-		</div>
-
-		<div id="cta_form" class="collapse">
-			<br>
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-4">
-					<form role="form" class="_white">
-						<div class="form-group _mb20">
-							<input type="text" class="form-control" id="" placeholder="Имя">
-						</div>
-						<div class="form-group _mb20">
-							<input type="email" class="form-control" id="" placeholder="E-mail">
-						</div>
-						<div class="form-group _mb50">
-							<input type="text" class="form-control" id="" placeholder="Телефон">
-						</div>
-						<button type="submit" class="btn btn-wide">Отправить</button>
-					</form>
-				</div>
 			</div>
 		</div>
 	</section>
