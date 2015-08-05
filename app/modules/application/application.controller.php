@@ -21,7 +21,7 @@ class ApplicationController extends BaseController {
          *
          * Ниже идет получение города юзера из БД - заменить на получение из кеша
          */
-        $dics_for_cache = ['city', 'direction', 'type', 'course', 'teachers', 'stories', 'partners', 'clients', 'professions'];
+        $dics_for_cache = ['city', 'direction', 'type', 'course', 'teachers', 'stories', 'partners', 'clients', 'professions', 'students_work', 'reviews'];
         foreach ($dics_for_cache as $dic_name) {
 
             ## Refresh dics cache
@@ -31,7 +31,7 @@ class ApplicationController extends BaseController {
             if (!$dic_{$dic_name}) {
                 Cache::forget('dic_' . $dic_name);
                 $dic_{$dic_name} = Dic::valuesBySlug($dic_name, null, ['fields', 'textfields'], true, true, true);
-                $dic_{$dic_name} = DicLib::loadImages($dic_{$dic_name}, ['avatar', 'image', 'logo']);
+                $dic_{$dic_name} = DicLib::loadImages($dic_{$dic_name}, ['avatar', 'image', 'logo', 'photo']);
                 Cache::add('dic_' . $dic_name, $dic_{$dic_name}, self::$global_cache_min);
             }
             View::share('dic_' . $dic_name, $dic_{$dic_name});
@@ -88,7 +88,7 @@ class ApplicationController extends BaseController {
             Route::any('/', array('as' => 'app.city', 'uses' => __CLASS__.'@appCity'));
 
             #Route::any('/courses', array('as' => 'app.courses', 'uses' => __CLASS__.'@appCourses'));
-            Route::any('/courses/{id}', array('as' => 'app.course', 'uses' => __CLASS__.'@appCourse'));
+            #Route::any('/courses/{id}', array('as' => 'app.course', 'uses' => __CLASS__.'@appCourse'));
 
             Route::any('/teachers', array('as' => 'app.teachers', 'uses' => __CLASS__.'@appTeachers'));
             Route::any('/teachers/{id}', array('as' => 'app.teacher', 'uses' => __CLASS__.'@appTeacher'));
@@ -103,7 +103,7 @@ class ApplicationController extends BaseController {
             Route::any('/{city_slug}', array('as' => 'app.city_direct', 'uses' => __CLASS__.'@appCity'));
 
             #Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
-            Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
+            #Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
 
             Route::any('/{city_slug}/teachers', array('as' => 'app.teachers_direct', 'uses' => __CLASS__.'@appTeachers'));
             Route::any('/{city_slug}/teachers/{id}', array('as' => 'app.teacher_direct', 'uses' => __CLASS__.'@appTeacher'));

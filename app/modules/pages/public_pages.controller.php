@@ -383,7 +383,7 @@ class PublicPagesController extends BaseController {
         ## Рендерим контент
         $content = View::make($template, compact('page', 'lang', 'page_meta_settings'))->render();
 
-        ## Проверяем, не возвращена ли JSON-строка с сообщением об ошибке
+        ## Проверяем, не возвращена ли JSON-строка с сообщением об ошибке или редиректом
         /*
         ## Пример строки, которая позволяет вернуть из вьюшки ошибку 404:
         echo json_encode(['responseType' => 'error', 'responseCode' => 404]);
@@ -391,10 +391,24 @@ class PublicPagesController extends BaseController {
         ## Или ошибку с произвольным кодом, и сообщением (к 404 ошибке нельзя добавить сообщение):
         echo json_encode(['responseType' => 'error', 'responseCode' => 500, 'responseMessage' => 'Unexpected Error']);
         return;
+        ## А вот так можно сделать редирект (код по умолчанию - 301):
+        echo json_encode(['responseType' => 'redirect', 'redirectUrl' => '/', 'redirectCode' => 301]);
+        return;
         */
 
         $data = is_json($content);
         if ($data) {
+            ## Redirect
+            if (
+                isset($data['responseType'])
+                && $data['responseType'] == 'redirect'
+                && isset($data['redirectUrl'])
+                && $data['redirectUrl']
+            ) {
+                $redirect_code = (isset($data['responseCode']) && is_numeric($data['responseCode'])) ? $data['responseCode'] : 301;
+                return Redirect::to($data['redirectUrl'], $redirect_code);
+            }
+            ## Error
             if (
                 isset($data['responseType'])
                 && $data['responseType'] == 'error'

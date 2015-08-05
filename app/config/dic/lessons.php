@@ -61,7 +61,7 @@ return array(
             ),
             'what' => array(
                 'title' => 'Что делаем',
-                'type' => 'textarea',
+                'type' => 'textarea_redactor',
             ),
             'teacher_id' => array(
                 'title' => 'Куратор блока',
@@ -105,11 +105,11 @@ return array(
 
             'col_1' => array(
                 'title' => 'Колонка 1',
-                'type' => 'textarea',
+                'type' => 'textarea_redactor',
             ),
             'col_2' => array(
                 'title' => 'Колонка 2',
-                'type' => 'textarea',
+                'type' => 'textarea_redactor',
             ),
 
         );
@@ -188,6 +188,14 @@ return array(
         'before_index_view' => function ($dic, &$dicvals) {
 
             #$dicvals = DicLib::loadImages($dicvals, ['image']);
+        },
+
+        /**
+         * Вызывается после создания, обновления, удаления записи, изменения порядка сортировки
+         */
+        'after_store_update_destroy_order' => function ($dic = NULL, $dicval = NULL) {
+
+            Cache::forget('dic_' . $dic->slug);
         },
     ),
 

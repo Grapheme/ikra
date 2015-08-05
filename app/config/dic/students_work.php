@@ -28,7 +28,7 @@ return array(
                 'default' => Input::get('filter.fields.type_id') ?: null,
             ),
 
-            'photo' => array(
+            'image' => array(
                 'title' => 'Изображение',
                 'type' => 'image',
                 'params' => array(

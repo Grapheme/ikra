@@ -116,6 +116,11 @@ return array(
                 'title' => 'Что в итоге',
                 'type' => 'textarea',
             ),
+
+            'worktime' => array(
+                'title' => 'Время занятий',
+                'type' => 'textarea',
+            ),
         );
     },
 

@@ -34,7 +34,7 @@ return array(
                 'values' => $lists['course'], ## Используется предзагруженный словарь
                 'default' => Input::get('filter.fields.course_id') ?: null,
             ),
-            'photo' => array(
+            'image' => array(
                 'title' => 'Изображение',
                 'type' => 'image',
                 'params' => array(
@@ -58,15 +58,16 @@ return array(
                 'type' => 'text',
             ),
 
-            'short' => array(
-                'title' => 'Краткий текст отзыва',
+            'content' => array(
+                'title' => 'Текст отзыва',
                 'type' => 'textarea',
             ),
+            /*
             'full' => array(
                 'title' => 'Полный текст отзыва',
                 'type' => 'textarea',
             ),
-
+            */
         );
     },
 
