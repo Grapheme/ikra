@@ -92,6 +92,11 @@ return array(
                 'type' => 'textarea_redactor',
             ),
 
+            'short' => array(
+                'title' => 'Краткое описание',
+                'type' => 'textarea',
+            ),
+
             'teacher_id' => array(
                 'title' => 'Куратор курса',
                 'type' => 'select',
@@ -238,6 +243,14 @@ return array(
                 $counts = DicVal::counts_by_fields($dic_ids, array('course_id' => $dicval_ids));
             #Helper::dd($counts);
             Config::set('temp.index_counts', $counts);
+        },
+
+        /**
+         * Вызывается после создания, обновления, удаления записи, изменения порядка сортировки
+         */
+        'after_store_update_destroy_order' => function ($dic = NULL, $dicval = NULL) {
+
+            Cache::forget('dic_' . $dic->slug);
         },
     ),
 

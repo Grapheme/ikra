@@ -124,7 +124,7 @@ class PublicPagesController extends BaseController {
                 ## Генерим роуты для параметризированных страниц
                 if ($pages_parametrized->count()) {
                     foreach ($pages_parametrized as $page) {
-                        Route::any($page->slug, array('as' => 'page_' . $page->sysname, 'uses' => $class . '@showPageParametrize'));
+                        Route::any($page->slug, array('as' => 'page.' . $page->sysname, 'uses' => $class . '@showPageParametrize'));
                     }
                 }
 
@@ -157,7 +157,7 @@ class PublicPagesController extends BaseController {
                 ## Генерим роуты для параметризированных страниц
                 if ($pages_parametrized->count()) {
                     foreach ($pages_parametrized as $page) {
-                        Route::any($page->slug, array('as' => 'page_' . $page->sysname, 'uses' => $class . '@showPageSingleParametrize'));
+                        Route::any($page->slug, array('as' => 'page.' . $page->sysname, 'uses' => $class . '@showPageSingleParametrize'));
                     }
                 }
 
@@ -378,8 +378,39 @@ class PublicPagesController extends BaseController {
         }
 
         #Helper::tad($page);
+        #Helper::ta($template);
 
-        return View::make($template, compact('page', 'lang', 'page_meta_settings'))->render();
+        ## Рендерим контент
+        $content = View::make($template, compact('page', 'lang', 'page_meta_settings'))->render();
+
+        ## Проверяем, не возвращена ли JSON-строка с сообщением об ошибке
+        /*
+        ## Пример строки, которая позволяет вернуть из вьюшки ошибку 404:
+        echo json_encode(['responseType' => 'error', 'responseCode' => 404]);
+        return;
+        ## Или ошибку с произвольным кодом, и сообщением (к 404 ошибке нельзя добавить сообщение):
+        echo json_encode(['responseType' => 'error', 'responseCode' => 500, 'responseMessage' => 'Unexpected Error']);
+        return;
+        */
+
+        $data = is_json($content);
+        if ($data) {
+            if (
+                isset($data['responseType'])
+                && $data['responseType'] == 'error'
+                && isset($data['responseCode'])
+                && is_numeric($data['responseCode'])
+            ) {
+                $responseMessage = isset($data['responseMessage']) ? $data['responseMessage'] : null;
+                $headers = [];
+                if ($responseMessage)
+                    $headers['ErrorResponseMessage'] = $responseMessage;
+                #dd($headers);
+                App::abort($data['responseCode'], $responseMessage, $headers);
+            }
+        }
+
+        return Response::make($content);
 	}
     
 

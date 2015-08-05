@@ -55,6 +55,13 @@ return array(
                         'placeholder' => 'http://'
                     ],
                 ),
+                'season_pass_link' => array(
+                    'title' => 'Ссылка на Season Pass',
+                    'type' => 'text',
+                    'others' => [
+                        'placeholder' => 'http://'
+                    ],
+                ),
             ),
         ];
 

@@ -5,6 +5,10 @@ return array(
     'fields' => function() {
 
         return array(
+            'rp' => array(
+                'title' => 'Родительный падеж (например: креатива)',
+                'type' => 'text',
+            ),
             'dp' => array(
                 'title' => 'Дательный падеж (например: креативу)',
                 'type' => 'text',

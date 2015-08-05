@@ -77,6 +77,7 @@ class ApplicationController extends BaseController {
         #Helper::tad($city);
         #die;
         View::share($user_city_cache_key, $city);
+        View::share($user_city_cache_key . '_slug', $city->slug);
 
 
         /**
@@ -86,7 +87,7 @@ class ApplicationController extends BaseController {
 
             Route::any('/', array('as' => 'app.city', 'uses' => __CLASS__.'@appCity'));
 
-            Route::any('/courses', array('as' => 'app.courses', 'uses' => __CLASS__.'@appCourses'));
+            #Route::any('/courses', array('as' => 'app.courses', 'uses' => __CLASS__.'@appCourses'));
             Route::any('/courses/{id}', array('as' => 'app.course', 'uses' => __CLASS__.'@appCourse'));
 
             Route::any('/teachers', array('as' => 'app.teachers', 'uses' => __CLASS__.'@appTeachers'));
@@ -101,7 +102,7 @@ class ApplicationController extends BaseController {
 
             Route::any('/{city_slug}', array('as' => 'app.city_direct', 'uses' => __CLASS__.'@appCity'));
 
-            Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
+            #Route::any('/{city_slug}/courses', array('as' => 'app.courses_direct', 'uses' => __CLASS__.'@appCourses'));
             Route::any('/{city_slug}/courses/{id}', array('as' => 'app.course_direct', 'uses' => __CLASS__.'@appCourse'));
 
             Route::any('/{city_slug}/teachers', array('as' => 'app.teachers_direct', 'uses' => __CLASS__.'@appTeachers'));

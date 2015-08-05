@@ -1384,10 +1384,20 @@ HTML;
         else
             return true;
     }
+
+
 }
 
 if (!function_exists('is_collection')) {
     function is_collection($obj) {
         return isset($obj) && is_object($obj) && $obj->count();
+    }
+}
+
+if (!function_exists('is_json')) {
+    function is_json($string) {
+        $temp = json_decode($string, true);
+        #dd($temp);
+        return (json_last_error() == JSON_ERROR_NONE) ? $temp : false;
     }
 }

@@ -160,9 +160,10 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
                             </a>
                         </li>
                     @endforeach
+
                     @if ($courses->count() > 5 || true)
                         <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                            <a href="{{ URL::route('app.courses') }}" class="b-courses__link _all">
+                            <a href="{{ URL::route('page.courses', [$current_city->slug]) }}" class="b-courses__link _all">
                                 <span><span class="h3">Посмотреть все курсы</span></span>
                             </a>
                         </li>
@@ -342,7 +343,7 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
         <div class="_vertical-center">
             <div>
                 <h2 class="_cta">
-                    Хочу учиться! На какой <span class="_text-yellow"><a href="{{ URL::route('app.courses') }}">курс</a></span> мне пойти?
+                    Хочу учиться! На какой <span class="_text-yellow"><a href="{{ URL::route('page.courses', [$current_city->slug]) }}">курс</a></span> мне пойти?
                     {{--Хочу учиться! На какой <span class="_text-yellow"><a href="#cta_form" data-toggle="collapse">курс</a></span> мне пойти?--}}
                 </h2>
             </div>

@@ -78,4 +78,11 @@ return array(
         'm' => 'Мужской',
         'f' => 'Женский',
     ],
+
+    'types' => [
+        'main' => 4,
+        'profession' => 5,
+        'intensive' => 6,
+        'module' => 7,
+    ],
 );
