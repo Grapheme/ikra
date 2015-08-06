@@ -380,8 +380,11 @@ class PublicPagesController extends BaseController {
         #Helper::tad($page);
         #Helper::ta($template);
 
+        ## Текущий роут - может пригодиться по вьюшке
+        $route = Route::current();
+
         ## Рендерим контент
-        $content = View::make($template, compact('page', 'lang', 'page_meta_settings'))->render();
+        $content = View::make($template, compact('page', 'lang', 'page_meta_settings', 'route'))->render();
 
         ## Проверяем, не возвращена ли JSON-строка с сообщением об ошибке или редиректом
         /*

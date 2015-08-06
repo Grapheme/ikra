@@ -15,7 +15,7 @@
                     if (!$city->important)
                         continue;
                     ?>
-                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                    <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
                 @endforeach
                 @if (0)
                     <option value="1">Москва</option>

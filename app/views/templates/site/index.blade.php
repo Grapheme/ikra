@@ -1,24 +1,49 @@
 <?
 /**
- * TITLE: Главная страница
+ * TITLE: Главная - страница города
  * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
 @extends(Helper::layout())
 <?php
-#$cities = Dic::valuesBySlug('city', function($query){}, ['fields'], true, true, true);
-#Helper::tad($cities);
+#dd($route->getName());
+#dd($route);
 
-#$directions = Dic::valuesBySlug('direction', function($query){}, ['fields'], true, true, true);
-#Helper::tad($directions);
+$current_city = $dic_city[2];
 
-/*
-$courses = Dic::valuesBySlug('course', function($query) use ($current_city) {
-    $query->filter_by_field('city_id', '=', (int)$current_city->id);
-    $query->take(6);
-}, ['fields', 'textfields'], true, true, true);
-#Helper::tad($courses);
-#*/
+if ($route->getName() == 'page.city') {
+    $city_slug = $route->getParameter('city_slug');
+    $city = null;
+    foreach ($dic_city as $temp) {
+        if ($temp->slug == $city_slug) {
+            $city = $temp;
+            break;
+        }
+    }
+
+    if (!$city) {
+        echo json_encode(['responseType' => 'error', 'responseCode' => 404]);
+        return;
+    }
+
+    $current_city = $city;
+
+    #Helper::tad($current_city);
+
+    ## [301] /city/msk => /
+    if ($current_city->id == Config::get('site.default_city_id')) {
+        echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('mainpage'), 'redirectCode' => 301]);
+        return;
+    }
+
+} else if ($route->getName() == 'mainpage' && $current_city->id != Config::get('site.default_city_id')) {
+
+    ## [302] / => /city/spb
+    echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('page.city', [$current_city->slug]), 'redirectCode' => 302]);
+    return;
+}
+
+
 $courses = new Collection();
 foreach ($dic_course as $course) {
     if ($course->city_id && $course->city_id == $current_city->id) {
@@ -28,29 +53,19 @@ foreach ($dic_course as $course) {
     }
 }
 #Helper::tad($courses);
-#Helper::dd(json_encode($courses, JSON_UNESCAPED_UNICODE));
 
-#$course_types = Dic::valuesBySlug('type', function($query){}, ['fields'], true, true, true);
-#Helper::tad($course_types);
 
-$teachers = Dic::valuesBySlug('teachers', function($query) use ($current_city) {
-    #$query->filter_by_field('city_id', '=', (int)$current_city->id);
-    $query->filter_by_field('mainpage', '=', 1);
-    $query->take(3);
-}, ['fields', 'textfields'], true, true, true);
-$teachers = DicLib::loadImages($teachers, ['avatar']);
+$teachers = new Collection();
+foreach ($dic_teachers as $teacher) {
+    if ($teacher->mainpage) {
+        $teachers[$teacher->id] = $teacher;
+        #if (count($courses) >= 6)
+        #    break;
+    }
+}
 #Helper::tad($teachers);
 
-/*
-$stories = Dic::valuesBySlug('stories', function($query) use ($current_city) {
-    $query->filter_by_field('city_id', '=', (int)$current_city->id);
-    $query->filter_by_field('mainpage', '=', 1);
-    $query->take(2);
-}, ['fields', 'textfields'], true, true, true);
-$stories = DicLib::loadImages($stories, ['avatar']);
-#Helper::tad($stories);
-#*/
-#Helper::tad($dic_stories);
+
 $stories = new Collection();
 foreach ($dic_stories as $story) {
     if ($story->city_id && $story->city_id == $current_city->id) {
@@ -60,26 +75,6 @@ foreach ($dic_stories as $story) {
     }
 }
 #Helper::tad($stories);
-
-/*
-$story_courses = [];
-if (isset($stories) && is_object($stories) && $stories->count()) {
-    $temp_ids = [];
-    foreach ($stories as $story) {
-        if ($story->course_id) {
-            $temp_ids[] = $story->course_id;
-        }
-    }
-    if (count($temp_ids)) {
-        $story_courses = Dic::valuesBySlugAndIds('course', $temp_ids, [], true, true, true);
-    }
-}
-#Helper::tad($story_courses);
-*/
-
-#$clients = Dic::valuesBySlug('clients', null, ['fields'], true, true, true);
-#$clients = DicLib::loadImages($clients, ['logo']);
-#Helper::tad($clients);
 ?>
 
 
@@ -142,12 +137,21 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
                     ?>
                     @foreach ($courses as $course)
                         <?php
-                        if (++$i > 5)
+                        $city = isset($dic_city[$course->city_id]) ? $dic_city[$course->city_id] : null;
+                        if (++$i > 5 || !$city)
                             break;
+
+                        $color = isset($dic_direction[$course->direction_id]) && is_object($dic_direction[$course->direction_id]) ? $dic_direction[$course->direction_id]->color : null;
+                        #Helper::tad($course);
                         ?>
                         <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                            <a href="{{ URL::route('app.course', $course->id) }}" class="b-courses__link _bg-red">
-                                <span class="h3"><strong>{{ isset($dic_type[$course->type_id]) ? $dic_type[$course->type_id]->name : '' }}</strong></span>
+                            <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}" class="b-courses__link" style="background-color: {{ $color }}">
+                                <span class="h3">
+                                    <strong>
+                                        {{--{{ isset($dic_type[$course->type_id]) ? $dic_type[$course->type_id]->name : '' }}--}}
+                                        {{ $course->name }}
+                                    </strong>
+                                </span>
                                 <span class="b-courses__descr"><i>{{ $course->for_who }}</i></span>
                                 <time class="h5">
                                     @if ($course->date_start)
@@ -170,45 +174,7 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
                     @endif
                 </ul>
             @endif
-            @if (0)
-                <ul class="row">
-                <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                    <a href="#" class="b-courses__link _bg-red">
-                        <span class="h3"><strong>Основной курс</strong></span>
-                        <span class="b-courses__descr"><i>Описание курса</i></span>
-                        <time class="h5">15 июля &mdash; 25 сентября</time>
-                    </a>
-                </li>
-                <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                    <a href="#" class="b-courses__link _bg-violet">
-                        <span class="h3"><strong>Левел-ап</strong></span>
-                        <span class="b-courses__descr"><i>Описание курса <br>на две строки</i></span>
-                        <time class="h5">15 июля &mdash; 25 сентября</time>
-                    </a>
-                </li>
-                <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                    <a href="#" class="b-courses__link _bg-blue">
-                        <span class="h3"><strong>Выездной кампус</strong></span>
-                        <span class="b-courses__descr"><i>Описание курса</i></span>
-                        <time class="h5">15 июля &mdash; 25 сентября</time>
-                    </a>
-                </li>
-                <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                    <a href="#" class="b-courses__link _bg-violet">
-                        <span class="h3"><strong>Название курса</strong></span>
-                        <span class="b-courses__descr"><i>Описание курса</i></span>
-                        <time class="h5">15 июля &mdash; 25 сентября</time>
-                    </a>
-                </li>
-                <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                    <a href="#" class="b-courses__link _all">
-                        <span><span class="h3">Посмотреть все курсы</span></span>
-                    </a>
-                </li>
-            </ul>
-            @endif
         </div>
-
     </section>
 
 
@@ -221,7 +187,7 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
             <ul class="_mb50 row">
                 @foreach ($teachers as $teacher)
                     <li class="col-sm-6 col-md-4 _mb30">
-                        <a href="{{ URL::route('app.teacher', $teacher->id) }}" class="_block _mb20">
+                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
                             @if (isset($teacher->avatar) && is_object($teacher->avatar))
                                 <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
                             @endif
@@ -244,7 +210,7 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8">
-                <span class="_text-red"><a href="{{ URL::route('app.teachers') }}" class="btn btn-white btn-wide">Все преподаватели</a></span>
+                <span class="_text-red"><a href="{{ URL::route('page', pageslug('teachers')) }}" class="btn btn-white btn-wide">Все преподаватели</a></span>
             </div>
         </div>
     </section>
@@ -287,9 +253,15 @@ if (isset($stories) && is_object($stories) && $stories->count()) {
                                 @endif
                                 <b class="_text-yellow">
                                     @if ($story->course_id && isset($dic_course[$story->course_id]) && is_object($dic_course[$story->course_id]))
-                                        <a href="{{ URL::route('app.course', $story->course_id) }}">
-                                            {{ $dic_course[$story->course_id]->name }}
-                                        </a>
+                                        <?
+                                        $course = isset($dic_course[$story->course_id]) ? $dic_course[$story->course_id] : null;
+                                        $city = isset($dic_city[$course->city_id]) ? $dic_city[$course->city_id] : null;
+                                        ?>
+                                        @if ($city && $course)
+                                            <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}">
+                                                {{ $dic_course[$story->course_id]->name }}
+                                            </a>
+                                        @endif
                                     @else
                                         {{ $story->course_text }}
                                     @endif
