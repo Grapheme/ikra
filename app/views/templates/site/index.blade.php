@@ -225,7 +225,7 @@ foreach ($dic_stories as $story) {
             <ul class="_mb50 row">
                 @foreach ($stories as $story)
                     <li class="col-sm-6 _mb30">
-                        <a class="_block _mb20" href="{{ URL::route('app.story_direct', [$dic_city[$story->city_id]->slug, $story->id]) }}">
+                        <a class="_block _mb20" href="{{ URL::route('page.story', [$dic_city[$story->city_id]->slug, $story->id]) }}">
                             @if (isset($story->avatar) && is_object($story->avatar))
                                 <img src="{{ $story->avatar->full() }}" alt="{{ $story->name }}">
                             @endif
@@ -252,7 +252,10 @@ foreach ($dic_stories as $story) {
                                 @else
                                     Училась:
                                 @endif
-                                <b class="_text-yellow">
+                                <?
+                                $color = isset($dic_direction[$course->direction_id]) && is_object($dic_direction[$course->direction_id]) ? $dic_direction[$course->direction_id]->color : null;
+                                ?>
+                                <b class="" style="color: {{ $color }}">
                                     @if ($story->course_id && isset($dic_course[$story->course_id]) && is_object($dic_course[$story->course_id]))
                                         <?
                                         $course = isset($dic_course[$story->course_id]) ? $dic_course[$story->course_id] : null;
@@ -275,7 +278,7 @@ foreach ($dic_stories as $story) {
 
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8 text-right">
-                    <a href="{{ URL::route('app.stories') }}" class="btn btn-blue">Ещё про выпускников</a>
+                    <a href="{{ URL::route('page.stories', [$current_city->slug]) }}" class="btn btn-blue">Ещё про выпускников</a>
                 </div>
             </div>
         </section>

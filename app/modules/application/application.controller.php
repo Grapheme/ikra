@@ -93,8 +93,8 @@ class ApplicationController extends BaseController {
             #Route::any('/teachers', array('as' => 'app.teachers', 'uses' => __CLASS__.'@appTeachers'));
             #Route::any('/teachers/{id}', array('as' => 'app.teacher', 'uses' => __CLASS__.'@appTeacher'));
 
-            Route::any('/story', array('as' => 'app.stories', 'uses' => __CLASS__.'@appStories'));
-            Route::any('/story/{id}', array('as' => 'app.story', 'uses' => __CLASS__.'@appStory'));
+            #Route::any('/story', array('as' => 'app.stories', 'uses' => __CLASS__.'@appStories'));
+            #Route::any('/story/{id}', array('as' => 'app.story', 'uses' => __CLASS__.'@appStory'));
         });
 
 
@@ -108,8 +108,8 @@ class ApplicationController extends BaseController {
             #Route::any('/{city_slug}/teachers', array('as' => 'app.teachers_direct', 'uses' => __CLASS__.'@appTeachers'));
             #Route::any('/{city_slug}/teachers/{id}', array('as' => 'app.teacher_direct', 'uses' => __CLASS__.'@appTeacher'));
 
-            Route::any('/{city_slug}/story', array('as' => 'app.stories_direct', 'uses' => __CLASS__.'@appStories'));
-            Route::any('/{city_slug}/story/{id}', array('as' => 'app.story_direct', 'uses' => __CLASS__.'@appStory'));
+            #Route::any('/{city_slug}/story', array('as' => 'app.stories_direct', 'uses' => __CLASS__.'@appStories'));
+            #Route::any('/{city_slug}/story/{id}', array('as' => 'app.story_direct', 'uses' => __CLASS__.'@appStory'));
         });
 
         /**
