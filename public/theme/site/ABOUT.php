@@ -29,7 +29,7 @@
 						<b>
 							<span class="_nowrap">
 								Стратегия&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</a>
+							</span>
 						</b>
 					</span>
 				</a>
@@ -55,7 +55,7 @@
 						<b>
 							<span class="_nowrap">
 								Арт-дирекшн&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</a>
+							</span>
 						</b>
 					</span>
 				</a>
@@ -68,7 +68,7 @@
 						<b>
 							<span class="_nowrap">
 								Продюсирование&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</a>
+							</span>
 						</b>
 					</span>
 				</a>
@@ -81,7 +81,7 @@
 						<b>
 							<span class="_nowrap">
 								Медиа&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</a>
+							</span>
 						</b>
 					</span>
 				</a>
@@ -94,7 +94,7 @@
 						<b>
 							<span class="_nowrap">
 								Менеджмент&nbsp;<i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-							</a>
+							</span>
 						</b>
 					</span>
 				</a>
@@ -271,7 +271,7 @@
 	<section class="b-section">
 		<h2>Наши партнеры</h2>
 
-		<div class="b-slider owl-carousel">
+		<div class="b-slider owl-carousel _medium">
 			<div class="owl-item"><a href="#" class=""><img src="img/content/partners/1.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/partners/2.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/partners/3.png" alt=""></a></div>
@@ -284,7 +284,7 @@
 	<section class="b-section">
 		<h2>Наши клиенты</h2>
 
-		<div class="b-slider _mb20 owl-carousel">
+		<div class="b-slider _mb20 owl-carousel _medium">
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/1.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/2.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/3.png" alt=""></a></div>

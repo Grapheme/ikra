@@ -12,10 +12,12 @@
   background-position: center center;
 }
 .b-title._long {
+  height: auto;
   min-height: 700px;
 }
 .b-title._short {
-  height: 440px;
+  height: auto;
+  min-height: 440px;
   padding-top: 20px;
 }
 .b-title._violet {

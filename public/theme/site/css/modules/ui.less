@@ -61,11 +61,24 @@ article {
 		margin-bottom: 10px;
 	}
 
-	ul > li {
-		&:before {
-			content: "• ";
-			color: @red;
-			margin-right: 5px;
+	ul {
+		& > li {
+			padding-left: 15px;
+
+			&:before {
+				position: absolute;
+				margin-left: -10px;
+				content: "• ";
+				color: @red;
+				margin-right: 5px;
+			}
+		}
+
+		&._check-list > li:before {
+			content: "";
+			font-family: FontAwesome;
+			font-size: 0.7em;
+			margin-left: -15px;
 		}
 	}
 }
@@ -73,9 +86,10 @@ article {
 
 /* вспомогательные классы */
 
-._hidden      { display: none; }
-._block       { display: block; }
-._invisible   { visibility: hidden; }
+._hidden       { display: none; }
+._block        { display: block; }
+._inline-block { display: inline-block; }
+._invisible    { visibility: hidden; }
 
 ._float-right { float: right;  }
 ._float-left  { float: left;   }
@@ -88,7 +102,10 @@ article {
 
 ._max-text { max-width: 550px }
 ._max-form { max-width: 420px }
+
 ._margin-auto { margin-left: auto; margin-right: auto; }
+
+._full-width { width: 100%;}
 
 
 
@@ -309,7 +326,7 @@ a._text-pink:hover { color:@pink-hover }
 
 /* отступы */
 
-._mb0   { margin-bottom: 0px; }
+._mb0   { margin-bottom: 0px !important; }
 ._mb5   { margin-bottom: 5px; }
 ._mb10  { margin-bottom: 10px; }
 ._mb15  { margin-bottom: 15px; }
@@ -352,6 +369,14 @@ a._text-pink:hover { color:@pink-hover }
 
 
 
+.b-icon-title {
+	position: relative;
+	display: block;
+	min-height: 60px;
+	padding-left: 85px;
+	img { position: absolute; left: 0; top: -15px; }
+	span { vertical-align: middle; line-height: normal;}
+}
 
 
 
