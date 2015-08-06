@@ -74,20 +74,52 @@ $(function()
 	// Слайдер
 	(function Slider()
 	{
-		$(".owl-carousel").owlCarousel(
+		$(".owl-carousel._large").owlCarousel(
 		{
 			nav: true,
 			navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
 			dots: false,
 			loop: true,
 			slideSpeed: 300,
-			items: 4,
+			responsive :
+			{
+				0 : {items: 1 },
+				768 : {items: 2 },
+				1024 : {items: 3 },
+				1280 : {items: 3 }
+			}
+		});
+
+		$(".owl-carousel._medium").owlCarousel(
+		{
+			nav: true,
+			navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+			dots: false,
+			loop: true,
+			slideSpeed: 300,
 			responsive :
 			{
 				0 : {items: 1 },
 				480 : {items: 2 },
 				1024 : {items: 3 },
 				1280 : {items: 4 }
+			}
+		});
+
+		$(".owl-carousel._small").owlCarousel(
+		{
+			nav: true,
+			navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+			dots: false,
+			loop: true,
+			slideSpeed: 300,
+			responsive :
+			{
+				0 : {items: 1 },
+				480 : {items: 2 },
+				768 : {items: 3 },
+				1024 : {items: 4 },
+				1280 : {items: 6 }
 			}
 		});
 	})();

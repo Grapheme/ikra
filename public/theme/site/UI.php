@@ -23,11 +23,19 @@
 	<p class="_max-text _margin-auto">._max-text._margin-auto <br> Текст, ограниченный по ширине и центрированный. <br> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint ducimus doloribus dolor officia nesciunt sequi eveniet laborum ipsum, quisquam perferendis obcaecati officiis quidem magnam repellat dicta perspiciatis. Quo, adipisci, aut!</p>
 	<br>
 	<br>
-	<article>
+	<article class="_max-text">
+		<p>Для текстовых блоков можно использовать <b>article</b> - тогда у абзацев и списков появятся отступы без дополнительных классов.</p>
+		<p>Текст, в котором список. Просто <b>ul</b>. </p>
 		<ul>
 			<li>элемент списка</li>
 			<li>элемент списка</li>
+			<li>элемент списка многострочный Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo tenetur doloribus enim deserunt ratione labore dolor fugiat soluta quidem maxime nobis ea, saepe natus assumenda vitae at. Soluta, debitis, ipsam.</li>
+		</ul>
+		<p>Здесь продолжается текст, например. А дальше <b>ul._check-list</b>:</p>
+		<ul class="_check-list">
 			<li>элемент списка</li>
+			<li>элемент списка</li>
+			<li>элемент списка многострочный Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo tenetur doloribus enim deserunt ratione labore dolor fugiat soluta quidem maxime nobis ea, saepe natus assumenda vitae at. Soluta, debitis, ipsam.</li>
 		</ul>
 	</article>
 </section>
@@ -35,40 +43,6 @@
 
 
 
-
-<section class="b-section">
-
-	<div class="_mb50">
-		<div class="_txt4 _mb20">
-			<a href="#collapse1" class="collapsed" data-toggle="collapse">
-				 расхлоп закрытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-			</a>
-		</div>
-		<div class="collapse" id="collapse1">
-			<p class="_max-text">
-				<b>data-toggle[collapse].collapsed</b> &mdash; кнопка расхлопа <br>
-				<b>.collapse</b> &mdash; контент расхлопа <br>
-				а еще нужны <b>id</b> и <b>href</b><br>
-			</p>
-		</div>
-	</div>
-
-	<div class="">
-		<div class="_txt4 _mb20">
-			<a href="#collapse2" class="" data-toggle="collapse">
-				 расхлоп открытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
-			</a>
-		</div>
-		<div class="collapse in" id="collapse2">
-			<p class="_max-text">
-				<b>data-toggle[collapse]</b> &mdash; кнопка расхлопа <br>
-				<b>.collapse.in</b> &mdash; контент расхлопа <br>
-				а еще нужны <b>id</b> и <b>href</b><br>
-			</p>
-		</div>
-	</div>
-
-</section>
 
 
 
@@ -161,12 +135,64 @@
 		</div>
 	</div>
 
-
-
-
-
-
 </div>
+
+
+
+
+
+
+<section class="b-section">
+
+	<div class="_mb50">
+		<div class="_txt4 _mb20">
+			<a href="#collapse1" class="collapsed" data-toggle="collapse">
+				 расхлоп закрытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+			</a>
+		</div>
+		<div class="collapse" id="collapse1">
+			<p class="_max-text">
+				<b>data-toggle[collapse].collapsed</b> &mdash; кнопка расхлопа <br>
+				<b>.collapse</b> &mdash; контент расхлопа <br>
+				а еще нужны <b>id</b> и <b>href</b><br>
+			</p>
+		</div>
+	</div>
+
+	<div class="">
+		<div class="_txt4 _mb20">
+			<a href="#collapse2" class="" data-toggle="collapse">
+				 расхлоп открытый <i class="fa fa-caret-down"></i><i class="fa fa-caret-up"></i>
+			</a>
+		</div>
+		<div class="collapse in" id="collapse2">
+			<p class="_max-text">
+				<b>data-toggle[collapse]</b> &mdash; кнопка расхлопа <br>
+				<b>.collapse.in</b> &mdash; контент расхлопа <br>
+				а еще нужны <b>id</b> и <b>href</b><br>
+			</p>
+		</div>
+	</div>
+
+</section>
+
+
+
+
+
+
+<section class="b-section">
+	<div class="b-icon-title">
+		<img src="img/icon/directions/corp.png" alt="">
+		<span class="_txt4">
+			<b>
+				.b-icon-title
+			</b>
+		</span>
+	</div>
+</section>
+
+
 
 
 
@@ -305,7 +331,7 @@
 			<h2 class="_cta">
 				h2._cta &mdash; <span class="_text-yellow"><a href="#cta_form" data-toggle="collapse">call to action</a></span>
 			</h2>
-			<br>
+			<br><br>
 			<span class="_text-blue"><a href="#cta_form" data-toggle="collapse" class="btn">Кнопка &mdash; опционально</a></span>
 		</div>
 	</div>
@@ -336,6 +362,7 @@
 
 <section class="b-section">
 	<div class="row">
+		<? for ($i=0; $i < 2; $i++) { ?>
 		<div class="b-textroll col-md-4 _mb50">
 			<a class="b-textroll__img _block _mb20" href="">
 				<img src="img/content/512.jpg" alt="">
@@ -353,8 +380,68 @@
 				<a href="#" class="btn btn-readmore b-textroll__hide">Свернуть</a>
 			</div>
 		</div>
+		<? } ?>
 	</div>
 </section>
+
+
+
+
+
+<section class="b-section">
+	<div class="h2">.b-slider._large</div>
+
+	<div class="row b-slider _mb20 owl-carousel _large">
+
+		<? for ($i=0; $i < 6; $i++) { ?>
+		<div class="col-sm-4 text-left owl-item">
+			<a class="_block _mb20" href="">
+				<img src="img/content/512.jpg" alt="">
+			</a>
+			<h3 class="_mb5">Имя Фамилия</h3>
+			<small class="_block _mb10">должность, компания</small>
+		</div>
+		<? } ?>
+
+	</div>
+</section>
+
+
+
+
+<section class="b-section">
+	<div class="h2">.b-slider._medium</div>
+
+	<div class="b-slider _mb20 owl-carousel _medium">
+		<div class="owl-item"><a href="#" class=""><img src="img/content/clients/1.png" alt=""></a></div>
+		<div class="owl-item"><a href="#" class=""><img src="img/content/clients/2.png" alt=""></a></div>
+		<div class="owl-item"><a href="#" class=""><img src="img/content/clients/3.png" alt=""></a></div>
+		<div class="owl-item"><a href="#" class=""><img src="img/content/clients/4.png" alt=""></a></div>
+		<div class="owl-item"><a href="#" class=""><img src="img/content/clients/5.png" alt=""></a></div>
+	</div>
+</section>
+
+
+
+
+<section class="b-section">
+	<div class="_txt3 _mb50"><b>.b-slider._small</b></div>
+
+	<div class="row b-slider _mb20 owl-carousel _small">
+
+		<? for ($i=0; $i < 6; $i++) { ?>
+		<div class="col-sm-4 text-left owl-item">
+			<a class="_block _mb20" href="">
+				<img src="img/content/512.jpg" alt="">
+			</a>
+			<div class="_txt9">Название</div>
+		</div>
+		<? } ?>
+
+	</div>
+</section>
+
+
 
 
 

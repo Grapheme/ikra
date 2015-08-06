@@ -17,6 +17,7 @@
 .b-slider .owl-prev,
 .b-slider .owl-next {
 	position: relative;
+	top: -2rem;
 	border-radius: 2rem !important;
 	width: 4rem;
 	height: 4rem;
@@ -57,11 +58,14 @@
 .b-slider .owl-item {
 	width: 100%;
 	text-align: center;
+
+	&.text-left { text-align: left; }
 }
 
 .b-slider a {
 	display: inline-block;
-	margin: auto;
+	margin-left: auto;
+	margin-right: auto;
 
 	img {
 		max-width: 100%;
@@ -137,7 +141,8 @@
 
 /*---------------------------------- до 768 ---------------------------------*/
 @media screen and (max-width: 767px) {
-	
+	.b-slider .owl-prev { left: -4.5rem; }
+	.b-slider .owl-next { right: -4.5rem; }
 }
 
 
@@ -146,7 +151,8 @@
 
 /*---------------------------------- до 480 ---------------------------------*/
 @media screen and (max-width: 479px) {
-	
+	.b-slider .owl-prev { left: -3rem; }
+	.b-slider .owl-next { right: -3rem; }
 }
 
 

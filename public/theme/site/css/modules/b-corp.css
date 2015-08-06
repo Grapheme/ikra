@@ -1,32 +1,5 @@
 /*
------------------------------- Раскрывающиеся отзывы (начало) --------------------------*/
-.b-textroll {
-  height: 640px;
-  overflow: hidden;
-}
-.b-textroll .b-textroll__show {
-  display: inline-block;
-}
-.b-textroll .b-textroll__hide {
-  display: none;
-}
-.b-textroll._open .b-textroll__content {
-  max-height: none;
-}
-.b-textroll._open .b-textroll__show {
-  display: none;
-}
-.b-textroll._open .b-textroll__hide {
-  display: inline-block;
-}
-.b-textroll__content {
-  max-height: 80px;
-  overflow: hidden;
-}
-.b-textroll__img {
-  max-height: 430px;
-  overflow: hidden;
-}
+------------------------------ Корпоративные (начало) --------------------------*/
 /* MOBILE FIRST */
 /*---------------------------------- от 480 ------------------------------------*/
 /*---------------------------------- от 768 ------------------------------------*/

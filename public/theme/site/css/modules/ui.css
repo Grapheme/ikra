@@ -64,10 +64,21 @@ article ul,
 article ol {
   margin-bottom: 10px;
 }
+article ul > li {
+  padding-left: 15px;
+}
 article ul > li:before {
+  position: absolute;
+  margin-left: -10px;
   content: "• ";
   color: #ef4949;
   margin-right: 5px;
+}
+article ul._check-list > li:before {
+  content: "";
+  font-family: FontAwesome;
+  font-size: 0.7em;
+  margin-left: -15px;
 }
 /* вспомогательные классы */
 ._hidden {
@@ -75,6 +86,9 @@ article ul > li:before {
 }
 ._block {
   display: block;
+}
+._inline-block {
+  display: inline-block;
 }
 ._invisible {
   visibility: hidden;
@@ -146,6 +160,9 @@ article ul > li:before {
 ._margin-auto {
   margin-left: auto;
   margin-right: auto;
+}
+._full-width {
+  width: 100%;
 }
 /* огромный заголовок */
 h1,
@@ -595,7 +612,7 @@ a._text-pink:hover {
 }
 /* отступы */
 ._mb0 {
-  margin-bottom: 0px;
+  margin-bottom: 0px !important;
 }
 ._mb5 {
   margin-bottom: 5px;
@@ -669,6 +686,21 @@ a._text-pink:hover {
 }
 [data-toggle=collapse].collapsed > .fa-caret-up {
   display: none;
+}
+.b-icon-title {
+  position: relative;
+  display: block;
+  min-height: 60px;
+  padding-left: 85px;
+}
+.b-icon-title img {
+  position: absolute;
+  left: 0;
+  top: -15px;
+}
+.b-icon-title span {
+  vertical-align: middle;
+  line-height: normal;
 }
 /* прочие тексты */
 ._txt3 {

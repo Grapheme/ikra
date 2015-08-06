@@ -4,10 +4,20 @@
 
 <? require_once('templates/header.php'); ?>
 
-<? $title = 'Сообщество'; require_once('templates/title.php'); ?>
+<section class="b-title _short">
+	
+	<div class="b-title__logo">
+		<img src="img/logo/ikra-top.png" alt="ИКРА IKRA">
+	</div>
+
+	<h2 class="b-title__text">
+		Сообщество
+	</h2>
+
+</section>
 
 
-<ul class="b-photo__list _block-nowrap">
+<ul class="b-social__photos _block-nowrap">
 	<li><a href="#"><img src="img/content/community/1.jpg" alt=""></a></li>
 	<li><a href="#"><img src="img/content/community/2.jpg" alt=""></a></li>
 	<li><a href="#"><img src="img/content/community/3.jpg" alt=""></a></li>
@@ -17,39 +27,49 @@
 
 
 
-<section class="b-section">
 
-	<ul class="b-community__tabs row _mb70">
-		<li class="col-sm-4 _current">
+
+<section class="b-section _no-padding-bottom">
+
+	<ul class="row _mb40 text-center">
+		<li class="col-sm-4 _mb30">
 			<h3><a href="#">Блог</a></h3>
 		</li>
-		<li class="col-sm-4">
+		<li class="col-sm-4 _mb30 _text-red">
 			<h3><a href="#">События</a></h3>
 		</li>
-		<li class="col-sm-4">
+		<li class="col-sm-4 _mb30">
 			<h3><a href="#">Социальные сети</a></h3>
 		</li>
 	</ul>
 
 
-	<ul class="b-blog__list row">
-		<li class="col-sm-4">
-			<img src="img/content/blog/1.jpg" alt="">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo neque, at mollitia rerum libero nostrum provident inventore, corporis aliquam repudiandae sapiente consequatur natus, tempore veniam debitis sed placeat omnis nulla?</p>
-			<a href="#" class="btn btn-readmore">Читать полностью</a>
+	<ul class="row">
+		<? for ($i=0; $i < 6; $i++) { ?>
+		<li class="col-sm-4 _mb80" data-equalheight>
+			<a class="_block _mb30" href="#"><img class="_full-width" src="img/content/blog/1.jpg" alt=""></a>
+			<p class="_mb30">Illo neque, at mollitia rerum libero nostrum provident inventore, corporis aliquam repudiandae sapiente consequatur natus, tempore veniam debitis sed placeat omnis nulla?</p>
+			<div class="text-right">
+				<a href="#" class="btn btn-readmore">Читать полностью</a>
+			</div>
 		</li>
-		<li class="col-sm-4">
-			<img src="img/content/blog/2.jpg" alt="">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium voluptatum laborum quaerat explicabo ad veritatis rem facilis vero incidunt ex. Suscipit voluptatum eligendi unde itaque ullam reprehenderit amet, ipsa aperiam.</p>
-			<a href="#" class="btn btn-readmore">Читать полностью</a>
-		</li>
-		<li class="col-sm-4">
-			<img src="img/content/blog/3.jpg" alt="">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur sint odio neque, aspernatur quo iure? Quidem quod deleniti, officiis ab delectus temporibus nesciunt illo, a, voluptatibus illum cumque ex explicabo.</p>
-			<a href="#" class="btn btn-readmore">Читать полностью</a>
-		</li>
+		<? } ?>
 	</ul>
 
+
+	<div class="text-right h3">
+		<a href="#"><b class="_text-red">1</b></a>
+		<a href="#">2</a>
+		<a href="#">3</a>
+		<a href="#">…</a>
+		<a href="#">99</a>
+	</div>
+
 </section>
+
+
+
+
+
 
 <? require_once('templates/footer.php'); ?>

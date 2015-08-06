@@ -176,7 +176,7 @@
 		<div class="h2 _with-subtitle">Наши клиенты</div>
 		<div class="h4 _mb85 _max-text">Мы не придумываем задачи нашим студентам &mdash; они работают по реальным брифам известных брендов</div>
 
-		<div class="b-slider _mb20 owl-carousel">
+		<div class="b-slider _mb20 owl-carousel _medium">
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/1.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/2.png" alt=""></a></div>
 			<div class="owl-item"><a href="#" class=""><img src="img/content/clients/3.png" alt=""></a></div>
