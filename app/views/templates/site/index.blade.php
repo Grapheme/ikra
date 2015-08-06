@@ -9,7 +9,8 @@
 #dd($route->getName());
 #dd($route);
 
-$current_city = $dic_city[2];
+## !! DEBUG !!
+#$current_city = $dic_city[2];
 
 if ($route->getName() == 'page.city') {
     $city_slug = $route->getParameter('city_slug');
