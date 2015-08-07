@@ -123,7 +123,6 @@
 @endif
 
 <script>
-    var __SITE = {};
     __SITE.cities = {{ json_encode($dic_city, JSON_UNESCAPED_UNICODE) }};
     __SITE.directions = {{ json_encode($dic_direction, JSON_UNESCAPED_UNICODE) }};
     __SITE.types = {{ json_encode($dic_type, JSON_UNESCAPED_UNICODE) }};

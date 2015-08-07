@@ -48,6 +48,24 @@ return array(
                     ],
                 ],
             ],
+
+            'story__header' => [
+                'title' => 'Истории успеха - Шапка',
+                'fields' => [
+                    'image' => [
+                        'title' => 'Фоновое изображение',
+                        'type' => 'image',
+                    ],
+                    'text' => [
+                        'title' => 'Заголовок',
+                        'type' => 'text',
+                    ],
+                    'short' => [
+                        'title' => 'Краткое описание',
+                        'type' => 'textarea',
+                    ],
+                ],
+            ],
         ];
 
         return $block_tpls;

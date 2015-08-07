@@ -6,6 +6,11 @@
 
 <noscript><b>В вашем браузере выключен javascript!</b> Полная функциональность сайта может быть недоступна.</noscript>
 
+<script>
+    var __SITE = {};
+</script>
+
+
 <header class="b-header <? if (defined('HEADER_CLASS')) echo HEADER_CLASS; else echo '_light' ?>">
 
     <div class="b-header__city">

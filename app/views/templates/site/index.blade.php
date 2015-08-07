@@ -153,7 +153,7 @@ foreach ($dic_stories as $story) {
                                         {{ $course->name }}
                                     </strong>
                                 </span>
-                                <span class="b-courses__descr"><i>{{ $course->for_who }}</i></span>
+                                <span class="b-courses__descr"><i>{{ $course->short }}</i></span>
                                 <time class="h5">
                                     @if ($course->date_start)
                                         {{ Helper::rdate('j M', $course->date_start) }}
