@@ -85,4 +85,14 @@ return array(
         'intensive' => 6,
         'module' => 7,
     ],
+
+    'instagram' => [
+        #'account_name' => 'a_mavrin',
+        'account_name' => 'ikra_digital',
+        'api' => [
+            'apiKey'      => 'b819da09a4984d948d4eaa3d8ed27794',
+            'apiSecret'   => '9b12266aaf324096b53227e41fdd4089',
+            'apiCallback' => 'http://ikraikra.ru/api/instagram',
+        ],
+    ],
 );

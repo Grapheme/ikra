@@ -58,6 +58,27 @@ return array(
                 'type' => 'text',
             ),
 
+            'how2get_text' => array(
+                'title' => 'Как добраться - текст',
+                'type' => 'textarea',
+            ),
+            'how2get_way_1' => array(
+                'title' => 'Как добраться - способ 1',
+                'type' => 'textarea',
+            ),
+            'how2get_way_2' => array(
+                'title' => 'Как добраться - способ 2',
+                'type' => 'textarea',
+            ),
+            'how2get_way_3' => array(
+                'title' => 'Как добраться - способ 3',
+                'type' => 'textarea',
+                #'others' => [
+                #    'class' => 'redactor_150',
+                #],
+            ),
+
+
 
             '-1' => array(
                 'type' => 'custom',
@@ -159,6 +180,21 @@ return array(
                     'placeholder' => 'http://',
                 ],
             ),
+            'tw_link' => array(
+                'title' => 'Twitter',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'yt_link' => array(
+                'title' => 'YouTube',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+
         );
     },
 

@@ -62,6 +62,13 @@ return array(
                         'placeholder' => 'http://'
                     ],
                 ),
+                'corp_phone' => array(
+                    'title' => 'Телефон для корпоративных клиентов',
+                    'type' => 'text',
+                    'others' => [
+                        'placeholder' => '+7'
+                    ],
+                ),
             ),
         ];
 

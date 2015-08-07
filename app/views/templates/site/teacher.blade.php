@@ -100,19 +100,19 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                 <h3 class="_mb10">Напиши Васе:</h3>
                 <div class="b-social">
                     @if ($teacher->fb_link)
-                        <a class="_facebook" href="{{ $current_city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a class="_facebook" href="{{ $teacher->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
                     @endif
                     @if ($teacher->vk_link)
-                        <a class="_vkontakte" href="{{ $current_city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                        <a class="_vkontakte" href="{{ $teacher->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
                     @endif
                     @if ($teacher->ig_link)
-                        <a class="_instagram" href="{{ $current_city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                        <a class="_instagram" href="{{ $teacher->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
                     @endif
                     @if ($teacher->tw_link)
-                        <a class="_twitter" href="{{ $current_city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a class="_twitter" href="{{ $teacher->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
                     @endif
                     @if ($teacher->yt_link)
-                        <a class="_youtube" href="{{ $current_city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                        <a class="_youtube" href="{{ $teacher->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                 </div>
             </div>

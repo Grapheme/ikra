@@ -1,35 +1,52 @@
 <?
 /**
- * TEMPLATE_IS_NOT_SETTABLE
+ * TITLE: Контакты
+ * AVAILABLE_ONLY_IN_ADVANCED_MODE
  */
 ?>
+@extends(Helper::layout())
+<?php
+?>
 
-<!-- </div> -->
 
-@section('footer_contacts')
+@section('style')
+@stop
+
+
+@section('content')
+
+
+    {{ $page->block('header') }}
+
+
     <section class="b-section _no-padding-bottom">
-        <div class="h2 _mb35">Икра
+        <div class="h2 _mb65">Икра
             <form class="nl-form _text-red" data-nl>
-                <select>
+                <select name="city">
                     @foreach ($dic_city as $city)
-                        <?
-                        if (!$city->important)
-                            continue;
-                        ?>
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
                     @endforeach
-                    @if (0)
-                        <option value="1">Москва</option>
-                        <option value="2">Спб</option>
-                        <option value="3">Минск</option>
-                        <option value="4">Екб</option>
-                    @endif
                 </select>
-
                 <div class="nl-overlay"></div>
+            </form>
         </div>
 
-        {{ Helper::ta_($current_city) }}
+
+        <div class="row b-contacts__ways _mb50">
+            <div class="col-md-4">
+                <h3 class="_mb40">{{ $current_city->address }}</h3>
+                <p class="_max-text">
+                    {{ nl2br($current_city->how2get_text) }}
+                </p>
+            </div>
+            <div class="col-md-6 col-md-push-2">
+                <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
+                <div class="_mb40">{{ nl2br($current_city->how2get_way_1) }}</div>
+                <div class="_mb40">{{ nl2br($current_city->how2get_way_2) }}</div>
+                <div class="_mb40">{{ nl2br($current_city->how2get_way_3) }}</div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-md-6 _mb30">
@@ -106,32 +123,55 @@
             </div>
         </div>
     </section>
-@show
-
-<footer class="b-footer">
-    <div class="b-footer__map" data-lat="{{ $current_city->lat }}" data-lng="{{ $current_city->lng }}">
-        <div class="b-footer__map-text">
-            <div class="b-footer__map-text-valign h4">
-                {{ $current_city->name }}, <br> {{ $current_city->address }}
-            </div>
-        </div>
-    </div>
-    <div class="b-footer__bottom">
-        <img src="{{ Config::get('site.theme_path') }}/img/logo/ikra-igra.png" height="41" width="221" alt="Икра - это игра">
-    </div>
-</footer>
-
-<div class="nl-overlay"></div>
 
 
-{{-- Логика отображения поп-апа с выбором города --}}
-@if (!isset($_COOKIE['change_city']) || !$_COOKIE['change_city'])
-    <!-- Change city pop-up -->
-@endif
 
-<script>
-    __SITE.cities = {{ json_encode($dic_city, JSON_UNESCAPED_UNICODE) }};
-    __SITE.directions = {{ json_encode($dic_direction, JSON_UNESCAPED_UNICODE) }};
-    __SITE.types = {{ json_encode($dic_type, JSON_UNESCAPED_UNICODE) }};
-    __SITE.teachers = {{ json_encode($dic_teachers, JSON_UNESCAPED_UNICODE) }};
-</script>
+
+    <section class="b-section _bg-cyan _no-padding-bottom">
+        <h2>В главных ролях </h2>
+
+        <ul class="row _mb0">
+            <li class="col-sm-4 _mb50">
+                <a class="_block _mb20" href="">
+                    <img src="img/content/512.jpg" alt="">
+                </a>
+                <h3 class="_mb5">Имя Фамилия</h3>
+                <small class="_block _mb30">должность</small>
+                <h3>+7 931 369-48-66</h3>
+                <h3><strong><a href="mailto:info@ikraikra.ru">info@ikraikra.ru</a></strong></h3>
+
+            </li>
+            <li class="col-sm-4 _mb50">
+                <a class="_block _mb20" href="">
+                    <img src="img/content/512.jpg" alt="">
+                </a>
+                <h3 class="_mb5">Имя Фамилия</h3>
+                <small class="_block _mb30">должность</small>
+                <h3>+7 931 369-48-66</h3>
+                <h3><strong><a href="mailto:info@ikraikra.ru">info@ikraikra.ru</a></strong></h3>
+
+            </li>
+            <li class="col-sm-4 _mb50">
+                <a class="_block _mb20" href="">
+                    <img src="img/content/512.jpg" alt="">
+                </a>
+                <h3 class="_mb5">Имя Фамилия</h3>
+                <small class="_block _mb30">должность</small>
+                <h3>+7 931 369-48-66</h3>
+                <h3><strong><a href="mailto:info@ikraikra.ru">info@ikraikra.ru</a></strong></h3>
+
+            </li>
+        </ul>
+
+    </section>
+
+
+@stop
+
+
+@section('scripts')
+@stop
+
+
+@section('footer_contacts')
+@stop

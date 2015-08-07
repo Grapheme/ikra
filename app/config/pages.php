@@ -66,6 +66,16 @@ return array(
                     ],
                 ],
             ],
+
+            'contacts__header' => [
+                'title' => 'Контакты - Шапка',
+                'fields' => [
+                    'image' => [
+                        'title' => 'Фоновое изображение',
+                        'type' => 'image',
+                    ],
+                ],
+            ],
         ];
 
         return $block_tpls;
