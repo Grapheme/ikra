@@ -21,7 +21,7 @@ class ApplicationController extends BaseController {
          *
          * Ниже идет получение города юзера из БД - заменить на получение из кеша
          */
-        $dics_for_cache = ['city', 'direction', 'type', 'course', 'teachers', 'stories', 'partners', 'clients', 'professions', 'students_work', 'reviews', 'cases'];
+        $dics_for_cache = ['city', 'direction', 'type', 'course', 'teachers', 'stories', 'partners', 'clients', 'professions', 'students_work', 'reviews', 'cases', 'workers'];
         foreach ($dics_for_cache as $dic_name) {
 
             ## Refresh dics cache

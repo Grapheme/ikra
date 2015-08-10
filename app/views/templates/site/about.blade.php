@@ -105,7 +105,7 @@
                     Сегодня отличный день попробовать что-то новое!
                 </h2>
                 <br><br>
-                <span class="_text-blue"><a href="{{ URL::route('app.courses') }}" class="btn btn-white">Записаться на курс</a></span>
+                <span class="_text-blue"><a href="{{ URL::route('page.courses', [$current_city->slug]) }}" class="btn btn-white">Записаться на курс</a></span>
             </div>
         </div>
     </section>

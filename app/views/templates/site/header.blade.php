@@ -39,7 +39,9 @@
 
     <div class="b-header__nav _txt9">
         <div class="b-header__menu-button _h9" id="menu_open"><span>Меню</span> <i class="fa fa-bars"></i></div>
-        <div class="b-header__breadcrumps _h9">/ <a href="#">Раздел</a> / <a href="#">Подраздел</a> </div>
+        @if (0)
+            <div class="b-header__breadcrumps _h9">/ <a href="#">Раздел</a> / <a href="#">Подраздел</a> </div>
+        @endif
     </div>
 
 </header>
@@ -49,6 +51,10 @@
 
 <nav class="b-menu">
     <div id="menu_close" class="b-menu__close"><a class="_txt9" href="#"><i class="fa fa-chevron-left"></i> свернуть</a></div>
+
+    {{ Menu::placement('main_menu') }}
+
+    @if (0)
     <ul class="b-menu__list">
         <li class="h3 _mb35"><a href="#">главная</a></li>
         <li class="h3 _mb35"><a href="#">об икре</a></li>
@@ -59,6 +65,7 @@
         <li class="h3 _mb35"><a href="#">успешные выпускники</a></li>
         <li class="h3"><a href="#">контакты</a></li>
     </ul>
+    @endif
     <div class="h4 _mb30">Наши полезные письма (<b class="_text-yellow"><a href="#">пример</a></b>)</div>
     <form role="form" class="_white _max-form row">
         <div class="col-xs-8 form-group _mb20">

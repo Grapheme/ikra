@@ -38,7 +38,7 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
 
     <section class="b-section _no-padding-bottom">
         <div class="h2">
-            Преподаватели
+            Преподаватели в
             <form class="nl-form _text-red" data-nl>
                 <select name="subject" id="">
                     @foreach ($dic_city as $city)
