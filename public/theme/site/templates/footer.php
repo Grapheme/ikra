@@ -70,6 +70,8 @@
 	<?
 		antiCache('js/libs/nlform.js');
 		antiCache('js/libs/owl.carousel.min.js');
+		antiCache('js/libs/jquery.mb.YTPlayer.min.js');
+		antiCache('js/libs/typed.js');
 		antiCache('js/script.js');
 		antiCache('js/modules/resize.js');
 		antiCache('js/modules/equalheight.js');

@@ -161,4 +161,38 @@ $(function()
 
 
 
+
+
+
+	// Видео в шапке
+	(function VideoHeader()
+	{
+		if (typeof $.fn.mb_YTPlayer != "undefined")
+		{
+			$("#videoheader").mb_YTPlayer();
+		}
+	})();
+
+
+
+
+
+
+
+	// Анимация смены текста
+	(function Typed()
+	{
+
+		$('.element').typed(
+			{
+				strings: ["Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер"],
+				typeSpeed: 0,
+				showCursor: false
+				// backDelay: 3000 // pause before backspacing
+			});
+	})();
+
+
+
+
 });
