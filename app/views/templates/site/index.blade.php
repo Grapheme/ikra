@@ -89,7 +89,9 @@ foreach ($dic_stories as $story) {
     <section class="b-title _long _violet">
 
         <div class="b-title__logo">
-            <img src="{{ Config::get('site.theme_path') }}/img/logo/ikra-top.png" alt="ИКРА IKRA">
+            <video video class="video-bg" autoplay="" loop="" alt="ИКРА IKRA">
+                <source src="{{ Config::get('site.theme_path') }}/video/ikra.mp4" type="video/mp4">
+            </video>
         </div>
 
         <div class="b-title__text">

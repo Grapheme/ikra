@@ -4,11 +4,21 @@
   position: relative;
   width: 100%;
   height: 444px;
-  background: #888888 url(../img/content/map.jpg);
+  background-color: #888;
+  /*backgrounf-image: url(../img/content/map.jpg);*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.b-footer__map #footer_gmap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .b-footer__map-text {
   position: absolute;
@@ -55,3 +65,4 @@
   }
 }
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Подвал (конец) ---------------------------*/
