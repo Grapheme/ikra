@@ -244,7 +244,7 @@ Helper::tad($modules);
         </div>
 
         <div id="cta_form" class="collapse">
-            <form role="form" class="row _white">
+            <form role="form" id="course-select" class="row _white">
                 <div class="col-md-5 _mb60 col-md-offset-1">
                     <div class="form-group _mb20">
                         <input type="text" class="form-control" id="" placeholder="Имя">
@@ -258,13 +258,15 @@ Helper::tad($modules);
                 </div>
                 <div class="col-md-5 _mb60">
                     <div class="form-group _mb20">
-
-                        <select name="direction" id="">
-                            <option data-color="#ff0000">Хочу обучиться</option>
-                            @foreach ($dic_direction as $direction)
-                                <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
-                            @endforeach
-                        </select>
+                        <div data-nl>
+                            <select name="direction">
+                                <option data-color="#ff0000">Хочу обучиться</option>
+                                @foreach ($dic_direction as $direction)
+                                    <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="nl-overlay"></div>
 
                         {{--<input type="text" class="form-control" id="" placeholder="Хочу обучиться">--}}
                     </div>

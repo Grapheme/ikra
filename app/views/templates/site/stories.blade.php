@@ -34,7 +34,7 @@ asort($courses_dates);
 
     @if (isset($stories) && is_object($stories) && $stories->count())
 
-        <section class="b-section">
+        <section class="b-section stories-holder">
 
             @foreach ($stories as $s => $story)
                 <?
@@ -73,7 +73,7 @@ asort($courses_dates);
             @endforeach
 
             <div class="text-center">
-                <a href="#" class="btn btn-blue">Больше историй</a>
+                <a href="#" id="more_stories" class="btn btn-blue">Больше историй</a>
             </div>
         </section>
 
@@ -88,7 +88,7 @@ asort($courses_dates);
                     Мало этих историй? Пройди <span class="_text-yellow"><a href="{{ URL::route('page.courses', [$current_city->slug]) }}">Икру</a></span> и напиши свою!
                 </h2>
                 <br><br>
-                <span class="_text-blue"><a href="#" class="btn">Записаться на курс</a></span>
+                <span class="_text-blue"><a href="{{ URL::route('page.courses', [$current_city->slug]) }}" class="btn">Записаться на курс</a></span>
             </div>
         </div>
     </section>

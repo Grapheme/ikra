@@ -89,9 +89,10 @@ foreach ($dic_stories as $story) {
     <section class="b-title _long _violet">
 
         <div class="b-title__logo">
-            <video video class="video-bg" autoplay="" loop="" alt="ИКРА IKRA">
+            <!-- <video video class="video-bg" autoplay="" loop="" alt="ИКРА IKRA">
                 <source src="{{ Config::get('site.theme_path') }}/video/ikra.mp4" type="video/mp4">
-            </video>
+            </video> -->
+            <img src="http://ikra.dev/theme/site/img/logo/ikra-top.png" height="102" width="129" alt="ИКРА IKRA">
         </div>
 
         <div class="b-title__text">
@@ -115,14 +116,14 @@ foreach ($dic_stories as $story) {
 
     <section class="b-section">
         <div class="h2">Наши курсы <br> в
-            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-violet" data-nl>
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-violet" id="courses-filter-form" data-nl>
                 <select name="city" id="">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
                     @endforeach
                 </select>
                 <span class="_text-gray">по</span>
-                <select name="direction" id="">
+                <select name="direction" id="course-direction">
                     <option value="0" data-color="#ff0000">всем направлениям</option>
                     @foreach ($dic_direction as $direction)
                         <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
@@ -134,7 +135,7 @@ foreach ($dic_stories as $story) {
 
         <div class="b-courses">
             @if (isset($courses) && is_object($courses) && $courses->count())
-                <ul class="row">
+                <ul class="row" id="filtered-course">
                     <?php
                     $i = 0;
                     ?>

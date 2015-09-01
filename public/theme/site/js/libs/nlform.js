@@ -38,8 +38,10 @@
 				self.fldOpen++;
 				self.fields.push( new NLField( self, el, 'input', self.fldOpen ) );
 			} );
-			this.overlay.addEventListener( 'click', function(ev) { self._closeFlds(); } );
-			this.overlay.addEventListener( 'touchstart', function(ev) { self._closeFlds(); } );
+			if(this.overlay && this.overlay !== null) {
+				this.overlay.addEventListener( 'click', function(ev) { self._closeFlds(); } );
+				this.overlay.addEventListener( 'touchstart', function(ev) { self._closeFlds(); } );
+			}
 		},
 		_closeFlds : function() {
 			if( this.fldOpen !== -1 ) {

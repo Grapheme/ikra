@@ -110,8 +110,41 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                     {{ $course->weekdays }}
                 @endif
             </div>
-
-            <span class="_text-red"><a class="btn btn-white" href="#">Записаться</a></span>
+            <div class="course-form-holder" class="collapse in" aria-expanded="true">
+                <form role="form" class="row _white">
+                    <div class="col-md-5 _mb60 col-md-offset-0">
+                        <div class="form-group _mb20">
+                            <input name="name" type="text" class="form-control" id="" placeholder="Имя">
+                        </div>
+                        <div class="form-group _mb20">
+                            <input name="email" type="email" class="form-control" id="" placeholder="E-mail">
+                        </div>
+                        <div class="form-group _mb20">
+                            <input name="phone" type="text" class="form-control" id="" placeholder="Телефон">
+                        </div>
+                        <div class="form-group _mb20">
+                            <div data-nl="">
+                                <div class="nl-field nl-dd">
+                                    <select>
+                                        <option value="0">Скидка</option>
+                                        <option value="1">0%</option>
+                                        <option value="2">10%</option>
+                                        <option value="3">20%</option>
+                                        <option value="4">30%</option>
+                                        <option value="5">40%</option>
+                                        <option value="6">50%</option>
+                                    </select>
+                                </div>
+                                <div class="nl-overlay"></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 _text-blue text-center">
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+                </form>
+            </div>
+            <span class="_text-red"><a class="open-form btn btn-white" href="#">Записаться</a></span>
         </div>
 
     </section>

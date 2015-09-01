@@ -111,6 +111,50 @@
 	transition: visibility 0s 0.3s, opacity 0.3s, transform 0.3s;
 }
 
+#course-select div[data-nl=""] ul, .course-form-holder div[data-nl=""] ul {
+	/*width: 300px;*/
+	font-size: 30px;
+	font-family: 'museo sans', sans-serif;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 900;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+}
+
+#course-select div[data-nl=""] ul .nl-dd-checked, .course-form-holder div[data-nl=""] ul .nl-dd-checked {
+	color: rgb(239, 73, 73);
+}
+
+#course-select div[data-nl=""] .nl-field.nl-dd, #course-select div[data-nl=""] .nl-field.nl-dd .nl-field-toggle {
+	width: 100%;
+}
+
+#course-select div[data-nl=""] .nl-field-toggle, .course-form-holder div[data-nl=""] .nl-field-toggle {
+	height: 56px;
+    padding-top: 15px;
+    padding-bottom: 0;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    border-radius: 0;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+    font: 700 20px / normal 'museo sans', sans-serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: left;
+    background: none;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.course-form-holder div[data-nl=""] .nl-field.nl-dd {
+	width: 100%;
+}
+
 .nl-field.nl-field-open ul {
 	visibility: visible;
 	opacity: 1;

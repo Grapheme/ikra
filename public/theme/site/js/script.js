@@ -61,16 +61,16 @@ $(function()
 	// Селекты
 	(function NaturalLanguageSelectbox()
 	{
-		$('[data-nl]').each(function(index, element)
-		{
-			var nlform = new NLForm($(element)[0]),
-				$this = $(this);
+		$('[data-nl]').each(function() {
+			var nlform = new NLForm($(this)[0]);
 		});
 	})();
-	
 
+	$('[data-nl] ul').on('click touchend', function(){
+		setTimeout(function(){}, 10);
+		$('#course-select div[data-nl=""] .nl-field-toggle').css('color', '#fff');
+	});
 	
-
 	// Слайдер
 	(function Slider()
 	{
@@ -159,7 +159,10 @@ $(function()
 
 
 
-
+	$('.open-form').click(function(){
+		$(this).fadeOut();
+		$('.course-form-holder').slideDown();
+	});
 
 
 
@@ -191,6 +194,13 @@ $(function()
 	// 			// backDelay: 3000 // pause before backspacing
 	// 		});
 	// })();
+
+	// READ MORE STORIES
+	$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
+	$('#more_stories').click(function(e){
+		e.preventDefault();
+		$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
+	});
 
 	// GOOGLE MAP
 
@@ -230,28 +240,28 @@ $(function()
 	$('.nl-form ul li').click(function() {
 		var curentCity = $('#city_selection').val(),
 			thisCity = __SITE.cities[curentCity],
-			thisCityName = thisCity['name'] || null,
-			thisCityId = thisCity['id'] || null,
+			thisCityName = thisCity['name'] || false,
+			thisCityId = thisCity['id'] || false,
 			thisCityAddress = thisCity['address'] || 'Адрес не указан',
-			thisCityLat = thisCity['lat'] || null,
-			thisCityLng = thisCity['lng'] || null,
-			thisCityManager_1_fio = thisCity['Manager_1_fio'],
-		    thisCityManager_1_position = thisCity['Manager_1_position'],
-		    thisCityManager_1_phone = thisCity['Manager_1_phone'],
-		    thisCityManager_1_email = thisCity['Manager_1_email'],
-		    thisCityManager_2_fio = thisCity['Manager_2_fio'],
-		    thisCityManager_2_position = thisCity['Manager_2_position'],
-		    thisCityManager_2_phone = thisCity['Manager_2_phone'],
-		    thisCityManager_2_email = thisCity['Manager_2_email'],
-		    thisCityManager_3_fio = thisCity['Manager_3_fio'],
-		    thisCityManager_3_position = thisCity['Manager_3_position'],
-		    thisCityManager_3_phone = thisCity['Manager_3_phone'],
-		    thisCityManager_3_email = thisCity['Manager_3_email'],
-		    thisCityFb_link = thisCity['fb_link'],
-		    thisCityVk_link = thisCity['vk_link'],
-		    thisCityIg_link = thisCity['ig_link'],
-		    thisCityTw_link = thisCity['tw_link'],
-		    thisCityYt_link = thisCity['yt_link'];
+			thisCityLat = thisCity['lat'] || false,
+			thisCityLng = thisCity['lng'] || false,
+			thisCityManager_1_fio = thisCity['Manager_1_fio'] || false,
+		    thisCityManager_1_position = thisCity['Manager_1_position'] || false,
+		    thisCityManager_1_phone = thisCity['Manager_1_phone'] || false,
+		    thisCityManager_1_email = thisCity['Manager_1_email'] || false,
+		    thisCityManager_2_fio = thisCity['Manager_2_fio'] || false,
+		    thisCityManager_2_position = thisCity['Manager_2_position'] || false,
+		    thisCityManager_2_phone = thisCity['Manager_2_phone'] || false,
+		    thisCityManager_2_email = thisCity['Manager_2_email'] || false,
+		    thisCityManager_3_fio = thisCity['Manager_3_fio'] || false,
+		    thisCityManager_3_position = thisCity['Manager_3_position'] || false,
+		    thisCityManager_3_phone = thisCity['Manager_3_phone'] || false,
+		    thisCityManager_3_email = thisCity['Manager_3_email'] || false,
+		    thisCityFb_link = thisCity['fb_link'] || false,
+		    thisCityVk_link = thisCity['vk_link'] || false,
+		    thisCityIg_link = thisCity['ig_link'] || false,
+		    thisCityTw_link = thisCity['tw_link'] || false,
+		    thisCityYt_link = thisCity['yt_link'] || false;
 
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
@@ -261,7 +271,7 @@ $(function()
 			$('.b-footer__map').attr('data-lng', thisCityLng);
 			mapInit();
 		} else {
-			$('#footer_gmap').text('Адрес не указан');
+			$('#footer_gmap').css('background: #00bf9b;');
 		}
 
 		// BUILDING CONTACT INFO
@@ -272,81 +282,274 @@ $(function()
 			ContactBlockManager3 = [],
 			ContactBlockSocial = [];
 
-			ContactBlockManager1.push('<div class="_mb30"><h3>');
-			ContactBlockManager1.push(thisCityManager_1_phone);
-			ContactBlockManager1.push(' /<strong class="_text-red"><a href="mailto:');
-			ContactBlockManager1.push(thisCityManager_1_email);
-			ContactBlockManager1.push('">');
-			ContactBlockManager1.push(thisCityManager_1_email);
-			ContactBlockManager1.push('</a></strong></h3><small>');
-			ContactBlockManager1.push(thisCityManager_1_position);
-			ContactBlockManager1.push(', ');
-			ContactBlockManager1.push(thisCityManager_1_fio);
-			ContactBlockManager1.push('</small></div>');
-			
-			ContactBlockManager1.join('');
-			cityContactBlock.push(ContactBlockManager1);
 
-			ContactBlockManager2.push('<div class="_mb30"><h3>');
-			ContactBlockManager2.push(thisCityManager_2_phone);
-			ContactBlockManager2.push(' /<strong class="_text-red"><a href="mailto:');
-			ContactBlockManager2.push(thisCityManager_2_email);
-			ContactBlockManager2.push('">');
-			ContactBlockManager2.push(thisCityManager_2_email);
-			ContactBlockManager2.push('</a></strong></h3><small>');
-			ContactBlockManager2.push(thisCityManager_2_position);
-			ContactBlockManager2.push(', ');
-			ContactBlockManager2.push(thisCityManager_2_fio);
-			ContactBlockManager2.push('</small></div>');
+		//PUSHING MANAGER I
+		if(thisCityManager_1_phone || thisCityManager_1_email || thisCityManager_1_position || thisCityManager_1_fio) {
+			ContactBlockManager1.push('<div class="_mb30">');
+			if(thisCityManager_1_phone || thisCityManager_1_email) {
+				ContactBlockManager1.push('<h3>')
+				if(thisCityManager_1_phone) {
+					ContactBlockManager3.push('<a href="tel:' + thisCityManager_1_phone + '">' + thisCityManager_1_phone + '</a> /');
+				}
+				if(thisCityManager_1_email) {
+					ContactBlockManager1.push('<strong class="_text-red"><a href="mailto:'+ thisCityManager_1_email + '">' + thisCityManager_1_email + '</a></strong>');
+				}
+				ContactBlockManager1.push('</h3>')
+			} else {
+				ContactBlockManager1.push('<h3>Контактная информация не указана</h3>');
+			}
+			if(thisCityManager_1_position || thisCityManager_1_fio) {
+				ContactBlockManager1.push('<small>');
+				if(thisCityManager_1_position) {
+					ContactBlockManager1.push(thisCityManager_1_position);
+				}
+				if(thisCityManager_1_fio) {
+					ContactBlockManager1.push(', ' + thisCityManager_1_fio);
+				}
+				ContactBlockManager1.push('</small>');
+			} else {
+				ContactBlockManager1.push('<h3>Медеджер не опознан</h3>');
+			}
+			ContactBlockManager1.push('</div>');
 			
-			ContactBlockManager2.join('');
-			cityContactBlock.push(ContactBlockManager2);
+			cityContactBlock.push(ContactBlockManager1.join(''));
+		}
 
-			ContactBlockManager3.push('<div class="_mb30"><h3>');
-			ContactBlockManager3.push(thisCityManager_3_phone);
-			ContactBlockManager3.push(' /<strong class="_text-red"><a href="mailto:');
-			ContactBlockManager3.push(thisCityManager_3_email);
-			ContactBlockManager3.push('">');
-			ContactBlockManager3.push(thisCityManager_3_email);
-			ContactBlockManager3.push('</a></strong></h3><small>');
-			ContactBlockManager3.push(thisCityManager_3_position);
-			ContactBlockManager3.push(', ');
-			ContactBlockManager3.push(thisCityManager_3_fio);
-			ContactBlockManager3.push('</small></div>');
+
+		//PUSHING MANAGER II
+		if(thisCityManager_2_phone || thisCityManager_2_email || thisCityManager_2_position || thisCityManager_2_fio) {
+			ContactBlockManager2.push('<div class="_mb30">');
+				if(thisCityManager_2_phone || thisCityManager_2_email) {
+					ContactBlockManager2.push('<h3>')
+					if(thisCityManager_2_phone) {
+						ContactBlockManager2.push('<a href="tel:' + thisCityManager_2_phone + '">' + thisCityManager_2_phone + '</a> /');
+					}
+					if(thisCityManager_2_email) {
+						ContactBlockManager2.push('<strong class="_text-red"><a href="mailto:'+ thisCityManager_2_email + '">' + thisCityManager_2_email + '</a></strong>');
+					}
+					ContactBlockManager2.push('</h3>')
+				}
+				if(thisCityManager_2_position || thisCityManager_2_fio) {
+					ContactBlockManager2.push('<small>');
+					if(thisCityManager_2_position) {
+						ContactBlockManager2.push(thisCityManager_2_position);
+					}
+					if(thisCityManager_2_fio) {
+						ContactBlockManager2.push(', ' + thisCityManager_2_fio);
+					}
+					ContactBlockManager2.push('</small>');
+				}
+			ContactBlockManager2.push('</div>');
 			
-			ContactBlockManager3.join('');
-			cityContactBlock.push(ContactBlockManager3);
+			cityContactBlock.push(ContactBlockManager2.join(''));
+		}
 
-			// VK link
-			ContactBlockSocial.push('<div class="b-social"><a class="_facebook" href="');
-			ContactBlockManager3.push(thisCityFb_link);
-			ContactBlockManager3.push('" target="_blank"><i class="fa fa-facebook"></i></a>');
+
+		//PUSHING MANAGER III
+		if(thisCityManager_3_phone || thisCityManager_3_email || thisCityManager_3_position || thisCityManager_3_fio) {
+			ContactBlockManager3.push('<div class="_mb30">');
+				if(thisCityManager_3_phone || thisCityManager_3_email) {
+					ContactBlockManager3.push('<h3>')
+					if(thisCityManager_3_phone) {
+						
+						ContactBlockManager3.push('<a href="tel:' + thisCityManager_3_phone + '">' + thisCityManager_3_phone + '</a> /');
+					}
+					if(thisCityManager_3_email) {
+						ContactBlockManager3.push('<strong class="_text-red"><a href="mailto:'+ thisCityManager_3_email + '">' + thisCityManager_3_email + '</a></strong>');
+					}
+					ContactBlockManager3.push('</h3>')
+				}
+				if(thisCityManager_3_position || thisCityManager_3_fio) {
+					ContactBlockManager3.push('<small>');
+					if(thisCityManager_3_position) {
+						ContactBlockManager3.push(thisCityManager_3_position);
+					}
+					if(thisCityManager_3_fio) {
+						ContactBlockManager3.push(', ' + thisCityManager_3_fio);
+					}
+					ContactBlockManager3.push('</small>');
+				}
+			ContactBlockManager3.push('</div>');
+			
+			cityContactBlock.push(ContactBlockManager3.join(''));
+		}
+
+		// PUSHING SOCIALS
+
+		if(thisCityFb_link || thisCityVk_link || thisCityIg_link || thisCityTw_link || thisCityYt_link) {
+			ContactBlockSocial.push('<div class="b-social">');
 
 			// FB link
-			ContactBlockSocial.push('<div class="b-social"><a class="_vkontakte" href="');
-			ContactBlockManager3.push(thisCityVk_link);
-			ContactBlockManager3.push('" target="_blank"><i class="fa fa-vk"></i></a>');
+			if(thisCityFb_link) {
+				ContactBlockSocial.push('<a class="_facebook" href="');
+				ContactBlockSocial.push(thisCityFb_link);
+				ContactBlockSocial.push('" target="_blank"><i class="fa fa-facebook"></i></a>');
+			}
+
+			// VK link
+			if(thisCityVk_link) {
+				ContactBlockSocial.push('<a class="_vkontakte" href="');
+				ContactBlockSocial.push(thisCityVk_link);
+				ContactBlockSocial.push('" target="_blank"><i class="fa fa-vk"></i></a>');
+			}
 
 			// IG link
-			ContactBlockSocial.push('<div class="b-social"><a class="_instagram" href="');
-			ContactBlockManager3.push(thisCityVk_link);
-			ContactBlockManager3.push('" target="_blank"><i class="fa fa-instagram"></i></a>');
+			if(thisCityIg_link) {
+				ContactBlockSocial.push('<a class="_instagram" href="');
+				ContactBlockSocial.push(thisCityIg_link);
+				ContactBlockSocial.push('" target="_blank"><i class="fa fa-instagram"></i></a>');
+			}
 
 			// TW link
-			ContactBlockSocial.push('<div class="b-social"><a class="_twitter" href="');
-			ContactBlockManager3.push(thisCityVk_link);
-			ContactBlockManager3.push('" target="_blank"><i class="fa fa-twitter"></i></a>');
+			if(thisCityTw_link) {
+				ContactBlockSocial.push('<a class="_twitter" href="');
+				ContactBlockSocial.push(thisCityTw_link);
+				ContactBlockSocial.push('" target="_blank"><i class="fa fa-twitter"></i></a>');
+			}
 
 			// YT link
-			ContactBlockSocial.push('<div class="b-social"><a class="_youtube" href="');
-			ContactBlockManager3.push(thisCityVk_link);
-			ContactBlockManager3.push('" target="_blank"><i class="fa fa-youtube"></i></a>');
-			
-			ContactBlockSocial.join('');
-			cityContactBlock.push(ContactBlockSocial)
-			
-			$('.col-md-6 ._mb30').html(cityContactBlock);
 
+			if(thisCityYt_link) {
+				ContactBlockSocial.push('<a class="_youtube" href="');
+				ContactBlockSocial.push(thisCityYt_link);
+				ContactBlockSocial.push('" target="_blank"><i class="fa fa-youtube"></i></a>');
+			}
+
+			ContactBlockSocial.push('</div>');
+			cityContactBlock.push(ContactBlockSocial.join(''));
+		}
+		
+		$('.col-md-6 ._mb30').html();
+		$('.col-md-6 ._mb30').html(cityContactBlock.join(''));
+	});
+	
+	// MAIN PAGE COURSES FILTER FORM
+
+	$('#courses-filter-form ul li').click(function() {
+
+		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
+
+		// Sending filter reques
+		$('#courses-filter-form').validate({
+	        submitHandler: function (form) {
+	            var options = {
+	                success: function (data) {
+
+	                	// Response courses array
+	                	var coursesArray = [];
+						$.map(__SITE.filteredDirections, function(value, index) {
+						    coursesArray.push(value);
+						});
+
+						var thisCourse = __SITE.filteredDirections[curentCity],
+							thisCourseName = thisCourse['name'] || false,
+							thisCourseId = thisCourse['id'] || false,
+							thisCourseDate_start = thisCourse['date_start'] || false,
+							thisCourseDate_stop = thisCourse['date_stop'] || false,
+							thisCourseDic_id = thisCourse['dic_id'] || false,
+							thisCourseCity_id = thisCourse['city_id'] || false,
+							thisCourseType_id = thisCourse['type_id'] || false,
+							thisCourseDate_start = thisCourse['date_start'] || false,
+							thisCourseDate_stop = thisCourse['date_stop'] || false,
+							thisCourseWeekdays = thisCourse['weekdays'] || false,
+							thisCoursePrice = thisCourse['price'] || false,
+							thisCourseTeacher_id = thisCourse[''] || false,
+							thisCourseDirection_id = thisCourse['direction_id'] || false,
+							thisCourseDiscounts = thisCourse['discounts'] || false,
+							thisCourseBlockquote = thisCourse['blockquote'] || false,
+							thisCourseFor_who = thisCourse['for_who'] || false,
+							thisCourseResult = thisCourse['result'] || false,
+							thisCourseShort = thisCourse['short'] || false;
+
+						// Filtered courses formation
+						if(thisCourseName) {
+							var i = 0,
+								fiveFirstCourses = [];
+
+							$.each(coursesListItem, function(){
+								if(i < 5) {
+									var coursesListItem =[],
+										allCoursesButton = $('a.b-courses__link _all').clone();
+
+									if(thisCourseName) {
+										coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 180px;">');
+										coursesListItem.push('<a href="' +  + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
+										if(thisCourseName){
+											coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
+										}
+										if(thisCourseShort){
+											coursesListItem.push('<span class="h3"><strong>' + thisCourseShort + '</strong></span>');
+										}
+
+										if(thisCourseDate_start){
+											coursesListItem.push('<time class="h5">' + thisCourseDate_start);
+											if(thisCourseDate_stop) {
+												coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
+											} else {
+												coursesListItem.push('</time></a></li>');
+											}
+										}
+										
+										fiveFirstCourses.push(coursesListItem.join(''));
+
+									}
+									i++;
+								}
+							});
+						}
+
+						$('#filtered-course').html('');
+						$('#filtered-course').prepend(fiveFirstCourses.join(''));
+						$('#filtered-course').append(allCoursesButton);
+					},
+
+					error: function (data) {
+						console.log('Серверная ошибка');
+					}
+				};
+				$(form).ajaxSubmit(options);
+			}
+		});
 	});
 
+	// COURSE FORM VALIDATION
+
+	$('.course-form-holder form').validate({
+        rules: {
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+            },
+        },
+
+        messages: {
+            name: {
+                required: 'Необходимо заполнить поле!',
+            },
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            phone: {
+                required: 'Укажите ваш телефон!',
+            },
+        },
+        submitHandler: function (form) {
+            var options = {
+                success: function (data) {
+                    console.log('success')
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
 });
