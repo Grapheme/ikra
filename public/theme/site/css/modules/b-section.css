@@ -61,3 +61,173 @@
   line-height: 14px;
   display: block;
 }
+#tabs-holder > div {
+  display: none;
+}
+#tabs-holder #tab_blog {
+  display: block;
+}
+/* PAGINATION */
+.pagination {
+  display: block;
+  float: right;
+  padding-left: 0;
+  margin: 0px 0;
+  border-radius: 0px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  background-color: #fff;
+  border: none;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  color: #404041;
+  font-size: 18px;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  color: #404041;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: #ef4949;
+  color: #fff;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #ef4949;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  cursor: default;
+  background-color: transparent;
+  border-color: transparent;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: transparent;
+}
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+  padding: 10px 16px;
+  font-size: 18px;
+}
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.teacher-sub-name {
+  display: none;
+  height: 200px;
+}
+.b-teacher__photo {
+  cursor: pointer;
+}
+section.teacher-text {
+  padding: 0px 100px 80px;
+  clear: both;
+  overflow: hidden;
+}
+section.teacher-text .b-about__col {
+  padding-right: 30px;
+  padding-left: 0px;
+}
+section.teacher-text .teacher-sharing {
+  text-align: center;
+}
+.yashare-auto-init .b-share {
+  width: 276px;
+}
+.yashare-auto-init .b-share .b-share__link {
+  font: 700 20px/58px 'museo sans', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  height: 60px;
+  padding: 0 30px;
+  min-width: 270px;
+  background: transparent;
+  color: #fff !important;
+  border-radius: 0;
+  border: 2px solid #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid #2b9eed;
+  color: #2b9eed !important;
+  margin-bottom: 15px;
+}
+.yashare-auto-init .b-share .b-share__link .b-share-icon {
+  display: none;
+}
+.yashare-auto-init .b-share .b-share__link.b-share-btn__vkontakte:before {
+  content: 'В Facebook';
+  display: block;
+  margin-top: -3px;
+  text-align: center;
+}
+.yashare-auto-init .b-share .b-share__link.b-share-btn__facebook:before {
+  content: 'Во Вконтакте';
+  display: block;
+  margin-top: -3px;
+  text-align: center;
+}

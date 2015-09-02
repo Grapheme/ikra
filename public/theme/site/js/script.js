@@ -164,7 +164,9 @@ $(function()
 		$('.course-form-holder').slideDown();
 	});
 
-
+    $('.b-teacher__photo').click(function() {
+    	$('.teacher-sub-name').slideToggle();
+    });
 
 
 	// Видео в шапке
@@ -552,4 +554,36 @@ $(function()
             $(form).ajaxSubmit(options);
         }
     });
+
+    // COMUNITY TABS
+
+	$('#tabs-head h3 a').click(function(){
+		var linkParent = $(this).parent().parent();
+		var tabBlock = $('[data-name="' + $(this).attr('href').substr(1) + '"]');
+		linkParent.addClass('_text-red')
+			.siblings().removeClass('_text-red');
+		tabBlock.fadeIn()
+			.siblings().fadeOut();
+		return false;
+	});
+
+	// Active tab link
+	function parseHash() {
+        var hash = window.location.hash;
+        if (hash == '#tab_blog') {
+            $('#tab_blog').fadeIn();
+            $('#tab_blog').siblings().fadeOut();
+        }
+
+        if (hash == '#tab_events') {
+            $('#tab_events').fadeIn();
+            $('#tab_events').siblings().fadeOut();
+        }
+        
+        if (hash == '#tab_social') {
+            $('#tab_social').fadeIn();
+            $('#tab_social').siblings().fadeOut();
+        }
+    }
+    parseHash();
 });
