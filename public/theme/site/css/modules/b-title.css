@@ -12,6 +12,7 @@
   background-size: cover;
   background-position: center center;
   transition: all .5s;
+  position: relative;
 }
 .b-title._long {
   height: auto;
@@ -54,11 +55,15 @@
   height: 100px;
   padding: 40px auto 100px;
   margin: auto;
+  z-index: 1;
+  position: relative;
 }
 .b-title__text {
   padding: 100px;
   color: #fff;
   text-align: center;
+  z-index: 1;
+  position: relative;
 }
 .b-title__text-small {
   /* font-style: italic;

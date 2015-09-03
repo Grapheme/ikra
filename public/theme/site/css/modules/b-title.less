@@ -15,6 +15,7 @@
 	background-position: center center;
 	transition: all .5s;
 	// .text-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+	position: relative;
 
 	&._long { height: auto; min-height: 700px }
 	&._short { height: auto; min-height: 440px; padding-top: 20px;}
@@ -41,12 +42,16 @@
 	height: 100px;
 	padding: 40px auto 100px;
 	margin: auto;
+	z-index: 1;
+    position: relative;
 }
 
 .b-title__text {
 	padding: 100px;
 	color: #fff;
 	text-align: center;
+	z-index: 1;
+    position: relative;
 }
 
 .b-title__text-small {

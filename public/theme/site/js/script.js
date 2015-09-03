@@ -178,24 +178,77 @@ $(function()
 		}
 	})();
 
-
-
-
-
-
-
 	// Анимация смены текста
-	// (function Typed()
-	// {
-
-	// 	$('.element').typed(
+	// function Typed() {
+	// 	$('._max-text').typed(
 	// 		{
-	// 			strings: ["Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер"],
+	// 			strings: ["Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер"],
 	// 			typeSpeed: 0,
-	// 			showCursor: false
-	// 			// backDelay: 3000 // pause before backspacing
+	// 			showCursor: false,
+	// 			backDelay: 3000 // pause before backspacing
 	// 		});
-	// })();
+	// }();
+
+	// var currentTime = 0,
+	// 	proTimeOut = 100;
+
+	// function proRollOut(eq, time) {
+	// 	setTimeout(function(){
+	// 		$('.sliding-profession').eq(eq).animate(
+	// 			{ "left": "-=110%" }, {
+	// 				complete: function () {
+	// 					$this.css('opacity', '0')
+	// 				}
+	// 					// .animate(
+	// 					// 	{ "right": "-=110%" }, {
+	// 					// 		complete: function () {
+	// 					// 			$this.css('opacity', '1').animate(
+	// 					// 				{ "right": "inherit" }, 1000);
+	// 					// 		}, 1000);
+	// 						}, 1000);
+	// 				}
+	// 			}, 1000)
+	// 	}, time);
+	// }
+
+	// setTimeout(function () {
+	// 	for(var i = 0; i < $('.sliding-profession').length; i++) {
+	// 		proRollOut(i, i*proTimeOut);
+	// 	};
+	// }, 3000);
+
+	function showAnimation(block) {
+		block.addClass('pro-transition pro-transformLeft');
+		setTimeout(function(){
+			block.removeClass('pro-transition');
+			setTimeout(function(){
+				block.removeClass('pro-transformLeft');
+				block.addClass('pro-transformRight');
+				setTimeout(function(){
+					block.addClass('pro-transition');
+					block.removeClass('pro-transformRight');
+				}, 50);
+			}, 50);
+		}, 510);
+	}
+
+	function timeoutShow(eq) {
+		if(!$('.sliding-profession').eq(eq).length) return;
+		showAnimation($('.sliding-profession').eq(eq));
+		setTimeout(function(){
+			timeoutShow(eq+1);
+		}, 300);
+	}
+
+	function animationLoop() {
+		timeoutShow(0);
+		setTimeout(function(){
+			animationLoop();
+		}, 5000);
+	}
+	animationLoop();
+	
+	
 
 	// READ MORE STORIES
 	$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
@@ -203,6 +256,7 @@ $(function()
 		e.preventDefault();
 		$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
 	});
+
 
 	// GOOGLE MAP
 
@@ -430,6 +484,7 @@ $(function()
 	$('#courses-filter-form ul li').click(function() {
 
 		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
+		$('#courses-filter-form .nl-field-toggle').css('color', thisCourseColor);
 
 		// Sending filter reques
 		$('#courses-filter-form').validate({
@@ -693,4 +748,7 @@ $(function()
 	        scrollTop: 1030
 	    }, 1000);
 	});
+
+	// MAIN PAGE FILTER RE-COLORING
+	// var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
 });

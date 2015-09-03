@@ -96,7 +96,7 @@ Helper::tad($modules);
 
 
     @if ($main_course !== null)
-        <section name="main-course" class="b-section _no-padding-bottom _mb30">
+        <section id="main-course" class="b-section _no-padding-bottom _mb30">
             <div class="b-section _bg-red b-courses__big text-center">
                 <h2>1. {{ $main_course->name }}</h2>
                 <h3 class="_mb50">{{ $main_course->short }}</h3>

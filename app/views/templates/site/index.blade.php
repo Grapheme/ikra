@@ -86,12 +86,13 @@ foreach ($dic_stories as $story) {
 @section('content')
 
 
-    <section class="b-title _long _violet">
-
-        <div class="b-title__logo">
-            <!-- <video video class="video-bg" autoplay="" loop="" alt="ИКРА IKRA">
+    <section class="b-title _long _violet overflown-head">
+        <!-- <div class="video-bg-holder">
+            <video class="video-bg" autoplay="" loop="">
                 <source src="{{ Config::get('site.theme_path') }}/video/ikra.mp4" type="video/mp4">
-            </video> -->
+            </video>
+        </div> -->
+        <div class="b-title__logo">
             <img src="http://ikra.dev/theme/site/img/logo/ikra-top.png" height="102" width="129" alt="ИКРА IKRA">
         </div>
 
@@ -104,7 +105,7 @@ foreach ($dic_stories as $story) {
             </div>
             @if (isset($dic_professions) && is_object($dic_professions) && $dic_professions->count())
                 @foreach ($dic_professions as $profession)
-                    <div class="h2">{{ $profession->name }}</div>
+                    <div class="h2 sliding-profession">{{ $profession->name }}</div>
                 @endforeach
             @endif
         </div>
