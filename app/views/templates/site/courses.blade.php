@@ -156,7 +156,7 @@ Helper::tad($modules);
                         <?
                         $color = isset($dic_direction[$course->direction_id]) && is_object($dic_direction[$course->direction_id]) ? $dic_direction[$course->direction_id]->color : null;
                         ?>
-                        <li class="text-center _mb30 col-md-6{{ ($c+1) > 6 ? '_hided' : '' }}" data-equalheight>
+                        <li class="text-center _hided _mb30 col-md-6{{ ($c+1) > 6 ? '_hided' : '' }}" data-equalheight>
                             <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}" class="b-courses__link" style="background-color: {{ $color }}">
                                 <div class="_txt3"><h3><strong>{{ $course->name }}</strong></h3></div>
                                 <time class="h5">
@@ -179,6 +179,9 @@ Helper::tad($modules);
                         </li>
                     @endif
                 </ul>
+            </div>
+             <div class="text-center">
+                <a href="#" id="more_stories" class="btn btn-blue">Посмотреть все модули</a>
             </div>
         </section>
 

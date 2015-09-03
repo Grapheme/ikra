@@ -257,6 +257,13 @@ $(function()
 		$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
 	});
 
+	// VIEW MORE MODULES
+	// READ MORE STORIES
+	$('._modules ul ._hided').slice(0, 5).removeClass('_hided');
+	$('#more_modules').click(function(e){
+		e.preventDefault();
+		$('._modules ul ._hided').slice(0, 5).removeClass('_hided');
+	});
 
 	// GOOGLE MAP
 
