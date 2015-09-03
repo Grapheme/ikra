@@ -19,9 +19,11 @@
         </div>
         <div class="b-about__col col-md-8">
             <div class="b-about__top two-columns">
-                <p>
-                    {{ $full }}
-                </p>
+                <article>
+                    <p>
+                        {{ $full }}
+                    </p>
+                </article>
             </div>
         </div>
 

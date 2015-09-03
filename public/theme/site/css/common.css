@@ -1262,7 +1262,7 @@ section.teacher-text .b-about__col {
   padding-right: 30px;
   padding-left: 0px;
 }
-section.teacher-text .teacher-sharing {
+.sharing-right-block {
   text-align: center;
 }
 .yashare-auto-init .b-share {
@@ -1307,6 +1307,17 @@ section.teacher-text .teacher-sharing {
   display: block;
   margin-top: -3px;
   text-align: center;
+}
+.course-sharing-block .yashare-auto-init .b-share {
+  width: 568px;
+  margin-right: 0;
+}
+.course-sharing-block .yashare-auto-init .b-share .b-share-btn__vkontakte {
+  margin-right: 20px;
+}
+.jcarousel .corousel-element {
+  width: 510px;
+  margin-right: 42px;
 }
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/

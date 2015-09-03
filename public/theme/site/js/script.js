@@ -555,6 +555,88 @@ $(function()
         }
     });
 
+    // DIRECT COURSE FORM VALIDATION
+
+    $('form#course-select').validate({
+        rules: {
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+            },
+        },
+
+        messages: {
+            name: {
+                required: 'Необходимо заполнить поле!',
+            },
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            phone: {
+                required: 'Укажите ваш телефон!',
+            },
+        },
+        submitHandler: function (form) {
+            var options = {
+                success: function (data) {
+                    console.log('success')
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
+
+    // DIRECT COURSE FORM VALIDATION
+
+    $('form#curent-course-form').validate({
+        rules: {
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+            },
+        },
+
+        messages: {
+            name: {
+                required: 'Необходимо заполнить поле!',
+            },
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            phone: {
+                required: 'Укажите ваш телефон!',
+            },
+        },
+        submitHandler: function (form) {
+            var options = {
+                success: function (data) {
+                    console.log('success')
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
+
     // COMUNITY TABS
 
 	$('#tabs-head h3 a').click(function(){
@@ -586,4 +668,29 @@ $(function()
         }
     }
     parseHash();
+
+    // JCOROUSEL TEACHERS
+    $(function() {
+	    $('.jcarousel').jcarousel({
+	        // Configuration goes here
+	    });
+	});
+
+	// SMOOTH SCROLL
+	//	var slugs = [kreativ, strategiya, prodyusirovanie, art-direkshn, media, menedjment]
+	// $(function() {
+	// 	$('.course-slug-jumper nl-field ul li').click(function() {
+	// 		var target = $('section').attr('name');
+	// 			$('html,body').animate({
+	// 				scrollTop: target.offset().top
+	// 			}, 1000);
+	//     	return false;
+	// 	});
+	// });
+
+	$(".course-slug-jumper ul li").click(function() {
+	    $('html, body').animate({
+	        scrollTop: 1030
+	    }, 1000);
+	});
 });

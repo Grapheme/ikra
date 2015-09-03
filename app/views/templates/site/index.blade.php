@@ -188,28 +188,30 @@ foreach ($dic_stories as $story) {
         <div class="h2">Преподаватели</div>
 
         @if (isset($teachers) && is_object($teachers) && $teachers->count())
-            <ul class="_mb50 row">
-                @foreach ($teachers as $teacher)
-                    <li class="col-sm-6 col-md-4 _mb30">
-                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
-                            @if (isset($teacher->avatar) && is_object($teacher->avatar))
-                                <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                            @endif
-                        </a>
-                        <div class="_mb5 h3">{{ $teacher->name }}</div>
-                        <div class="small">
-                            <?php
-                            $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+        <div class="jcarousel">
+                <ul class="_mb50 row">
+                    @foreach ($teachers as $teacher)
+                        <li class="_mb30 corousel-element">
+                            <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
+                                @if (isset($teacher->avatar) && is_object($teacher->avatar))
+                                    <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
+                                @endif
+                            </a>
+                            <div class="_mb5 h3">{{ $teacher->name }}</div>
+                            <div class="small">
+                                <?php
+                                $temp = [];
+                                if ($teacher->position)
+                                    $temp[] = $teacher->position;
+                                if ($teacher->company)
+                                    $temp[] = $teacher->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+        </div>
         @endif
 
         <div class="row">

@@ -70,3 +70,4 @@ if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::ge
 {{ HTML::style(Config::get('site.theme_path').'/css/default/nlform.css') }}
 {{ HTML::style(Config::get('site.theme_path').'/css/default/owl.carousel.css') }}
 {{ HTML::style(Config::get('site.theme_path').'/css/common.css') }}
+{{ HTML::style(Config::get('site.theme_path').'/css/modules/jcarousel.skeleton.css') }}

@@ -86,7 +86,9 @@
                     <li class="col-md-3">
                         <h3 class="text-center _text-red _mb20"><strong>{{ $type->name }}</strong></h3>
                         <div class="b-about__course-text">
-                            <p class="_mb20">{{ $type->short }}</p>
+                            <article>
+                                <p class="_mb20">{{ $type->short }}</p>
+                            </article>
                             <b>{{ $type->howlong }}</b>
                         </div>
                     </li>
