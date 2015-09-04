@@ -155,23 +155,22 @@ elseif (Input::get('tab') == 'social')
 
                     <ul class="row">
                         @foreach ($events as $event)
-                            <li class="col-sm-4 _mb80" data-equalheight>
+                            <li class="col-sm-4 _mb80 event-teaser" data-equalheight>
                                 @if (isset($event->image) && is_object($event->image))
-                                    <a class="_block _mb30" href="{{ URL::route('page.event', [$event->id]) }}">
-                                        <img class="_full-width" src="{{ $event->image->full() }}" alt="{{ $event->name }}">
+                                    <a class="_block _mb30 event-readmore" style="background-image: url({{ $event->image->full() }});" href="{{ URL::route('page.event', [$event->id]) }}">
+                                        <p class="h3">
+                                            {{ $event->name }}
+                                        </p>
+                                        <time class="h5">
+                                            @if ($event->date_start)
+                                                {{ Helper::rdate('j M', $event->date_start) }}
+                                            @endif
+                                            @if ($event->date_start < $event->date_stop)
+                                                &mdash; {{ Helper::rdate('j M', $event->date_stop) }}
+                                            @endif
+                                        </time>
                                     </a>
                                 @endif
-                                <p class="h3">
-                                    {{ $event->name }}
-                                </p>
-                                <time class="h5">
-                                    @if ($event->date_start)
-                                        {{ Helper::rdate('j M', $event->date_start) }}
-                                    @endif
-                                    @if ($event->date_start < $event->date_stop)
-                                        &mdash; {{ Helper::rdate('j M', $event->date_stop) }}
-                                    @endif
-                                </time>
                                 <p class="_mb30">
                                     {{ $event->short }}
                                 </p>

@@ -278,7 +278,10 @@ section.teacher-text .b-about__col {
 .overflown-head {
   overflow: hidden;
 }
-.blog-teaser .blog-readmore {
+.blog-teaser .blog-readmore,
+.event-teaser .blog-readmore,
+.blog-teaser .event-readmore,
+.event-teaser .event-readmore {
   display: block;
   min-height: 400px;
   background-position: center;
@@ -287,9 +290,26 @@ section.teacher-text .b-about__col {
   box-sizing: border-box;
   background-color: #ef4949;
 }
-.blog-teaser .blog-readmore h3 {
+.blog-teaser .blog-readmore h3,
+.event-teaser .blog-readmore h3,
+.blog-teaser .event-readmore h3,
+.event-teaser .event-readmore h3 {
   color: #fff;
 }
-.blog-teaser .blog-readmore p {
+.blog-teaser .blog-readmore p,
+.event-teaser .blog-readmore p,
+.blog-teaser .event-readmore p,
+.event-teaser .event-readmore p {
   color: #fff;
+}
+.tab_events {
+  min-height: 550px;
+}
+.header-city-form ul {
+  left: -6em;
+  top: 550%;
+  font-size: 100%;
+}
+.header-city-form ul .nl-dd-checked {
+  color: #ef4949 !important;
 }
