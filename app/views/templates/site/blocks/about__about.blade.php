@@ -18,15 +18,17 @@
             </div>
         </div>
         <div class="b-about__col col-md-8">
-            <div class="b-about__top">
-                <p>
-                    {{ $full }}
-                </p>
+            <div class="b-about__top two-columns">
+                <article>
+                    <p>
+                        {{ $full }}
+                    </p>
+                </article>
             </div>
         </div>
 
 
-        <div class="b-about__col col-md-4">
+        <div class="b-about__col col-md-4 lips-image">
             <img src="{{ Config::get('site.theme_path') }}/img/bg/lips.png"  alt="">
         </div>
     </div>

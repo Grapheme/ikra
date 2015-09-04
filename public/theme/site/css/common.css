@@ -825,6 +825,7 @@ a._text-pink:hover {
 }
 /*-------------------------------------- 600 --------------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ UI (конец) ---------------------------*/
 /*
 ------------------------------ ИМЯ_МОДУЛЯ (начало) --------------------------*/
 .b-graduates__caption {
@@ -850,6 +851,7 @@ a._text-pink:hover {
 /*---------------------------------- до 1024 --------------------------------*/
 /*---------------------------------- до 768 ---------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ ИМЯ_МОДУЛЯ (конец) ---------------------------*/
 /*
 ------------------------------ Шапка (начало) --------------------------*/
 .b-header {
@@ -1004,17 +1006,28 @@ a._text-pink:hover {
   }
 }
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Шапка (конец) ---------------------------*/
 /*
 ------------------------------ Подвал (начало) --------------------------*/
 .b-footer__map {
   position: relative;
   width: 100%;
   height: 444px;
-  background: #888888 url(../img/content/map.jpg);
+  background-color: #888;
+  /*backgrounf-image: url(../img/content/map.jpg);*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+.b-footer__map #footer_gmap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 .b-footer__map-text {
   position: absolute;
@@ -1061,6 +1074,7 @@ a._text-pink:hover {
   }
 }
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Подвал (конец) ---------------------------*/
 /*
 ------------------------------ Секция (начало) --------------------------*/
 .b-section {
@@ -1089,11 +1103,264 @@ a._text-pink:hover {
     padding: 20px 25px;
   }
 }
+/*------------------------------ Секция (конец) ---------------------------*/
+._hided {
+  display: none;
+}
+.lips-image {
+  margin-top: -160px;
+}
+.b-about__top .two-columns {
+  font-size: 19px;
+  line-height: 25px;
+}
+.two-columns .col-md-6 {
+  width: 45%;
+  margin-right: 5%;
+  font-size: 19px;
+  line-height: 23px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
+.course-form-holder {
+  width: 100%;
+  transition: all .5s;
+  display: none;
+}
+.course-form-holder .col-md-5 {
+  margin: 0 auto;
+  float: none;
+}
+.course-form-holder form label {
+  font-size: 12px;
+  margin: 10px 0 0 0;
+  padding: 0;
+  line-height: 14px;
+  display: block;
+}
+#tabs-holder > div {
+  display: none;
+}
+#tabs-holder #tab_blog {
+  display: block;
+}
+/* PAGINATION */
+.pagination {
+  display: block;
+  float: right;
+  padding-left: 0;
+  margin: 0px 0;
+  border-radius: 0px;
+}
+.pagination > li {
+  display: inline;
+}
+.pagination > li > a,
+.pagination > li > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  text-decoration: none;
+  background-color: #fff;
+  border: none;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  color: #404041;
+  font-size: 18px;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span {
+  margin-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  color: #404041;
+}
+.pagination > li > a:hover,
+.pagination > li > span:hover,
+.pagination > li > a:focus,
+.pagination > li > span:focus {
+  background-color: #ef4949;
+  color: #fff;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  z-index: 2;
+  color: #ef4949;
+  font-weight: bold;
+  font-family: 'museo sans', sans-serif;
+  cursor: default;
+  background-color: transparent;
+  border-color: transparent;
+}
+.pagination > .disabled > span,
+.pagination > .disabled > span:hover,
+.pagination > .disabled > span:focus,
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover,
+.pagination > .disabled > a:focus {
+  color: #777;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: transparent;
+}
+.pagination-lg > li > a,
+.pagination-lg > li > span {
+  padding: 10px 16px;
+  font-size: 18px;
+}
+.pagination-lg > li:first-child > a,
+.pagination-lg > li:first-child > span {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination-lg > li:last-child > a,
+.pagination-lg > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.pagination-sm > li > a,
+.pagination-sm > li > span {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.pagination-sm > li:first-child > a,
+.pagination-sm > li:first-child > span {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.pagination-sm > li:last-child > a,
+.pagination-sm > li:last-child > span {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.teacher-sub-name {
+  display: none;
+  height: 200px;
+}
+.b-teacher__photo {
+  cursor: pointer;
+}
+section.teacher-text {
+  padding: 0px 100px 80px;
+  clear: both;
+  overflow: hidden;
+}
+section.teacher-text .b-about__col {
+  padding-right: 30px;
+  padding-left: 0px;
+}
+.sharing-right-block {
+  text-align: center;
+}
+.yashare-auto-init .b-share {
+  width: 276px;
+}
+.yashare-auto-init .b-share .b-share__link {
+  font: 700 20px/58px 'museo sans', sans-serif;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none !important;
+  height: 60px;
+  padding: 0 30px;
+  min-width: 270px;
+  background: transparent;
+  color: #fff !important;
+  border-radius: 0;
+  border: 2px solid #fff;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  border: 2px solid #2b9eed;
+  color: #2b9eed !important;
+  margin-bottom: 15px;
+}
+.yashare-auto-init .b-share .b-share__link .b-share-icon {
+  display: none;
+}
+.yashare-auto-init .b-share .b-share__link.b-share-btn__vkontakte:before {
+  content: 'В Facebook';
+  display: block;
+  margin-top: -3px;
+  text-align: center;
+}
+.yashare-auto-init .b-share .b-share__link.b-share-btn__facebook:before {
+  content: 'Во Вконтакте';
+  display: block;
+  margin-top: -3px;
+  text-align: center;
+}
+.course-sharing-block .yashare-auto-init .b-share {
+  width: 568px;
+  margin-right: 0;
+}
+.course-sharing-block .yashare-auto-init .b-share .b-share-btn__vkontakte {
+  margin-right: 20px;
+}
+.jcarousel .corousel-element {
+  width: 510px;
+  margin-right: 42px;
+}
+.video-bg-holder {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 0;
+}
+.video-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+}
+.sliding-profession {
+  position: relative;
+}
+.pro-transition {
+  transition: all 1s;
+}
+.pro-transformRight {
+  transform: translate(110%, 0);
+}
+.pro-transformLeft {
+  transform: translate(-110%, 0);
+}
+.overflown-head {
+  overflow: hidden;
+}
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
 .b-title {
   width: 100%;
-  height: 600px;
+  /* height: 600px; */
+  min-height: 600px;
   padding-top: 40px;
   background: #ef4949;
   -webkit-background-size: cover;
@@ -1101,6 +1368,8 @@ a._text-pink:hover {
   -o-background-size: cover;
   background-size: cover;
   background-position: center center;
+  transition: all .5s;
+  position: relative;
 }
 .b-title._long {
   height: auto;
@@ -1123,16 +1392,35 @@ a._text-pink:hover {
 .b-title._invert .b-title__text {
   color: #404041;
 }
+.b-title._videoheader {
+  position: relative;
+  background: none;
+}
+.b-title._videoheader .element {
+  min-height: 60px;
+}
+.b-title__videoheader {
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
 .b-title__logo {
   width: 130px;
   height: 100px;
   padding: 40px auto 100px;
   margin: auto;
+  z-index: 1;
+  position: relative;
 }
 .b-title__text {
   padding: 100px;
   color: #fff;
   text-align: center;
+  z-index: 1;
+  position: relative;
 }
 .b-title__text-small {
   /* font-style: italic;
@@ -1172,6 +1460,7 @@ a._text-pink:hover {
   }
 }
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Первый слайд страниц (конец) ---------------------------*/
 /*
 ------------------------------ Курсы (начало) --------------------------*/
 .b-courses._time-at-bottom a {
@@ -1254,6 +1543,7 @@ a._text-pink:hover {
 /*---------------------------------- до 1024 --------------------------------*/
 /*---------------------------------- до 768 ---------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Курсы (конец) ---------------------------*/
 /*
 ------------------------------ Слайдеры (начало) --------------------------*/
 .b-slider {
@@ -1347,6 +1637,7 @@ a._text-pink:hover {
     right: -3rem;
   }
 }
+/*------------------------------ Слайдеры (конец) ---------------------------*/
 /*
 ------------------------------ Соцкнопки (начало) --------------------------*/
 .b-social {
@@ -1443,6 +1734,7 @@ a._text-pink:hover {
   }
 }
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Соцкнопки (конец) ---------------------------*/
 /*
 ------------------------------ О нас (начало) --------------------------*/
 .b-about__directions > li {
@@ -1514,6 +1806,7 @@ a._text-pink:hover {
 /*---------------------------------- до 1024 --------------------------------*/
 /*---------------------------------- до 768 ---------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ О нас (конец) ---------------------------*/
 /*
 ------------------------------ Основной курс (начало) --------------------------*/
 .b-primary > li {
@@ -1571,6 +1864,7 @@ a._text-pink:hover {
 }
 /*---------------------------------- до 768 ---------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Основной курс (конец) ---------------------------*/
 /*
 ------------------------------ Раскрывающиеся отзывы (начало) --------------------------*/
 .b-textroll {
@@ -1610,6 +1904,7 @@ a._text-pink:hover {
 /*---------------------------------- до 1024 --------------------------------*/
 /*---------------------------------- до 768 ---------------------------------*/
 /*---------------------------------- до 480 ---------------------------------*/
+/*------------------------------ Раскрывающиеся отзывы (конец) ---------------------------*/
 /* Преподы (начало) */
 .b-teacher__photo div {
   position: relative;
@@ -1625,3 +1920,4 @@ a._text-pink:hover {
 /*-------------------------------------- 1024 -------------------------------------*/
 /*-------------------------------------- до 768 -------------------------------------*/
 /*-------------------------------------- до 1024 -------------------------------------*/
+/* Преподы (конец) */

@@ -60,19 +60,18 @@ Helper::tad($modules);
 
 @section('content')
 
-
     <section class="b-title" style="background-image: url({{ Config::get('site.theme_path') }}/img/bg/courses.jpg);">
         <div class="b-title__logo _invisible">
             <img src="{{ Config::get('site.theme_path') }}/img/logo/ikra-top.png" alt="ИКРА IKRA">
         </div>
         <div class="b-title__text">
-            <h2>
+            <h2 class="course-slug-jumper">
                 Я хочу от Икры
                 <form class="nl-form _text-red" data-nl>
                     <select name="direction" id="">
                         <option value="0" data-color="#ff0000">всё и сразу</option>
                         @foreach ($dic_direction as $direction)
-                            <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->rp }}</option>
+                            <option value="{{ $direction->id }}" data-color="{{ $direction->color }}" data-slug="{{ $direction->slug }}">{{ $direction->rp }}</option>
                         @endforeach
                     </select>
                     <div class="nl-overlay"></div>
@@ -97,7 +96,7 @@ Helper::tad($modules);
 
 
     @if ($main_course !== null)
-        <section class="b-section _no-padding-bottom _mb30">
+        <section id="main-course" class="b-section _no-padding-bottom _mb30">
             <div class="b-section _bg-red b-courses__big text-center">
                 <h2>1. {{ $main_course->name }}</h2>
                 <h3 class="_mb50">{{ $main_course->short }}</h3>
@@ -157,7 +156,7 @@ Helper::tad($modules);
                         <?
                         $color = isset($dic_direction[$course->direction_id]) && is_object($dic_direction[$course->direction_id]) ? $dic_direction[$course->direction_id]->color : null;
                         ?>
-                        <li class="text-center _mb30 col-md-6{{ ($c+1) > 6 ? '_hided' : '' }}" data-equalheight>
+                        <li class="text-center _hided _mb30 col-md-6{{ ($c+1) > 6 ? '_hided' : '' }}" data-equalheight>
                             <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}" class="b-courses__link" style="background-color: {{ $color }}">
                                 <div class="_txt3"><h3><strong>{{ $course->name }}</strong></h3></div>
                                 <time class="h5">
@@ -174,7 +173,7 @@ Helper::tad($modules);
 
                     @if ($modules->count() > 5)
                         <li class="text-center _mb30 col-md-6" data-equalheight>
-                            <a href="#" class="b-courses__link _all">
+                            <a href="#" id="#more_modules">
                                 <span><span class="h3">Посмотреть все модули</span></span>
                             </a>
                         </li>
@@ -195,7 +194,7 @@ Helper::tad($modules);
 
             <p class="_mb50 _max-text">Два дня &mdash; много практики, вдохновения, бодрящих спискеров и интересных трендов</p>
 
-            <div class="b-courses _time-at-bottom">
+            <div class="b-courses _time-at-bottom intensives-list">
                 <ul class="row">
 
                     @foreach ($intensives as $c => $course)
@@ -219,7 +218,7 @@ Helper::tad($modules);
 
                     @if ($intensives->count() > 5)
                         <li class="text-center _mb30 col-md-6" data-equalheight>
-                            <a href="#" class="b-courses__link _all">
+                            <a href="#" id="#more_intensives" class="b-courses__link _all">
                                 <span><span class="h3">Посмотреть все интенсивы</span></span>
                             </a>
                         </li>
@@ -244,27 +243,29 @@ Helper::tad($modules);
         </div>
 
         <div id="cta_form" class="collapse">
-            <form role="form" class="row _white">
+            <form role="form" id="course-select" class="row _white">
                 <div class="col-md-5 _mb60 col-md-offset-1">
                     <div class="form-group _mb20">
-                        <input type="text" class="form-control" id="" placeholder="Имя">
+                        <input type="text" name="name" class="form-control" id="" placeholder="Имя">
                     </div>
                     <div class="form-group _mb20">
-                        <input type="email" class="form-control" id="" placeholder="E-mail">
+                        <input type="email" name="email" class="form-control" id="" placeholder="E-mail">
                     </div>
                     <div class="form-group _mb20">
-                        <input type="text" class="form-control" id="" placeholder="Телефон">
+                        <input type="text" name="phone" class="form-control" id="" placeholder="Телефон">
                     </div>
                 </div>
                 <div class="col-md-5 _mb60">
                     <div class="form-group _mb20">
-
-                        <select name="direction" id="">
-                            <option data-color="#ff0000">Хочу обучиться</option>
-                            @foreach ($dic_direction as $direction)
-                                <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
-                            @endforeach
-                        </select>
+                        <div data-nl>
+                            <select name="direction">
+                                <option data-color="#ff0000">Хочу обучиться</option>
+                                @foreach ($dic_direction as $direction)
+                                    <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="nl-overlay"></div>
 
                         {{--<input type="text" class="form-control" id="" placeholder="Хочу обучиться">--}}
                     </div>

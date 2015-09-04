@@ -7,12 +7,15 @@
 
 .b-title {
 	width: 100%;
-	height: 600px;
+	/* height: 600px; */
+	min-height: 600px;
 	padding-top: 40px;
 	background: @red;
 	.background-size(cover);
 	background-position: center center;
+	transition: all .5s;
 	// .text-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+	position: relative;
 
 	&._long { height: auto; min-height: 700px }
 	&._short { height: auto; min-height: 440px; padding-top: 20px;}
@@ -21,6 +24,17 @@
 	&._yellow { background: @yellow; .b-title__text { color: @gray }}
 
 	&._invert { .b-title__text { color: @gray } }
+
+	&._videoheader { position: relative; background: none; .element { min-height: 60px } }
+}
+
+.b-title__videoheader {
+	position: absolute;
+	z-index: -1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
 }
 
 .b-title__logo {
@@ -28,12 +42,16 @@
 	height: 100px;
 	padding: 40px auto 100px;
 	margin: auto;
+	z-index: 1;
+    position: relative;
 }
 
 .b-title__text {
 	padding: 100px;
 	color: #fff;
 	text-align: center;
+	z-index: 1;
+    position: relative;
 }
 
 .b-title__text-small {

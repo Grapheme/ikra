@@ -86,10 +86,14 @@ foreach ($dic_stories as $story) {
 @section('content')
 
 
-    <section class="b-title _long _violet">
-
+    <section class="b-title _long _violet overflown-head">
+        <!-- <div class="video-bg-holder">
+            <video class="video-bg" autoplay="" loop="">
+                <source src="{{ Config::get('site.theme_path') }}/video/ikra.mp4" type="video/mp4">
+            </video>
+        </div> -->
         <div class="b-title__logo">
-            <img src="{{ Config::get('site.theme_path') }}/img/logo/ikra-top.png" alt="ИКРА IKRA">
+            <img src="http://ikra.dev/theme/site/img/logo/ikra-top.png" height="102" width="129" alt="ИКРА IKRA">
         </div>
 
         <div class="b-title__text">
@@ -101,7 +105,7 @@ foreach ($dic_stories as $story) {
             </div>
             @if (isset($dic_professions) && is_object($dic_professions) && $dic_professions->count())
                 @foreach ($dic_professions as $profession)
-                    <div class="h2">{{ $profession->name }}</div>
+                    <div class="h2 sliding-profession">{{ $profession->name }}</div>
                 @endforeach
             @endif
         </div>
@@ -113,14 +117,14 @@ foreach ($dic_stories as $story) {
 
     <section class="b-section">
         <div class="h2">Наши курсы <br> в
-            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-violet" data-nl>
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-violet" id="courses-filter-form" data-nl>
                 <select name="city" id="">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
                     @endforeach
                 </select>
                 <span class="_text-gray">по</span>
-                <select name="direction" id="">
+                <select name="direction" id="course-direction">
                     <option value="0" data-color="#ff0000">всем направлениям</option>
                     @foreach ($dic_direction as $direction)
                         <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
@@ -132,7 +136,7 @@ foreach ($dic_stories as $story) {
 
         <div class="b-courses">
             @if (isset($courses) && is_object($courses) && $courses->count())
-                <ul class="row">
+                <ul class="row" id="filtered-course">
                     <?php
                     $i = 0;
                     ?>
@@ -185,28 +189,30 @@ foreach ($dic_stories as $story) {
         <div class="h2">Преподаватели</div>
 
         @if (isset($teachers) && is_object($teachers) && $teachers->count())
-            <ul class="_mb50 row">
-                @foreach ($teachers as $teacher)
-                    <li class="col-sm-6 col-md-4 _mb30">
-                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
-                            @if (isset($teacher->avatar) && is_object($teacher->avatar))
-                                <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                            @endif
-                        </a>
-                        <div class="_mb5 h3">{{ $teacher->name }}</div>
-                        <div class="small">
-                            <?php
-                            $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
+        <div class="jcarousel">
+                <ul class="_mb50 row">
+                    @foreach ($teachers as $teacher)
+                        <li class="_mb30 corousel-element">
+                            <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
+                                @if (isset($teacher->avatar) && is_object($teacher->avatar))
+                                    <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
+                                @endif
+                            </a>
+                            <div class="_mb5 h3">{{ $teacher->name }}</div>
+                            <div class="small">
+                                <?php
+                                $temp = [];
+                                if ($teacher->position)
+                                    $temp[] = $teacher->position;
+                                if ($teacher->company)
+                                    $temp[] = $teacher->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+        </div>
         @endif
 
         <div class="row">

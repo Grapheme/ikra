@@ -57,11 +57,11 @@ $others_events = DicLib::loadImages($others_events, ['image']);
             <div class="col-md-8">
                 {{ $event->full }}
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 sharing-right-block">
                 <h3 class="_mb15">Поделиться:</h3>
-                <a href="#" class="btn btn-blue _mb20" style="margin-right: 40px">В фейсбуке</a>
-                <br>
-                <a href="#" class="btn btn-blue _mb20">Во вконтакте</a>
+                <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+                <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook">
+                </div>
             </div>
         </div>
     </section>
