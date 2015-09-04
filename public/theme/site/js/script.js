@@ -10,7 +10,6 @@ $(function()
 
 	/* независимые фрагменты кода - в раздельных самовызывающихся функциях. */
 
-
 	// Боковое меню
 	(function Menu()
 	{
@@ -774,32 +773,47 @@ $(function()
 
 	// TEACHERS OVERKILL FILTER
 	$('.js-teach-select').on('change', function(){
-		$('ul.b-teachers__list').html();
+		$('ul.b-teachers__list').html('');
+
+		var imgPath = __SITE.img_path_full,
+		imgThumbPath = __SITE.img_path_thumb;
+
 		var cityId = $('#teacher-city').val();
 		var subjectId = $('[name="teach-subject"]').val();
 		console.log('City: ' + cityId + '; Subject: ' + subjectId);
 
 		// TEACHERS OBJECT DISMEMBERMENT
+
 		var teachersArray = [];
 		$.map(__SITE.teachers, function(value, index) {
 			teachersArray.push(value);
 		});
 
-		var thisTeacherCity = $('#teacher-city').val(),
-			thisTeacherDirection = $('#derection-teacher').val();
-
 		var teachersSortArray = [];
 		$.each(__SITE.teachers, function(i, v){
+			var thisTeacherCity = $('#teacher-city').val(),
+				thisTeacherDirection = $('#derection-teacher').val();
+			
 			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+				var thisTeacherId = v['id'] || false,
+					thisTeacherName = v['name'] || false,
+					thisTeacherAvatar = v.avatar || false,
+					thisTeacherPosition = v['position'] || false;
+
 				teachersSortArray.push('<li class="col-sm-4 _mb70">');
-
-				
-
+				teachersSortArray.push('<a href="http://ikra.dev/teachers/' + thisTeacherId + '" class="_block _mb20">');
+				teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
+				teachersSortArray.push('</a>');
+				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
+				teachersSortArray.push('<div class="text-right">');
+				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
+				teachersSortArray.push('</div>')
+				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + '</div>');
 				teachersSortArray.push('</li>');
+				// teachersSortArray.join('');
+				$('ul.b-teachers__list').append(teachersSortArray.join(''));
 			}
 		});
-		console.log(teachersSortArray);
-
 	});
 
 });

@@ -132,6 +132,7 @@
 @endif
 
 <script>
+    __SITE = __SITE || {};
     __SITE.img_path_full = "{{ Config::get('site.galleries_photo_public_dir') }}";
     __SITE.img_path_thumb = "{{ Config::get('site.galleries_thumb_public_dir') }}";
     __SITE.cities = {{ json_encode($dic_city, JSON_UNESCAPED_UNICODE) }};
