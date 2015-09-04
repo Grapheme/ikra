@@ -173,15 +173,12 @@ Helper::tad($modules);
 
                     @if ($modules->count() > 5)
                         <li class="text-center _mb30 col-md-6" data-equalheight>
-                            <a href="#" class="b-courses__link _all">
+                            <a href="#" id="#more_modules">
                                 <span><span class="h3">Посмотреть все модули</span></span>
                             </a>
                         </li>
                     @endif
                 </ul>
-            </div>
-             <div class="text-center">
-                <a href="#" id="more_stories" class="btn btn-blue">Посмотреть все модули</a>
             </div>
         </section>
 
@@ -197,7 +194,7 @@ Helper::tad($modules);
 
             <p class="_mb50 _max-text">Два дня &mdash; много практики, вдохновения, бодрящих спискеров и интересных трендов</p>
 
-            <div class="b-courses _time-at-bottom">
+            <div class="b-courses _time-at-bottom intensives-list">
                 <ul class="row">
 
                     @foreach ($intensives as $c => $course)
@@ -221,7 +218,7 @@ Helper::tad($modules);
 
                     @if ($intensives->count() > 5)
                         <li class="text-center _mb30 col-md-6" data-equalheight>
-                            <a href="#" class="b-courses__link _all">
+                            <a href="#" id="#more_intensives" class="b-courses__link _all">
                                 <span><span class="h3">Посмотреть все интенсивы</span></span>
                             </a>
                         </li>

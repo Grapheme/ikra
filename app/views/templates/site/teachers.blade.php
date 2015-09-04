@@ -37,10 +37,10 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
 
 
     <section class="b-section _no-padding-bottom">
-        <div class="h2">
+        <div class="h2" id="teachers-filter-form">
             Преподаватели в
             <form class="nl-form _text-red" data-nl>
-                <select name="subject" id="">
+                <select class="js-teach-select" name="teacher-city" id="teacher-city">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
                     @endforeach
@@ -50,7 +50,7 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
             <br>
             по
             <form class="nl-form _text-red" data-nl>
-                <select name="subject" id="">
+                <select class="js-teach-select" name="teach-subject" id="derection-teacher">
                     <option value="0" data-color="#ff0000">всем направлениям</option>
                     @foreach ($dic_direction as $direction)
                         <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>

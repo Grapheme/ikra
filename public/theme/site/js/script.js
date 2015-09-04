@@ -258,11 +258,17 @@ $(function()
 	});
 
 	// VIEW MORE MODULES
-	// READ MORE STORIES
 	$('._modules ul ._hided').slice(0, 5).removeClass('_hided');
 	$('#more_modules').click(function(e){
 		e.preventDefault();
 		$('._modules ul ._hided').slice(0, 5).removeClass('_hided');
+	});
+
+	// VIEW MORE INTENSIVES
+	$('.intensives-list ul ._hided').slice(0, 5).removeClass('_hided');
+	$('#more_intensives').click(function(e){
+		e.preventDefault();
+		$('.intensives-list ul ._hided').slice(0, 5).removeClass('_hided');
 	});
 
 	// GOOGLE MAP
@@ -756,6 +762,44 @@ $(function()
 	    }, 1000);
 	});
 
-	// MAIN PAGE FILTER RE-COLORING
-	// var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
+	$('[data-nl]').on('click', '.nl-field ul li', function(){
+		$(this).parents('.nl-field').first().next('select').trigger('change');
+	});
+
+	// TEACHERS FILTER RE-COLORING
+	$('#teachers-filter-form ul li').click(function() {
+		var teacherCourseColor = $('#derection-teacher').find(':selected').attr('data-color');
+		$('#teachers-filter-form .nl-field-toggle').css('color', teacherCourseColor);
+	});
+
+	// TEACHERS OVERKILL FILTER
+	$('.js-teach-select').on('change', function(){
+		$('ul.b-teachers__list').html();
+		var cityId = $('#teacher-city').val();
+		var subjectId = $('[name="teach-subject"]').val();
+		console.log('City: ' + cityId + '; Subject: ' + subjectId);
+
+		// TEACHERS OBJECT DISMEMBERMENT
+		var teachersArray = [];
+		$.map(__SITE.teachers, function(value, index) {
+			teachersArray.push(value);
+		});
+
+		var thisTeacherCity = $('#teacher-city').val(),
+			thisTeacherDirection = $('#derection-teacher').val();
+
+		var teachersSortArray = [];
+		$.each(__SITE.teachers, function(i, v){
+			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+				teachersSortArray.push('<li class="col-sm-4 _mb70">');
+
+				
+
+				teachersSortArray.push('</li>');
+			}
+		});
+		console.log(teachersSortArray);
+
+	});
+
 });
