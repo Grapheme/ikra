@@ -1355,6 +1355,21 @@ section.teacher-text .b-about__col {
 .overflown-head {
   overflow: hidden;
 }
+.blog-teaser .blog-readmore {
+  display: block;
+  min-height: 400px;
+  background-position: center;
+  background-size: cover;
+  padding: 30px;
+  box-sizing: border-box;
+  background-color: #ef4949;
+}
+.blog-teaser .blog-readmore h3 {
+  color: #fff;
+}
+.blog-teaser .blog-readmore p {
+  color: #fff;
+}
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
 .b-title {

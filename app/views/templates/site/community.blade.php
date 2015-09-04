@@ -123,16 +123,15 @@ elseif (Input::get('tab') == 'social')
 
                     <ul class="row">
                         @foreach ($blogs as $blog)
-                            <li class="col-sm-4 _mb80" data-equalheight>
+                            <li class="col-sm-4 _mb80 blog-teaser" data-equalheight>
                                 @if (isset($blog->image) && is_object($blog->image))
-                                    <a class="_block _mb30" href="{{ URL::route('page.blog_detail', [$blog->id]) }}">
-                                        <img class="_full-width" src="{{ $blog->image->full() }}" alt="{{ $blog->name }}">
+                                    <a class="_block _mb30 blog-readmore" style="background-image: url({{ $blog->image->full() }});" href="{{ URL::route('page.blog_detail', [$blog->id]) }}">
+                                        <h3>{{ $blog->name }}</h3>
+                                        <p class="_mb30">
+                                            {{ $blog->annotation }}
+                                        </p>
                                     </a>
                                 @endif
-                                <h3>{{ $blog->name }}</h3>
-                                <p class="_mb30">
-                                    {{ $blog->annotation }}
-                                </p>
                                 <p class="_mb30">
                                     {{ $blog->short }}
                                 </p>
