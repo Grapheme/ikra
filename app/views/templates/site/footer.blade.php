@@ -134,6 +134,7 @@
 <script>
     __SITE.img_path_full = "{{ Config::get('site.galleries_photo_public_dir') }}";
     __SITE.img_path_thumb = "{{ Config::get('site.galleries_thumb_public_dir') }}";
+    __SITE.url_change_city = "{{ URL::route('ajax.change_city') }}";
     __SITE.cities = {{ json_encode($dic_city, JSON_UNESCAPED_UNICODE) }};
     __SITE.directions = {{ json_encode($dic_direction, JSON_UNESCAPED_UNICODE) }};
     __SITE.types = {{ json_encode($dic_type, JSON_UNESCAPED_UNICODE) }};
