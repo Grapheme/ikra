@@ -10,7 +10,7 @@
     <section class="b-section _no-padding-bottom">
         <div class="h2 _mb35">Икра
             <form class="nl-form _text-red" data-nl>
-                <select id="city_selection">
+                <select id="" class="b-footer__city-select">
                     @foreach ($dic_city as $city)
                         <?
                         if (!$city->important)

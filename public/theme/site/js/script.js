@@ -304,33 +304,46 @@ $(function()
 	$.map(__SITE.cities, function(value, index) {
 	    citiesArray.push(value);
 	});
-	
-	$('.nl-form ul li').click(function() {
-		var curentCity = $('#city_selection').val(),
+
+	// ///////////////////////////////////////////////////
+	// ///////////////////////////////////////////////////
+	//  ВОТ ТУТ НАДО БЫ МЕНЯТЬ ТЕКСТ LIшек
+	// ///////////////////////////////////////////////////
+	// ///////////////////////////////////////////////////
+
+	var sitiesSelectorValue = '';
+	$('.b-header__city-select, .b-footer__city-select').on('change', function() {
+		sitiesSelectorValue = $(this).val();
+		$('.b-header__city-select, .b-footer__city-select').val(sitiesSelectorValue);
+	});
+
+	function buildingContactInfo() {
+
+		var curentCity = $('.b-header__city-select').val(),
 			thisCity = __SITE.cities[curentCity],
-			thisCityName = thisCity['name'] || false,
+			thisCityName = thisCity.name || false,
 			thisCityId = thisCity['id'] || false,
 			thisCityAddress = thisCity['address'] || 'Адрес не указан',
 			thisCityLat = thisCity['lat'] || false,
 			thisCityLng = thisCity['lng'] || false,
-			thisCityManager_1_fio = thisCity['Manager_1_fio'] || false,
-		    thisCityManager_1_position = thisCity['Manager_1_position'] || false,
-		    thisCityManager_1_phone = thisCity['Manager_1_phone'] || false,
-		    thisCityManager_1_email = thisCity['Manager_1_email'] || false,
-		    thisCityManager_2_fio = thisCity['Manager_2_fio'] || false,
-		    thisCityManager_2_position = thisCity['Manager_2_position'] || false,
-		    thisCityManager_2_phone = thisCity['Manager_2_phone'] || false,
-		    thisCityManager_2_email = thisCity['Manager_2_email'] || false,
-		    thisCityManager_3_fio = thisCity['Manager_3_fio'] || false,
-		    thisCityManager_3_position = thisCity['Manager_3_position'] || false,
-		    thisCityManager_3_phone = thisCity['Manager_3_phone'] || false,
-		    thisCityManager_3_email = thisCity['Manager_3_email'] || false,
+			thisCityManager_1_fio = thisCity['manager_1_fio'] || false,
+		    thisCityManager_1_position = thisCity['manager_1_position'] || false,
+		    thisCityManager_1_phone = thisCity['manager_1_phone'] || false,
+		    thisCityManager_1_email = thisCity['manager_1_email'] || false,
+		    thisCityManager_2_fio = thisCity['manager_2_fio'] || false,
+		    thisCityManager_2_position = thisCity['manager_2_position'] || false,
+		    thisCityManager_2_phone = thisCity['manager_2_phone'] || false,
+		    thisCityManager_2_email = thisCity['manager_2_email'] || false,
+		    thisCityManager_3_fio = thisCity['manager_3_fio'] || false,
+		    thisCityManager_3_position = thisCity['manager_3_position'] || false,
+		    thisCityManager_3_phone = thisCity['manager_3_phone'] || false,
+		    thisCityManager_3_email = thisCity['manager_3_email'] || false,
 		    thisCityFb_link = thisCity['fb_link'] || false,
 		    thisCityVk_link = thisCity['vk_link'] || false,
 		    thisCityIg_link = thisCity['ig_link'] || false,
 		    thisCityTw_link = thisCity['tw_link'] || false,
 		    thisCityYt_link = thisCity['yt_link'] || false;
-
+		    console.log(curentCity);
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
 
@@ -379,7 +392,6 @@ $(function()
 				ContactBlockManager1.push('<h3>Медеджер не опознан</h3>');
 			}
 			ContactBlockManager1.push('</div>');
-			
 			cityContactBlock.push(ContactBlockManager1.join(''));
 		}
 
@@ -489,7 +501,9 @@ $(function()
 		
 		$('.col-md-6 ._mb30').html();
 		$('.col-md-6 ._mb30').html(cityContactBlock.join(''));
-	});
+	}
+	
+	$('.nl-form ul li').click(buildingContactInfo);
 	
 	// MAIN PAGE COURSES FILTER FORM
 
@@ -810,7 +824,6 @@ $(function()
 				teachersSortArray.push('</div>')
 				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + '</div>');
 				teachersSortArray.push('</li>');
-				// teachersSortArray.join('');
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
 			}
 		});

@@ -26,13 +26,13 @@
                 @endforeach
             </ul> -->
             <form class="nl-form header-city-form" action="" method="get" data-nl>
-                <select class="b-header__city-select" name="city_select" id="city_selection">
+                <select class="b-header__city-select" name="city_select" id="city_select">
                     @foreach ($dic_city as $city)
                         <?
                         if (!$city->important)
                             continue;
                         ?>
-                            <option value="10">Икра {{ $city->name_mini ?: $city->name }}</option>
+                            <option value="{{ $city->id }}">Икра {{ $city->name_mini ?: $city->name }}</option>
                     @endforeach
                 </select>
             </form>
