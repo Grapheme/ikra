@@ -1383,8 +1383,10 @@ section.teacher-text .b-about__col {
   min-height: 550px;
 }
 .header-city-form ul {
-  left: -6em;
-  top: 550%;
+  left: 0em;
+  top: 7em;
+  position: relative;
+  z-index: 1000;
   font-size: 100%;
 }
 .header-city-form ul .nl-dd-checked {
@@ -1454,7 +1456,7 @@ section.teacher-text .b-about__col {
   padding: 100px;
   color: #fff;
   text-align: center;
-  z-index: 1;
+  z-index: 0;
   position: relative;
 }
 .b-title__text-small {

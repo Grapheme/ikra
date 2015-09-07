@@ -8,7 +8,7 @@
 
 @section('footer_contacts')
     <section class="b-section _no-padding-bottom">
-        <div class="h2 _mb35">Икра
+        <div class="h2 _mb35">Икра в
             <form class="nl-form _text-red" data-nl>
                 <select id="" class="b-footer__city-select">
                     @foreach ($dic_city as $city)

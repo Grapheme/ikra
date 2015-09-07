@@ -306,8 +306,10 @@ section.teacher-text .b-about__col {
   min-height: 550px;
 }
 .header-city-form ul {
-  left: -6em;
-  top: 550%;
+  left: 0em;
+  top: 7em;
+  position: relative;
+  z-index: 1000;
   font-size: 100%;
 }
 .header-city-form ul .nl-dd-checked {

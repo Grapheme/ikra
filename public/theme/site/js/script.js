@@ -163,9 +163,9 @@ $(function()
 		$('.course-form-holder').slideDown();
 	});
 
-    $('.b-teacher__photo').click(function() {
-    	$('.teacher-sub-name').slideToggle();
-    });
+	$('.b-teacher__photo').click(function() {
+		$('.teacher-sub-name').slideToggle();
+	});
 
 
 	// Видео в шапке
@@ -176,45 +176,6 @@ $(function()
 			$("#videoheader").mb_YTPlayer();
 		}
 	})();
-
-	// Анимация смены текста
-	// function Typed() {
-	// 	$('._max-text').typed(
-	// 		{
-	// 			strings: ["Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер"],
-	// 			typeSpeed: 0,
-	// 			showCursor: false,
-	// 			backDelay: 3000 // pause before backspacing
-	// 		});
-	// }();
-
-	// var currentTime = 0,
-	// 	proTimeOut = 100;
-
-	// function proRollOut(eq, time) {
-	// 	setTimeout(function(){
-	// 		$('.sliding-profession').eq(eq).animate(
-	// 			{ "left": "-=110%" }, {
-	// 				complete: function () {
-	// 					$this.css('opacity', '0')
-	// 				}
-	// 					// .animate(
-	// 					// 	{ "right": "-=110%" }, {
-	// 					// 		complete: function () {
-	// 					// 			$this.css('opacity', '1').animate(
-	// 					// 				{ "right": "inherit" }, 1000);
-	// 					// 		}, 1000);
-	// 						}, 1000);
-	// 				}
-	// 			}, 1000)
-	// 	}, time);
-	// }
-
-	// setTimeout(function () {
-	// 	for(var i = 0; i < $('.sliding-profession').length; i++) {
-	// 		proRollOut(i, i*proTimeOut);
-	// 	};
-	// }, 3000);
 
 	function showAnimation(block) {
 		block.addClass('pro-transition pro-transformLeft');
@@ -274,25 +235,25 @@ $(function()
 
 	var map;
 
-    function mapInit() {
+	function mapInit() {
 
-    	var cityX = $('.b-footer__map').data('lat'),
-    		cityY = $('.b-footer__map').data('lng');
+		var cityX = $('.b-footer__map').data('lat'),
+			cityY = $('.b-footer__map').data('lng');
 
 		var myLatlng = new google.maps.LatLng(cityX, cityY);
-	    var mapOptions = {
-	      center: myLatlng,
-	      zoom: 17,
-	      mapTypeId: google.maps.MapTypeId.ROADMAP,
-	      styles: self.style,
-	      scrollwheel: false, disableDoubleClickZoom: true
-	    };
+		var mapOptions = {
+			center: myLatlng,
+			zoom: 17,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			styles: self.style,
+			scrollwheel: false, disableDoubleClickZoom: true
+		};
 
-	    map = new google.maps.Map(document.getElementById("footer_gmap"), mapOptions);
+		map = new google.maps.Map(document.getElementById("footer_gmap"), mapOptions);
 
-	    var marker = new google.maps.Marker({
-		    position: myLatlng,
-		    map: map,
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			map: map,
 		});
 	}
 
@@ -302,19 +263,22 @@ $(function()
 
 	var citiesArray = [];
 	$.map(__SITE.cities, function(value, index) {
-	    citiesArray.push(value);
+		citiesArray.push(value);
 	});
 
-	// ///////////////////////////////////////////////////
-	// ///////////////////////////////////////////////////
-	//  ВОТ ТУТ НАДО БЫ МЕНЯТЬ ТЕКСТ LIшек
-	// ///////////////////////////////////////////////////
-	// ///////////////////////////////////////////////////
-
+	// CROSS FILTER FORM
 	var sitiesSelectorValue = '';
 	$('.b-header__city-select, .b-footer__city-select').on('change', function() {
 		sitiesSelectorValue = $(this).val();
 		$('.b-header__city-select, .b-footer__city-select').val(sitiesSelectorValue);
+		var optionIndex = $('select option[value="' + sitiesSelectorValue + '"]').index();
+		var optionVal = $('select option[value="' + sitiesSelectorValue + '"]').val();
+		$('.nl-form ul li').eq(optionIndex).addClass('nl-dd-checked').siblings().removeClass('nl-dd-checked');
+		$('select').not($(this)).prev().find('.nl-field-toggle').html($('select').not($(this)).find('option[value="' + optionVal + '"]').html());
+
+		if(window.location.pathname == '/contacts') {
+			$('.b-title__text h1').html($('select').not($(this)).find('option[value="' + optionVal + '"]').html());
+		}
 	});
 
 	function buildingContactInfo() {
@@ -327,23 +291,23 @@ $(function()
 			thisCityLat = thisCity['lat'] || false,
 			thisCityLng = thisCity['lng'] || false,
 			thisCityManager_1_fio = thisCity['manager_1_fio'] || false,
-		    thisCityManager_1_position = thisCity['manager_1_position'] || false,
-		    thisCityManager_1_phone = thisCity['manager_1_phone'] || false,
-		    thisCityManager_1_email = thisCity['manager_1_email'] || false,
-		    thisCityManager_2_fio = thisCity['manager_2_fio'] || false,
-		    thisCityManager_2_position = thisCity['manager_2_position'] || false,
-		    thisCityManager_2_phone = thisCity['manager_2_phone'] || false,
-		    thisCityManager_2_email = thisCity['manager_2_email'] || false,
-		    thisCityManager_3_fio = thisCity['manager_3_fio'] || false,
-		    thisCityManager_3_position = thisCity['manager_3_position'] || false,
-		    thisCityManager_3_phone = thisCity['manager_3_phone'] || false,
-		    thisCityManager_3_email = thisCity['manager_3_email'] || false,
-		    thisCityFb_link = thisCity['fb_link'] || false,
-		    thisCityVk_link = thisCity['vk_link'] || false,
-		    thisCityIg_link = thisCity['ig_link'] || false,
-		    thisCityTw_link = thisCity['tw_link'] || false,
-		    thisCityYt_link = thisCity['yt_link'] || false;
-		    console.log(curentCity);
+			thisCityManager_1_position = thisCity['manager_1_position'] || false,
+			thisCityManager_1_phone = thisCity['manager_1_phone'] || false,
+			thisCityManager_1_email = thisCity['manager_1_email'] || false,
+			thisCityManager_2_fio = thisCity['manager_2_fio'] || false,
+			thisCityManager_2_position = thisCity['manager_2_position'] || false,
+			thisCityManager_2_phone = thisCity['manager_2_phone'] || false,
+			thisCityManager_2_email = thisCity['manager_2_email'] || false,
+			thisCityManager_3_fio = thisCity['manager_3_fio'] || false,
+			thisCityManager_3_position = thisCity['manager_3_position'] || false,
+			thisCityManager_3_phone = thisCity['manager_3_phone'] || false,
+			thisCityManager_3_email = thisCity['manager_3_email'] || false,
+			thisCityFb_link = thisCity['fb_link'] || false,
+			thisCityVk_link = thisCity['vk_link'] || false,
+			thisCityIg_link = thisCity['ig_link'] || false,
+			thisCityTw_link = thisCity['tw_link'] || false,
+			thisCityYt_link = thisCity['yt_link'] || false;
+			console.log(curentCity);
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
 
@@ -828,5 +792,19 @@ $(function()
 			}
 		});
 	});
+	
+	// SHOW ALL BLOSK'S TEACHERS
+
+	// $('.b-primary__all-teachers .btn').click(function(){
+	// 	var BlockTeachersArray = [];
+	// 	$.map(__SITE.teachers, function(value, index) {
+	// 		BlockTeachersArray.push(value);
+	// 	});
+
+	// 	var teachersBlockArray = [];
+	// 	$.each(__SITE.teachers, function(i, v){
+	// 		var thisTeacherCity = $('#teacher-city').val(),
+	// 			thisTeacherDirection = $('#derection-teacher').val();
+	// })
 
 });

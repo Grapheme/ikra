@@ -22,7 +22,7 @@
     <section class="b-section _no-padding-bottom">
         <div class="h2 _mb65">Икра
             <form class="nl-form _text-red" data-nl>
-                <select name="city">
+                <select name="city" class="b-footer__city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
                     @endforeach
@@ -33,18 +33,18 @@
 
 
         <div class="row b-contacts__ways _mb50">
-            <div class="col-md-4">
-                <h3 class="_mb40">{{ $current_city->address }}</h3>
-                <p class="_max-text">
-                    {{ nl2br($current_city->how2get_text) }}
-                </p>
-            </div>
-            <div class="col-md-6 col-md-push-2">
-                <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
-                <div class="_mb40">{{ nl2br($current_city->how2get_way_1) }}</div>
-                <div class="_mb40">{{ nl2br($current_city->how2get_way_2) }}</div>
-                <div class="_mb40">{{ nl2br($current_city->how2get_way_3) }}</div>
-            </div>
+                <div class="col-md-4">
+                    <h3 class="_mb40">{{ $current_city->address }}</h3>
+                    <p class="_max-text">
+                        {{ nl2br($current_city->how2get_text) }}
+                    </p>
+                </div>
+                <div class="col-md-6 col-md-push-2">
+                    <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
+                    <div class="_mb40">{{ nl2br($current_city->how2get_way_1) }}</div>
+                    <div class="_mb40">{{ nl2br($current_city->how2get_way_2) }}</div>
+                    <div class="_mb40">{{ nl2br($current_city->how2get_way_3) }}</div>
+                </div>
         </div>
 
 
