@@ -408,20 +408,25 @@ section.teacher-text .b-about__col {
 	height: auto;
 }
 
-.sliding-profession {
-	position: relative;
-}
+.professions-slider {
+	height: 60px;
+	overflow: hidden;
 
-.pro-transition {
-	transition: all 1s;
-}
+	.sliding-profession {
+		position: relative;
+	}
 
-.pro-transformRight {
-	transform: translate(110%,0);
-}
+	.pro-transition {
+		transition: all 1s;
+	}
 
-.pro-transformLeft {
-	transform: translate(-110%,0);
+	.pro-transformRight {
+		transform: translate(110%,0);
+	}
+
+	.pro-transformLeft {
+		transform: translate(-110%,0);
+	}
 }
 
 .overflown-head {
@@ -522,3 +527,8 @@ section.teacher-text .b-about__col {
 		color: #ef4949 !important;
 	}
 }
+
+.js-cross-filter-fuckup {
+	display: inherit;
+}
+

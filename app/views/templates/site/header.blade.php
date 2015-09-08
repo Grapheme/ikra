@@ -26,7 +26,7 @@
                 @endforeach
             </ul> -->
             <form class="nl-form header-city-form" action="" method="get" data-nl>
-                <select class="b-header__city-select" name="city_select" id="city_select">
+                <select class="b-header__city-select js-city-select" name="city_select" id="city_select">
                     @foreach ($dic_city as $city)
                         <?
                         if (!$city->important)

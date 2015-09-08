@@ -1374,16 +1374,20 @@ section.teacher-text .b-about__col {
   width: auto;
   height: auto;
 }
-.sliding-profession {
+.professions-slider {
+  height: 60px;
+  overflow: hidden;
+}
+.professions-slider .sliding-profession {
   position: relative;
 }
-.pro-transition {
+.professions-slider .pro-transition {
   transition: all 1s;
 }
-.pro-transformRight {
+.professions-slider .pro-transformRight {
   transform: translate(110%, 0);
 }
-.pro-transformLeft {
+.professions-slider .pro-transformLeft {
   transform: translate(-110%, 0);
 }
 .overflown-head {
@@ -1492,6 +1496,9 @@ section.teacher-text .b-about__col {
 }
 .header-city-form ul .nl-dd-checked {
   color: #ef4949 !important;
+}
+.js-cross-filter-fuckup {
+  display: inherit;
 }
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
