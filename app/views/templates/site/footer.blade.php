@@ -8,9 +8,9 @@
 
 @section('footer_contacts')
     <section class="b-section _no-padding-bottom">
-        <div class="h2 _mb35">Икра
+        <div class="h2 _mb35">Икра в
             <form class="nl-form _text-red" data-nl>
-                <select>
+                <select id="" class="b-footer__city-select">
                     @foreach ($dic_city as $city)
                         <?
                         if (!$city->important)
@@ -100,6 +100,7 @@
                     <div class="form-group _mb40">
                         <input type="text" class="form-control" id="" placeholder="А здесь вопрос">
                     </div>
+                     <input type="hidden" id="city_id">
                     <button type="submit" class="btn btn-blue btn-wide">Отправить</button>
                 </form>
 
@@ -110,6 +111,7 @@
 
 <footer class="b-footer">
     <div class="b-footer__map" data-lat="{{ $current_city->lat }}" data-lng="{{ $current_city->lng }}">
+        <div id="footer_gmap"></div>
         <div class="b-footer__map-text">
             <div class="b-footer__map-text-valign h4">
                 {{ $current_city->name }}, <br> {{ $current_city->address }}
@@ -130,6 +132,10 @@
 @endif
 
 <script>
+    __SITE = __SITE || {};
+    __SITE.img_path_full = "{{ Config::get('site.galleries_photo_public_dir') }}";
+    __SITE.img_path_thumb = "{{ Config::get('site.galleries_thumb_public_dir') }}";
+    __SITE.url_change_city = "{{ URL::route('ajax.change_city') }}";
     __SITE.cities = {{ json_encode($dic_city, JSON_UNESCAPED_UNICODE) }};
     __SITE.directions = {{ json_encode($dic_direction, JSON_UNESCAPED_UNICODE) }};
     __SITE.types = {{ json_encode($dic_type, JSON_UNESCAPED_UNICODE) }};

@@ -15,7 +15,7 @@
 
     <div class="b-header__city">
         <div class="b-header__city-select-wrapper _txt9">
-            <span id="city_button">Икра Москва <i class="fa fa-caret-down"></i></span>
+            <!-- <span id="city_button">Икра Москва <i class="fa fa-caret-down"></i></span>
             <ul id="city_list" class="b-header__city-select">
                 @foreach ($dic_city as $city)
                     <?
@@ -24,16 +24,18 @@
                     ?>
                     <li><a href="{{ URL::route('page.city', $city->slug) }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</a></li>
                 @endforeach
-            </ul>
-            <!-- <form action="" method="get">
+            </ul> -->
+            <form class="nl-form header-city-form" action="" method="get" data-nl>
                 <select class="b-header__city-select" name="city_select" id="city_select">
-                    <option value="10">Икра Москва</option>
-                    <option value="11">Икра Спб</option>
-                    <option value="12">Икра Минск</option>
-                    <option value="14614">Икра Екб</option>
+                    @foreach ($dic_city as $city)
+                        <?
+                        if (!$city->important)
+                            continue;
+                        ?>
+                            <option value="{{ $city->id }}">Икра {{ $city->name_mini ?: $city->name }}</option>
+                    @endforeach
                 </select>
-                <i class="fa fa-caret-down"></i>
-            </form> -->
+            </form>
         </div>
     </div>
 

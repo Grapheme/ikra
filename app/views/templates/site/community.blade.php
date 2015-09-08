@@ -102,7 +102,7 @@ elseif (Input::get('tab') == 'social')
 
     <section class="b-section _no-padding-bottom">
 
-        <ul class="row _mb40 text-center">
+        <ul class="row _mb40 text-center" id="tabs-head">
             <li class="col-sm-4 _mb30{{ $current_tab == 'blog' ? ' _text-red' : '' }}">
                 <h3><a href="#blog">Блог</a></h3>
             </li>
@@ -116,117 +116,108 @@ elseif (Input::get('tab') == 'social')
 
 
         {{-- BLOG --}}
+        
+        <div id="tabs-holder">
+            @if (isset($blogs) && is_object($blogs) && $blogs->count())
+                <div class="tab_blog" id="tab_blog" data-name="blog">
 
-        @if (isset($blogs) && is_object($blogs) && $blogs->count())
-            <div class="tab_blog" id="tab_blog">
+                    <ul class="row">
+                        @foreach ($blogs as $blog)
+                            <li class="col-sm-4 _mb80 blog-teaser" data-equalheight>
+                                @if (isset($blog->image) && is_object($blog->image))
+                                    <a class="_block _mb30 blog-readmore" style="background-image: url({{ $blog->image->full() }});" href="{{ URL::route('page.blog_detail', [$blog->id]) }}">
+                                        <div class="decor-block"></div>
+                                        <h3>{{ $blog->name }}</h3>
+                                        <p class="_mb30 annotation">
+                                            {{ $blog->annotation }}
+                                        </p>
+                                    </a>
+                                @endif
+                                <p class="_mb30">
+                                    {{ $blog->short }}
+                                </p>
+                                <div class="text-right">
+                                    <a href="{{ URL::route('page.blog_detail', [$blog->id]) }}" class="btn btn-readmore">Читать полностью</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
 
-                <ul class="row">
-                    @foreach ($blogs as $blog)
-                        <li class="col-sm-4 _mb80" data-equalheight>
-                            @if (isset($blog->image) && is_object($blog->image))
-                                <a class="_block _mb30" href="{{ URL::route('page.blog_detail', [$blog->id]) }}">
-                                    <img class="_full-width" src="{{ $blog->image->full() }}" alt="{{ $blog->name }}">
-                                </a>
-                            @endif
-                            <h3>{{ $blog->name }}</h3>
-                            <p class="_mb30">
-                                {{ $blog->annotation }}
-                            </p>
-                            <p class="_mb30">
-                                {{ $blog->short }}
-                            </p>
-                            <div class="text-right">
-                                <a href="{{ URL::route('page.blog_detail', [$blog->id]) }}" class="btn btn-readmore">Читать полностью</a>
+                    {{ $blogs->appends(['tab' => 'blog'])->fragment('blog')->links() }}
+
+                </div>
+            @endif
+
+
+            {{-- EVENTS --}}
+
+            @if (isset($events) && is_object($events) && $events->count())
+                <div class="tab_events" id="tab_events" data-name="events">
+
+                    <ul class="row">
+                        @foreach ($events as $event)
+                            <li class="col-sm-4 _mb80 event-teaser" data-equalheight>
+                                @if (isset($event->image) && is_object($event->image))
+                                    <a class="_block _mb30 event-readmore" style="background-image: url({{ $event->image->full() }});" href="{{ URL::route('page.event', [$event->id]) }}">
+                                        <div class="decor-block"></div>
+                                        <p class="h3">
+                                            {{ $event->name }}
+                                        </p>
+                                        <time class="h5">
+                                            @if ($event->date_start)
+                                                {{ Helper::rdate('j M', $event->date_start) }}
+                                            @endif
+                                            @if ($event->date_start < $event->date_stop)
+                                                &mdash;<br>{{ Helper::rdate('j M', $event->date_stop) }}
+                                            @endif
+                                        </time>
+                                    </a>
+                                @endif
+                                <p class="_mb30">
+                                    {{ $event->short }}
+                                </p>
+                                <div class="text-right">
+                                    <a href="{{ URL::route('page.event', [$event->id]) }}#form" class="btn btn-blue">Записаться</a>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+
+                    {{ $events->appends(['tab' => 'events'])->fragment('events')->links() }}
+
+                </div>
+            @endif
+
+            {{-- SOCIAL --}}
+
+            @if (isset($dic_city) && is_object($dic_city) && $dic_city->count())
+                <div class="row b-community__social tab_social" id="tab_social" data-name="social">
+                    @foreach ($dic_city as $city)
+                        <li class="col-sm-3">
+                            <div class="_txt4 _text-red _mb40"><b>Икра {{ $city->name }}</b></div>
+                            <div class="b-social">
+                                @if ($city->fb_link)
+                                    <a class="_facebook" href="{{ $city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                                @endif
+                                @if ($city->vk_link)
+                                    <a class="_vkontakte" href="{{ $city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                                @endif
+                                @if ($city->ig_link)
+                                    <a class="_instagram" href="{{ $city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                                @endif
+                                @if ($city->tw_link)
+                                    <a class="_twitter" href="{{ $city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                                @endif
+                                @if ($city->yt_link)
+                                    <a class="_youtube" href="{{ $city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                                @endif
                             </div>
                         </li>
                     @endforeach
-                </ul>
-
-                {{ $blogs->appends(['tab' => 'blog'])->fragment('blog')->links() }}
-
-            </div>
-        @endif
-
-
-
-        <hr>
-
-
-        {{-- EVENTS --}}
-
-        @if (isset($events) && is_object($events) && $events->count())
-            <div class="tab_events" id="tab_events">
-
-                <ul class="row">
-                    @foreach ($events as $event)
-                        <li class="col-sm-4 _mb80" data-equalheight>
-                            @if (isset($event->image) && is_object($event->image))
-                                <a class="_block _mb30" href="{{ URL::route('page.event', [$event->id]) }}">
-                                    <img class="_full-width" src="{{ $event->image->full() }}" alt="{{ $event->name }}">
-                                </a>
-                            @endif
-                            <p class="h3">
-                                {{ $event->name }}
-                            </p>
-                            <time class="h5">
-                                @if ($event->date_start)
-                                    {{ Helper::rdate('j M', $event->date_start) }}
-                                @endif
-                                @if ($event->date_start < $event->date_stop)
-                                    &mdash; {{ Helper::rdate('j M', $event->date_stop) }}
-                                @endif
-                            </time>
-                            <p class="_mb30">
-                                {{ $event->short }}
-                            </p>
-                            <div class="text-right">
-                                <a href="{{ URL::route('page.event', [$event->id]) }}#form" class="btn btn-blue">Записаться</a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-
-                {{ $events->appends(['tab' => 'events'])->fragment('events')->links() }}
-
-            </div>
-        @endif
-
-
-        <hr>
-
-
-        {{-- SOCIAL --}}
-
-        @if (isset($dic_city) && is_object($dic_city) && $dic_city->count())
-            <div class="row b-community__social tab_social" id="tab_social">
-                @foreach ($dic_city as $city)
-                    <li class="col-sm-3">
-                        <div class="_txt4 _text-red _mb40"><b>Икра {{ $city->name }}</b></div>
-                        <div class="b-social">
-                            @if ($city->fb_link)
-                                <a class="_facebook" href="{{ $city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
-                            @endif
-                            @if ($city->vk_link)
-                                <a class="_vkontakte" href="{{ $city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
-                            @endif
-                            @if ($city->ig_link)
-                                <a class="_instagram" href="{{ $city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
-                            @endif
-                            @if ($city->tw_link)
-                                <a class="_twitter" href="{{ $city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
-                            @endif
-                            @if ($city->yt_link)
-                                <a class="_youtube" href="{{ $city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
-                            @endif
-                        </div>
-                    </li>
-                @endforeach
-            </div>
-        @endif
-
+                </div>
+            @endif
+        </div>
     </section>
-
-
 
 @stop
 

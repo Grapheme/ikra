@@ -5,7 +5,11 @@
 <? require_once('templates/header.php'); ?>
 
 
-	<section class="b-title _long _violet">
+	<section class="b-title _long _videoheader">
+
+		<div id="videoheader_wrap" class="b-title__videoheader _bg-red">
+			<div id="videoheader" class="videoheader" data-property="{videoURL:'http://youtu.be/Cdu5MjoNp3Y',containment:'#videoheader_wrap', showControls:false, autoPlay:true, loop:true, mute:true, vol:1, startAt:0, opacity:1, quality:'default', gaTrack:false}"></div>
+		</div>
 		
 		<div class="b-title__logo">
 			<img src="img/logo/ikra-top.png" alt="ИКРА IKRA">
@@ -18,7 +22,9 @@
 					Мы готовим востребованных специалистов. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore corporis maxime nesciunt, omnis vero, illo veniam consequuntur quam ea vel voluptas est reprehenderit deserunt nihil possimus deleniti assumenda.
 				</i>
 			</div>
-			<div class="h2">Digital-креатор</div>
+			<div class="h2">
+				<div class="element"></div>
+			</div>
 		</div>
 
 	</section>
@@ -226,16 +232,6 @@
 			</div>
 		</div>
 	</section>
-
-
-
-
-
-	
-
-
-
-
 
 
 

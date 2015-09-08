@@ -110,8 +110,41 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                     {{ $course->weekdays }}
                 @endif
             </div>
-
-            <span class="_text-red"><a class="btn btn-white" href="#">Записаться</a></span>
+            <div class="course-form-holder" class="collapse in" aria-expanded="true">
+                <form role="form" class="row _white">
+                    <div class="col-md-5 _mb60 col-md-offset-0">
+                        <div class="form-group _mb20">
+                            <input name="name" type="text" class="form-control" id="" placeholder="Имя">
+                        </div>
+                        <div class="form-group _mb20">
+                            <input name="email" type="email" class="form-control" id="" placeholder="E-mail">
+                        </div>
+                        <div class="form-group _mb20">
+                            <input name="phone" type="text" class="form-control" id="" placeholder="Телефон">
+                        </div>
+                        <div class="form-group _mb20">
+                            <div data-nl="">
+                                <div class="nl-field nl-dd">
+                                    <select>
+                                        <option value="0">Скидка</option>
+                                        <option value="1">0%</option>
+                                        <option value="2">10%</option>
+                                        <option value="3">20%</option>
+                                        <option value="4">30%</option>
+                                        <option value="5">40%</option>
+                                        <option value="6">50%</option>
+                                    </select>
+                                </div>
+                                <div class="nl-overlay"></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 _text-blue text-center">
+                    <button type="submit" class="btn">Отправить</button>
+                </div>
+                </form>
+            </div>
+            <span class="_text-red"><a class="open-form btn btn-white" href="#">Записаться</a></span>
         </div>
 
     </section>
@@ -229,6 +262,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                                         </article>
                                     </div>
                                 </div>
+                                <div class="row all-teachers">
+                                </div>
                                 <div class="row _mb70">
                                     <div class="col-md-4">
 
@@ -315,15 +350,15 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             <br>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form role="form" class="_white">
+                    <form id="curent-course-form" role="form" class="_white">
                         <div class="form-group _mb20">
-                            <input type="text" class="form-control" id="" placeholder="Имя">
+                            <input name="name" type="text" class="form-control" id="" placeholder="Имя">
                         </div>
                         <div class="form-group _mb20">
-                            <input type="email" class="form-control" id="" placeholder="E-mail">
+                            <input name="email" type="email" class="form-control" id="" placeholder="E-mail">
                         </div>
                         <div class="form-group _mb50">
-                            <input type="text" class="form-control" id="" placeholder="Телефон">
+                            <input name="phone" type="text" class="form-control" id="" placeholder="Телефон">
                         </div>
                         <button type="submit" class="btn btn-wide">Отправить</button>
                     </form>
@@ -396,13 +431,13 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                 <div class="_mb70"></div>
                 <form role="form" class="_white">
                     <div class="form-group _mb20">
-                        <input type="text" placeholder="Имя" id="" class="form-control">
+                        <input type="text" name="name" placeholder="Имя" id="" class="form-control">
                     </div>
                     <div class="form-group _mb20">
-                        <input type="email" placeholder="E-mail" id="" class="form-control">
+                        <input type="email" name="email" placeholder="E-mail" id="" class="form-control">
                     </div>
                     <div class="form-group _mb50">
-                        <input type="text" placeholder="Телефон" id="" class="form-control">
+                        <input type="text" name="phone" placeholder="Телефон" id="" class="form-control">
                     </div>
                     <button class="btn btn-white btn-wide" type="submit">Записаться</button>
                 </form>
@@ -413,10 +448,11 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
 
 
 
-    <section class="b-section text-center _no-padding-bottom">
+    <section class="b-section text-center _no-padding-bottom course-sharing-block">
         <h4 class="_text-blue _mb50">Такой информацией стоит поделиться с друзьями:</h4>
-        <a href="#" class="btn btn-blue _mb20" style="margin-right: 40px">В фейсбуке</a>
-        <a href="#" class="btn btn-blue _mb20">Во вконтакте</a>
+        <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+        <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook">
+        </div>
     </section>
 
 @stop
