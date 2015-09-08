@@ -121,7 +121,7 @@
         <div class="b-about__how row _mb70">
             <div class="col-md-4 _mb20"><i>На ИКРе мы переосмыслили подход к обучению. Каждый наш преподаватель &mdash; это дизайнер опыта, а занятие &mdash; это событие, из которого студент выносит какой-то опыт.</i></div>
             <div class="col-md-4 _mb20"><i>Rerum esse, animi vero autem recusandae illo alias doloribus, consequuntur quam a, adipisci ut at eos illum, dolorem! Consequuntur vel, voluptatum alias?</i></div>
-            <div class="col-md-4 _mb20"><img src="{{ Config::get('site.theme_path') }}/img/bg/spaceman.jpg" height="222" width="193" alt=""></div>
+            <div class="col-md-4 _mb20"><img class="astronaut" src="{{ Config::get('site.theme_path') }}/img/bg/spaceman.jpg" height="222" width="193" alt=""></div>
         </div>
 
         <ul class="b-about__step-list row text-center">

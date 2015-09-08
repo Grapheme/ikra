@@ -1117,7 +1117,7 @@ a._text-pink:hover {
 .two-columns .col-md-6 {
   width: 45%;
   margin-right: 5%;
-  font-size: 19px;
+  font-size: 14px;
   line-height: 23px;
   padding-right: 0px;
   padding-left: 0px;
@@ -1459,6 +1459,7 @@ section.teacher-text .b-about__col {
   position: absolute;
   top: 270px;
   width: 60%;
+  height: 120px;
   text-transform: uppercase;
   font-family: MuseoSansCyrl-500;
   font-size: 14px;
@@ -1899,25 +1900,17 @@ section.teacher-text .b-about__col {
 .b-about__top {
   min-height: 90px;
 }
+.astronaut {
+  margin-top: -95px;
+}
 .b-about__course-list {
-  background: url(../img/bg/4types.png) center top no-repeat;
+  background: url(../img/icon/curly-branch.svg) center top no-repeat;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   -o-background-size: 100%;
   background-size: 100%;
   padding-top: 120px;
-}
-.b-about__course-list li:nth-child(1) strong:before {
-  left: 35%;
-}
-.b-about__course-list li:nth-child(2) strong:before {
-  left: 40%;
-}
-.b-about__course-list li:nth-child(3) strong:before {
-  left: 50%;
-}
-.b-about__course-list li:nth-child(4) strong:before {
-  left: 65%;
+  background-size: 75.8%;
 }
 .b-about__course-list h3 {
   margin-bottom: 50px;
@@ -1931,8 +1924,10 @@ section.teacher-text .b-about__col {
   position: absolute;
   width: 12px;
   height: 22px;
-  background-image: url(../img/icon/arrow-down.png);
+  background-image: url(../img/icon/arrow-down.svg);
   bottom: -35px;
+  left: 50%;
+  margin-left: -6px;
 }
 .b-about__course-text {
   min-height: 190px;
