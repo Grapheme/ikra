@@ -121,7 +121,7 @@
 .two-columns .col-md-6 {
 	width: 45%;
 	margin-right: 5%;
-	font-size: 19px;
+	font-size: 14px;
 	line-height: 23px;
 	padding-right: 0px;
 	padding-left: 0px;
@@ -408,20 +408,25 @@ section.teacher-text .b-about__col {
 	height: auto;
 }
 
-.sliding-profession {
-	position: relative;
-}
+.professions-slider {
+	height: 60px;
+	overflow: hidden;
 
-.pro-transition {
-	transition: all 1s;
-}
+	.sliding-profession {
+		position: relative;
+	}
 
-.pro-transformRight {
-	transform: translate(110%,0);
-}
+	.pro-transition {
+		transition: all 1s;
+	}
 
-.pro-transformLeft {
-	transform: translate(-110%,0);
+	.pro-transformRight {
+		transform: translate(110%,0);
+	}
+
+	.pro-transformLeft {
+		transform: translate(-110%,0);
+	}
 }
 
 .overflown-head {
@@ -485,6 +490,7 @@ section.teacher-text .b-about__col {
 			position: absolute;
 			top: 270px;
 			width: 60%;
+			height: 120px;
 			text-transform: uppercase;
 			font-family: MuseoSansCyrl-500;
 			font-size: 14px;
@@ -521,3 +527,8 @@ section.teacher-text .b-about__col {
 		color: #ef4949 !important;
 	}
 }
+
+.js-cross-filter-fuckup {
+	display: inherit;
+}
+

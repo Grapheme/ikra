@@ -130,29 +130,33 @@
     @if (isset($dic_workers) && is_object($dic_workers) && $dic_workers->count())
         <section class="b-section _bg-cyan _no-padding-bottom">
             <h2>В главных ролях </h2>
-
-            <ul class="row _mb0">
-                @foreach ($dic_workers as $worker)
-                    <li class="col-sm-4 _mb50">
-                        <span class="_block _mb20">
-                            @if (isset($worker->avatar) && is_object($worker->avatar))
-                                <img src="{{ $worker->avatar->full() }}" alt="{{ $worker->name }}">
+            <div class="jcarousel-nav-bar">
+                <div class="jcarousel-nav arrow-left"></div>
+                <div class="jcarousel-nav arrow-right"></div>
+            </div>
+            <div class="jcarousel">
+                <ul class="row _mb0">
+                    @foreach ($dic_workers as $worker)
+                        <li class="col-sm-4 _mb50">
+                            <span class="_block _mb20">
+                                @if (isset($worker->avatar) && is_object($worker->avatar))
+                                    <img src="{{ $worker->avatar->full() }}" alt="{{ $worker->name }}">
+                                @endif
+                            </span>
+                            <h3 class="_mb5">{{ $worker->name }}</h3>
+                            @if ($worker->position)
+                                <small class="_block _mb30">{{ $worker->position }}</small>
                             @endif
-                        </span>
-                        <h3 class="_mb5">{{ $worker->name }}</h3>
-                        @if ($worker->position)
-                            <small class="_block _mb30">{{ $worker->position }}</small>
-                        @endif
-                        @if ($worker->phone)
-                            <h3><a href="tel:{{ $worker->phone }}">{{ $worker->phone }}</a></h3>
-                        @endif
-                        @if ($worker->email)
-                            <h3><strong><a href="mailto:{{ $worker->email }}">{{ $worker->email }}</a></strong></h3>
-                        @endif
-                    </li>
-                @endforeach
-            </ul>
-
+                            @if ($worker->phone)
+                                <h3><a href="tel:{{ $worker->phone }}">{{ $worker->phone }}</a></h3>
+                            @endif
+                            @if ($worker->email)
+                                <h3><strong><a href="mailto:{{ $worker->email }}">{{ $worker->email }}</a></strong></h3>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </section>
     @endif
 
