@@ -30,6 +30,60 @@
 	background: url(../img/bg/4types.png) center top no-repeat;
 	.background-size(100%);
 	padding-top: 120px;
+	
+	li {
+		&:nth-child(1){
+			strong {
+				&:before {
+					left: 35%;
+				}
+			}
+		}
+
+		&:nth-child(2){
+			strong {
+				&:before {
+					left: 40%;
+				}
+			}
+		}
+
+		&:nth-child(3){
+			strong {
+				&:before {
+					left: 50%;
+				}
+			}
+		}
+
+		&:nth-child(4){
+			strong {
+				&:before {
+					left: 65%;
+				}
+			}
+		}
+	}
+
+	h3 {
+		margin-bottom: 50px;
+
+		strong {
+			position: relative;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				width: 12px;
+				height: 22px;
+				background-image: url(../img/icon/arrow-down.png);
+				bottom: -35px;
+			}
+
+
+		}
+	}
 }
 
 

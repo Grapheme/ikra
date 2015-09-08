@@ -254,6 +254,7 @@ $(function()
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
+			icon: '/theme/site/img/icon/map-marker.svg'
 		});
 	}
 
@@ -631,7 +632,9 @@ $(function()
         submitHandler: function (form) {
             var options = {
                 success: function (data) {
-                    console.log('success')
+                    $('form#course-select').fadeOut();
+                    $('.form-holder h2._cta').fadeOut();
+                    $('.form-holder .form-success').fadeIn();
                 },
                 error: function (data) {
                     console.log('server error')
@@ -719,6 +722,14 @@ $(function()
 	    $('.jcarousel').jcarousel({
 	        // Configuration goes here
 	    });
+	});
+
+	$('.jcarousel-nav-bar .arrow-left').click(function() {
+	    $('.jcarousel').jcarousel('scroll', '-=1');
+	});
+
+	$('.jcarousel-nav-bar .arrow-right').click(function() {
+	    $('.jcarousel').jcarousel('scroll', '+=1');
 	});
 
 	// SMOOTH SCROLL

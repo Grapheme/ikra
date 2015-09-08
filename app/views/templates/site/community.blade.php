@@ -126,8 +126,9 @@ elseif (Input::get('tab') == 'social')
                             <li class="col-sm-4 _mb80 blog-teaser" data-equalheight>
                                 @if (isset($blog->image) && is_object($blog->image))
                                     <a class="_block _mb30 blog-readmore" style="background-image: url({{ $blog->image->full() }});" href="{{ URL::route('page.blog_detail', [$blog->id]) }}">
+                                        <div class="decor-block"></div>
                                         <h3>{{ $blog->name }}</h3>
-                                        <p class="_mb30">
+                                        <p class="_mb30 annotation">
                                             {{ $blog->annotation }}
                                         </p>
                                     </a>
@@ -158,6 +159,7 @@ elseif (Input::get('tab') == 'social')
                             <li class="col-sm-4 _mb80 event-teaser" data-equalheight>
                                 @if (isset($event->image) && is_object($event->image))
                                     <a class="_block _mb30 event-readmore" style="background-image: url({{ $event->image->full() }});" href="{{ URL::route('page.event', [$event->id]) }}">
+                                        <div class="decor-block"></div>
                                         <p class="h3">
                                             {{ $event->name }}
                                         </p>
@@ -166,7 +168,7 @@ elseif (Input::get('tab') == 'social')
                                                 {{ Helper::rdate('j M', $event->date_start) }}
                                             @endif
                                             @if ($event->date_start < $event->date_stop)
-                                                &mdash; {{ Helper::rdate('j M', $event->date_stop) }}
+                                                &mdash;<br>{{ Helper::rdate('j M', $event->date_stop) }}
                                             @endif
                                         </time>
                                     </a>

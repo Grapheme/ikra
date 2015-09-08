@@ -233,7 +233,7 @@ Helper::tad($modules);
 
 
 
-    <section class="b-section _bg-blue">
+    <section class="b-section _bg-blue form-holder">
         <div class="_vertical-center">
             <div>
                 <h2 class="_cta">
@@ -277,6 +277,24 @@ Helper::tad($modules);
                     <button type="submit" class="btn">Отправить</button>
                 </div>
             </form>
+        </div>
+        <div class="form-success _hided">
+            <div class="_vertical-center">
+                <div>
+                    <h2 class="_cta">
+                        Спасибо!
+                    </h2>
+                    <h2 class="_cta">
+                        Заявка принята и мы скоро перезвоним!
+                    </h2>
+                </div>
+            </div>
+            <section class="b-section text-center _no-padding-bottom course-sharing-block">
+                <i class="_mb50">А пока расскажи друзьям, что ты учишься на ИКРЕ<br>и позови их с собой!</i>
+                <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
+                <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook">
+                </div>
+            </section>
         </div>
     </section>
 
