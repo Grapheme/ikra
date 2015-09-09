@@ -119,14 +119,14 @@ foreach ($dic_stories as $story) {
 
     <section class="b-section">
         <div class="h2">Наши курсы <br> в
-            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-violet" id="courses-filter-form" data-nl>
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" id="courses-filter-form" data-nl>
                 <select name="city" id="" class="js-city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
                     @endforeach
                 </select>
                 <span class="_text-gray">по</span>
-                <div class="js-cross-filter-fuckup">
+                <div class="js-cross-filter-fuckup js-course-recoloring">
                     <select name="direction" id="course-direction">
                         <option value="0" data-color="#ff0000">всем направлениям</option>
                         @foreach ($dic_direction as $direction)

@@ -65,7 +65,7 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
         <div class="b-title__text">
             <h1 class="_mb30">{{ $teacher->name }}</h1>
             <div class="teacher-sub-name">
-                <h3 class="_mb5">{{ $teacher->position }}</h3>
+                <!-- <h3 class="_mb5">{{ $teacher->position }}</h3> -->
                 <i><strong>{{ $teacher->quote }}</strong></i>
             </div>
         </div>
@@ -81,28 +81,6 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                 <div>
                     @if (isset($teacher->avatar) && is_object($teacher->avatar))
                         <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                    @endif
-                </div>
-            </div>
-            <div class="col-md-4">
-                <!-- <h3 class="_mb5">{{ $teacher->position }}</h3> -->
-                <!-- <small class="_block">{{ $teacher->company }}</small> -->
-                <h3 class="_mb10">Напиши:</h3>
-                <div class="b-social">
-                    @if ($teacher->fb_link)
-                        <a class="_facebook" href="{{ $teacher->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
-                    @endif
-                    @if ($teacher->vk_link)
-                        <a class="_vkontakte" href="{{ $teacher->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
-                    @endif
-                    @if ($teacher->ig_link)
-                        <a class="_instagram" href="{{ $teacher->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
-                    @endif
-                    @if ($teacher->tw_link)
-                        <a class="_twitter" href="{{ $teacher->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
-                    @endif
-                    @if ($teacher->yt_link)
-                        <a class="_youtube" href="{{ $teacher->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                 </div>
             </div>
@@ -132,11 +110,28 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
             <p>Мы готовим специалистов для работы в креативных агентствах, национальных и транснациональных компаниях, исследовательских компаниях, дизайн-студиях и многих других организациях, где нужны сильные специалисты в области креатива и стратегии.</p>
             <p>Наши выпускники становятся квалифицированными креативными директорами, стратегами, креаторами, изобретателями, менеджерами, бренд-менеджерами, продюсерами, арт-директорами, владельцами своих компаний. Но самое важное, что наши выпускники становятся счастливыми людьми.</p>
         </div>
-        <div class="b-about__col col-md-4 sharing-right-block">
-            <h3 class="_mb10">Поделиться историей</h3>
-
-            <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
-            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook">
+        <div class="b-about__col col-md-4">
+           <div class="col-md-4">
+                <h3 class="_mb5">{{ $teacher->position }}</h3>
+                <small class="_block">{{ $teacher->company }}</small>
+                <h3 class="_mb10">Напиши:</h3>
+                <div class="b-social">
+                    @if ($teacher->fb_link)
+                        <a class="_facebook" href="{{ $teacher->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                    @endif
+                    @if ($teacher->vk_link)
+                        <a class="_vkontakte" href="{{ $teacher->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                    @endif
+                    @if ($teacher->ig_link)
+                        <a class="_instagram" href="{{ $teacher->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                    @endif
+                    @if ($teacher->tw_link)
+                        <a class="_twitter" href="{{ $teacher->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                    @endif
+                    @if ($teacher->yt_link)
+                        <a class="_youtube" href="{{ $teacher->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                    @endif
+                </div>
             </div>
         </div>
     </section>

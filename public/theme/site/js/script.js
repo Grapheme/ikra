@@ -514,7 +514,7 @@ $(function()
 	$('#courses-filter-form ul li').click(function() {
 
 		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
-		$('#courses-filter-form .nl-field-toggle').css('color', thisCourseColor);
+		$('#courses-filter-form .js-course-recoloring .nl-field-toggle').css('color', thisCourseColor);
 
 		// Sending filter reques
 		$('#courses-filter-form').validate({
@@ -640,7 +640,7 @@ $(function()
         }
     });
 
-    // DIRECT COURSE FORM VALIDATION
+    // SELECT COURSE FORM VALIDATION
 
     $('form#course-select').validate({
         rules: {
@@ -796,7 +796,7 @@ $(function()
 	// TEACHERS FILTER RE-COLORING
 	$('#teachers-filter-form ul li').click(function() {
 		var teacherCourseColor = $('#derection-teacher').find(':selected').attr('data-color');
-		$('#teachers-filter-form .nl-field-toggle').css('color', teacherCourseColor);
+		$('#teachers-filter-form .js-course-recoloring .nl-field-toggle').css('color', teacherCourseColor);
 	});
 
 
@@ -843,7 +843,7 @@ $(function()
 				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
 				teachersSortArray.push('</div>');
 				teachersSortArray.push('</li>');
-				
+
 				$('ul.b-teachers__list').empty();
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
 			}

@@ -50,12 +50,14 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
             <br>
             по
             <form class="nl-form _text-red" data-nl>
-                <select class="js-teach-select" name="teach-subject" id="derection-teacher">
-                    <option value="0" data-color="#ff0000">всем направлениям</option>
-                    @foreach ($dic_direction as $direction)
-                        <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
-                    @endforeach
-                </select>
+                <div class="js-course-recoloring">
+                    <select class="js-teach-select" name="teach-subject" id="derection-teacher">
+                        <option value="0" data-color="#ff0000">всем направлениям</option>
+                        @foreach ($dic_direction as $direction)
+                            <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="nl-overlay"></div>
             </form>
         </div>

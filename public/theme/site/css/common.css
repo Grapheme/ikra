@@ -1500,6 +1500,9 @@ section.teacher-text .b-about__col {
 .js-cross-filter-fuckup {
   display: inherit;
 }
+.js-course-recoloring {
+  display: inline-block;
+}
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
 .b-title {
