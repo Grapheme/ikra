@@ -45,7 +45,7 @@ foreach ($dic_teachers as $tchr) {
         $more_teachers[$tchr->id] = $tchr;
     }
 }
-        die;
+#die;
 #Helper::tad($more_teachers);
 
 $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction[$teacher->direction] : null;
