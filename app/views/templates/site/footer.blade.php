@@ -32,7 +32,7 @@
         {{ Helper::ta_($current_city) }}
 
         <div class="row">
-            <div class="col-md-6 _mb30">
+            <div class="col-md-6 _mb30 js-footer-contact-info">
                 @if ($current_city->manager_1_fio)
                     <div class="_mb30">
                         <h3>

@@ -318,7 +318,6 @@ $(function()
 	});
 
 	function buildingContactInfo() {
-
 		var curentCity = $('.b-header__city-select').val(),
 			thisCity = __SITE.cities[curentCity],
 			thisCityName = thisCity.name || false,
@@ -344,6 +343,7 @@ $(function()
 			thisCityTw_link = thisCity['tw_link'] || false,
 			thisCityYt_link = thisCity['yt_link'] || false;
 			console.log(curentCity);
+
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
 
@@ -499,11 +499,15 @@ $(function()
 			cityContactBlock.push(ContactBlockSocial.join(''));
 		}
 		
-		$('.col-md-6 ._mb30').html();
-		$('.col-md-6 ._mb30').html(cityContactBlock.join(''));
+		$('.js-footer-contact-info').html(cityContactBlock.join(''));
 	}
 	
-	$('.nl-form ul li').click(buildingContactInfo);
+	$('.nl-form ul li').click(function(){
+		setTimeout(function(){
+			$('.js-footer-contact-info').empty();
+			buildingContactInfo();
+		}, 20);
+	});
 	
 	// MAIN PAGE COURSES FILTER FORM
 
