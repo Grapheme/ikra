@@ -799,9 +799,13 @@ $(function()
 		$('#teachers-filter-form .nl-field-toggle').css('color', teacherCourseColor);
 	});
 
+
 	// TEACHERS OVERKILL FILTER
+
+	var defaultTeachers = $('ul.b-teachers__list').html();
+
 	$('.js-teach-select').on('change', function(){
-		$('ul.b-teachers__list').html('');
+		$('ul.b-teachers__list').empty();
 
 		var imgPath = __SITE.img_path_full,
 		imgThumbPath = __SITE.img_path_thumb;
@@ -839,6 +843,11 @@ $(function()
 				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + '</div>');
 				teachersSortArray.push('</li>');
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
+			}
+
+			if(subjectId == 0){
+				$('ul.b-teachers__list').empty();
+				$('ul.b-teachers__list').append(defaultTeachers);
 			}
 		});
 	});
