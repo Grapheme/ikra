@@ -843,6 +843,8 @@ $(function()
 				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
 				teachersSortArray.push('</div>');
 				teachersSortArray.push('</li>');
+				
+				$('ul.b-teachers__list').empty();
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
 			}
 
