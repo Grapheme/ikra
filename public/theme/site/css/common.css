@@ -1385,7 +1385,9 @@ section.teacher-text .b-about__col {
   overflow: hidden;
 }
 .professions-slider .sliding-profession {
-  position: relative;
+  position: absolute;
+  right: 0;
+  left: 0;
 }
 .professions-slider .pro-transition {
   transition: all 1s;

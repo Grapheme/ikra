@@ -225,7 +225,7 @@ $(function()
 					block.removeClass('pro-transformRight');
 				}, 50);
 			}, 50);
-		}, 510);
+		}, 5000);
 	}
 
 	function timeoutShow(eq) {
@@ -233,7 +233,7 @@ $(function()
 		showAnimation($('.sliding-profession').eq(eq));
 		setTimeout(function(){
 			timeoutShow(eq+1);
-		}, 300);
+		}, 3000);
 	}
 
 	function animationLoop() {
