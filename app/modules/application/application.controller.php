@@ -30,7 +30,7 @@ class ApplicationController extends BaseController {
             $dic_{$dic_name} = Cache::get('dic_' . $dic_name);
             if (!$dic_{$dic_name}) {
                 Cache::forget('dic_' . $dic_name);
-                $dic_{$dic_name} = Dic::valuesBySlug($dic_name, null, ['fields', 'textfields'], true, true, true);
+                $dic_{$dic_name} = Dic::valuesBySlug($dic_name, null, ['fields', 'textfields', 'related_dicvals'], true, true, true);
                 $dic_{$dic_name} = DicLib::loadImages($dic_{$dic_name}, ['avatar', 'image', 'logo', 'photo', 'header_img']);
                 Cache::add('dic_' . $dic_name, $dic_{$dic_name}, self::$global_cache_min);
             }

@@ -202,10 +202,10 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                         <small class="_block _mb10">
                             <?php
                             $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
+                            if ($tchr->position)
+                                $temp[] = $tchr->position;
+                            if ($tchr->company)
+                                $temp[] = $tchr->company;
                             ?>
                             {{ implode(', ', $temp) }}
                         </small>

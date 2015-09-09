@@ -35,6 +35,8 @@ if (!$course) {
     echo json_encode(['responseType' => 'error', 'responseCode' => 404]);
     return;
 }
+#Helper::tad($course);
+
 ## Если город курса не совпадает с текущим...
 if ($course->city_id != $city->id) {
 
@@ -61,7 +63,7 @@ $teacher = isset($dic_teachers[$course->teacher_id]) ? $dic_teachers[$course->te
 
 $lessons = Dic::valuesBySlug('lessons', function($query) use ($course) {
     $query->filter_by_field('course_id', '=', $course->id);
-}, true, true, true);
+}, 'all', true, true, true);
 #Helper::tad($lessons);
 
 
