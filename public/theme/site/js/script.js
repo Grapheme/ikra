@@ -585,7 +585,7 @@ $(function()
 							});
 						}
 
-						$('#filtered-course').html('');
+						$('#filtered-course').empty();
 						$('#filtered-course').prepend(fiveFirstCourses.join(''));
 						$('#filtered-course').append(allCoursesButton);
 					},

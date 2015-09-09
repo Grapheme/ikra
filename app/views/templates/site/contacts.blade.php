@@ -22,7 +22,7 @@
     <section class="b-section _no-padding-bottom">
         <div class="h2 _mb65">Икра
             <form class="nl-form _text-red" data-nl>
-                <select name="city" class="b-footer__city-select">
+                <select name="city" class="js-city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
                     @endforeach
@@ -49,7 +49,7 @@
 
 
         <div class="row">
-            <div class="col-md-6 _mb30">
+            <div class="col-md-6 _mb30 js-footer-contact-info">
                 @if ($current_city->manager_1_fio)
                     <div class="_mb30">
                         <h3>
