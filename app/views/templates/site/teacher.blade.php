@@ -182,29 +182,34 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                     {{ $teacher_direction->rp }}
                 @endif
             </h2>
-
-            <ul class="row">
-                @foreach ($more_teachers as $tchr)
-                    <li class="col-sm-4 _mb70">
-                        <a class="_block _mb20" href="{{ URL::route('page.teacher', $tchr->id) }}">
-                            @if (isset($tchr->avatar) && is_object($tchr->avatar))
-                                <img src="{{ $tchr->avatar->full() }}" alt="{{ $tchr->name }}">
-                            @endif
-                        </a>
-                        <h3 class="_mb5">{{ $tchr->name }}</h3>
-                        <small class="_block _mb10">
-                            <?php
-                            $temp = [];
-                            if ($tchr->position)
-                                $temp[] = $tchr->position;
-                            if ($tchr->company)
-                                $temp[] = $tchr->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </small>
-                    </li>
-                @endforeach
-            </ul>
+            <div class="jcarousel-nav-bar">
+                <div class="jcarousel-nav arrow-left"></div>
+                <div class="jcarousel-nav arrow-right"></div>
+            </div>
+            <div class="jcarousel">
+                <ul class="row">
+                    @foreach ($more_teachers as $tchr)
+                        <li class="col-sm-4 _mb70 corousel-element">
+                            <a class="_block _mb20" href="{{ URL::route('page.teacher', $tchr->id) }}">
+                                @if (isset($tchr->avatar) && is_object($tchr->avatar))
+                                    <img src="{{ $tchr->avatar->full() }}" alt="{{ $tchr->name }}">
+                                @endif
+                            </a>
+                            <h3 class="_mb5">{{ $tchr->name }}</h3>
+                            <small class="_block _mb10">
+                                <?php
+                                $temp = [];
+                                if ($tchr->position)
+                                    $temp[] = $tchr->position;
+                                if ($tchr->company)
+                                    $temp[] = $tchr->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </small>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </section>
     @endif
 
