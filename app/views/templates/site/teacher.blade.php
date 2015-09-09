@@ -15,6 +15,8 @@ if (!$teacher) {
     return;
 }
 
+$seo = $teacher->seo;
+$page_title = $teacher->name;
 
 $teacher_courses = new Collection();
 ## Преподает в уроках след. курсов
