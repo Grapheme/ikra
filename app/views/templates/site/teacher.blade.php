@@ -65,7 +65,7 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
         <div class="b-title__text">
             <h1 class="_mb30">{{ $teacher->name }}</h1>
             <div class="teacher-sub-name">
-                <h3 class="_mb5">{{ $teacher->position }}</h3>
+                <!-- <h3 class="_mb5">{{ $teacher->position }}</h3> -->
                 <i><strong>{{ $teacher->quote }}</strong></i>
             </div>
         </div>
@@ -84,10 +84,38 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                     @endif
                 </div>
             </div>
+            <h3 class="_mb5">{{ $teacher->position }}</h3>
+            <small class="_block">{{ $teacher->company }}</small>
+        </div>
+
+        <!-- <div class="row">
+            
             <div class="col-md-4">
-                <!-- <h3 class="_mb5">{{ $teacher->position }}</h3> -->
-                <!-- <small class="_block">{{ $teacher->company }}</small> -->
-                <h3 class="_mb10">Напиши Васе:</h3>
+                
+            </div>
+        </div> -->
+    </section>
+
+    <section class="b-section teacher-text">
+        @if ($teacher->background)
+            <div class="col-md-8">
+                <h3 class="_mb10">background</h3>
+
+                <p>{{ nl2br($teacher->background) }}</p>
+
+            </div>
+        @endif
+        <!-- <div class="b-about__col col-md-4">
+            <p>Мы готовим специалистов для работы в креативных агентствах, национальных и транснациональных компаниях, исследовательских компаниях, дизайн-студиях и многих других организациях, где нужны сильные специалисты в области креатива и стратегии.</p>
+            <p>Наши выпускники становятся квалифицированными креативными директорами, стратегами, креаторами, изобретателями, менеджерами, бренд-менеджерами, продюсерами, арт-директорами, владельцами своих компаний. Но самое важное, что наши выпускники становятся счастливыми людьми.</p>
+        </div>
+        <div class="b-about__col col-md-4">
+            <p>Мы готовим специалистов для работы в креативных агентствах, национальных и транснациональных компаниях, исследовательских компаниях, дизайн-студиях и многих других организациях, где нужны сильные специалисты в области креатива и стратегии.</p>
+            <p>Наши выпускники становятся квалифицированными креативными директорами, стратегами, креаторами, изобретателями, менеджерами, бренд-менеджерами, продюсерами, арт-директорами, владельцами своих компаний. Но самое важное, что наши выпускники становятся счастливыми людьми.</p>
+        </div> -->
+        <div class="b-about__col col-md-4">
+           <div class="col-md-4">
+                <h3 class="_mb10">Напиши:</h3>
                 <div class="b-social">
                     @if ($teacher->fb_link)
                         <a class="_facebook" href="{{ $teacher->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
@@ -105,38 +133,6 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                         <a class="_youtube" href="{{ $teacher->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
                     @endif
                 </div>
-            </div>
-        </div>
-
-        <div class="row">
-            @if ($teacher->background)
-                <div class="col-md-8">
-                    <h3 class="_mb10">background</h3>
-
-                    {{ nl2br($teacher->background) }}
-
-                </div>
-            @endif
-            <!-- <div class="col-md-4">
-                
-            </div> -->
-        </div>
-    </section>
-
-    <section class="b-section teacher-text">
-        <div class="b-about__col col-md-4">
-            <p>Мы готовим специалистов для работы в креативных агентствах, национальных и транснациональных компаниях, исследовательских компаниях, дизайн-студиях и многих других организациях, где нужны сильные специалисты в области креатива и стратегии.</p>
-            <p>Наши выпускники становятся квалифицированными креативными директорами, стратегами, креаторами, изобретателями, менеджерами, бренд-менеджерами, продюсерами, арт-директорами, владельцами своих компаний. Но самое важное, что наши выпускники становятся счастливыми людьми.</p>
-        </div>
-        <div class="b-about__col col-md-4">
-            <p>Мы готовим специалистов для работы в креативных агентствах, национальных и транснациональных компаниях, исследовательских компаниях, дизайн-студиях и многих других организациях, где нужны сильные специалисты в области креатива и стратегии.</p>
-            <p>Наши выпускники становятся квалифицированными креативными директорами, стратегами, креаторами, изобретателями, менеджерами, бренд-менеджерами, продюсерами, арт-директорами, владельцами своих компаний. Но самое важное, что наши выпускники становятся счастливыми людьми.</p>
-        </div>
-        <div class="b-about__col col-md-4 sharing-right-block">
-            <h3 class="_mb10">Поделиться историей</h3>
-
-            <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script>
-            <div class="yashare-auto-init" data-yashareL10n="ru" data-yashareType="none" data-yashareQuickServices="vkontakte,facebook">
             </div>
         </div>
     </section>

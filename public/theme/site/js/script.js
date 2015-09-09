@@ -163,9 +163,9 @@ $(function()
 		$('.course-form-holder').slideDown();
 	});
 
-    $('.b-teacher__photo').click(function() {
-    	$('.teacher-sub-name').slideToggle();
-    });
+	$('.b-teacher__photo').click(function() {
+		$('.teacher-sub-name').slideToggle();
+	});
 
 
 	// Видео в шапке
@@ -177,45 +177,42 @@ $(function()
 		}
 	})();
 
-	// Анимация смены текста
-	// function Typed() {
-	// 	$('._max-text').typed(
-	// 		{
-	// 			strings: ["Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер", "Digital-креатор", "Digital-стратег", "Креативный копирайтер", "Digital-продюсер"],
-	// 			typeSpeed: 0,
-	// 			showCursor: false,
-	// 			backDelay: 3000 // pause before backspacing
-	// 		});
-	// }();
+	// HEADER PROFESSIONS SLIDER
 
-	// var currentTime = 0,
-	// 	proTimeOut = 100;
 
-	// function proRollOut(eq, time) {
+	// Wonderfull
+	// function showAnimation(block) {
+	// 	block.addClass('pro-transition pro-transformLeft');
 	// 	setTimeout(function(){
-	// 		$('.sliding-profession').eq(eq).animate(
-	// 			{ "left": "-=110%" }, {
-	// 				complete: function () {
-	// 					$this.css('opacity', '0')
-	// 				}
-	// 					// .animate(
-	// 					// 	{ "right": "-=110%" }, {
-	// 					// 		complete: function () {
-	// 					// 			$this.css('opacity', '1').animate(
-	// 					// 				{ "right": "inherit" }, 1000);
-	// 					// 		}, 1000);
-	// 						}, 1000);
-	// 				}
-	// 			}, 1000)
-	// 	}, time);
+	// 		block.removeClass('pro-transition');
+	// 		setTimeout(function(){
+	// 			block.removeClass('pro-transformLeft');
+	// 			block.addClass('pro-transformRight');
+	// 			setTimeout(function(){
+	// 				block.addClass('pro-transition');
+	// 				block.removeClass('pro-transformRight');
+	// 			}, 50);
+	// 		}, 50);
+	// 	}, 510);
 	// }
 
-	// setTimeout(function () {
-	// 	for(var i = 0; i < $('.sliding-profession').length; i++) {
-	// 		proRollOut(i, i*proTimeOut);
-	// 	};
-	// }, 3000);
+	// function timeoutShow(eq) {
+	// 	if(!$('.sliding-profession').eq(eq).length) return;
+	// 	showAnimation($('.sliding-profession').eq(eq));
+	// 	setTimeout(function(){
+	// 		timeoutShow(eq+1);
+	// 	}, 300);
+	// }
 
+	// function animationLoop() {
+	// 	timeoutShow(0);
+	// 	setTimeout(function(){
+	// 		animationLoop();
+	// 	}, 5000);
+	// }
+	// animationLoop();
+
+	// Ugly
 	function showAnimation(block) {
 		block.addClass('pro-transition pro-transformLeft');
 		setTimeout(function(){
@@ -246,8 +243,6 @@ $(function()
 		}, 5000);
 	}
 	animationLoop();
-	
-	
 
 	// READ MORE STORIES
 	$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
@@ -274,25 +269,26 @@ $(function()
 
 	var map;
 
-    function mapInit() {
+	function mapInit() {
 
-    	var cityX = $('.b-footer__map').data('lat'),
-    		cityY = $('.b-footer__map').data('lng');
+		var cityX = $('.b-footer__map').data('lat'),
+			cityY = $('.b-footer__map').data('lng');
 
 		var myLatlng = new google.maps.LatLng(cityX, cityY);
-	    var mapOptions = {
-	      center: myLatlng,
-	      zoom: 17,
-	      mapTypeId: google.maps.MapTypeId.ROADMAP,
-	      styles: self.style,
-	      scrollwheel: false, disableDoubleClickZoom: true
-	    };
+		var mapOptions = {
+			center: myLatlng,
+			zoom: 17,
+			mapTypeId: google.maps.MapTypeId.ROADMAP,
+			styles: self.style,
+			scrollwheel: false, disableDoubleClickZoom: true
+		};
 
-	    map = new google.maps.Map(document.getElementById("footer_gmap"), mapOptions);
+		map = new google.maps.Map(document.getElementById("footer_gmap"), mapOptions);
 
-	    var marker = new google.maps.Marker({
-		    position: myLatlng,
-		    map: map,
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			map: map,
+			icon: '/theme/site/img/icon/map-marker.svg'
 		});
 	}
 
@@ -302,34 +298,51 @@ $(function()
 
 	var citiesArray = [];
 	$.map(__SITE.cities, function(value, index) {
-	    citiesArray.push(value);
+		citiesArray.push(value);
 	});
-	
-	$('.nl-form ul li').click(function() {
-		var curentCity = $('#city_selection').val(),
+
+	// CROSS FILTER FORM
+
+	var sitiesSelectorValue = '';
+	$('.js-city-select').on('change', function() {
+		sitiesSelectorValue = $(this).val();
+		$('.js-city-select').val(sitiesSelectorValue);
+		var optionIndex = $('.js-city-select option[value="' + sitiesSelectorValue + '"]').index();
+		var optionVal = $('.js-city-select option[value="' + sitiesSelectorValue + '"]').val();
+		$('.nl-form ul li').eq(optionIndex).addClass('nl-dd-checked').siblings().removeClass('nl-dd-checked');
+		$('.js-city-select').not($(this)).prev().find('.nl-field-toggle').html($('select').not($(this)).find('option[value="' + optionVal + '"]').html());
+
+		if(window.location.pathname == '/contacts') {
+			$('.b-title__text h1').html($('.js-city-select').not($(this)).find('option[value="' + optionVal + '"]').html());
+		}
+	});
+
+	function buildingContactInfo() {
+		var curentCity = $('.b-header__city-select').val(),
 			thisCity = __SITE.cities[curentCity],
-			thisCityName = thisCity['name'] || false,
+			thisCityName = thisCity.name || false,
 			thisCityId = thisCity['id'] || false,
 			thisCityAddress = thisCity['address'] || 'Адрес не указан',
 			thisCityLat = thisCity['lat'] || false,
 			thisCityLng = thisCity['lng'] || false,
-			thisCityManager_1_fio = thisCity['Manager_1_fio'] || false,
-		    thisCityManager_1_position = thisCity['Manager_1_position'] || false,
-		    thisCityManager_1_phone = thisCity['Manager_1_phone'] || false,
-		    thisCityManager_1_email = thisCity['Manager_1_email'] || false,
-		    thisCityManager_2_fio = thisCity['Manager_2_fio'] || false,
-		    thisCityManager_2_position = thisCity['Manager_2_position'] || false,
-		    thisCityManager_2_phone = thisCity['Manager_2_phone'] || false,
-		    thisCityManager_2_email = thisCity['Manager_2_email'] || false,
-		    thisCityManager_3_fio = thisCity['Manager_3_fio'] || false,
-		    thisCityManager_3_position = thisCity['Manager_3_position'] || false,
-		    thisCityManager_3_phone = thisCity['Manager_3_phone'] || false,
-		    thisCityManager_3_email = thisCity['Manager_3_email'] || false,
-		    thisCityFb_link = thisCity['fb_link'] || false,
-		    thisCityVk_link = thisCity['vk_link'] || false,
-		    thisCityIg_link = thisCity['ig_link'] || false,
-		    thisCityTw_link = thisCity['tw_link'] || false,
-		    thisCityYt_link = thisCity['yt_link'] || false;
+			thisCityManager_1_fio = thisCity['manager_1_fio'] || false,
+			thisCityManager_1_position = thisCity['manager_1_position'] || false,
+			thisCityManager_1_phone = thisCity['manager_1_phone'] || false,
+			thisCityManager_1_email = thisCity['manager_1_email'] || false,
+			thisCityManager_2_fio = thisCity['manager_2_fio'] || false,
+			thisCityManager_2_position = thisCity['manager_2_position'] || false,
+			thisCityManager_2_phone = thisCity['manager_2_phone'] || false,
+			thisCityManager_2_email = thisCity['manager_2_email'] || false,
+			thisCityManager_3_fio = thisCity['manager_3_fio'] || false,
+			thisCityManager_3_position = thisCity['manager_3_position'] || false,
+			thisCityManager_3_phone = thisCity['manager_3_phone'] || false,
+			thisCityManager_3_email = thisCity['manager_3_email'] || false,
+			thisCityFb_link = thisCity['fb_link'] || false,
+			thisCityVk_link = thisCity['vk_link'] || false,
+			thisCityIg_link = thisCity['ig_link'] || false,
+			thisCityTw_link = thisCity['tw_link'] || false,
+			thisCityYt_link = thisCity['yt_link'] || false;
+			console.log(curentCity);
 
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
@@ -379,7 +392,6 @@ $(function()
 				ContactBlockManager1.push('<h3>Медеджер не опознан</h3>');
 			}
 			ContactBlockManager1.push('</div>');
-			
 			cityContactBlock.push(ContactBlockManager1.join(''));
 		}
 
@@ -487,8 +499,14 @@ $(function()
 			cityContactBlock.push(ContactBlockSocial.join(''));
 		}
 		
-		$('.col-md-6 ._mb30').html();
-		$('.col-md-6 ._mb30').html(cityContactBlock.join(''));
+		$('.js-footer-contact-info').html(cityContactBlock.join(''));
+	}
+	
+	$('.nl-form ul li').click(function(){
+		setTimeout(function(){
+			$('.js-footer-contact-info').empty();
+			buildingContactInfo();
+		}, 20);
 	});
 	
 	// MAIN PAGE COURSES FILTER FORM
@@ -496,7 +514,7 @@ $(function()
 	$('#courses-filter-form ul li').click(function() {
 
 		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
-		$('#courses-filter-form .nl-field-toggle').css('color', thisCourseColor);
+		$('#courses-filter-form .js-course-recoloring .nl-field-toggle').css('color', thisCourseColor);
 
 		// Sending filter reques
 		$('#courses-filter-form').validate({
@@ -567,7 +585,7 @@ $(function()
 							});
 						}
 
-						$('#filtered-course').html('');
+						$('#filtered-course').empty();
 						$('#filtered-course').prepend(fiveFirstCourses.join(''));
 						$('#filtered-course').append(allCoursesButton);
 					},
@@ -622,7 +640,7 @@ $(function()
         }
     });
 
-    // DIRECT COURSE FORM VALIDATION
+    // SELECT COURSE FORM VALIDATION
 
     $('form#course-select').validate({
         rules: {
@@ -653,7 +671,9 @@ $(function()
         submitHandler: function (form) {
             var options = {
                 success: function (data) {
-                    console.log('success')
+                    $('form#course-select').fadeOut();
+                    $('.form-holder h2._cta').fadeOut();
+                    $('.form-holder .form-success').fadeIn();
                 },
                 error: function (data) {
                     console.log('server error')
@@ -743,6 +763,14 @@ $(function()
 	    });
 	});
 
+	$('.jcarousel-nav-bar .arrow-left').click(function() {
+	    $('.jcarousel').jcarousel('scroll', '-=3');
+	});
+
+	$('.jcarousel-nav-bar .arrow-right').click(function() {
+	    $('.jcarousel').jcarousel('scroll', '+=3');
+	});
+
 	// SMOOTH SCROLL
 	//	var slugs = [kreativ, strategiya, prodyusirovanie, art-direkshn, media, menedjment]
 	// $(function() {
@@ -768,12 +796,16 @@ $(function()
 	// TEACHERS FILTER RE-COLORING
 	$('#teachers-filter-form ul li').click(function() {
 		var teacherCourseColor = $('#derection-teacher').find(':selected').attr('data-color');
-		$('#teachers-filter-form .nl-field-toggle').css('color', teacherCourseColor);
+		$('#teachers-filter-form .js-course-recoloring .nl-field-toggle').css('color', teacherCourseColor);
 	});
 
+
 	// TEACHERS OVERKILL FILTER
+
+	var defaultTeachers = $('ul.b-teachers__list').html();
+
 	$('.js-teach-select').on('change', function(){
-		$('ul.b-teachers__list').html('');
+		$('ul.b-teachers__list').empty();
 
 		var imgPath = __SITE.img_path_full,
 		imgThumbPath = __SITE.img_path_thumb;
@@ -794,26 +826,50 @@ $(function()
 			var thisTeacherCity = $('#teacher-city').val(),
 				thisTeacherDirection = $('#derection-teacher').val();
 			
-			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+			function sortedTeachers() {
 				var thisTeacherId = v['id'] || false,
 					thisTeacherName = v['name'] || false,
 					thisTeacherAvatar = v.avatar || false,
-					thisTeacherPosition = v['position'] || false;
+					thisTeacherPosition = v['position'] || false,
+					thisTeacherCompany = v['company'] || false;
 
 				teachersSortArray.push('<li class="col-sm-4 _mb70">');
 				teachersSortArray.push('<a href="http://ikra.dev/teachers/' + thisTeacherId + '" class="_block _mb20">');
 				teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
 				teachersSortArray.push('</a>');
 				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
+				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
 				teachersSortArray.push('<div class="text-right">');
 				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
-				teachersSortArray.push('</div>')
-				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + '</div>');
+				teachersSortArray.push('</div>');
 				teachersSortArray.push('</li>');
-				// teachersSortArray.join('');
+
+				$('ul.b-teachers__list').empty();
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
+			}
+
+			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+				sortedTeachers();
+			}
+
+			if(subjectId == 0 && v.city_id == thisTeacherCity){
+				sortedTeachers();
 			}
 		});
 	});
+	
+	// SHOW ALL BLOSK'S TEACHERS
+
+	// $('.b-primary__all-teachers .btn').click(function(){
+	// 	var BlockTeachersArray = [];
+	// 	$.map(__SITE.teachers, function(value, index) {
+	// 		BlockTeachersArray.push(value);
+	// 	});
+
+	// 	var teachersBlockArray = [];
+	// 	$.each(__SITE.teachers, function(i, v){
+	// 		var thisTeacherCity = $('#teacher-city').val(),
+	// 			thisTeacherDirection = $('#derection-teacher').val();
+	// })
 
 });

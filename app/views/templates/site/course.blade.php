@@ -264,6 +264,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                                         </article>
                                     </div>
                                 </div>
+                                <div class="row all-teachers">
+                                </div>
                                 <div class="row _mb70">
                                     <div class="col-md-4">
 

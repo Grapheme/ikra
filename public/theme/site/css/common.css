@@ -1117,7 +1117,7 @@ a._text-pink:hover {
 .two-columns .col-md-6 {
   width: 45%;
   margin-right: 5%;
-  font-size: 19px;
+  font-size: 14px;
   line-height: 23px;
   padding-right: 0px;
   padding-left: 0px;
@@ -1258,6 +1258,12 @@ section.teacher-text {
   clear: both;
   overflow: hidden;
 }
+section.teacher-text p {
+  -moz-column-count: 2;
+  -moz-column-gap: 30px;
+  -webkit-column-count: 2;
+  -webkit-column-gap: 30px;
+}
 section.teacher-text .b-about__col {
   padding-right: 30px;
   padding-left: 0px;
@@ -1267,6 +1273,13 @@ section.teacher-text .b-about__col {
 }
 .yashare-auto-init .b-share {
   width: 276px;
+}
+.form-success .yashare-auto-init .b-share .b-share__link {
+  border-color: #fff;
+  color: #fff !important;
+}
+.form-success .yashare-auto-init .b-share {
+  margin-top: 50px;
 }
 .yashare-auto-init .b-share .b-share__link {
   font: 700 20px/58px 'museo sans', sans-serif;
@@ -1315,6 +1328,33 @@ section.teacher-text .b-about__col {
 .course-sharing-block .yashare-auto-init .b-share .b-share-btn__vkontakte {
   margin-right: 20px;
 }
+.jcarousel-nav-bar {
+  position: relative;
+  width: 100%;
+  height: 17px;
+  z-index: 0;
+  top: 220px;
+}
+.jcarousel-nav-bar .jcarousel-nav {
+  position: absolute;
+  display: inline-block;
+  vertical-align: middle;
+  width: 10px;
+  height: 17px;
+  background-image: url(../img/icon/slider-arrows.svg);
+  cursor: pointer;
+}
+.jcarousel-nav-bar .arrow-left {
+  background-position: left;
+  left: -30px;
+}
+.jcarousel-nav-bar .arrow-right {
+  background-position: right;
+  right: -30px;
+}
+.jcarousel {
+  position: relative;
+}
 .jcarousel .corousel-element {
   width: 510px;
   margin-right: 42px;
@@ -1340,22 +1380,29 @@ section.teacher-text .b-about__col {
   width: auto;
   height: auto;
 }
-.sliding-profession {
+.professions-slider {
+  height: 60px;
+  overflow: hidden;
+}
+.professions-slider .sliding-profession {
   position: relative;
 }
-.pro-transition {
+.professions-slider .pro-transition {
   transition: all 1s;
 }
-.pro-transformRight {
+.professions-slider .pro-transformRight {
   transform: translate(110%, 0);
 }
-.pro-transformLeft {
+.professions-slider .pro-transformLeft {
   transform: translate(-110%, 0);
 }
 .overflown-head {
   overflow: hidden;
 }
-.blog-teaser .blog-readmore {
+.blog-teaser .blog-readmore,
+.event-teaser .blog-readmore,
+.blog-teaser .event-readmore,
+.event-teaser .event-readmore {
   display: block;
   min-height: 400px;
   background-position: center;
@@ -1363,12 +1410,104 @@ section.teacher-text .b-about__col {
   padding: 30px;
   box-sizing: border-box;
   background-color: #ef4949;
+  position: relative;
+  -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -o-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(100%);
+  filter: gray;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
-.blog-teaser .blog-readmore h3 {
-  color: #fff;
+.blog-teaser .blog-readmore .decor-block,
+.event-teaser .blog-readmore .decor-block,
+.blog-teaser .event-readmore .decor-block,
+.event-teaser .event-readmore .decor-block {
+  width: 53.9%;
+  margin: 0 auto;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -26.9%;
+  margin-top: -5px;
+  background-image: url(../img/icon/decor-string.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.blog-teaser .blog-readmore p {
+.blog-teaser .blog-readmore h3,
+.event-teaser .blog-readmore h3,
+.blog-teaser .event-readmore h3,
+.event-teaser .event-readmore h3 {
   color: #fff;
+  font-size: 30px;
+  line-height: 50px;
+}
+.blog-teaser .blog-readmore .h3,
+.event-teaser .blog-readmore .h3,
+.blog-teaser .event-readmore .h3,
+.event-teaser .event-readmore .h3 {
+  color: #fff;
+  font-size: 30px;
+  line-height: 50px;
+}
+.blog-teaser .blog-readmore p,
+.event-teaser .blog-readmore p,
+.blog-teaser .event-readmore p,
+.event-teaser .event-readmore p {
+  position: absolute;
+  top: 30px;
+  width: 60%;
+  text-transform: uppercase;
+  font-family: MuseoSansCyrl-500;
+  letter-spacing: 0.69px;
+  overflow: hidden;
+}
+.blog-teaser .blog-readmore .annotation,
+.event-teaser .blog-readmore .annotation,
+.blog-teaser .event-readmore .annotation,
+.event-teaser .event-readmore .annotation {
+  position: absolute;
+  top: 270px;
+  width: 60%;
+  height: 120px;
+  text-transform: uppercase;
+  font-family: MuseoSansCyrl-500;
+  font-size: 14px;
+  color: #fff;
+  letter-spacing: 0.69px;
+  line-height: 31px;
+  overflow: hidden;
+}
+.blog-teaser .blog-readmore time.h5,
+.event-teaser .blog-readmore time.h5,
+.blog-teaser .event-readmore time.h5,
+.event-teaser .event-readmore time.h5 {
+  margin-top: 250px;
+  display: block;
+  font-size: 30px;
+  font-weight: 900;
+  color: #fff;
+  width: 280px;
+  line-height: 45px;
+}
+.tab_events {
+  min-height: 550px;
+}
+.header-city-form ul {
+  left: 0em;
+  top: 7em;
+  position: relative;
+  z-index: 1000;
+  font-size: 100%;
+}
+.header-city-form ul .nl-dd-checked {
+  color: #ef4949 !important;
+}
+.js-cross-filter-fuckup {
+  display: inherit;
+}
+.js-course-recoloring {
+  display: inline-block;
 }
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
@@ -1434,7 +1573,7 @@ section.teacher-text .b-about__col {
   padding: 100px;
   color: #fff;
   text-align: center;
-  z-index: 1;
+  z-index: 0;
   position: relative;
 }
 .b-title__text-small {
@@ -1777,13 +1916,34 @@ section.teacher-text .b-about__col {
 .b-about__top {
   min-height: 90px;
 }
+.astronaut {
+  margin-top: -95px;
+}
 .b-about__course-list {
-  background: url(../img/bg/4types.png) center top no-repeat;
+  background: url(../img/icon/curly-branch.svg) center top no-repeat;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   -o-background-size: 100%;
   background-size: 100%;
-  padding-top: 80px;
+  padding-top: 120px;
+  background-size: 75.8%;
+}
+.b-about__course-list h3 {
+  margin-bottom: 50px;
+}
+.b-about__course-list h3 strong {
+  position: relative;
+}
+.b-about__course-list h3 strong:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 22px;
+  background-image: url(../img/icon/arrow-down.svg);
+  bottom: -35px;
+  left: 50%;
+  margin-left: -6px;
 }
 .b-about__course-text {
   min-height: 190px;

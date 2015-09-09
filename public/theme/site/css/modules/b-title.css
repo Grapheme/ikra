@@ -62,7 +62,7 @@
   padding: 100px;
   color: #fff;
   text-align: center;
-  z-index: 1;
+  z-index: 0;
   position: relative;
 }
 .b-title__text-small {

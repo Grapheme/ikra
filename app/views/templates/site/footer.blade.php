@@ -8,9 +8,9 @@
 
 @section('footer_contacts')
     <section class="b-section _no-padding-bottom">
-        <div class="h2 _mb35">Икра
+        <div class="h2 _mb35">Икра в
             <form class="nl-form _text-red" data-nl>
-                <select id="city_selection">
+                <select id="" class="b-footer__city-select js-city-select">
                     @foreach ($dic_city as $city)
                         <?
                         if (!$city->important)
@@ -32,7 +32,7 @@
         {{ Helper::ta_($current_city) }}
 
         <div class="row">
-            <div class="col-md-6 _mb30">
+            <div class="col-md-6 _mb30 js-footer-contact-info">
                 @if ($current_city->manager_1_fio)
                     <div class="_mb30">
                         <h3>
