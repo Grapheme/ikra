@@ -84,6 +84,8 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                     @endif
                 </div>
             </div>
+            <h3 class="_mb5">{{ $teacher->position }}</h3>
+            <small class="_block">{{ $teacher->company }}</small>
         </div>
 
         <div class="row">
@@ -112,8 +114,6 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
         </div>
         <div class="b-about__col col-md-4">
            <div class="col-md-4">
-                <h3 class="_mb5">{{ $teacher->position }}</h3>
-                <small class="_block">{{ $teacher->company }}</small>
                 <h3 class="_mb10">Напиши:</h3>
                 <div class="b-social">
                     @if ($teacher->fb_link)
