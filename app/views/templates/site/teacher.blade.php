@@ -189,7 +189,7 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
             <ul class="row">
                 @foreach ($more_teachers as $tchr)
                     <li class="col-sm-4 _mb70">
-                        <a class="_block _mb20" href="{{ URL::route('page.teacher', $teacher->id) }}">
+                        <a class="_block _mb20" href="{{ URL::route('page.teacher', $tchr->id) }}">
                             @if (isset($tchr->avatar) && is_object($tchr->avatar))
                                 <img src="{{ $tchr->avatar->full() }}" alt="{{ $tchr->name }}">
                             @endif
