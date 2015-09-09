@@ -826,28 +826,32 @@ $(function()
 			var thisTeacherCity = $('#teacher-city').val(),
 				thisTeacherDirection = $('#derection-teacher').val();
 			
-			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+			function sortedTeachers() {
 				var thisTeacherId = v['id'] || false,
 					thisTeacherName = v['name'] || false,
 					thisTeacherAvatar = v.avatar || false,
-					thisTeacherPosition = v['position'] || false;
+					thisTeacherPosition = v['position'] || false,
+					thisTeacherCompany = v['company'] || false;
 
 				teachersSortArray.push('<li class="col-sm-4 _mb70">');
 				teachersSortArray.push('<a href="http://ikra.dev/teachers/' + thisTeacherId + '" class="_block _mb20">');
 				teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
 				teachersSortArray.push('</a>');
 				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
+				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
 				teachersSortArray.push('<div class="text-right">');
 				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
-				teachersSortArray.push('</div>')
-				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + '</div>');
+				teachersSortArray.push('</div>');
 				teachersSortArray.push('</li>');
 				$('ul.b-teachers__list').append(teachersSortArray.join(''));
 			}
 
-			if(subjectId == 0){
-				$('ul.b-teachers__list').empty();
-				$('ul.b-teachers__list').append(defaultTeachers);
+			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
+				sortedTeachers();
+			}
+
+			if(subjectId == 0 && v.city_id == thisTeacherCity){
+				sortedTeachers();
 			}
 		});
 	});
