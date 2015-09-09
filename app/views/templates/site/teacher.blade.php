@@ -35,14 +35,17 @@ foreach ($dic_course as $course) {
 }
 #Helper::tad($teacher_courses);
 
+        Helper::ta($teacher);
 
 ## Еще преподаватели...
 $more_teachers = new Collection();
 foreach ($dic_teachers as $tchr) {
+    Helper::ta($tchr);
     if ($tchr->direction_id == $teacher->direction_id && $tchr->id != $teacher->id) {
         $more_teachers[$tchr->id] = $tchr;
     }
 }
+        die;
 #Helper::tad($more_teachers);
 
 $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction[$teacher->direction] : null;
