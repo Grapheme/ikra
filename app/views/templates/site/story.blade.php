@@ -130,9 +130,18 @@ if (!$story) {
         <div class="row b-slider _mb20 owl-carousel _small">
 
             @foreach ($dic_stories as $somestory)
+                <?
+                if ($somestory->id == $story->id)
+                    continue;
+                $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
+                if (!$city)
+                    continue;
+                ?>
                 <div class="col-sm-4 text-left owl-item">
-                    <a class="_block _mb20" href="">
-                        <img src="img/content/512.jpg" alt="">
+                    <a class="_block _mb20" href="{{ URL::route('page.story', [$city->slug, $somestory->id]) }}">
+                        @if (isset($somestory->avatar) && is_object($somestory->avatar))
+                            <img src="{{ $somestory->avatar->full() }}" alt="{{ $somestory->name }}">
+                        @endif
                     </a>
                     <div class="_txt9">{{ $somestory->name }}</div>
                 </div>
