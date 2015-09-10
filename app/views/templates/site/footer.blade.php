@@ -8,23 +8,25 @@
 
 @section('footer_contacts')
     <section class="b-section _no-padding-bottom">
-        <div class="h2 _mb35">Икра в
+        <div class="h2 _mb35">Икра
             <form class="nl-form _text-red" data-nl>
-                <select id="" class="b-footer__city-select js-city-select">
-                    @foreach ($dic_city as $city)
-                        <?
-                        if (!$city->important)
-                            continue;
-                        ?>
-                        <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
-                    @endforeach
-                    @if (0)
-                        <option value="1">Москва</option>
-                        <option value="2">Спб</option>
-                        <option value="3">Минск</option>
-                        <option value="4">Екб</option>
-                    @endif
-                </select>
+                <span data-city-nl>
+                    <select id="" class="b-footer__city-select js-city-select">
+                        @foreach ($dic_city as $city)
+                            <?
+                            if (!$city->important)
+                                continue;
+                            ?>
+                            <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
+                        @endforeach
+                        @if (0)
+                            <option value="1">Москва</option>
+                            <option value="2">Спб</option>
+                            <option value="3">Минск</option>
+                            <option value="4">Екб</option>
+                        @endif
+                    </select>
+                </span>
 
                 <div class="nl-overlay"></div>
         </div>

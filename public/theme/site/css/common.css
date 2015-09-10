@@ -1339,17 +1339,18 @@ section.teacher-text .b-about__col {
   position: absolute;
   display: inline-block;
   vertical-align: middle;
-  width: 10px;
+  width: 12px;
   height: 17px;
-  background-image: url(../img/icon/slider-arrows.svg);
   cursor: pointer;
 }
 .jcarousel-nav-bar .arrow-left {
   background-position: left;
+  background-image: url(../img/icon/slider-arrow-left.svg);
   left: -30px;
 }
 .jcarousel-nav-bar .arrow-right {
   background-position: right;
+  background-image: url(../img/icon/slider-arrow-right.svg);
   right: -30px;
 }
 .jcarousel {
@@ -1386,17 +1387,17 @@ section.teacher-text .b-about__col {
 }
 .professions-slider .sliding-profession {
   position: absolute;
-  right: 0;
   left: 0;
+  right: 0;
 }
 .professions-slider .pro-transition {
   transition: all 1s;
 }
 .professions-slider .pro-transformRight {
-  transform: translate(110%, 0);
+  transform: translate(210%, 0);
 }
 .professions-slider .pro-transformLeft {
-  transform: translate(-110%, 0);
+  transform: translate(-210%, 0);
 }
 .overflown-head {
   overflow: hidden;

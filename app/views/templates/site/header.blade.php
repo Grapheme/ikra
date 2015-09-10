@@ -15,26 +15,18 @@
 
     <div class="b-header__city">
         <div class="b-header__city-select-wrapper _txt9">
-            <!-- <span id="city_button">Икра Москва <i class="fa fa-caret-down"></i></span>
-            <ul id="city_list" class="b-header__city-select">
-                @foreach ($dic_city as $city)
-                    <?
-                    if (!$city->important)
-                        continue;
-                    ?>
-                    <li><a href="{{ URL::route('page.city', $city->slug) }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</a></li>
-                @endforeach
-            </ul> -->
             <form class="nl-form header-city-form" action="" method="get" data-nl>
-                <select class="b-header__city-select js-city-select" name="city_select" id="city_select">
-                    @foreach ($dic_city as $city)
-                        <?
-                        if (!$city->important)
-                            continue;
-                        ?>
-                            <option value="{{ $city->id }}">Икра {{ $city->name_mini ?: $city->name }}</option>
-                    @endforeach
-                </select>
+                <span data-city-nl>
+                    <select class="b-header__city-select js-city-select" name="city_select" id="city_select">
+                        @foreach ($dic_city as $city)
+                            <?
+                            if (!$city->important)
+                                continue;
+                            ?>
+                                <option value="{{ $city->id }}">Икра {{ $city->name_mini ?: $city->name }}</option>
+                        @endforeach
+                    </select>
+                </span>
             </form>
         </div>
     </div>

@@ -106,25 +106,25 @@ foreach ($dic_stories as $story) {
             <div class="professions-slider">
                 @if (isset($dic_professions) && is_object($dic_professions) && $dic_professions->count())
                     @foreach ($dic_professions as $profession)
-                        <div class="h2 sliding-profession">{{ $profession->name }}</div>
+                        <div class="h2 sliding-profession pro-transformRight">{{ $profession->name }}</div>
                     @endforeach
                 @endif
             </div>
         </div>
-
     </section>
-
-
-
 
     <section class="b-section">
         <div class="h2">Наши курсы <br> в
             <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" id="courses-filter-form" data-nl>
-                <select name="city" id="" class="js-city-select">
-                    @foreach ($dic_city as $city)
-                        <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
-                    @endforeach
-                </select>
+                <span data-city-nl>
+                    <select name="city" id="" class="js-city-select">
+                        @foreach ($dic_city as $city)
+                            @if($city->important)
+                                <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                </span>
                 <span class="_text-gray">по</span>
                 <div class="js-cross-filter-fuckup js-course-recoloring">
                     <select name="direction" id="course-direction">

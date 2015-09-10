@@ -58,12 +58,12 @@ $(function()
 
 	
 	// Селекты
-	(function NaturalLanguageSelectbox()
-	{
+	function NaturalLanguageSelectbox() {
 		$('[data-nl]').each(function() {
 			var nlform = new NLForm($(this)[0]);
 		});
-	})();
+	};
+	NaturalLanguageSelectbox();
 
 	$('[data-nl] ul').on('click touchend', function(){
 		setTimeout(function(){}, 10);
@@ -155,9 +155,6 @@ $(function()
 		
 	})();
 
-
-
-
 	$('.open-form').click(function(){
 		$(this).fadeOut();
 		$('.course-form-holder').slideDown();
@@ -177,72 +174,35 @@ $(function()
 		}
 	})();
 
-	// HEADER PROFESSIONS SLIDER
-
-
-	// Wonderfull
-	// function showAnimation(block) {
-	// 	block.addClass('pro-transition pro-transformLeft');
-	// 	setTimeout(function(){
-	// 		block.removeClass('pro-transition');
-	// 		setTimeout(function(){
-	// 			block.removeClass('pro-transformLeft');
-	// 			block.addClass('pro-transformRight');
-	// 			setTimeout(function(){
-	// 				block.addClass('pro-transition');
-	// 				block.removeClass('pro-transformRight');
-	// 			}, 50);
-	// 		}, 50);
-	// 	}, 510);
-	// }
-
-	// function timeoutShow(eq) {
-	// 	if(!$('.sliding-profession').eq(eq).length) return;
-	// 	showAnimation($('.sliding-profession').eq(eq));
-	// 	setTimeout(function(){
-	// 		timeoutShow(eq+1);
-	// 	}, 300);
-	// }
-
-	// function animationLoop() {
-	// 	timeoutShow(0);
-	// 	setTimeout(function(){
-	// 		animationLoop();
-	// 	}, 5000);
-	// }
-	// animationLoop();
-
 	// Ugly
 	function showAnimation(block) {
-		block.addClass('pro-transition pro-transformLeft');
+		block
+			.addClass('pro-transition')
+			.removeClass('pro-transformRight');
 		setTimeout(function(){
-			block.removeClass('pro-transition');
+			block.addClass('pro-transformLeft');
 			setTimeout(function(){
-				block.removeClass('pro-transformLeft');
-				block.addClass('pro-transformRight');
-				setTimeout(function(){
-					block.addClass('pro-transition');
-					block.removeClass('pro-transformRight');
-				}, 50);
-			}, 50);
+				block
+					.removeClass('pro-transition pro-transformLeft')
+					.addClass('pro-transformRight');
+			}, 1000);
 		}, 5000);
 	}
 
 	function timeoutShow(eq) {
-		if(!$('.sliding-profession').eq(eq).length) return;
-		showAnimation($('.sliding-profession').eq(eq));
+		if(eq == $('.sliding-profession').length) {
+			var thisEq = 0;
+		} else {
+			var thisEq = eq;
+		}
+		showAnimation($('.sliding-profession').eq(thisEq));
+		var newEq = thisEq + 1;
 		setTimeout(function(){
-			timeoutShow(eq+1);
-		}, 3000);
-	}
-
-	function animationLoop() {
-		timeoutShow(0);
-		setTimeout(function(){
-			animationLoop();
+			timeoutShow(newEq);
 		}, 5000);
 	}
-	animationLoop();
+
+	timeoutShow(0);
 
 	// READ MORE STORIES
 	$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
@@ -303,7 +263,7 @@ $(function()
 
 	// CROSS FILTER FORM
 
-	var sitiesSelectorValue = '';
+	/*var sitiesSelectorValue = '';
 	$('.js-city-select').on('change', function() {
 		sitiesSelectorValue = $(this).val();
 		$('.js-city-select').val(sitiesSelectorValue);
@@ -315,6 +275,18 @@ $(function()
 		if(window.location.pathname == '/contacts') {
 			$('.b-title__text h1').html($('.js-city-select').not($(this)).find('option[value="' + optionVal + '"]').html());
 		}
+	});*/
+
+	$('.js-city-select').on('change', function(){
+		var others = $('.js-city-select').not($(this));
+		var val = $(this).val();
+		others.val(val);
+		others.each(function(){
+			$(this).siblings('.nl-field').remove();
+			$(this).show();
+			new NLForm($(this).parent()[0]);
+		});
+
 	});
 
 	function buildingContactInfo() {
