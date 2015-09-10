@@ -189,8 +189,8 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
             <div class="jcarousel">
                 <ul class="row">
                     @foreach ($more_teachers as $tchr)
-                        <li class="col-sm-4 _mb70 corousel-element">
-                            <a class="_block _mb20" style="background-image: url({{ (isset($tchr->avatar) && is_object($tchr->avatar)) ? $tchr->avatar->full() : '' }});" href="{{ URL::route('page.teacher', $tchr->id) }}">
+                        <li class="col-sm-4 _mb70 corousel-element js-cElement">
+                            <a class="_block _mb20 js-cImage" style="background-image: url({{ (isset($tchr->avatar) && is_object($tchr->avatar)) ? $tchr->avatar->full() : '' }});" href="{{ URL::route('page.teacher', $tchr->id) }}">
                                     
                             </a>
                             <h3 class="_mb5">{{ $tchr->name }}</h3>

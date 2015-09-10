@@ -734,19 +734,31 @@ $(function()
         var element = $(this),
             width = element.innerWidth();
 
-        if (width > 1920) {
-            width = width / 3;
-        } else if (width > 729) {
-            width = width / 2;
-        } else if (width > 375) {
-        	width = width / 1;
-        }
+        // if (width < 1920) {
+        //     width = width / 2;
+        // } else if (width < 728) {
+        //     width = width / 2;
+        // } else if (width < 375) {
+        // 	width = width / 1;
+        // }
 
-        element.jcarousel('items').css('width', width + 'px');
+        //element.jcarousel('items').css('width', width + 'px');
     })
     .jcarousel({
         // Your configurations options
     });
+
+    function resizeCarousel() {
+    	$('.js-cElement').css({
+    		width: $('.jcarousel').width()/3
+    	});
+    	$('.js-cImage').css({
+    		height: $('.jcarousel').width()/3
+    	});
+    }
+    $(window).on('resize', resizeCarousel);
+    resizeCarousel();
+    $('.corousel-element')
 
 	$('.jcarousel-nav-bar .arrow-left').click(function() {
 	    $('.jcarousel').jcarousel('scroll', '-=3');
