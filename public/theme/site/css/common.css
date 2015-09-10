@@ -1357,7 +1357,7 @@ section.teacher-text .b-about__col {
   position: relative;
 }
 .jcarousel .corousel-element {
-  width: 510px;
+  max-width: 410px;
   margin-right: 42px;
 }
 .jcarousel .corousel-element a {
