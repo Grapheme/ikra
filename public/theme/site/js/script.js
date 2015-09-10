@@ -729,14 +729,17 @@ $(function()
     parseHash();
 
     // JCOROUSEL TEACHERS
+    
     $('.jcarousel').on('jcarousel:create jcarousel:reload', function() {
         var element = $(this),
             width = element.innerWidth();
 
-        if (width > 900) {
+        if (width > 1025) {
             width = width / 3;
-        } else if (width > 600) {
+        } else if (width > 729) {
             width = width / 2;
+        } else if (width > 375) {
+        	width = width / 1;
         }
 
         element.jcarousel('items').css('width', width + 'px');
