@@ -285,8 +285,6 @@ section.teacher-text .b-about__col {
 .jcarousel .corousel-element a {
   width: 90%;
   height: 90%;
-  max-width: 512px;
-  max-height: 512px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;

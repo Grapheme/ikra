@@ -489,86 +489,91 @@ $(function()
 		$('#courses-filter-form .js-course-recoloring .nl-field-toggle').css('color', thisCourseColor);
 
 		// Sending filter reques
-		$('#courses-filter-form').validate({
-	        submitHandler: function (form) {
-	            var options = {
-	                success: function (data) {
+		var filteredCityId = $('#city-id').val();
+		var filteredCourseId = $('#course-direction').val();
 
-	                	// Response courses array
-	                	var coursesArray = [];
-						$.map(__SITE.filteredDirections, function(value, index) {
-						    coursesArray.push(value);
-						});
+		var thisFormAction = $('#courses-filter-form').attr('action');
 
-						var thisCourse = __SITE.filteredDirections[curentCity],
-							thisCourseName = thisCourse['name'] || false,
-							thisCourseId = thisCourse['id'] || false,
-							thisCourseDate_start = thisCourse['date_start'] || false,
-							thisCourseDate_stop = thisCourse['date_stop'] || false,
-							thisCourseDic_id = thisCourse['dic_id'] || false,
-							thisCourseCity_id = thisCourse['city_id'] || false,
-							thisCourseType_id = thisCourse['type_id'] || false,
-							thisCourseDate_start = thisCourse['date_start'] || false,
-							thisCourseDate_stop = thisCourse['date_stop'] || false,
-							thisCourseWeekdays = thisCourse['weekdays'] || false,
-							thisCoursePrice = thisCourse['price'] || false,
-							thisCourseTeacher_id = thisCourse[''] || false,
-							thisCourseDirection_id = thisCourse['direction_id'] || false,
-							thisCourseDiscounts = thisCourse['discounts'] || false,
-							thisCourseBlockquote = thisCourse['blockquote'] || false,
-							thisCourseFor_who = thisCourse['for_who'] || false,
-							thisCourseResult = thisCourse['result'] || false,
-							thisCourseShort = thisCourse['short'] || false;
+		var courseFilterRequest = $.ajax({
+			method: "POST",
+			url: thisFormAction,
+			data: { city: filteredCityId, course: filteredCourseId }
+		})
 
-						// Filtered courses formation
-						if(thisCourseName) {
-							var i = 0,
-								fiveFirstCourses = [];
+		courseFilterRequest.done(function(data) {
+			if(data.status) {
+				// Response courses array
+	        	var coursesArray = [];
+				$.map(__SITE.filteredDirections, function(value, index) {
+				    coursesArray.push(value);
+				});
 
-							$.each(coursesListItem, function(){
-								if(i < 5) {
-									var coursesListItem =[],
-										allCoursesButton = $('a.b-courses__link _all').clone();
+				var thisCourse = __SITE.filteredDirections[curentCity],
+					thisCourseName = thisCourse['name'] || false,
+					thisCourseId = thisCourse['id'] || false,
+					thisCourseDate_start = thisCourse['date_start'] || false,
+					thisCourseDate_stop = thisCourse['date_stop'] || false,
+					thisCourseDic_id = thisCourse['dic_id'] || false,
+					thisCourseCity_id = thisCourse['city_id'] || false,
+					thisCourseType_id = thisCourse['type_id'] || false,
+					thisCourseDate_start = thisCourse['date_start'] || false,
+					thisCourseDate_stop = thisCourse['date_stop'] || false,
+					thisCourseWeekdays = thisCourse['weekdays'] || false,
+					thisCoursePrice = thisCourse['price'] || false,
+					thisCourseTeacher_id = thisCourse[''] || false,
+					thisCourseDirection_id = thisCourse['direction_id'] || false,
+					thisCourseDiscounts = thisCourse['discounts'] || false,
+					thisCourseBlockquote = thisCourse['blockquote'] || false,
+					thisCourseFor_who = thisCourse['for_who'] || false,
+					thisCourseResult = thisCourse['result'] || false,
+					thisCourseShort = thisCourse['short'] || false;
 
-									if(thisCourseName) {
-										coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 180px;">');
-										coursesListItem.push('<a href="' +  + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
-										if(thisCourseName){
-											coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
-										}
-										if(thisCourseShort){
-											coursesListItem.push('<span class="h3"><strong>' + thisCourseShort + '</strong></span>');
-										}
+				// Filtered courses formation
+				if(thisCourseName) {
+					var i = 0,
+						fiveFirstCourses = [];
 
-										if(thisCourseDate_start){
-											coursesListItem.push('<time class="h5">' + thisCourseDate_start);
-											if(thisCourseDate_stop) {
-												coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
-											} else {
-												coursesListItem.push('</time></a></li>');
-											}
-										}
-										
-										fiveFirstCourses.push(coursesListItem.join(''));
+					$.each(coursesListItem, function(){
+						if(i < 5) {
+							var coursesListItem =[],
+								allCoursesButton = $('a.b-courses__link _all').clone();
 
-									}
-									i++;
+							if(thisCourseName) {
+								coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 180px;">');
+								coursesListItem.push('<a href="' +  + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
+								if(thisCourseName){
+									coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
 								}
-							});
+								if(thisCourseShort){
+									coursesListItem.push('<span class="h3"><strong>' + thisCourseShort + '</strong></span>');
+								}
+
+								if(thisCourseDate_start){
+									coursesListItem.push('<time class="h5">' + thisCourseDate_start);
+									if(thisCourseDate_stop) {
+										coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
+									} else {
+										coursesListItem.push('</time></a></li>');
+									}
+								}
+								
+								fiveFirstCourses.push(coursesListItem.join(''));
+
+							}
+							i++;
 						}
+					});
+				}
 
-						$('#filtered-course').empty();
-						$('#filtered-course').prepend(fiveFirstCourses.join(''));
-						$('#filtered-course').append(allCoursesButton);
-					},
-
-					error: function (data) {
-						console.log('Серверная ошибка');
-					}
-				};
-				$(form).ajaxSubmit(options);
+				$('#filtered-course').empty();
+				$('#filtered-course').prepend(fiveFirstCourses.join(''));
+				$('#filtered-course').append(allCoursesButton);
 			}
 		});
+
+		courseFilterRequest.fail(function() {
+			console.log('Серверная ошибка');
+		})
 	});
 
 	// COURSE FORM VALIDATION
@@ -733,16 +738,6 @@ $(function()
     $('.jcarousel').on('jcarousel:create jcarousel:reload', function() {
         var element = $(this),
             width = element.innerWidth();
-
-        // if (width < 1920) {
-        //     width = width / 2;
-        // } else if (width < 728) {
-        //     width = width / 2;
-        // } else if (width < 375) {
-        // 	width = width / 1;
-        // }
-
-        //element.jcarousel('items').css('width', width + 'px');
     })
     .jcarousel({
         // Your configurations options
@@ -750,10 +745,10 @@ $(function()
 
     function resizeCarousel() {
     	$('.js-cElement').css({
-    		width: $('.jcarousel').width()/3
+    		width: $('.jcarousel').width()/4
     	});
     	$('.js-cImage').css({
-    		height: $('.jcarousel').width()/3
+    		height: $('.jcarousel').width()/4
     	});
     }
     $(window).on('resize', resizeCarousel);

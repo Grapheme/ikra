@@ -115,7 +115,7 @@ foreach ($dic_stories as $story) {
         <div class="h2">Наши курсы <br> в
             <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" id="courses-filter-form" data-nl>
                 <span data-city-nl>
-                    <select name="city" id="" class="js-city-select">
+                    <select name="city" id="city-id" class="js-city-select">
                         @foreach ($dic_city as $city)
                             @if($city->important)
                                 <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
