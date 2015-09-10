@@ -16,7 +16,18 @@
 @section('content')
 
 
-    {{ $page->block('header') }}
+    <section class="b-title _long _invert" style="background-image: url({{ (isset($current_city->header_img) && is_object($current_city->header_img)) ? $current_city->header_img->full() : '' }});">
+
+        <div class="b-title__logo _invisible">
+            <img src="{{ Config::get('site.theme_path') }}/img/logo/ikra-top.png" alt="ИКРА IKRA">
+        </div>
+
+        <div class="b-title__text">
+            <h1 class="_mb30">{{ $current_city->name }}</h1>
+            <i><strong>{{ $current_city->address }}</strong></i>
+        </div>
+
+    </section>
 
 
     <section class="b-section _no-padding-bottom">
@@ -32,20 +43,28 @@
         </div>
 
 
-        <div class="row b-contacts__ways _mb50">
+        @foreach ($dic_city as $city)
+            <div class="row b-contacts__ways _mb50 @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
                 <div class="col-md-4">
-                    <h3 class="_mb40">{{ $current_city->address }}</h3>
-                    <p class="_max-text">
-                        {{ nl2br($current_city->how2get_text) }}
-                    </p>
+                    @if ($city->address)
+                        <h3 class="_mb40">{{ $city->address }}</h3>
+                    @endif
+                    @if ($city->how2get_text)
+                        <p class="_max-text">
+                            {{ nl2br($city->how2get_text) }}
+                        </p>
+                    @endif
                 </div>
                 <div class="col-md-6 col-md-push-2">
-                    <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
-                    <div class="_mb40">{{ nl2br($current_city->how2get_way_1) }}</div>
-                    <div class="_mb40">{{ nl2br($current_city->how2get_way_2) }}</div>
-                    <div class="_mb40">{{ nl2br($current_city->how2get_way_3) }}</div>
+                    @if ($city->how2get_way_1 || $city->how2get_way_2 || $city->how2get_way_3)
+                        <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
+                        <div class="_mb40">{{ nl2br($city->how2get_way_1) }}</div>
+                        <div class="_mb40">{{ nl2br($city->how2get_way_2) }}</div>
+                        <div class="_mb40">{{ nl2br($city->how2get_way_3) }}</div>
+                    @endif
                 </div>
-        </div>
+            </div>
+        @endforeach
 
 
         <div class="row">
@@ -88,23 +107,25 @@
                     <small class="_block _mb60 _text-blue">{{ nl2br($current_city->comment) }}</small>
                 @endif
 
-                <div class="b-social">
-                    @if ($current_city->fb_link)
-                        <a class="_facebook" href="{{ $current_city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
-                    @endif
-                    @if ($current_city->vk_link)
-                        <a class="_vkontakte" href="{{ $current_city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
-                    @endif
-                    @if ($current_city->ig_link)
-                        <a class="_instagram" href="{{ $current_city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
-                    @endif
-                    @if ($current_city->tw_link)
-                        <a class="_twitter" href="{{ $current_city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
-                    @endif
-                    @if ($current_city->yt_link)
-                        <a class="_youtube" href="{{ $current_city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
-                    @endif
-                </div>
+                @foreach ($dic_city as $city)
+                    <div class="b-social @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
+                        @if ($city->fb_link)
+                            <a class="_facebook" href="{{ $city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        @endif
+                        @if ($city->vk_link)
+                            <a class="_vkontakte" href="{{ $city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                        @endif
+                        @if ($city->ig_link)
+                            <a class="_instagram" href="{{ $city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                        @endif
+                        @if ($city->tw_link)
+                            <a class="_twitter" href="{{ $city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        @endif
+                        @if ($city->yt_link)
+                            <a class="_youtube" href="{{ $city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                        @endif
+                    </div>
+                @endforeach
             </div>
 
             <div class="col-md-4 _mb30">
@@ -137,7 +158,11 @@
             <div class="jcarousel">
                 <ul class="row _mb0">
                     @foreach ($dic_workers as $worker)
-                        <li class="col-sm-4 _mb50">
+                        <?
+                        #if ($worker->city_id != $current_city->id)
+                        #    continue;
+                        ?>
+                        <li class="col-sm-4 _mb50 @if($worker->city_id != $current_city->id) hidden @endif" data-city_id="{{ $worker->city_id }}">
                             <span class="_block _mb20">
                                 @if (isset($worker->avatar) && is_object($worker->avatar))
                                     <img src="{{ $worker->avatar->full() }}" alt="{{ $worker->name }}">

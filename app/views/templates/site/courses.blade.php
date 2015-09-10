@@ -51,6 +51,7 @@ Helper::ta($professions);
 Helper::ta($intensives);
 Helper::tad($modules);
 #*/
+$num = 0;
 ?>
 
 
@@ -98,7 +99,7 @@ Helper::tad($modules);
     @if ($main_course !== null)
         <section id="main-course" class="b-section _no-padding-bottom _mb30">
             <div class="b-section _bg-red b-courses__big text-center">
-                <h2>1. {{ $main_course->name }}</h2>
+                <h2>{{ ++$num }}. {{ $main_course->name }}</h2>
                 <h3 class="_mb50">{{ $main_course->short }}</h3>
                 <a href="{{ URL::route('page.course', [$city->slug, $main_course->id]) }}" class="btn btn-white">Подробнее</a>
             </div>
@@ -111,7 +112,7 @@ Helper::tad($modules);
     @if (isset($professions) && is_object($professions) && $professions->count())
 
         <section class="b-section text-center _no-padding-bottom">
-            <h2 class="_with-subtitle">2. Профессии</h2>
+            <h2 class="_with-subtitle">{{ ++$num }}. Профессии</h2>
             <p class="_max-text _margin-auto _mb50">4 месяца полного погружения в область</p>
 
             <div class="b-courses _time-at-bottom">
@@ -146,7 +147,7 @@ Helper::tad($modules);
     @if (isset($modules) && is_object($modules) && $modules->count())
 
         <section class="b-section text-center _no-padding-bottom">
-            <h2 class="_with-subtitle">3. Модули</h2>
+            <h2 class="_with-subtitle">{{ ++$num }}. Модули</h2>
             <p class="_max-text _margin-auto _mb50">Убойное оттачивание навыков за 2-3 недели</p>
 
 

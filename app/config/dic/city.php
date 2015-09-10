@@ -78,7 +78,15 @@ return array(
                 #],
             ),
 
-
+            'header_img' => array(
+                'title' => 'Изображение в шапке (на странице контактов)',
+                'type' => 'image',
+                'params' => array(
+                    'maxFilesize' => 4, // MB
+                    #'acceptedFiles' => 'image/*',
+                    #'maxFiles' => 2,
+                ),
+            ),
 
             '-1' => array(
                 'type' => 'custom',

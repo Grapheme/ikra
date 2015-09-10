@@ -35,7 +35,7 @@ return array(
                 'title' => 'Цитата в шапке',
                 'type' => 'textarea',
             ),
-            /*
+            #/*
             'header_img' => array(
                 'title' => 'Изображение в шапке',
                 'type' => 'image',
@@ -45,7 +45,7 @@ return array(
                     #'maxFiles' => 2,
                 ),
             ),
-            */
+            #*/
             'avatar' => array(
                 'title' => 'Аватар',
                 'type' => 'image',
@@ -91,6 +91,43 @@ return array(
             'course_text' => array(
                 'title' => 'Название курса',
                 'type' => 'text',
+            ),
+
+
+            'fb_link' => array(
+                'title' => 'Facebook',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'vk_link' => array(
+                'title' => 'VKontakte',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'ig_link' => array(
+                'title' => 'Instagram',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'tw_link' => array(
+                'title' => 'Twitter',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
+            ),
+            'yt_link' => array(
+                'title' => 'YouTube',
+                'type' => 'text',
+                'others' => [
+                    'placeholder' => 'http://',
+                ],
             ),
 
             'mainpage' => array(

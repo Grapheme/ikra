@@ -219,7 +219,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                     #Helper::ta($lesson_direction);
                     $lesson_teacher = isset($dic_teachers[$lesson->teacher_id]) ? $dic_teachers[$lesson->teacher_id] : null;
                     ?>
-                    <li>
+                    <li data-direction_id="{{ $lesson_direction->id }}">
                         <a class="b-primary__title collapsed _mb30" data-toggle="collapse" href="#lesson{{ $lesson->id }}" aria-expanded="true">
                             @if (is_object($lesson_direction->image))
                                 <img src="{{ $lesson_direction->image->thumb() }}" height="60" width="60" alt="">
@@ -253,14 +253,18 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                                     </div>
                                     <div class="col-md-8 _mb20 _max-text">
                                         <article>
-                                            <h3>Когда?</h3>
-                                            <p>
-                                                {{ $lesson->when }}
-                                            </p>
-                                            <h3>Что делаем?</h3>
-                                            <p>
-                                                {{ $lesson->what }}
-                                            </p>
+                                            @if ($lesson->when)
+                                                <h3>Когда?</h3>
+                                                <p>
+                                                    {{ $lesson->when }}
+                                                </p>
+                                            @endif
+                                            @if ($lesson->what)
+                                                <h3>Что делаем?</h3>
+                                                <p>
+                                                    {{ $lesson->what }}
+                                                </p>
+                                            @endif
                                         </article>
                                     </div>
                                 </div>

@@ -1386,6 +1386,15 @@ HTML;
     }
 
 
+    public static function toArray($object) {
+
+        $output = [];
+        if (count($object))
+            foreach ($object as $item)
+                $output[] = $item;
+        return $output;
+    }
+
 }
 
 if (!function_exists('is_collection')) {

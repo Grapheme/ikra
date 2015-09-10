@@ -12,6 +12,14 @@
 #Helper::ta($page);
 #echo $page->block('about');
 #die;
+$all_direction = Helper::toArray($dic_direction);
+usort($all_direction, function($a, $b) {
+    if ($a->lft == $b->lft) {
+        return 0;
+    }
+    return ($a->lft < $b->lft) ? -1 : 1;
+});
+#Helper::tad($all_direction);
 ?>
 
 
@@ -37,11 +45,11 @@
     <section class="b-section _no-padding-bottom">
         <h2>Наши направления</h2>
 
-        @if (isset($dic_direction) && is_object($dic_direction) && $dic_direction->count())
+        @if (isset($all_direction) && count($all_direction))
 
             <ul class="b-about__directions row text-center">
 
-                @foreach ($dic_direction as $direction)
+                @foreach ($all_direction as $direction)
 
                     <li class="col-sm-6 col-md-4">
                         <a class="collapsed" data-toggle="collapse" href="#about_{{ $direction->slug }}">
