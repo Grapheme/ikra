@@ -6,6 +6,26 @@
 ?>
 @extends(Helper::layout())
 <?php
+$route = Route::current();
+
+$city_slug = $route->getParameter('city_slug');
+#Helper::tad($city_slug);
+
+$city = null;
+foreach ($dic_city as $temp) {
+    if ($temp->slug == $city_slug) {
+        $city = $temp;
+        break;
+    }
+}
+#Helper::tad($city);
+if (!is_object($city)) {
+    echo json_encode(['responseType' => 'error', 'responseCode' => 404]);
+    return;
+}
+
+$current_city = $city;
+
 $stories = $dic_stories;
 $courses_dates = [];
 #Helper::ta($dic_course);
@@ -38,10 +58,10 @@ asort($courses_dates);
 
             @foreach ($stories as $s => $story)
                 <?
-                Helper::ta($story);
+                #Helper::ta($story);
                 $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
-                Helper::ta($city);
-                if (!$city || $city->id != $current_city->id)
+                #Helper::ta($city);
+                if (!$city || $current_city->id != $city->id)
                     continue;
                 ?>
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
