@@ -729,11 +729,24 @@ $(function()
     parseHash();
 
     // JCOROUSEL TEACHERS
-    $(function() {
-	    $('.jcarousel').jcarousel({
-	        // Configuration goes here
-	    });
-	});
+    
+    $('.jcarousel').on('jcarousel:create jcarousel:reload', function() {
+        var element = $(this),
+            width = element.innerWidth();
+
+        if (width > 1920) {
+            width = width / 3;
+        } else if (width > 729) {
+            width = width / 2;
+        } else if (width > 375) {
+        	width = width / 1;
+        }
+
+        element.jcarousel('items').css('width', width + 'px');
+    })
+    .jcarousel({
+        // Your configurations options
+    });
 
 	$('.jcarousel-nav-bar .arrow-left').click(function() {
 	    $('.jcarousel').jcarousel('scroll', '-=3');
