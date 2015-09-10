@@ -27,6 +27,10 @@ if (!is_object($city)) {
 $current_city = $city;
 
 $stories = $dic_stories;
+foreach ($stories as $s => $story) {
+    if ($story->city_id != $current_city->id)
+        continue;
+}
 $courses_dates = [];
 #Helper::ta($dic_course);
 #Helper::tad($current_city);
