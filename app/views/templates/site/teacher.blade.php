@@ -190,10 +190,8 @@ $teacher_direction = isset($dic_direction[$teacher->direction]) ? $dic_direction
                 <ul class="row">
                     @foreach ($more_teachers as $tchr)
                         <li class="col-sm-4 _mb70 corousel-element">
-                            <a class="_block _mb20" href="{{ URL::route('page.teacher', $tchr->id) }}">
-                                @if (isset($tchr->avatar) && is_object($tchr->avatar))
-                                    <img src="{{ $tchr->avatar->full() }}" alt="{{ $tchr->name }}">
-                                @endif
+                            <a class="_block _mb20" style="background-image: url({{ (isset($tchr->avatar) && is_object($tchr->avatar)) ? $tchr->avatar->full() : '' }});" href="{{ URL::route('page.teacher', $tchr->id) }}">
+                                    
                             </a>
                             <h3 class="_mb5">{{ $tchr->name }}</h3>
                             <small class="_block _mb10">
