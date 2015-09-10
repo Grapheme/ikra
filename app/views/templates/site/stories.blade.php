@@ -29,7 +29,7 @@ $current_city = $city;
 $stories = $dic_stories;
 foreach ($stories as $s => $story) {
     if ($story->city_id != $current_city->id)
-        continue;
+        usnet($stories[$s]);
 }
 $courses_dates = [];
 #Helper::ta($dic_course);
