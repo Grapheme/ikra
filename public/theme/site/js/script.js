@@ -734,7 +734,7 @@ $(function()
         var element = $(this),
             width = element.innerWidth();
 
-        if (width > 1025) {
+        if (width > 1920) {
             width = width / 3;
         } else if (width > 729) {
             width = width / 2;
