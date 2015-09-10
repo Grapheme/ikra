@@ -89,25 +89,26 @@ if (!$story) {
                 </div>
             </div>
             <div class="col-md-4">
-                <h3 class="_mb10"><br>Написать:</h3>
-                <div class="b-social">
-                    @if ($story->fb_link)
-                        <a class="_facebook _mb0" href="{{ $current_city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
-                    @endif
-                    @if ($story->vk_link)
-                        <a class="_vkontakte _mb0" href="{{ $current_city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
-                    @endif
-                    @if ($story->ig_link)
-                        <a class="_instagram _mb0" href="{{ $current_city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
-                    @endif
-                    @if ($story->tw_link)
-                        <a class="_twitter _mb0" href="{{ $current_city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
-                    @endif
-                    @if ($story->yt_link)
-                        <a class="_youtube _mb0" href="{{ $current_city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
-                    @endif
-
-                </div>
+                @if ($story->fb_link || $story->vk_link || $story->ig_link || $story->tw_link || $story->yt_link)
+                    <h3 class="_mb10"><br>Написать:</h3>
+                    <div class="b-social">
+                        @if ($story->fb_link)
+                            <a class="_facebook _mb0" href="{{ $current_city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        @endif
+                        @if ($story->vk_link)
+                            <a class="_vkontakte _mb0" href="{{ $current_city->vk_link }}" target="_blank"><i class="fa fa-vk"></i></a>
+                        @endif
+                        @if ($story->ig_link)
+                            <a class="_instagram _mb0" href="{{ $current_city->ig_link }}" target="_blank"><i class="fa fa-instagram"></i></a>
+                        @endif
+                        @if ($story->tw_link)
+                            <a class="_twitter _mb0" href="{{ $current_city->tw_link }}" target="_blank"><i class="fa fa-twitter"></i></a>
+                        @endif
+                        @if ($story->yt_link)
+                            <a class="_youtube _mb0" href="{{ $current_city->yt_link }}" target="_blank"><i class="fa fa-youtube"></i></a>
+                        @endif
+                    </div>
+                @endif
             </div>
         </div>
         <div class="row">
