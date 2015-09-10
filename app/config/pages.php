@@ -31,6 +31,20 @@ return array(
 
         $block_tpls = [
 
+            'index__about' => [
+                'title' => 'Главная - Шапка',
+                'fields' => [
+                    'video' => [
+                        'title' => 'Видео для фона',
+                        'type' => 'textarea',
+                    ],
+                    'image' => [
+                        'title' => 'Картинка для фона',
+                        'type' => 'image',
+                    ],
+                ],
+            ],
+
             'about__about' => [
                 'title' => 'Об икре - О школе',
                 'fields' => [
