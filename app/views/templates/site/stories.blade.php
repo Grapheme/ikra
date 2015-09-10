@@ -38,7 +38,9 @@ asort($courses_dates);
 
             @foreach ($stories as $s => $story)
                 <?
+                Helper::ta($story);
                 $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
+                Helper::ta($city);
                 if (!$city || $city->id != $current_city->id)
                     continue;
                 ?>
