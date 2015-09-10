@@ -812,7 +812,7 @@ $(function()
 				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
 				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
 				teachersSortArray.push('<div class="text-right">');
-				teachersSortArray.push('<a class="btn btn-readmore" href="http://ikra.dev/teachers/' + thisTeacherId + '">Подробнее</a>');
+				teachersSortArray.push('<a class="btn btn-readmore" href="/teachers/' + thisTeacherId + '">Подробнее</a>');
 				teachersSortArray.push('</div>');
 				teachersSortArray.push('</li>');
 

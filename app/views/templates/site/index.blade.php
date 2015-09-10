@@ -99,9 +99,7 @@ foreach ($dic_stories as $story) {
         <div class="b-title__text">
             <div class="h2 _mb40">Икра &mdash; школа интерактивных коммуникаций</div>
             <div class="_mb40 _max-text _margin-auto">
-                <i>
-                    Мы готовим востребованных специалистов. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores dolore corporis maxime nesciunt, omnis vero, illo veniam consequuntur quam ea vel voluptas est reprehenderit deserunt nihil possimus deleniti assumenda.
-                </i>
+                <i>Мы фокусируемся на творческом и стратегическом мышлении и помогаем нашим выпускникам находить себя в любимой профессии</i>
             </div>
             <div class="professions-slider">
                 @if (isset($dic_professions) && is_object($dic_professions) && $dic_professions->count())
