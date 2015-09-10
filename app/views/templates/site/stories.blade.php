@@ -65,7 +65,7 @@ asort($courses_dates);
                         <blockquote class="_mb80 _text-red"><i><strong>{{ $story->quote }}</strong></i></blockquote>
                         <p class="_mb20">{{ nl2br($story->short) }}</p>
                         <div class="text-right">
-                            <a href="{{ URL::route('page.story', [$city->slug, $story->id]) }}" class="btn btn-readmore">Узнать все подробности</a>
+                            <a href="{{ URL::route('page.story', [$current_city->slug, $story->id]) }}" class="btn btn-readmore">Узнать все подробности</a>
                         </div>
                     </div>
                 </div>
