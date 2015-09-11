@@ -304,7 +304,7 @@ foreach ($dic_stories as $story) {
             <div class="h2 _with-subtitle">Наши клиенты</div>
             <div class="h4 _mb85 _max-text">Мы не придумываем задачи нашим студентам &mdash; они работают по реальным брифам известных брендов</div>
 
-            <div class="b-slider _mb20 owl-carousel">
+            <div class="b-slider _mb20 owl-carousel _medium">
                 @foreach ($dic_clients as $client)
                     <?php
                     if (!is_object($client->logo))
