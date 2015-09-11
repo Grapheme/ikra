@@ -15,6 +15,7 @@
 
 @section('content')
 
+    {{--{{ Helper::ta($current_city) }}--}}
 
     <section class="b-title _long _invert" style="background-image: url({{ (isset($current_city->header_img) && is_object($current_city->header_img)) ? $current_city->header_img->full() : '' }});">
 
