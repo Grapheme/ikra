@@ -158,10 +158,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
         <section class="b-section _no-padding-bottom">
             <div class="row">
                 <div class="col-md-4 _mb60" data-equalheight>
-                    <a class="_block _mb10" href="{{ URL::route('page.teacher', [$teacher->id]) }}">
-                        @if (isset($teacher->avatar) && is_object($teacher->avatar))
-                            <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                        @endif
+                    <a class="_block _mb10 course-teacher-avatar" style="background-image: url({{ ($teacher->avatar->full() && is_object($teacher->avatar)) ? $teacher->avatar->full() : '' }});" href="{{ URL::route('page.teacher', [$teacher->id]) }}">
+
                     </a>
                     <h3>{{ $teacher->name }}</h3>
                     <small>

@@ -743,12 +743,13 @@ $(function()
         // Your configurations options
     });
 
+    //Responsive carousel
     function resizeCarousel() {
     	$('.js-cElement').css({
     		width: $('.jcarousel').width()/4
     	});
     	$('.js-cImage').css({
-    		height: $('.jcarousel').width()/4
+    		height: $('.jcarousel').width()/4 -20
     	});
     }
     $(window).on('resize', resizeCarousel);
@@ -762,6 +763,18 @@ $(function()
 	$('.jcarousel-nav-bar .arrow-right').click(function() {
 	    $('.jcarousel').jcarousel('scroll', '+=3');
 	});
+
+	//Responsive teachers list
+	function resizeTeachersList() {
+		var teachersListItemSize = $('.b-teachers__list').width()/4 -20;
+    	$('.teacher-list-avatar').css({
+    		height: teachersListItemSize,
+    		width: teachersListItemSize
+    	});
+    }
+    $(window).on('resize', resizeTeachersList);
+    resizeTeachersList();
+    $('.b-teachers__list')
 
 	// SMOOTH SCROLL
 	//	var slugs = [kreativ, strategiya, prodyusirovanie, art-direkshn, media, menedjment]
@@ -826,7 +839,7 @@ $(function()
 					thisTeacherCompany = v['company'] || false;
 
 				teachersSortArray.push('<li class="col-sm-4 _mb70">');
-				teachersSortArray.push('<a href="http://ikra.dev/teachers/' + thisTeacherId + '" class="_block _mb20">');
+				teachersSortArray.push('<a href="/teachers/' + thisTeacherId + '" class="_block _mb20">');
 				teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
 				teachersSortArray.push('</a>');
 				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');

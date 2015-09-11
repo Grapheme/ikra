@@ -162,13 +162,11 @@
                         #if ($worker->city_id != $current_city->id)
                         #    continue;
                         ?>
-                        <li class="col-sm-4 _mb50 @if($worker->city_id != $current_city->id) hidden @endif" data-city_id="{{ $worker->city_id }}">
-                            <span class="_block _mb20">
-                                @if (isset($worker->avatar) && is_object($worker->avatar))
-                                    <img src="{{ $worker->avatar->full() }}" alt="{{ $worker->name }}">
-                                @endif
-                            </span>
-                            <h3 class="_mb5">{{ $worker->name }}</h3>
+                        <li class="col-sm-4 _mb50 js-cElement" @if($worker->city_id != $current_city->id) hidden @endif" data-city_id="{{ $worker->city_id }}">
+                            @if (isset($worker->avatar) && is_object($worker->avatar))
+                                <img class="js-cImage" src="{{ $worker->avatar->full() }}" alt="{{ $worker->name }}">
+                            @endif
+                            <h3 class="_mb5 main-role-name">{{ $worker->name }}</h3>
                             @if ($worker->position)
                                 <small class="_block _mb30">{{ $worker->position }}</small>
                             @endif
