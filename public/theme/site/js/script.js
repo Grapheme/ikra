@@ -646,11 +646,15 @@ $(function()
             },
         },
         submitHandler: function (form) {
+						$(form).find('button[type="submit"]').prop('disabled', true);
+						$(form).find('button[type="submit"]').attr('disabled', true);
+					
             var options = {
                 success: function (data) {
-                    $('form#course-select').fadeOut();
+                    $('form#course-select').slideUp();
                     $('.form-holder h2._cta').fadeOut();
-                    $('.form-holder .form-success').fadeIn();
+                    $('.form-holder .form-success').slideDown();
+                    $('.form-holder .form-success h2._cta').fadeIn();
                 },
                 error: function (data) {
                     console.log('server error')
@@ -739,22 +743,42 @@ $(function()
         var element = $(this),
             width = element.innerWidth();
     })
+
+
+
     .jcarousel({
-        // Your configurations options
+
     });
 
     //Responsive carousel
     function resizeCarousel() {
+    	                var width = $('.jcarousel').innerWidth();
+    	                var cof = 4;
+
+    	                if (width >= 1900) {
+    	                    cof = 4;
+    	                    
+    	                } else if (width <= 1224) {
+    	                    cof = 3;
+    	                    
+    	                    if (width <= 1000) {
+    	                	cof = 2;
+    	                    
+	    	                }
+	    	                if (width <= 600) {
+	    	                	cof = 1;
+	    	                }
+    	                }
+
     	$('.js-cElement').css({
-    		width: $('.jcarousel').width()/4
+    		width: $('.jcarousel').width()/cof
     	});
     	$('.js-cImage').css({
-    		height: $('.jcarousel').width()/4 -20
+    		height: $('.jcarousel').width()/cof -20
     	});
     }
     $(window).on('resize', resizeCarousel);
     resizeCarousel();
-    $('.corousel-element')
 
 	$('.jcarousel-nav-bar .arrow-left').click(function() {
 	    $('.jcarousel').jcarousel('scroll', '-=3');
