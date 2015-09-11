@@ -198,11 +198,9 @@ foreach ($dic_stories as $story) {
         <div class="jcarousel">
             <ul class="_mb50 row">
                 @foreach ($teachers as $teacher)
-                    <li class="_mb30 corousel-element">
-                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
-                            @if (isset($teacher->avatar) && is_object($teacher->avatar))
-                                <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                            @endif
+                    <li class="_mb30 corousel-element js-cElement">
+                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" style="background-image: url({{ ($teacher->avatar->full() && is_object($teacher->avatar)) ? $teacher->avatar->full() : '' }});" class="_block _mb20 js-cImage">
+
                         </a>
                         <div class="_mb5 h3">{{ $teacher->name }}</div>
                         <div class="small">

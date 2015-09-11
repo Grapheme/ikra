@@ -66,10 +66,8 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
             <ul class="b-teachers__list row">
                 @foreach ($teachers as $teacher)
                     <li class="col-sm-4 _mb70">
-                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" class="_block _mb20">
-                            @if (isset($teacher->avatar) && is_object($teacher->avatar))
-                                <img src="{{ $teacher->avatar->full() }}" alt="{{ $teacher->name }}">
-                            @endif
+                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" style="background-image: url({{ is_object($teacher->avatar) ? $teacher->avatar->full() : '' }});" class="_block _mb20 teacher-list-avatar">
+
                         </a>
                         <h3 class="_mb5">{{ $teacher->name }}</h3>
                         <div class="_block _mb10">
