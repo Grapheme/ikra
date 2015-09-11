@@ -97,7 +97,7 @@
 
                 <form action="{{ URL::route('app.form_question') }}" method="POST" role="form" class="_max-form">
                     <div class="form-group _mb15">
-                        <input type="text" name="email" class="form-control" id="" placeholder="E-mail для ответа">
+                        <input type="email" name="email" class="form-control" id="" placeholder="E-mail для ответа">
                     </div>
                     <div class="form-group _mb40">
                         <input type="text" name="text" class="form-control" id="" placeholder="А здесь вопрос">

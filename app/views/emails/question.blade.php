@@ -7,12 +7,12 @@
 	<div>
         @if (isset($email) && $email)
             <p>
-                email: {{ $email }}<br/>
+                email: {{ $email }}
             </p>
         @endif
         @if (isset($text) && $text)
             <p>
-                Вопрос: {{ $text }}<br/>
+                Вопрос: {{ $text }}
             </p>
         @endif
 	</div>

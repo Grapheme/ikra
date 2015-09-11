@@ -244,7 +244,7 @@ $num = 0;
         </div>
 
         <div id="cta_form" class="collapse">
-            <form role="form" id="course-select" class="row _white">
+            <form action="{{ URL::route('app.form_course_register') }}" method="POST" role="form" id="course-select" class="row _white">
                 <div class="col-md-5 _mb60 col-md-offset-1">
                     <div class="form-group _mb20">
                         <input type="text" name="name" class="form-control" id="" placeholder="Имя">
@@ -262,7 +262,7 @@ $num = 0;
                             <select name="direction">
                                 <option data-color="#ff0000">Хочу обучиться</option>
                                 @foreach ($dic_direction as $direction)
-                                    <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
+                                    <option value="{{ $direction->dp }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -271,7 +271,7 @@ $num = 0;
                         {{--<input type="text" class="form-control" id="" placeholder="Хочу обучиться">--}}
                     </div>
                     <div class="form-group _mb20">
-                        <input type="text" class="form-control" id="" placeholder="Или предложить тему">
+                        <input type="text" name="custom_topic" class="form-control" id="" placeholder="Или предложить тему">
                     </div>
                 </div>
                 <div class="col-xs-12 _text-blue text-center">
