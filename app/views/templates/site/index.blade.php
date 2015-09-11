@@ -36,6 +36,8 @@ if ($route->getName() == 'page.city') {
         echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('mainpage'), 'redirectCode' => 301]);
         return;
     }
+    $page_title = $city->name;
+    $seo = $city->seo;
 
 } else if ($route->getName() == 'mainpage' && $current_city->id != Config::get('site.default_city_id')) {
 
@@ -58,7 +60,7 @@ foreach ($dic_course as $course) {
 
 $teachers = new Collection();
 foreach ($dic_teachers as $teacher) {
-    if ($teacher->mainpage) {
+    if ($teacher->mainpage && $teacher->city_id == $current_city->id) {
         $teachers[$teacher->id] = $teacher;
         #if (count($courses) >= 6)
         #    break;

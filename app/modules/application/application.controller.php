@@ -48,7 +48,7 @@ class ApplicationController extends BaseController {
          */
         $dic_city = $dic_{'city'};
         $refresh_city = false;
-        $refresh_city = true;
+        #$refresh_city = true;
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         $city = Session::get($user_city_cache_key);
@@ -769,6 +769,7 @@ class ApplicationController extends BaseController {
                 Session::set($user_city_cache_key, $city);
                 setcookie('change_city', true, time()+60*$user_city_cache_min, '/');
                 $response['status'] = true;
+                $response['session'] = Session::all();
             } else {
                 $response['errorText'] = 'wrong city_id';
             }

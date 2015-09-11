@@ -15,6 +15,9 @@
 
     <div class="b-header__city">
         <div class="b-header__city-select-wrapper _txt9">
+
+            {{--{{ Session::get('current_city')->id }}--}}
+
             <form class="nl-form header-city-form" action="{{ URL::route('ajax.change_city') }}" method="POST" data-nl>
                 <span data-city-nl>
                     <select class="b-header__city-select js-city-select" name="city_id" id="city_select">
@@ -23,7 +26,7 @@
                             if (!$city->important)
                                 continue;
                             ?>
-                                <option value="{{ $city->id }}">Икра {{ $city->name_mini ?: $city->name }}</option>
+                            <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</option>
                         @endforeach
                     </select>
                 </span>
