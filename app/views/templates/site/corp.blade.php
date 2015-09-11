@@ -275,7 +275,7 @@
 
 
 
-    @if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count())
+    @if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count() && false)
         <section class="b-section">
             <h2>Отзывы</h2>
             <ul class="row">

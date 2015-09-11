@@ -392,7 +392,16 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                             </span>
                         @endif
                         <h3 class="_mb5">{{ $review->fio }}</h3>
-                        <small class="_block _mb25">{{ $review->company }}, {{ $review->position }}</small>
+                        <small class="_block _mb25">
+                            <?php
+                            $temp = [];
+                            if ($review->position)
+                                $temp[] = $review->position;
+                            if ($review->company)
+                                $temp[] = $review->company;
+                            ?>
+                            {{ implode(', ', $temp) }}
+                        </small>
                         <p class="b-textroll__content">
                             {{ $review->content }}
                         </p>
