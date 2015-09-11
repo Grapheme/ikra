@@ -448,6 +448,9 @@ section.teacher-text .b-about__col {
   width: 380px;
   height: 380px;
 }
+.b-teachers__list li {
+  min-height: 600px;
+}
 .b-teachers__list li a.teacher-list-avatar {
   background-repeat: no-repeat;
   display: block;
