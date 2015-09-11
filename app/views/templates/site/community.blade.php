@@ -43,7 +43,7 @@ $current_page = Input::get('tab') == 'blog' ? Input::get('page') : 1;
 Paginator::setCurrentPage($current_page);
 $blogs = Dic::valuesBySlug('blog', function($query){
     $query->orderBy('created_at', 'desc');
-}, ['fields', 'textfields'], true, true, true, 1);
+}, ['fields', 'textfields'], true, true, true, 6);
 $blogs = DicLib::loadImages($blogs, ['image']);
 #Helper::tad($blogs);
 #dd($blogs);
@@ -194,7 +194,7 @@ elseif (Input::get('tab') == 'social')
                 <div class="row b-community__social tab_social" id="tab_social" data-name="social">
                     @foreach ($dic_city as $city)
                         <li class="col-sm-3">
-                            <div class="_txt4 _text-red _mb40"><b>Икра {{ $city->name }}</b></div>
+                            <div class="_txt4 _text-red _mb40"><b>Икра {{ $city->name_mini }}</b></div>
                             <div class="b-social">
                                 @if ($city->fb_link)
                                     <a class="_facebook" href="{{ $city->fb_link }}" target="_blank"><i class="fa fa-facebook"></i></a>

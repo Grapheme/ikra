@@ -36,6 +36,8 @@ if ($route->getName() == 'page.city') {
         echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('mainpage'), 'redirectCode' => 301]);
         return;
     }
+    $page_title = $city->name;
+    $seo = $city->seo;
 
 } else if ($route->getName() == 'mainpage' && $current_city->id != Config::get('site.default_city_id')) {
 
@@ -58,7 +60,7 @@ foreach ($dic_course as $course) {
 
 $teachers = new Collection();
 foreach ($dic_teachers as $teacher) {
-    if ($teacher->mainpage) {
+    if ($teacher->mainpage && $teacher->city_id == $current_city->id) {
         $teachers[$teacher->id] = $teacher;
         #if (count($courses) >= 6)
         #    break;
@@ -93,7 +95,7 @@ foreach ($dic_stories as $story) {
             </video>
         </div> -->
         <div class="b-title__logo">
-            <img src="theme/site/img/logo/logo.png" height="102" width="129" alt="ИКРА IKRA">
+            <img src="{{ Config::get('site.theme_path') }}/img/logo/logo.png" height="102" width="129" alt="ИКРА IKRA">
         </div>
 
         <div class="b-title__text">

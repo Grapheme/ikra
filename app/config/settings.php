@@ -35,6 +35,19 @@ return array(
                         'type' => 'text',
                     ),
 
+                    [
+                        'group_title' => 'Настройки Битрикс24',
+                        'style' => 'margin: 0 0 5px 0',
+                    ],
+                    'bitrix24_login' => array(
+                        'title' => 'Логин',
+                        'type' => 'text',
+                    ),
+                    'bitrix24_pass' => array(
+                        'title' => 'Пароль',
+                        'type' => 'text',
+                    ),
+
                     ['group_title' => 'Кеширование'],
 
                     'db_remember_timeout' => array(

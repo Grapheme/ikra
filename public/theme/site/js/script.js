@@ -73,6 +73,7 @@ $(function()
 	// Слайдер
 	(function Slider()
 	{
+		console.log(1);
 		$(".owl-carousel._large").owlCarousel(
 		{
 			nav: true,
@@ -290,7 +291,7 @@ $(function()
 			data: $form.serialize(),
 			success: function(data) {
 				if (data.status == true) {
-					//location.href = ''
+					location.href = '/'
 				} else {
 					console.log('error', data)
 				}

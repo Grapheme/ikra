@@ -124,7 +124,7 @@ asort($courses_dates);
 
     <section class="b-section _no-padding-bottom">
         <div class="h2">Ближайшие курсы <br> в
-            <form class="nl-form _text-red" data-nl>
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" data-nl>
                 <select name="city" id="">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>

@@ -7,7 +7,9 @@
 /**
  * META TITLE
  */
-if (isset($page) && is_object($page)) {
+if (isset($page_title)) {
+    #
+} elseif (isset($page) && is_object($page)) {
     if (isset($page->seos) && is_object($page->seos) && isset($page->seos[Config::get('app.locale')]) && is_object($page->seos[Config::get('app.locale')]) && $page->seos[Config::get('app.locale')]->title) {
         $page_title = $page->seos[Config::get('app.locale')]->title;
     } else {

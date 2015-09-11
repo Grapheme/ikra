@@ -47,33 +47,26 @@ class ApplicationController extends BaseController {
          * Предзагружаем из сессии, кешируем в сессию, делаем глобальным для шаблонизатора.
          */
         $dic_city = $dic_{'city'};
+        #Helper::tad($dic_city);
+
         $refresh_city = false;
-        $refresh_city = true;
+        #$refresh_city = true;
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
-        $city = Session::get($user_city_cache_key);
         if ($refresh_city)
             Session::forget($user_city_cache_key);
+        $city = @$dic_city[Session::get($user_city_cache_key)];
         #Helper::tad($city);
-        #var_dump($city);
-        #Session::forget($user_city_cache_key); die;
         if (!$city || $refresh_city) {
             Session::forget($user_city_cache_key);
             if (isset($_COOKIE['city_id']) && is_numeric($_COOKIE['city_id'])) {
-                #$city = Dic::valueBySlugAndId('city', $_COOKIE['city_id'], []);
                 $city = @$dic_city[$_COOKIE['city_id']];
             }
-            #var_dump($city);
             if (!$city || $refresh_city) {
-                #$city = @$dic_city[$_COOKIE['city_id']];
                 $city = @$dic_city[Config::get('site.default_city_id')];
             }
-            #var_dump($city);
-            #Helper::tad($city);
-            Session::set($user_city_cache_key, $city);
+            Session::set($user_city_cache_key, $city->id);
         }
-        #var_dump($city);
-        #Helper::tad($dic_city);
         #Helper::tad($city);
         #die;
         View::share($user_city_cache_key, $city);
@@ -439,18 +432,30 @@ class ApplicationController extends BaseController {
         $data['course'] = $course;
 
         ## Find exist records - by email & course_id
-        $record = Dic::valuesBySlug('subscribes', function($query) use ($data) {
+        $record = Dic::valuesBySlug('leads', function($query) use ($data) {
             $query->filter_by_field('email', '=', $data['email']);
             $query->filter_by_field('course_id', '=', $data['course_id']);
-        }, [], true, true, false);
-        Helper::smartQueries(1);
-        Helper::tad($record);
+        }, ['fields'], true, true, false);
+        #Helper::tad($record);
         if (count($record) >= 1) {
             $json_request['status'] = true;
             $json_request['also'] = true;
             $json_request['responseText'] = 'Email also in DB';
             return Response::json($json_request, 200);
         }
+
+        ## Create lead in bitrix24
+        $answer = file_get_contents(
+            'https://ikrafamily.bitrix24.ru/crm/configs/import/lead.php?'
+                . '&LOGIN=' . Config::get('app.settings.main.bitrix24_login')
+                . '&PASSWORD=' . Config::get('app.settings.main.bitrix24_pass')
+                . '&TITLE=' . @$data['name'] . ' - ' . $data['email']
+                . '&NAME=' . @$data['name']
+                . '&EMAIL_HOME=' . @$data['email']
+                . '&PHONE_MOBILE=' . @$data['phone']
+                . '&UF_CRM_1429722925=' . $course->name . ' (' . $city->name . ')'
+        );
+        #Helper::tad($answer);
 
         ## Create record
         $temp = DicVal::inject('leads', array(
@@ -752,11 +757,12 @@ class ApplicationController extends BaseController {
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
         if (is_numeric($city_id)) {
-            $city = Dic::valueBySlugAndId('city', $city_id, []);
+            $city = Dic::valueBySlugAndId('city', $city_id, 'all');
             if (is_object($city) && $city->id) {
-                Session::set($user_city_cache_key, $city);
+                Session::set($user_city_cache_key, $city->id);
                 setcookie('change_city', true, time()+60*$user_city_cache_min, '/');
                 $response['status'] = true;
+                $response['session'] = Session::all();
             } else {
                 $response['errorText'] = 'wrong city_id';
             }
