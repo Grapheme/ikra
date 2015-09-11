@@ -16,7 +16,7 @@
     <div class="b-header__city">
         <div class="b-header__city-select-wrapper _txt9">
 
-            {{ Session::get('current_city')->id }}
+            {{--{{ Session::get('current_city')->id }}--}}
 
             <form class="nl-form header-city-form" action="{{ URL::route('ajax.change_city') }}" method="POST" data-nl>
                 <span data-city-nl>
