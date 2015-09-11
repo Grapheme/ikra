@@ -290,7 +290,7 @@ $(function()
 			data: $form.serialize(),
 			success: function(data) {
 				if (data.status == true) {
-					//location.href = ''
+					location.href = ''
 				} else {
 					console.log('error', data)
 				}
