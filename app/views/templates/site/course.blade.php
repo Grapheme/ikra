@@ -113,7 +113,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                 @endif
             </div>
             <div class="course-form-holder" class="collapse in" aria-expanded="true">
-                <form role="form" class="row _white">
+                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="row _white">
+                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="col-md-5 _mb60 col-md-offset-0">
                         <div class="form-group _mb20">
                             <input name="name" type="text" class="form-control" id="" placeholder="Имя">
@@ -124,6 +125,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                         <div class="form-group _mb20">
                             <input name="phone" type="text" class="form-control" id="" placeholder="Телефон">
                         </div>
+                        {{--
                         <div class="form-group _mb20">
                             <div data-nl="">
                                 <div class="nl-field nl-dd">
@@ -140,6 +142,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                                 <div class="nl-overlay"></div>
                             </div>
                         </div>
+                        --}}
                 </div>
                 <div class="col-xs-12 _text-blue text-center">
                     <button type="submit" class="btn">Отправить</button>
@@ -354,7 +357,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             <br>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
-                    <form id="curent-course-form" role="form" class="_white">
+                    <form action="{{ URL::route('app.form_course') }}" method="POST" id="curent-course-form" role="form" class="_white">
+                        <input type="hidden" name="course_id" value="{{ $course->id }}">
                         <div class="form-group _mb20">
                             <input name="name" type="text" class="form-control" id="" placeholder="Имя">
                         </div>
@@ -433,7 +437,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             </div>
             <div class="col-md-4">
                 <div class="_mb70"></div>
-                <form role="form" class="_white">
+                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="_white">
+                    <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="form-group _mb20">
                         <input type="text" name="name" placeholder="Имя" id="" class="form-control">
                     </div>

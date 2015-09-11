@@ -93,6 +93,7 @@ class ApplicationController extends BaseController {
             Route::any('/ajax/form_course_register', array('as' => 'app.form_course_register', 'uses' => __CLASS__.'@formCourseRegister'));
             Route::any('/ajax/form_corp', array('as' => 'app.form_corp', 'uses' => __CLASS__.'@formCorp'));
             Route::any('/ajax/form_subscribe', array('as' => 'app.form_subscribe', 'uses' => __CLASS__.'@formSubscribe'));
+            Route::any('/ajax/form_course', array('as' => 'app.form_course', 'uses' => __CLASS__.'@formCourse'));
         });
     }
 
@@ -220,7 +221,7 @@ class ApplicationController extends BaseController {
                 $from_name = Config::get('app.settings.main.feedback_from_name') ?: 'No-reply';
 
                 $message->from($from_email, $from_name);
-                $message->subject('Заявка с сайта - запись на курс');
+                $message->subject('Заявка с сайта - запрос курса');
 
                 #$email = Config::get('app.settings.main.feedback_address') ?: 'dev@null.ru';
                 $email = $data['to'];
@@ -384,6 +385,7 @@ class ApplicationController extends BaseController {
             return Response::json($json_request, 200);
         }
 
+        ## Create record
         $temp = DicVal::inject('subscribes', array(
             'slug' => NULL,
             'name' => $email,
@@ -391,6 +393,128 @@ class ApplicationController extends BaseController {
                 'city_id' => $city->id,
             ),
         ));
+
+        $json_request['status'] = TRUE;
+
+        #Helper::dd($result);
+        return Response::json($json_request, 200);
+    }
+
+
+    /**
+     * Форма записи на курс
+     * http://ikra.dev/city/msk/courses/18
+     * + Сохраняется в БД
+     * - Отправляется на почту
+     * - Отправляется в битрикс24
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function formCourse() {
+
+        #if (!Request::ajax())
+        #    App::abort(404);
+
+        $json_request = ['status' => FALSE, 'responseText' => ''];
+        $data = Input::all();
+
+        #$city = View::shared('dic_city');
+        #$city = @$city[$data['city_id']];
+        $city = View::shared('current_city');
+        #Helper::tad($city);
+        if (!is_object($city) || null == ($emails = $city->email_course)) {
+            $json_request['errorText'] = 'Current city not found, or e-mail is nulled';
+            return Response::json($json_request, 200);
+        }
+        $data['city'] = $city;
+        $data['to'] = $emails;
+
+        ## Find course
+        $course = Dic::valueBySlugAndId('course', @$data['course_id'], 'all', true, true, true);
+        #Helper::tad($course);
+        if (!is_object($course)) {
+            $json_request['errorText'] = 'Course not found';
+            return Response::json($json_request, 200);
+        }
+        $data['course'] = $course;
+
+        ## Find exist records - by email & course_id
+        $record = Dic::valuesBySlug('subscribes', function($query) use ($data) {
+            $query->filter_by_field('email', '=', $data['email']);
+            $query->filter_by_field('course_id', '=', $data['course_id']);
+        }, [], true, true, false);
+        Helper::smartQueries(1);
+        Helper::tad($record);
+        if (count($record) >= 1) {
+            $json_request['status'] = true;
+            $json_request['also'] = true;
+            $json_request['responseText'] = 'Email also in DB';
+            return Response::json($json_request, 200);
+        }
+
+        ## Create record
+        $temp = DicVal::inject('leads', array(
+            'slug' => NULL,
+            'name' => @$data['name'],
+            'fields' => array(
+                'city_id' => $city->id,
+                'course_id' => @$data['course_id'],
+                'email' => @$data['email'],
+                'phone' => @$data['phone'],
+            ),
+        ));
+
+        ## Send email
+        $tpl = 'emails.lead';
+        if (View::exists($tpl)) {
+
+            Mail::send($tpl, $data, function ($message) use ($data) {
+                #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+
+                $from_email = Config::get('app.settings.main.feedback_from_email') ?: 'no@reply.ru';
+                $from_name = Config::get('app.settings.main.feedback_from_name') ?: 'No-reply';
+
+                $message->from($from_email, $from_name);
+                $message->subject('Заявка с сайта - запись на курс');
+
+                #$email = Config::get('app.settings.main.feedback_address') ?: 'dev@null.ru';
+                $email = $data['to'];
+                $emails = array();
+                if (strpos($email, ',')) {
+                    $emails = explode(',', $email);
+                    foreach ($emails as $e => $email) {
+                        $email = trim($email);
+                        if (filter_var($email, FILTER_VALIDATE_EMAIL))
+                            $emails[$e] = $email;
+                    }
+                    $email = array_shift($emails);
+                }
+
+                $message->to($email);
+
+                #$ccs = Config::get('mail.feedback.cc');
+                $ccs = $emails;
+                if (isset($ccs) && is_array($ccs) && count($ccs))
+                    foreach ($ccs as $cc)
+                        $message->cc($cc);
+
+                /**
+                 * Прикрепляем файл
+                 */
+                /*
+                if (Input::hasFile('file') && ($file = Input::file('file')) !== NULL) {
+                    #Helper::dd($file->getPathname() . ' / ' . $file->getClientOriginalName() . ' / ' . $file->getClientMimeType());
+                    $message->attach($file->getPathname(), array('as' => $file->getClientOriginalName(), 'mime' => $file->getClientMimeType()));
+                }
+                #*/
+
+            });
+            $json_request['status'] = TRUE;
+
+        } else {
+
+            $json_request['responseText'] = 'Template ' . $tpl . ' not found.';
+        }
 
         $json_request['status'] = TRUE;
 

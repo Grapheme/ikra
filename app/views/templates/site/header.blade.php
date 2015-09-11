@@ -15,9 +15,9 @@
 
     <div class="b-header__city">
         <div class="b-header__city-select-wrapper _txt9">
-            <form class="nl-form header-city-form" action="" method="get" data-nl>
+            <form class="nl-form header-city-form" action="{{ URL::route('ajax.change_city') }}" method="POST" data-nl>
                 <span data-city-nl>
-                    <select class="b-header__city-select js-city-select" name="city_select" id="city_select">
+                    <select class="b-header__city-select js-city-select" name="city_id" id="city_select">
                         @foreach ($dic_city as $city)
                             <?
                             if (!$city->important)
