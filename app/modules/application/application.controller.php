@@ -92,6 +92,7 @@ class ApplicationController extends BaseController {
             Route::any('/ajax/form_question', array('as' => 'app.form_question', 'uses' => __CLASS__.'@formQuestion'));
             Route::any('/ajax/form_course_register', array('as' => 'app.form_course_register', 'uses' => __CLASS__.'@formCourseRegister'));
             Route::any('/ajax/form_corp', array('as' => 'app.form_corp', 'uses' => __CLASS__.'@formCorp'));
+            Route::any('/ajax/form_subscribe', array('as' => 'app.form_subscribe', 'uses' => __CLASS__.'@formSubscribe'));
         });
     }
 
@@ -341,6 +342,57 @@ class ApplicationController extends BaseController {
 
             $json_request['responseText'] = 'Template ' . $tpl . ' not found.';
         }
+
+        #Helper::dd($result);
+        return Response::json($json_request, 200);
+    }
+
+
+    /**
+     * Форма подписки
+     * На всех страницах в меню
+     * Email сохраняется в БД
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function formSubscribe() {
+
+        #if (!Request::ajax())
+        #    App::abort(404);
+
+        $json_request = ['status' => FALSE, 'responseText' => ''];
+        #$data = Input::all();
+        $email = Input::get('email');
+
+        ## Check email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $json_request['errorText'] = 'Bad email';
+            return Response::json($json_request, 200);
+        }
+
+        ## Find exist records
+        $city = View::shared('current_city');
+        $record = Dic::valuesBySlug('subscribes', function($query) use ($email, $city) {
+            $query->where('name', $email);
+            $query->filter_by_field('city_id', '=', $city->id);
+        }, [], true, true, false);
+        #Helper::tad($record);
+        if (count($record) >= 1) {
+            $json_request['status'] = true;
+            $json_request['also'] = true;
+            $json_request['responseText'] = 'Email also in DB';
+            return Response::json($json_request, 200);
+        }
+
+        $temp = DicVal::inject('subscribes', array(
+            'slug' => NULL,
+            'name' => $email,
+            'fields' => array(
+                'city_id' => $city->id,
+            ),
+        ));
+
+        $json_request['status'] = TRUE;
 
         #Helper::dd($result);
         return Response::json($json_request, 200);
