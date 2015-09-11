@@ -211,6 +211,10 @@ $(function()
 		$('.stories-holder ._hided').slice(0, 5).removeClass('_hided');
 	});
 
+	if($('.stories-holder ._hided').length = 0) {
+		$('#more_stories').fadeOut;
+	}
+
 	// VIEW MORE MODULES
 	$('._modules ul ._hided').slice(0, 5).removeClass('_hided');
 	$('#more_modules').click(function(e){
@@ -284,18 +288,18 @@ $(function()
 		
 		others.val(val);
 		
-		$.ajax({
-			method: $form.attr('method'),
-			url: $form.attr('action'),
-			data: $form.serialize(),
-			success: function(data) {
-				if (data.status == true) {
-					location.href = '/'
-				} else {
-					console.log('error', data)
-				}
-			}
-		});
+		// $.ajax({
+		// 	method: $form.attr('method'),
+		// 	url: $form.attr('action'),
+		// 	data: $form.serialize(),
+		// 	success: function(data) {
+		// 		if (data.status == true) {
+		// 			location.href = '/'
+		// 		} else {
+		// 			console.log('error', data)
+		// 		}
+		// 	}
+		// });
 		
 		others.each(function(){
 			$(this).siblings('.nl-field').remove();
@@ -330,7 +334,6 @@ $(function()
 			thisCityIg_link = thisCity['ig_link'] || false,
 			thisCityTw_link = thisCity['tw_link'] || false,
 			thisCityYt_link = thisCity['yt_link'] || false;
-			console.log(curentCity);
 
 		$('.b-footer__map > div').html('<div class="b-footer__map-text-valign h4">' + thisCityName + '<br>' + thisCityAddress + '</div>');
 		$('input#city_id').val(thisCityId);
@@ -484,6 +487,7 @@ $(function()
 			}
 
 			ContactBlockSocial.push('</div>');
+			ContactBlockSocial.push('<small class="_block _mb60 _text-blue">С РАДОСТЬЮ ОТВЕЧАЕМ С 11:00 ДО 20:00 <br>В БУДНИЕ ДНИ</small>');
 			cityContactBlock.push(ContactBlockSocial.join(''));
 		}
 		
@@ -513,77 +517,68 @@ $(function()
 		var courseFilterRequest = $.ajax({
 			method: "POST",
 			url: thisFormAction,
-			data: { city: filteredCityId, course: filteredCourseId }
+			data: { city: filteredCityId, direction: filteredCourseId }
 		})
 
 		courseFilterRequest.done(function(data) {
 			if(data.status) {
-				// Response courses array
-	        	var coursesArray = [];
-				$.map(__SITE.filteredDirections, function(value, index) {
-				    coursesArray.push(value);
-				});
 
-				var thisCourse = __SITE.filteredDirections[curentCity],
-					thisCourseName = thisCourse['name'] || false,
-					thisCourseId = thisCourse['id'] || false,
-					thisCourseDate_start = thisCourse['date_start'] || false,
-					thisCourseDate_stop = thisCourse['date_stop'] || false,
-					thisCourseDic_id = thisCourse['dic_id'] || false,
-					thisCourseCity_id = thisCourse['city_id'] || false,
-					thisCourseType_id = thisCourse['type_id'] || false,
-					thisCourseDate_start = thisCourse['date_start'] || false,
-					thisCourseDate_stop = thisCourse['date_stop'] || false,
-					thisCourseWeekdays = thisCourse['weekdays'] || false,
-					thisCoursePrice = thisCourse['price'] || false,
-					thisCourseTeacher_id = thisCourse[''] || false,
-					thisCourseDirection_id = thisCourse['direction_id'] || false,
-					thisCourseDiscounts = thisCourse['discounts'] || false,
-					thisCourseBlockquote = thisCourse['blockquote'] || false,
-					thisCourseFor_who = thisCourse['for_who'] || false,
-					thisCourseResult = thisCourse['result'] || false,
-					thisCourseShort = thisCourse['short'] || false;
-
-				// Filtered courses formation
-				if(thisCourseName) {
-					var i = 0,
-						fiveFirstCourses = [];
-
-					$.each(coursesListItem, function(){
-						if(i < 5) {
-							var coursesListItem =[],
-								allCoursesButton = $('a.b-courses__link _all').clone();
-
-							if(thisCourseName) {
-								coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 180px;">');
-								coursesListItem.push('<a href="' +  + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
-								if(thisCourseName){
-									coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
-								}
-								if(thisCourseShort){
-									coursesListItem.push('<span class="h3"><strong>' + thisCourseShort + '</strong></span>');
-								}
-
-								if(thisCourseDate_start){
-									coursesListItem.push('<time class="h5">' + thisCourseDate_start);
-									if(thisCourseDate_stop) {
-										coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
-									} else {
-										coursesListItem.push('</time></a></li>');
-									}
-								}
-								
-								fiveFirstCourses.push(coursesListItem.join(''));
-
-							}
-							i++;
-						}
-					});
-				}
-
+				var i = 0;
 				$('#filtered-course').empty();
-				$('#filtered-course').prepend(fiveFirstCourses.join(''));
-				$('#filtered-course').append(allCoursesButton);
+				$.each(data.list, function(index, value){
+					var thisCourse = value,
+						thisCourseName = thisCourse['blockquote'] || false,
+						thisCourseId = thisCourse['id'] || false,
+						thisCourseDate_start = thisCourse['date_start'] || false,
+						thisCourseDate_stop = thisCourse['date_stop'] || false,
+						thisCourseDic_id = thisCourse['dic_id'] || false,
+						thisCourseCity_id = thisCourse['city_id'] || false,
+						thisCourseType_id = thisCourse['type_id'] || false,
+						thisCourseDate_start = thisCourse['date_start'] || false,
+						thisCourseDate_stop = thisCourse['date_stop'] || false,
+						thisCourseWeekdays = thisCourse['weekdays'] || false,
+						thisCoursePrice = thisCourse['price'] || false,
+						thisCourseTeacher_id = thisCourse['teacher_id'] || false,
+						thisCourseDirection_id = thisCourse['direction_id'] || false,
+						thisCourseDiscounts = thisCourse['discounts'] || false,
+						thisCourseBlockquote = thisCourse['blockquote'] || false,
+						thisCourseFor_who = thisCourse['for_who'] || false,
+						thisCourseResult = thisCourse['result'] || false,
+						thisCourseShort = thisCourse['short'] || false;
+
+					// Filtered courses formation
+					if(thisCourseName) {
+						var fiveFirstCourses = [];
+						var coursesListItem =[],
+							allCoursesButton = $('a.b-courses__link _all').clone();
+
+						if(thisCourseName) {
+							coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="">');
+							coursesListItem.push('<a href="/city/msk/courses/' + thisCourseId + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
+							if(thisCourseName){
+								coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
+							}
+							
+								coursesListItem.push('<span class="b-courses__descr" style="height: auto;"><i>' + thisCourseFor_who + '</i></span>');
+							
+
+							if(thisCourseDate_start){
+								coursesListItem.push('<time class="h5">' + thisCourseDate_start);
+								if(thisCourseDate_stop) {
+									coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
+								} else {
+									coursesListItem.push('</time></a></li>');
+								}
+							}
+							
+							fiveFirstCourses.push(coursesListItem.join(''));
+
+						}
+						i++;
+						$('#filtered-course').prepend(fiveFirstCourses.join(''));
+						$('#filtered-course').append(allCoursesButton);
+					}
+				});
 			}
 		});
 
@@ -910,6 +905,10 @@ $(function()
     		height: teachersListItemSize,
     		width: teachersListItemSize
     	});
+
+    	$('.teacher-list-info').css({
+    		width: teachersListItemSize
+    	});
     }
     $(window).on('resize', resizeTeachersList);
     resizeTeachersList();
@@ -978,18 +977,19 @@ $(function()
 					thisTeacherCompany = v['company'] || false;
 
 				teachersSortArray.push('<li class="col-sm-4 _mb70">');
-				teachersSortArray.push('<a href="/teachers/' + thisTeacherId + '" class="_block _mb20">');
-				teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
-				teachersSortArray.push('</a>');
+				teachersSortArray.push('<a style="background-image: url(' + imgPath + '/' + thisTeacherAvatar.name + ');" href="/teachers/' + thisTeacherId + '" class="_block _mb20 teacher-list-avatar">');
+				// teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
+				teachersSortArray.push('</a><div class="teacher-list-info">');
 				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
 				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
 				teachersSortArray.push('<div class="text-right">');
 				teachersSortArray.push('<a class="btn btn-readmore" href="/teachers/' + thisTeacherId + '">Подробнее</a>');
-				teachersSortArray.push('</div>');
+				teachersSortArray.push('</div></div>');
 				teachersSortArray.push('</li>');
 
 				$('ul.b-teachers__list').empty();
-				$('ul.b-teachers__list').append(teachersSortArray.join(''));
+				$('ul.b-teachers__list').html(teachersSortArray.join(''));
+				resizeTeachersList();
 			}
 
 			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {

@@ -70,19 +70,21 @@ if (isset($dic_teachers) && is_object($dic_teachers) && $dic_teachers->count()) 
                         <a href="{{ URL::route('page.teacher', $teacher->id) }}" style="background-image: url({{ is_object($teacher->avatar) ? $teacher->avatar->full() : '' }});" class="_block _mb20 teacher-list-avatar">
 
                         </a>
-                        <h3 class="_mb5">{{ $teacher->name }}</h3>
-                        <div class="_block _mb10">
-                            <?php
-                            $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </div>
-                        <div class="text-right">
-                            <a class="btn btn-readmore" href="{{ URL::route('page.teacher', [$teacher->id]) }}">Подробнее</a>
+                        <div class="teacher-list-info">
+                            <h3 class="_mb5">{{ $teacher->name }}</h3>
+                            <div class="_block _mb10">
+                                <?php
+                                $temp = [];
+                                if ($teacher->position)
+                                    $temp[] = $teacher->position;
+                                if ($teacher->company)
+                                    $temp[] = $teacher->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </div>
+                            <div class="text-right">
+                                <a class="btn btn-readmore" href="{{ URL::route('page.teacher', [$teacher->id]) }}">Подробнее</a>
+                            </div>
                         </div>
                     </li>
                 @endforeach
