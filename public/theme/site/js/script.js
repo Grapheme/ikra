@@ -73,6 +73,7 @@ $(function()
 	// Слайдер
 	(function Slider()
 	{
+		console.log(1);
 		$(".owl-carousel._large").owlCarousel(
 		{
 			nav: true,
