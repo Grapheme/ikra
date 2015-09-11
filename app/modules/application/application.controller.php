@@ -47,33 +47,26 @@ class ApplicationController extends BaseController {
          * Предзагружаем из сессии, кешируем в сессию, делаем глобальным для шаблонизатора.
          */
         $dic_city = $dic_{'city'};
+        #Helper::tad($dic_city);
+
         $refresh_city = false;
         #$refresh_city = true;
         $user_city_cache_key = self::$user_city_cache_key;
         $user_city_cache_min = self::$user_city_cache_min;
-        $city = Session::get($user_city_cache_key);
         if ($refresh_city)
             Session::forget($user_city_cache_key);
+        $city = @$dic_city[Session::get($user_city_cache_key)];
         #Helper::tad($city);
-        #var_dump($city);
-        #Session::forget($user_city_cache_key); die;
         if (!$city || $refresh_city) {
             Session::forget($user_city_cache_key);
             if (isset($_COOKIE['city_id']) && is_numeric($_COOKIE['city_id'])) {
-                #$city = Dic::valueBySlugAndId('city', $_COOKIE['city_id'], []);
                 $city = @$dic_city[$_COOKIE['city_id']];
             }
-            #var_dump($city);
             if (!$city || $refresh_city) {
-                #$city = @$dic_city[$_COOKIE['city_id']];
                 $city = @$dic_city[Config::get('site.default_city_id')];
             }
-            #var_dump($city);
-            #Helper::tad($city);
-            Session::set($user_city_cache_key, $city);
+            Session::set($user_city_cache_key, $city->id);
         }
-        #var_dump($city);
-        #Helper::tad($dic_city);
         #Helper::tad($city);
         #die;
         View::share($user_city_cache_key, $city);
@@ -766,7 +759,7 @@ class ApplicationController extends BaseController {
         if (is_numeric($city_id)) {
             $city = Dic::valueBySlugAndId('city', $city_id, 'all');
             if (is_object($city) && $city->id) {
-                Session::set($user_city_cache_key, $city);
+                Session::set($user_city_cache_key, $city->id);
                 setcookie('change_city', true, time()+60*$user_city_cache_min, '/');
                 $response['status'] = true;
                 $response['session'] = Session::all();

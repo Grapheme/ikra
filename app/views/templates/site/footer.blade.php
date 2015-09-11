@@ -93,9 +93,10 @@
             </div>
 
             <div class="col-md-4 _mb30">
-                <div class="h4 _mb30">С удовольствием ответим на вопросы</div>
+                <div class="h4 _mb30 footer-success">Спасибо, ваш вопрос отправлен</div>
+                <div class="h4 _mb30 footer-default">С удовольствием ответим на вопросы</div>
 
-                <form action="{{ URL::route('app.form_question') }}" method="POST" role="form" class="_max-form">
+                <form action="{{ URL::route('app.form_question') }}" method="POST" role="form" class="_max-form footer-form">
                     <div class="form-group _mb15">
                         <input type="email" name="email" class="form-control" id="" placeholder="E-mail для ответа">
                     </div>
