@@ -95,7 +95,7 @@ foreach ($dic_stories as $story) {
             </video>
         </div> -->
         <div class="b-title__logo">
-            <img src="theme/site/img/logo/logo.png" height="102" width="129" alt="ИКРА IKRA">
+            <img src="{{ Config::get('site.theme_path') }}/img/logo/logo.png" height="102" width="129" alt="ИКРА IKRA">
         </div>
 
         <div class="b-title__text">
