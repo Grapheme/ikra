@@ -27,8 +27,8 @@
                         @endif
                     </select>
                 </span>
-
-                <div class="nl-overlay"></div>
+            </form>
+            <div class="nl-overlay"></div>
         </div>
 
         {{ Helper::ta_($current_city) }}
@@ -95,14 +95,14 @@
             <div class="col-md-4 _mb30">
                 <div class="h4 _mb30">С удовольствием ответим на вопросы</div>
 
-                <form role="form" class="_max-form">
+                <form action="{{ URL::route('app.form_question') }}" method="POST" role="form" class="_max-form">
                     <div class="form-group _mb15">
-                        <input type="email" class="form-control" id="" placeholder="E-mail для ответа">
+                        <input type="text" name="email" class="form-control" id="" placeholder="E-mail для ответа">
                     </div>
                     <div class="form-group _mb40">
-                        <input type="text" class="form-control" id="" placeholder="А здесь вопрос">
+                        <input type="text" name="text" class="form-control" id="" placeholder="А здесь вопрос">
                     </div>
-                     <input type="hidden" id="city_id">
+                    <input type="hidden" id="city_id" name="city_id" value="{{ $current_city->id }}">
                     <button type="submit" class="btn btn-blue btn-wide">Отправить</button>
                 </form>
 

@@ -203,6 +203,10 @@ return array(
                 ],
             ),
 
+            'email_question' => array(
+                'title' => 'E-mail адреса для отправки вопросов (через запятую)',
+                'type' => 'text',
+            ),
         );
     },
 
