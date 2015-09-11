@@ -632,6 +632,65 @@ $(function()
             $(form).ajaxSubmit(options);
         }
     });
+	// COURSE FORM VALIDATION
+
+	$('form.form_corp').validate({
+        rules: {
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+            },
+            company: {
+                required: true,
+            },
+            topic: {
+                required: true,
+            },
+        },
+
+        messages: {
+            name: {
+                required: 'Необходимо заполнить поле!',
+            },
+            company: {
+                required: 'Необходимо заполнить поле!',
+            },
+            topic: {
+                required: 'Необходимо заполнить поле!',
+            },
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            phone: {
+                required: 'Укажите ваш телефон!',
+            },
+        },
+        submitHandler: function (form) {
+						$(form).find('button[type="submit"]').prop('disabled', true);
+						$(form).find('button[type="submit"]').attr('disabled', true);
+            var options = {
+                success: function (data) {
+                    console.log('success')
+										if(data.status == true) {
+											$(form).slideUp();
+											$(form).prev().slideUp();
+											$(form).closest('section').find('.success-message').slideDown();
+										}
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
 
     // SELECT COURSE FORM VALIDATION
 

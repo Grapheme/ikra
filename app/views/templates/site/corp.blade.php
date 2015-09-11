@@ -323,8 +323,9 @@
 
 
     <section class="b-section _no-padding-bottom _mb30">
+        <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
         <div class="_txt3 text-center _mb55">или оставьте заявку через форму:</div>
-        <form action="{{ URL::route('app.form_corp') }}" method="POST" role="form">
+        <form action="{{ URL::route('app.form_corp') }}" class="form_corp" method="POST" role="form">
             <div class="row _mb45">
                 <div class="col-sm-6">
                     <div class="_max-form _margin-auto">
