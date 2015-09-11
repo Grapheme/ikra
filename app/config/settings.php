@@ -16,8 +16,14 @@ return array(
                         'style' => 'margin: 0 0 5px 0',
                     ],
 
+                    /*
                     'feedback_address' => array(
                         'title' => 'Адрес почты для сообщений обратной связи',
+                        'type' => 'text',
+                    ),
+                    */
+                    'feedback_address_corp' => array(
+                        'title' => 'Адрес почты для сообщений с корпоративной страницы',
                         'type' => 'text',
                     ),
                     'feedback_from_email' => array(

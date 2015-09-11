@@ -324,28 +324,28 @@
 
     <section class="b-section _no-padding-bottom _mb30">
         <div class="_txt3 text-center _mb55">или оставьте заявку через форму:</div>
-        <form role="form">
+        <form action="{{ URL::route('app.form_corp') }}" method="POST" role="form">
             <div class="row _mb45">
                 <div class="col-sm-6">
                     <div class="_max-form _margin-auto">
                         <div class="form-group _mb20">
-                            <input type="text" class="form-control" id="" placeholder="Имя">
+                            <input type="text" name="name" class="form-control" id="" placeholder="Имя">
                         </div>
                         <div class="form-group _mb20">
-                            <input type="email" class="form-control" id="" placeholder="E-mail">
+                            <input type="email" name="email" class="form-control" id="" placeholder="E-mail">
                         </div>
                         <div class="form-group _mb50">
-                            <input type="text" class="form-control" id="" placeholder="Телефон">
+                            <input type="text" name="phone" class="form-control" id="" placeholder="Телефон">
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="_max-form _margin-auto">
                         <div class="form-group _mb20">
-                            <input type="text" class="form-control" id="" placeholder="Компания">
+                            <input type="text" name="company" class="form-control" id="" placeholder="Компания">
                         </div>
                         <div class="form-group _mb20">
-                            <input type="email" class="form-control" id="" placeholder="Интересующая тема">
+                            <input type="text" name="topic" class="form-control" id="" placeholder="Интересующая тема">
                         </div>
                     </div>
                 </div>

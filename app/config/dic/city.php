@@ -207,6 +207,10 @@ return array(
                 'title' => 'E-mail адреса для отправки вопросов (через запятую)',
                 'type' => 'text',
             ),
+            'email_course_register' => array(
+                'title' => 'E-mail адреса для отправки запросов на обучение по курсу (через запятую)',
+                'type' => 'text',
+            ),
         );
     },
 

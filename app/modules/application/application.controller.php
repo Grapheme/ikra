@@ -91,6 +91,7 @@ class ApplicationController extends BaseController {
 
             Route::any('/ajax/form_question', array('as' => 'app.form_question', 'uses' => __CLASS__.'@formQuestion'));
             Route::any('/ajax/form_course_register', array('as' => 'app.form_course_register', 'uses' => __CLASS__.'@formCourseRegister'));
+            Route::any('/ajax/form_corp', array('as' => 'app.form_corp', 'uses' => __CLASS__.'@formCorp'));
         });
     }
 
@@ -202,7 +203,7 @@ class ApplicationController extends BaseController {
         #$city = @$city[$data['city_id']];
         $city = View::shared('current_city');
         #Helper::tad($city);
-        if (!is_object($city) || null == ($emails = $city->email_question)) {
+        if (!is_object($city) || null == ($emails = $city->email_course_register)) {
             $json_request['errorText'] = 'Current city not found, or e-mail is nulled';
             return Response::json($json_request, 200);
         }
@@ -219,6 +220,88 @@ class ApplicationController extends BaseController {
 
                 $message->from($from_email, $from_name);
                 $message->subject('Заявка с сайта - запись на курс');
+
+                #$email = Config::get('app.settings.main.feedback_address') ?: 'dev@null.ru';
+                $email = $data['to'];
+                $emails = array();
+                if (strpos($email, ',')) {
+                    $emails = explode(',', $email);
+                    foreach ($emails as $e => $email) {
+                        $email = trim($email);
+                        if (filter_var($email, FILTER_VALIDATE_EMAIL))
+                            $emails[$e] = $email;
+                    }
+                    $email = array_shift($emails);
+                }
+
+                $message->to($email);
+
+                #$ccs = Config::get('mail.feedback.cc');
+                $ccs = $emails;
+                if (isset($ccs) && is_array($ccs) && count($ccs))
+                    foreach ($ccs as $cc)
+                        $message->cc($cc);
+
+                /**
+                 * Прикрепляем файл
+                 */
+                /*
+                if (Input::hasFile('file') && ($file = Input::file('file')) !== NULL) {
+                    #Helper::dd($file->getPathname() . ' / ' . $file->getClientOriginalName() . ' / ' . $file->getClientMimeType());
+                    $message->attach($file->getPathname(), array('as' => $file->getClientOriginalName(), 'mime' => $file->getClientMimeType()));
+                }
+                #*/
+
+            });
+            $json_request['status'] = TRUE;
+
+        } else {
+
+            $json_request['responseText'] = 'Template ' . $tpl . ' not found.';
+        }
+
+        #Helper::dd($result);
+        return Response::json($json_request, 200);
+    }
+
+
+    /**
+     * Форма записи на корпоративной странице
+     * http://ikra.dev/corp
+     * Email НЕ зависит от города - берется из настроек
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function formCorp() {
+
+        #if (!Request::ajax())
+        #    App::abort(404);
+
+        $json_request = ['status' => FALSE, 'responseText' => ''];
+        $data = Input::all();
+
+        #$city = View::shared('dic_city');
+        #$city = @$city[$data['city_id']];
+        #$city = View::shared('current_city');
+        #Helper::tad($city);
+        #if (!is_object($city) || null == ($emails = $city->email_question)) {
+        if (null == ($emails = Config::get('app.settings.main.feedback_address_corp'))) {
+            $json_request['errorText'] = 'E-mail is nulled';
+            return Response::json($json_request, 200);
+        }
+        $data['to'] = $emails;
+
+        $tpl = 'emails.corp';
+        if (View::exists($tpl)) {
+
+            Mail::send($tpl, $data, function ($message) use ($data) {
+                #$message->from(Config::get('mail.from.address'), Config::get('mail.from.name'));
+
+                $from_email = Config::get('app.settings.main.feedback_from_email') ?: 'no@reply.ru';
+                $from_name = Config::get('app.settings.main.feedback_from_name') ?: 'No-reply';
+
+                $message->from($from_email, $from_name);
+                $message->subject('Заявка с сайта - корпоративная');
 
                 #$email = Config::get('app.settings.main.feedback_address') ?: 'dev@null.ru';
                 $email = $data['to'];
