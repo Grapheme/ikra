@@ -646,11 +646,15 @@ $(function()
             },
         },
         submitHandler: function (form) {
+						$(form).find('button[type="submit"]').prop('disabled', true);
+						$(form).find('button[type="submit"]').attr('disabled', true);
+					
             var options = {
                 success: function (data) {
-                    $('form#course-select').fadeOut();
+                    $('form#course-select').slideUp();
                     $('.form-holder h2._cta').fadeOut();
-                    $('.form-holder .form-success').fadeIn();
+                    $('.form-holder .form-success').slideDown();
+                    $('.form-holder .form-success h2._cta').fadeIn();
                 },
                 error: function (data) {
                     console.log('server error')
