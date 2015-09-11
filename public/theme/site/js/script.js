@@ -692,6 +692,46 @@ $(function()
             $(form).ajaxSubmit(options);
         }
     });
+	
+		$('form.footer-form').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+            },
+            text: {
+                required: true,
+            },
+        },
+
+        messages: {
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            text: {
+                required: 'Необходимо заполнить поле!',
+            },
+        },
+        submitHandler: function (form) {
+						$(form).find('button[type="submit"]').prop('disabled', true);
+						$(form).find('button[type="submit"]').attr('disabled', true);
+            var options = {
+                success: function (data) {
+                    console.log('success')
+										if(data.status == true) {
+											$(form).slideUp();
+											$(form).closest('section').find('.footer-default').slideUp();
+											$(form).closest('section').find('.footer-success').slideDown();
+										}
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
 
     // SELECT COURSE FORM VALIDATION
 
