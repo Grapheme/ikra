@@ -288,18 +288,18 @@ $(function()
 		
 		others.val(val);
 		
-		// $.ajax({
-		// 	method: $form.attr('method'),
-		// 	url: $form.attr('action'),
-		// 	data: $form.serialize(),
-		// 	success: function(data) {
-		// 		if (data.status == true) {
-		// 			location.href = '/'
-		// 		} else {
-		// 			console.log('error', data)
-		// 		}
-		// 	}
-		// });
+		$.ajax({
+			method: $form.attr('method'),
+			url: $form.attr('action'),
+			data: $form.serialize(),
+			success: function(data) {
+				if (data.status == true) {
+					location.href = '/'
+				} else {
+					console.log('error', data)
+				}
+			}
+		});
 		
 		others.each(function(){
 			$(this).siblings('.nl-field').remove();
