@@ -288,6 +288,18 @@ $(function()
 		
 		others.val(val);
 		
+		others.each(function(){
+			$(this).siblings('.nl-field').remove();
+			$(this).show();
+			new NLForm($(this).parent()[0]);
+		});
+
+	});
+	
+	$('#city_select').on('change', function(){
+		var val = $(this).val();
+		var $form = $(this).closest('form');
+		
 		$.ajax({
 			method: $form.attr('method'),
 			url: $form.attr('action'),
@@ -300,14 +312,7 @@ $(function()
 				}
 			}
 		});
-		
-		others.each(function(){
-			$(this).siblings('.nl-field').remove();
-			$(this).show();
-			new NLForm($(this).parent()[0]);
-		});
-
-	});
+	})
 
 	function buildingContactInfo() {
 		var curentCity = $('.b-header__city-select').val(),
