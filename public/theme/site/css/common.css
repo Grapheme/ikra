@@ -126,7 +126,8 @@ article ul._check-list > li:before {
 }
 ._block-justify {
   text-align: justify;
-  text-align-last: justify;
+  -moz-text-align-last: justify;
+       text-align-last: justify;
   line-height: 0;
 }
 ._block-justify > * {
@@ -493,17 +494,17 @@ a._text-pink:hover {
   min-width: 270px;
   background: transparent;
   color: #fff !important;
-  border-radius: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
   border: 2px solid #fff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
   -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
+  -o-transition: all 0.3s;
+     transition: all 0.3s;
 }
 .btn:hover {
   background: #fff;
@@ -547,9 +548,9 @@ a._text-pink:hover {
   padding-bottom: 0;
   border: 0;
   border-bottom: 2px solid #2b9eed;
-  border-radius: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
   -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
   font: 700 20px / normal 'museo sans', sans-serif;
   letter-spacing: 2px;
@@ -956,7 +957,9 @@ a._text-pink:hover {
   padding-left: 100px;
   padding-top: 30px;
   color: #fff;
-  transition: left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-transition: left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+       -o-transition: left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+          transition: left 0.3s cubic-bezier(0.19, 1, 0.22, 1);
   overflow: auto;
 }
 .b-menu._open {
@@ -1015,9 +1018,6 @@ a._text-pink:hover {
   height: 444px;
   background-color: #888;
   /*backgrounf-image: url(../img/content/map.jpg);*/
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
 .b-footer__map #footer_gmap {
@@ -1124,7 +1124,9 @@ a._text-pink:hover {
 }
 .course-form-holder {
   width: 100%;
-  transition: all .5s;
+  -webkit-transition: all .5s;
+       -o-transition: all .5s;
+          transition: all .5s;
   display: none;
 }
 .course-form-holder .col-md-5 {
@@ -1150,7 +1152,8 @@ a._text-pink:hover {
   float: right;
   padding-left: 0;
   margin: 0px 0;
-  border-radius: 0px;
+  -webkit-border-radius: 0px;
+          border-radius: 0px;
 }
 .pagination > li {
   display: inline;
@@ -1173,13 +1176,17 @@ a._text-pink:hover {
 .pagination > li:first-child > a,
 .pagination > li:first-child > span {
   margin-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+          border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
 }
 .pagination > li:last-child > a,
 .pagination > li:last-child > span {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+          border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
   font-weight: bold;
   font-family: 'museo sans', sans-serif;
   color: #404041;
@@ -1223,13 +1230,17 @@ a._text-pink:hover {
 }
 .pagination-lg > li:first-child > a,
 .pagination-lg > li:first-child > span {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+          border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
 }
 .pagination-lg > li:last-child > a,
 .pagination-lg > li:last-child > span {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+          border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
 }
 .pagination-sm > li > a,
 .pagination-sm > li > span {
@@ -1238,13 +1249,17 @@ a._text-pink:hover {
 }
 .pagination-sm > li:first-child > a,
 .pagination-sm > li:first-child > span {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  -webkit-border-top-left-radius: 0;
+          border-top-left-radius: 0;
+  -webkit-border-bottom-left-radius: 0;
+          border-bottom-left-radius: 0;
 }
 .pagination-sm > li:last-child > a,
 .pagination-sm > li:last-child > span {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  -webkit-border-top-right-radius: 0;
+          border-top-right-radius: 0;
+  -webkit-border-bottom-right-radius: 0;
+          border-bottom-right-radius: 0;
 }
 .teacher-sub-name {
   display: none;
@@ -1291,17 +1306,17 @@ section.teacher-text .b-about__col {
   min-width: 270px;
   background: transparent;
   color: #fff !important;
-  border-radius: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0;
   border: 2px solid #fff;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
   box-shadow: none !important;
   -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  transition: all 0.3s;
+  -o-transition: all 0.3s;
+     transition: all 0.3s;
   border: 2px solid #2b9eed;
   color: #2b9eed !important;
   margin-bottom: 15px;
@@ -1400,13 +1415,21 @@ section.teacher-text .b-about__col {
   right: 0;
 }
 .professions-slider .pro-transition {
-  transition: all 1s;
+  -webkit-transition: all 1s;
+       -o-transition: all 1s;
+          transition: all 1s;
 }
 .professions-slider .pro-transformRight {
-  transform: translate(210%, 0);
+  -webkit-transform: translate(210%, 0);
+      -ms-transform: translate(210%, 0);
+       -o-transform: translate(210%, 0);
+          transform: translate(210%, 0);
 }
 .professions-slider .pro-transformLeft {
-  transform: translate(-210%, 0);
+  -webkit-transform: translate(-210%, 0);
+      -ms-transform: translate(-210%, 0);
+       -o-transform: translate(-210%, 0);
+          transform: translate(-210%, 0);
 }
 .overflown-head {
   overflow: hidden;
@@ -1420,7 +1443,9 @@ section.teacher-text .b-about__col {
   background-position: center;
   background-size: cover;
   padding: 30px;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   background-color: #ef4949;
   position: relative;
   -moz-filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
@@ -1571,12 +1596,11 @@ section.teacher-text .b-about__col {
   min-height: 600px;
   padding-top: 40px;
   background: #ef4949;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   background-position: center center;
-  transition: all .5s;
+  -webkit-transition: all .5s;
+       -o-transition: all .5s;
+          transition: all .5s;
   position: relative;
 }
 .b-title._long {
@@ -1763,7 +1787,8 @@ section.teacher-text .b-about__col {
 .b-slider .owl-next {
   position: relative;
   top: -2rem;
-  border-radius: 2rem !important;
+  -webkit-border-radius: 2rem !important;
+          border-radius: 2rem !important;
   width: 4rem;
   height: 4rem;
   line-height: 3.7rem;
@@ -1774,7 +1799,9 @@ section.teacher-text .b-about__col {
   text-align: center;
   font-size: 2rem;
   margin: 0 1rem !important;
-  transition: opacity 0.5s;
+  -webkit-transition: opacity 0.5s;
+       -o-transition: opacity 0.5s;
+          transition: opacity 0.5s;
 }
 .b-slider .owl-prev {
   padding-right: 0.3rem !important;
@@ -1866,7 +1893,9 @@ section.teacher-text .b-about__col {
   box-sizing: content-box;
   border: 2px solid #fff;
   position: relative;
-  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+       -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
 }
 .b-social a:active {
   opacity: 0.9;
@@ -1914,7 +1943,9 @@ section.teacher-text .b-about__col {
   height: 0;
   left: 50%;
   top: 50%;
-  transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+       -o-transition: all 0.2s linear;
+          transition: all 0.2s linear;
 }
 .b-social a:hover:before {
   width: 100%;
@@ -1983,9 +2014,6 @@ section.teacher-text .b-about__col {
 }
 .b-about__course-list {
   background: url(../img/icon/curly-branch.svg) center top no-repeat;
-  -webkit-background-size: 100%;
-  -moz-background-size: 100%;
-  -o-background-size: 100%;
   background-size: 100%;
   padding-top: 120px;
   background-size: 75.8%;
@@ -2158,3 +2186,7 @@ section.teacher-text .b-about__col {
 /*-------------------------------------- до 768 -------------------------------------*/
 /*-------------------------------------- до 1024 -------------------------------------*/
 /* Преподы (конец) */
+
+#filtered-course li a{
+	color: white;
+}
