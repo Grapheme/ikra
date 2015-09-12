@@ -165,7 +165,7 @@
 
 
 
-    <section class="b-section _bg-cyan">
+    <section class="b-section _bg-cyan" style="display:none;">
         <h2>Преподаватели Икры</h2>
 
         <div class="row b-corp__teachers">
@@ -193,9 +193,9 @@
         <h2>Как мы учим</h2>
 
         <div class="b-about__how row _mb70">
-            <div class="col-md-4 _mb20"><i>На ИКРе мы переосмыслили подход к обучению. Каждый наш преподаватель &mdash; это дизайнер опыта, а занятие &mdash; это событие, из которого студент выносит какой-то опыт.</i></div>
-            <div class="col-md-4 _mb20"><i>Rerum esse, animi vero autem recusandae illo alias doloribus, consequuntur quam a, adipisci ut at eos illum, dolorem! Consequuntur vel, voluptatum alias?</i></div>
-            <div class="col-md-4 _mb20"><img src="{{ Config::get('site.theme_path') }}/img/bg/spaceman.jpg" height="222" width="193" alt=""></div>
+            <div class="col-md-4 _mb20"><i>Мы выгодно отличаемся тем, что мы не скучные. Рожденные в digital, мы подошли к образовательному процессу исключительно интерактивно. Большинство наших занятий переведено в индуктивный формат (от практики к ошибке и теории). Все занятия построены на постоянных экспериментах и последующей рефлексии. Мы представляем каждое занятие как игру, в рамках которой мы выстраиваем опыт наших участников: опыт сопереживания, сплочения, сосредоточения, любви или негодования. Эмоциональный опыт позволяет сопереживать материалу и легче его запоминать.</i></div>
+            <div class="col-md-4 _mb20"><i>В рамках нашей методологии мы также разработали систему креативного мышления CRAFT, которая базируется на понятии социальных форм большой идеи и ролевого моделирования сообществ. Однако, мы с одинаковым рвением развиваем направления латерального мышления, дизайн-мышления и ТРИЗа в рамках креативного направления ИКРЫ.<br>Каждый сезон наши программы дополняются новыми актуальными методиками и знаниями, так как мы не ограничены базовыми дисциплинами, а изменения в контенте диктует контекст бизнеса и востребованность на реальном конкурентном рынке.</i></div>
+            <div class="col-md-4 _mb20"><img class="astronaut" src="{{ Config::get('site.theme_path') }}/img/bg/spaceman.jpg" height="222" width="193" alt=""></div>
         </div>
 
         <ul class="b-about__step-list row text-center">
@@ -205,9 +205,9 @@
                 <div class="b-about__step-name"><span class="_txt7 _text-red">Шаг 1. Ошибка</span></div>
                 <img src="{{ Config::get('site.theme_path') }}/img/bg/arrow-down.png" alt="">
                 <b>Зачем?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam doloremque atque autem quam ab. Architecto voluptates dignissimos quis corrupti eveniet, natus fuga asperiores repellat at! Odio ut, mollitia voluptas recusandae!</p>
+                <p>Потому что нужно вызвать сопереживание материалу и вся телега на пару предложений.</p>
                 <b>Что в итоге?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ipsam laborum sint, repudiandae magnam quae? Nam excepturi, quae eaque voluptas numquam commodi sed omnis aspernatur, voluptate, minima doloremque facere odit.</p>
+                <p>Студент анализирует собственные ошибки и стремиться их исправить, то есть готов к получению теоретических знаний.</p>
             </li>
             <li class="col-md-4">
                 <div class="b-about__step-caption _vertical-center"><span class="_txt7 _text-red">С помощью преподавателя и его теоретического материала вы исправляете ошибку</span></div>
@@ -215,9 +215,9 @@
                 <div class="b-about__step-name"><span class="_txt7 _text-red">Шаг 2. Теория</span></div>
                 <img src="{{ Config::get('site.theme_path') }}/img/bg/arrow-down.png" alt="">
                 <b>Зачем?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam doloremque atque autem quam ab. Architecto voluptates dignissimos quis corrupti eveniet, natus fuga asperiores repellat at! Odio ut, mollitia voluptas recusandae!</p>
+                <p>В наших занятиях теории всего 30-35%. Все знания можно получить на практике, но тем не менее структурный материал очень важен и вот это все.</p>
                 <b>Что в итоге?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ipsam laborum sint, repudiandae magnam quae? Nam excepturi, quae eaque voluptas numquam commodi sed omnis aspernatur, voluptate, minima doloremque facere odit.</p>
+                <p>Теория накладывается на ваш анализ собственных ошибок и делает вас готов броситься в бой и блестяще выполнить практическое задание второй раз.</p>
             </li>
             <li class="col-md-4">
                 <div class="b-about__step-caption _vertical-center"><span class="_txt7 _text-red">Фиксируем результаты с помощью повторного практического задания</span></div>
@@ -225,9 +225,9 @@
                 <div class="b-about__step-name"><span class="_txt7 _text-red">Шаг 3. Практика</span></div>
                 <img src="{{ Config::get('site.theme_path') }}/img/bg/arrow-down.png" alt="">
                 <b>Зачем?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam doloremque atque autem quam ab. Architecto voluptates dignissimos quis corrupti eveniet, natus fuga asperiores repellat at! Odio ut, mollitia voluptas recusandae!</p>
+                <p>Только после закрепления практического алгоритма выдается системное видение всего пройденного процесса. Благодаря предыдущим двум пунктам усвоение материала происходит во много раз быстрее, ведь присутствует сопереживание со стороны студента, и теория обретает практический смысл.</p>
                 <b>Что в итоге?</b>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae ipsam laborum sint, repudiandae magnam quae? Nam excepturi, quae eaque voluptas numquam commodi sed omnis aspernatur, voluptate, minima doloremque facere odit.</p>
+                <p>Результатом теоретического блока является обоснование и аргументация ранее пройденной практики, а также финальная систематизация изучаемого предмета.</p>
             </li>
         </ul>
 
