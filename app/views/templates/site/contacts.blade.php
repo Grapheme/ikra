@@ -43,29 +43,30 @@
             </form>
         </div>
 
-
-        @foreach ($dic_city as $city)
-            <div class="row b-contacts__ways _mb50 @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
-                <div class="col-md-4">
-                    @if ($city->address)
-                        <h3 class="_mb40">{{ $city->address }}</h3>
-                    @endif
-                    @if ($city->how2get_text)
-                        <p class="_max-text">
-                            {{ nl2br($city->how2get_text) }}
-                        </p>
-                    @endif
+        <div class="b-contacts__ways-holder">
+            @foreach ($dic_city as $city)
+                <div class="row b-contacts__ways _mb50 @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
+                    <div class="col-md-4">
+                        @if ($city->address)
+                            <h3 class="_mb40">{{ $city->address }}</h3>
+                        @endif
+                        @if ($city->how2get_text)
+                            <p class="_max-text">
+                                {{ nl2br($city->how2get_text) }}
+                            </p>
+                        @endif
+                    </div>
+                    <div class="col-md-6 col-md-push-2">
+                        @if ($city->how2get_way_1 || $city->how2get_way_2 || $city->how2get_way_3)
+                            <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_1) }}</div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_2) }}</div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_3) }}</div>
+                        @endif
+                    </div>
                 </div>
-                <div class="col-md-6 col-md-push-2">
-                    @if ($city->how2get_way_1 || $city->how2get_way_2 || $city->how2get_way_3)
-                        <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_1) }}</div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_2) }}</div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_3) }}</div>
-                    @endif
-                </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
 
 
         <div class="row">
