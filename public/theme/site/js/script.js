@@ -126,7 +126,14 @@ $(function()
 
 
 
-	
+	// CONTACTS PAGE CITY TABS
+
+	$('#cityTabs .js-city-select').on('change', function(){
+		var cityTabId = $(this).val();
+		var cityTabBlock = $('[data-city_id="' + cityTabId + '"]').removeClass('hidden');
+		cityTabBlock.siblings().addClass('hidden');
+		return false;
+	});
 
 	// Разворачивающиеся отзывы
 	(function TextRoll()
@@ -266,20 +273,6 @@ $(function()
 	});
 
 	// CROSS FILTER FORM
-
-	/*var sitiesSelectorValue = '';
-	$('.js-city-select').on('change', function() {
-		sitiesSelectorValue = $(this).val();
-		$('.js-city-select').val(sitiesSelectorValue);
-		var optionIndex = $('.js-city-select option[value="' + sitiesSelectorValue + '"]').index();
-		var optionVal = $('.js-city-select option[value="' + sitiesSelectorValue + '"]').val();
-		$('.nl-form ul li').eq(optionIndex).addClass('nl-dd-checked').siblings().removeClass('nl-dd-checked');
-		$('.js-city-select').not($(this)).prev().find('.nl-field-toggle').html($('select').not($(this)).find('option[value="' + optionVal + '"]').html());
-
-		if(window.location.pathname == '/contacts') {
-			$('.b-title__text h1').html($('.js-city-select').not($(this)).find('option[value="' + optionVal + '"]').html());
-		}
-	});*/
 
 	$('.js-city-select').on('change', function(){
 		var others = $('.js-city-select').not($(this));
@@ -527,63 +520,67 @@ $(function()
 
 		courseFilterRequest.done(function(data) {
 			if(data.status) {
+				var curentCity = $('#courses-filter-form #city-id').val(),
+					thisCity = __SITE.cities[curentCity],
+					thisCourseCitySlug = thisCity['slug'] || false;
 
 				var i = 0;
-				$('#filtered-course').empty();
-				$.each(data.list, function(index, value){
-					var thisCourse = value,
-						thisCourseName = thisCourse['blockquote'] || false,
-						thisCourseId = thisCourse['id'] || false,
-						thisCourseDate_start = thisCourse['date_start'] || false,
-						thisCourseDate_stop = thisCourse['date_stop'] || false,
-						thisCourseDic_id = thisCourse['dic_id'] || false,
-						thisCourseCity_id = thisCourse['city_id'] || false,
-						thisCourseType_id = thisCourse['type_id'] || false,
-						thisCourseDate_start = thisCourse['date_start'] || false,
-						thisCourseDate_stop = thisCourse['date_stop'] || false,
-						thisCourseWeekdays = thisCourse['weekdays'] || false,
-						thisCoursePrice = thisCourse['price'] || false,
-						thisCourseTeacher_id = thisCourse['teacher_id'] || false,
-						thisCourseDirection_id = thisCourse['direction_id'] || false,
-						thisCourseDiscounts = thisCourse['discounts'] || false,
-						thisCourseBlockquote = thisCourse['blockquote'] || false,
-						thisCourseFor_who = thisCourse['for_who'] || false,
-						thisCourseResult = thisCourse['result'] || false,
-						thisCourseShort = thisCourse['short'] || false;
+				if(i < 5){
+					$('#filtered-course').empty();
+					$.each(data.list, function(index, value){
+						var thisCourse = value,
+							thisCourseName = thisCourse['name'] || false,
+							thisCourseId = thisCourse['id'] || false,
+							thisCourseDate_start = thisCourse['date_start'] || false,
+							thisCourseDate_stop = thisCourse['date_stop'] || false,
+							thisCourseDic_id = thisCourse['dic_id'] || false,
+							thisCourseCity_id = thisCourse['city_id'] || false,
+							thisCourseType_id = thisCourse['type_id'] || false,
+							thisCourseDate_start = thisCourse['date_start'] || false,
+							thisCourseDate_stop = thisCourse['date_stop'] || false,
+							thisCourseWeekdays = thisCourse['weekdays'] || false,
+							thisCoursePrice = thisCourse['price'] || false,
+							thisCourseTeacher_id = thisCourse['teacher_id'] || false,
+							thisCourseDirection_id = thisCourse['direction_id'] || false,
+							thisCourseDiscounts = thisCourse['discounts'] || false,
+							thisCourseBlockquote = thisCourse['blockquote'] || false,
+							thisCourseFor_who = thisCourse['for_who'] || false,
+							thisCourseResult = thisCourse['result'] || false,
+							thisCourseShort = thisCourse['short'] || false;
 
-					// Filtered courses formation
-					if(thisCourseName) {
-						var fiveFirstCourses = [];
-						var coursesListItem =[],
-							allCoursesButton = $('a.b-courses__link _all').clone();
 
+						// Filtered courses formation
 						if(thisCourseName) {
-							coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="">');
-							coursesListItem.push('<a href="/city/msk/courses/' + thisCourseId + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
-							if(thisCourseName){
-								coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
-							}
-							
-								coursesListItem.push('<span class="b-courses__descr" style="height: auto;"><i>' + thisCourseFor_who + '</i></span>');
-							
-
-							if(thisCourseDate_start){
-								coursesListItem.push('<time class="h5">' + thisCourseDate_start);
-								if(thisCourseDate_stop) {
-									coursesListItem.push(' — ' + thisCourseDate_start + '</time></a></li>');
-								} else {
-									coursesListItem.push('</time></a></li>');
+							var fiveFirstCourses = [];
+							var coursesListItem =[];
+							if(thisCourseName) {
+								coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="">');
+								coursesListItem.push('<a href="/city/' + thisCourseCitySlug + '/courses/' + thisCourseId + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
+								if(thisCourseName){
+									coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
 								}
-							}
-							
-							fiveFirstCourses.push(coursesListItem.join(''));
+								
+									coursesListItem.push('<span class="b-courses__descr" style="height: auto;"><i>' + thisCourseFor_who + '</i></span>');
+								
 
+								if(thisCourseDate_start){
+									coursesListItem.push('<time class="h5">' + thisCourseDate_start);
+									if(thisCourseDate_stop) {
+										coursesListItem.push(' — ' + thisCourseDate_stop + '</time></a></li>');
+									} else {
+										coursesListItem.push('</time></a></li>');
+									}
+								}
+								
+								fiveFirstCourses.push(coursesListItem.join(''));
+
+							}
+							i++;
+							$('#filtered-course').prepend(fiveFirstCourses.join(''));
 						}
-						i++;
-						$('#filtered-course').prepend(fiveFirstCourses.join(''));
-						$('#filtered-course').append(allCoursesButton);
-					}
-				});
+					});
+				}
+				$('#filtered-course').append('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 184px;"><a href="http://ikra.dev/city/' + thisCourseCitySlug + '/courses" class="b-courses__link _all"><span><span class="h3">Посмотреть все курсы</span></span></a></li>');
 			}
 		});
 

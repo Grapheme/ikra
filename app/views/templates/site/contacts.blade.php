@@ -33,7 +33,7 @@
 
     <section class="b-section _no-padding-bottom">
         <div class="h2 _mb65">Икра
-            <form class="nl-form _text-red" data-nl>
+            <form class="nl-form _text-red" id="cityTabs" data-nl>
                 <select name="city" class="js-city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
