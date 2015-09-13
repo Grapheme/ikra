@@ -237,11 +237,11 @@ foreach ($dic_stories as $story) {
             <ul class="_mb50 row">
                 @foreach ($stories as $story)
                     <li class="col-sm-6 _mb30">
-                        <a class="_block _mb20" href="{{ URL::route('page.story', [$dic_city[$story->city_id]->slug, $story->id]) }}">
-                            @if (isset($story->avatar) && is_object($story->avatar))
+                        <a class="_block _mb20 graduated" style="background-image: url({{ $story->avatar->full() }});" href="{{ URL::route('page.story', [$dic_city[$story->city_id]->slug, $story->id]) }}">
+                            {{--@if (isset($story->avatar) && is_object($story->avatar))
                                 <img src="{{ $story->avatar->full() }}" alt="{{ $story->name }}">
                             @endif
-{{--                            {{ $dic_city[$story->city_id] }}--}}
+                            {{ $dic_city[$story->city_id] }}--}}
                         </a>
                         <div class="h3 _mb5">{{ $story->name }}</div>
                         <div class="small _mb20">
