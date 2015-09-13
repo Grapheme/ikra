@@ -133,12 +133,12 @@
             <div class="col-md-4 _mb30">
                 <div class="h4 _mb30">С удовольствием ответим на вопросы</div>
 
-                <form role="form" class="_max-form">
+                <form role="form" class="_max-form footer-form">
                     <div class="form-group _mb15">
-                        <input type="email" class="form-control" id="" placeholder="E-mail для ответа">
+                        <input type="email" name="email" class="form-control" id="" placeholder="E-mail для ответа">
                     </div>
                     <div class="form-group _mb40">
-                        <input type="text" class="form-control" id="" placeholder="А здесь вопрос">
+                        <input type="text" name="text" class="form-control" id="" placeholder="А здесь вопрос">
                     </div>
                     <button type="submit" class="btn btn-blue btn-wide">Отправить</button>
                 </form>

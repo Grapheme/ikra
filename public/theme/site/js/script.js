@@ -501,8 +501,8 @@ $(function()
 	
 	// MAIN PAGE COURSES FILTER FORM
 
-	$('#courses-filter-form ul li').click(function() {
-
+	// $('#courses-filter-form ul li').click(function() {
+	$('.js-city-select').on('change', function() {
 		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
 		$('#courses-filter-form .js-course-recoloring .nl-field-toggle').css('color', thisCourseColor);
 
@@ -714,12 +714,11 @@ $(function()
 						$(form).find('button[type="submit"]').attr('disabled', true);
             var options = {
                 success: function (data) {
-                    console.log('success')
-										if(data.status == true) {
-											$(form).slideUp();
-											$(form).closest('section').find('.footer-default').slideUp();
-											$(form).closest('section').find('.footer-success').slideDown();
-										}
+					if(data.status == true) {
+						$(form).slideUp();
+						$(form).closest('section').find('.footer-default').slideUp();
+						$(form).closest('section').find('.footer-success').slideDown();
+					}
                 },
                 error: function (data) {
                     console.log('server error')
