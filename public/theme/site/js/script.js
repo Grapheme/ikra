@@ -813,6 +813,7 @@ $(function()
 						$(form).slideUp();
 						$(form).prev().slideUp();
 						$(form).closest('section').find('.success-message').slideDown();
+						$(form).closest('section').find('._text-blue').slideUp();
 					}
                 },
                 error: function (data) {

@@ -358,6 +358,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             <br>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
+                    <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
                     <form action="{{ URL::route('app.form_course') }}" method="POST" id="curent-course-form" role="form" class="_white">
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
                         <div class="form-group _mb20">
