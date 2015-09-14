@@ -103,8 +103,6 @@ asort($courses_dates);
 
     @endif
 
-
-
     <section class="b-section _bg-blue">
         <div class="_vertical-center">
             <div>
@@ -116,9 +114,6 @@ asort($courses_dates);
             </div>
         </div>
     </section>
-
-
-
 
     <section class="b-section _no-padding-bottom">
         <div class="h2">Ближайшие курсы <br> в
