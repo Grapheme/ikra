@@ -454,7 +454,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             </div>
             <div class="col-md-4">
                 <div class="_mb70"></div>
-                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="_white">
+                <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
+                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="_white signin-course">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="form-group _mb20">
                         <input type="text" name="name" placeholder="Имя" id="" class="form-control">

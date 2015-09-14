@@ -780,7 +780,7 @@ $(function()
 
     // DIRECT COURSE FORM VALIDATION
 
-    $('form#curent-course-form').validate({
+    $('form#curent-course-form, form.signin-course').validate({
         rules: {
             name: {
                 required: true,
