@@ -70,9 +70,7 @@ asort($courses_dates);
                 ?>
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
                     <div class="col-md-4 _mb30">
-                        @if (isset($story->avatar) && is_object($story->avatar))
-                            <img src="{{ $story->avatar->full() }}" class="_mb20" alt="{{ $story->name }}">
-                        @endif
+                        <a href="{{ URL::route('page.story', [$city->slug, $story->id]) }}" style="background-image: url({{ $story->avatar->full() }});" class="_mb20 graduated" alt="{{ $story->name }}">);"></a>
                         <h3 class="_mb5">{{ $story->name }}</h3>
                         <small class="_block">
                             <?php
