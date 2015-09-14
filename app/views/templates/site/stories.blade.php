@@ -58,7 +58,7 @@ asort($courses_dates);
 
     @if (isset($stories) && is_object($stories) && $stories->count())
 
-        <section class="b-section stories-holder">
+        <section class="b-section stories-holder 123">
 
             @foreach ($stories as $s => $story)
                 <?
