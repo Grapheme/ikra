@@ -204,16 +204,18 @@ foreach ($dic_stories as $story) {
                         <a href="{{ URL::route('page.teacher', $teacher->id) }}" style="background-image: url({{ ($teacher->avatar->full() && is_object($teacher->avatar)) ? $teacher->avatar->full() : '' }});" class="_block _mb20 js-cImage">
 
                         </a>
-                        <div class="_mb5 h3">{{ $teacher->name }}</div>
+                        <div class="_mb5 h3"><a href="{{ URL::route('page.teacher', $teacher->id) }}">{{ $teacher->name }}</a></div>
                         <div class="small">
-                            <?php
-                            $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
+                            <a href="{{ URL::route('page.teacher', $teacher->id) }}">
+                                <?php
+                                $temp = [];
+                                if ($teacher->position)
+                                    $temp[] = $teacher->position;
+                                if ($teacher->company)
+                                    $temp[] = $teacher->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </a>
                         </div>
                     </li>
                 @endforeach

@@ -131,6 +131,7 @@
             </div>
 
             <div class="col-md-4 _mb30">
+                <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
                 <div class="h4 _mb30">С удовольствием ответим на вопросы</div>
 
                 <form role="form" class="_max-form footer-form">

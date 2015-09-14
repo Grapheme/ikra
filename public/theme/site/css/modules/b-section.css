@@ -276,6 +276,12 @@ section.teacher-text .b-about__col {
   background-image: url(../img/icon/slider-arrow-right.svg);
   right: -30px;
 }
+.jcarousel-nav-bar.black-arrows .arrow-left {
+  background-image: url(../img/icon/slider-arrow-left-black.svg);
+}
+.jcarousel-nav-bar.black-arrows .arrow-right {
+  background-image: url(../img/icon/slider-arrow-right-black.svg);
+}
 .jcarousel {
   position: relative;
 }

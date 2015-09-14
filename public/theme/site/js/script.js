@@ -193,7 +193,7 @@ $(function()
 					.removeClass('pro-transition pro-transformLeft')
 					.addClass('pro-transformRight');
 			}, 1000);
-		}, 5000);
+		}, 2000);
 	}
 
 	function timeoutShow(eq) {
@@ -206,7 +206,7 @@ $(function()
 		var newEq = thisEq + 1;
 		setTimeout(function(){
 			timeoutShow(newEq);
-		}, 5000);
+		}, 2000);
 	}
 
 	timeoutShow(0);
@@ -502,7 +502,7 @@ $(function()
 	// MAIN PAGE COURSES FILTER FORM
 
 	// $('#courses-filter-form ul li').click(function() {
-	$('.js-city-select').on('change', function() {
+	$('.js-city-select, #course-direction').on('change', function() {
 		var thisCourseColor = $('#course-direction').find(':selected').attr('data-color');
 		$('#courses-filter-form .js-course-recoloring .nl-field-toggle').css('color', thisCourseColor);
 
@@ -620,7 +620,11 @@ $(function()
         submitHandler: function (form) {
             var options = {
                 success: function (data) {
-                    console.log('success')
+                    if(data.status == true) {
+						$(form).slideUp();
+						$(form).prev().slideUp();
+						$(form).closest('section').find('.success-message').slideDown();
+					}
                 },
                 error: function (data) {
                     console.log('server error')
@@ -674,12 +678,11 @@ $(function()
 						$(form).find('button[type="submit"]').attr('disabled', true);
             var options = {
                 success: function (data) {
-                    console.log('success')
-										if(data.status == true) {
-											$(form).slideUp();
-											$(form).prev().slideUp();
-											$(form).closest('section').find('.success-message').slideDown();
-										}
+					if(data.status == true) {
+						$(form).slideUp();
+						$(form).prev().slideUp();
+						$(form).closest('section').find('.success-message').slideDown();
+					}
                 },
                 error: function (data) {
                     console.log('server error')
@@ -806,7 +809,11 @@ $(function()
         submitHandler: function (form) {
             var options = {
                 success: function (data) {
-                    console.log('success')
+                    if(data.status == true) {
+						$(form).slideUp();
+						$(form).prev().slideUp();
+						$(form).closest('section').find('.success-message').slideDown();
+					}
                 },
                 error: function (data) {
                     console.log('server error')
@@ -863,23 +870,23 @@ $(function()
 
     //Responsive carousel
     function resizeCarousel() {
-    	                var width = $('.jcarousel').innerWidth();
-    	                var cof = 4;
+        var width = $('.jcarousel').innerWidth();
+        var cof = 4;
 
-    	                if (width >= 1900) {
-    	                    cof = 4;
-    	                    
-    	                } else if (width <= 1224) {
-    	                    cof = 3;
-    	                    
-    	                    if (width <= 1000) {
-    	                	cof = 2;
-    	                    
-	    	                }
-	    	                if (width <= 600) {
-	    	                	cof = 1;
-	    	                }
-    	                }
+        if (width >= 1900) {
+            cof = 4;
+            
+        } else if (width <= 1224) {
+            cof = 3;
+            
+            if (width <= 1000) {
+        	cof = 2;
+            
+            }
+            if (width <= 600) {
+            	cof = 1;
+            }
+        }
 
     	$('.js-cElement').css({
     		width: $('.jcarousel').width()/cof
@@ -927,7 +934,7 @@ $(function()
 	// 	});
 	// });
 
-	$(".course-slug-jumper ul li").click(function() {
+	$(".course-slug-jumper ul li, .all-courses-jumper").click(function() {
 	    $('html, body').animate({
 	        scrollTop: 1030
 	    }, 1000);

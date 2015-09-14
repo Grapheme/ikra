@@ -77,7 +77,7 @@ $num = 0;
                     </select>
                     <div class="nl-overlay"></div>
                 </form>
-                <h3 class="_text-white"><a href="#">Посмотреть все программы</a></h3>
+                <h3 class="_text-white"><a href="#" class="all-courses-jumper">Посмотреть все программы</a></h3>
             </h2>
         </div>
     </section>
@@ -85,13 +85,13 @@ $num = 0;
 
 
 
-    <section class="b-section _bg-cyan text-center">
+    <!-- <section class="b-section _bg-cyan text-center">
         <h1 class="_mb30">Season pass</h1>
         <div class="_mb60">
             <i>Программа обучения, которая подстраивается под твои потребности</i>
         </div>
         <a href="{{ Config::get('app.settings.content.season_pass_link') ?: '#' }}" target="_blank" class="btn btn-white">Подробнее</a>
-    </section>
+    </section> -->
 
 
 
