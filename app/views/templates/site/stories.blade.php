@@ -58,7 +58,7 @@ asort($courses_dates);
 
     @if (isset($stories) && is_object($stories) && $stories->count())
 
-        <section class="b-section stories-holder 123">
+        <section class="b-section stories-holder">
 
             @foreach ($stories as $s => $story)
                 <?
@@ -70,7 +70,9 @@ asort($courses_dates);
                 ?>
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
                     <div class="col-md-4 _mb30">
-                        <a href="{{ URL::route('page.story', [$city->slug, $story->id]) }}" style="background-image: url({{ $story->avatar->full() }});" class="_mb20 graduated" alt="{{ $story->name }}">);"></a>
+                        @if (isset($story->avatar) && is_object($story->avatar))
+                            <img src="{{ $story->avatar->full() }}" class="_mb20" alt="{{ $story->name }}">
+                        @endif
                         <h3 class="_mb5">{{ $story->name }}</h3>
                         <small class="_block">
                             <?php
@@ -103,6 +105,8 @@ asort($courses_dates);
 
     @endif
 
+
+
     <section class="b-section _bg-blue">
         <div class="_vertical-center">
             <div>
@@ -114,6 +118,9 @@ asort($courses_dates);
             </div>
         </div>
     </section>
+
+
+
 
     <section class="b-section _no-padding-bottom">
         <div class="h2">Ближайшие курсы <br> в
