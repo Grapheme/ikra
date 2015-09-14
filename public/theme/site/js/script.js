@@ -780,7 +780,51 @@ $(function()
 
     // DIRECT COURSE FORM VALIDATION
 
-    $('form#curent-course-form, form.signin-course').validate({
+    $('form#curent-course-form').validate({
+        rules: {
+            name: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true,
+            },
+            phone: {
+                required: true,
+            },
+        },
+
+        messages: {
+            name: {
+                required: 'Необходимо заполнить поле!',
+            },
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            },
+            phone: {
+                required: 'Укажите ваш телефон!',
+            },
+        },
+        submitHandler: function (form) {
+            var options = {
+                success: function (data) {
+                    if(data.status == true) {
+						$(form).slideUp();
+						$(form).prev().slideUp();
+						$(form).closest('section').find('.success-message').slideDown();
+						$(form).closest('section').find('._text-blue').slideUp();
+					}
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
+
+	$('form.signin-course').validate({
         rules: {
             name: {
                 required: true,
