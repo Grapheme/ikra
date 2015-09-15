@@ -31,6 +31,9 @@ $stories = $dic_stories;
     if ($story->city_id != $current_city->id)
         unset($stories[$s]);
 }*/
+
+Helper::ta($stories);
+
 $courses_dates = [];
 #Helper::ta($dic_course);
 #Helper::tad($current_city);
