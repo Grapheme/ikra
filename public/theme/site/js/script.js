@@ -299,7 +299,9 @@ $(function()
 			data: $form.serialize(),
 			success: function(data) {
 				if (data.status == true) {
-					location.href = '/'
+					setTimeout(function () {
+						location.href = '/'
+					}, 1000)
 				} else {
 					console.log('error', data)
 				}
@@ -546,7 +548,8 @@ $(function()
 							thisCourseBlockquote = thisCourse['blockquote'] || false,
 							thisCourseFor_who = thisCourse['for_who'] || false,
 							thisCourseResult = thisCourse['result'] || false,
-							thisCourseShort = thisCourse['short'] || false;
+							thisCourseShort = thisCourse['short'] || false,
+							thisCourseBackground = __SITE.directions[thisCourseDirection_id].color || '#fff';
 
 
 						// Filtered courses formation
@@ -555,7 +558,7 @@ $(function()
 							var coursesListItem =[];
 							if(thisCourseName) {
 								coursesListItem.push('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="">');
-								coursesListItem.push('<a href="/city/' + thisCourseCitySlug + '/courses/' + thisCourseId + '" class="b-courses__link" style="background-color: ' + thisCourseColor + ';">');
+								coursesListItem.push('<a href="/city/' + thisCourseCitySlug + '/courses/' + thisCourseId + '" class="b-courses__link" style="background-color: ' + thisCourseBackground + ';">');
 								if(thisCourseName){
 									coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
 								}
@@ -580,7 +583,7 @@ $(function()
 						}
 					});
 				}
-				$('#filtered-course').append('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 184px;"><a href="http://ikra.dev/city/' + thisCourseCitySlug + '/courses" class="b-courses__link _all"><span><span class="h3">Посмотреть все курсы</span></span></a></li>');
+				$('#filtered-course').append('<li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight="" style="height: 184px;"><a href="/city/' + thisCourseCitySlug + '/courses" class="b-courses__link _all"><span><span class="h3">Посмотреть все курсы</span></span></a></li>');
 			}
 		});
 
