@@ -65,9 +65,9 @@ asort($courses_dates);
                 #Helper::ta($story);
                 $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
                 #Helper::ta($city);
-                if (!$city || $current_city->id != $city->id)
+                {{-- if (!$city || $current_city->id != $city->id)
                     continue;
-                ?>
+                ?> --}}
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
                     <div class="col-md-4 _mb30">
                         @if (isset($story->avatar) && is_object($story->avatar))
