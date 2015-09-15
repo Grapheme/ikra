@@ -26,7 +26,7 @@
                             if (!$city->important)
                                 continue;
                             ?>
-                            <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</option>
+                            <option data-city-slug="{{ $city->slug }}" value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</option>
                         @endforeach
                     </select>
                 </span>

@@ -288,11 +288,13 @@ $(function()
 		});
 
 	});
+
+	// REDIRECT ON CITY CHANGE
 	
 	$('#city_select').on('change', function(){
 		var val = $(this).val();
 		var $form = $(this).closest('form');
-		
+		var citySlug = $(this).find(':selected').attr('data-city-slug');
 		$.ajax({
 			method: $form.attr('method'),
 			url: $form.attr('action'),
@@ -300,7 +302,8 @@ $(function()
 			success: function(data) {
 				if (data.status == true) {
 					setTimeout(function () {
-						location.href = '/'
+						location.href = '/city/' + citySlug
+						console.log(citySlug);
 					}, 1000)
 				} else {
 					console.log('error', data)
