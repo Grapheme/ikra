@@ -63,9 +63,9 @@ asort($courses_dates);
             @foreach ($stories as $s => $story)
                 <?
                 #Helper::ta($story);
-                $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
+                {{-- $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
                 #Helper::ta($city);
-                {{-- if (!$city || $current_city->id != $city->id)
+                if (!$city || $current_city->id != $city->id)
                     continue;
                 ?> --}}
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
