@@ -31,9 +31,6 @@ $stories = $dic_stories;
     if ($story->city_id != $current_city->id)
         unset($stories[$s]);
 }*/
-
-Helper::ta(count($stories));
-
 $courses_dates = [];
 #Helper::ta($dic_course);
 #Helper::tad($current_city);
@@ -69,7 +66,7 @@ asort($courses_dates);
                 $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
                 #Helper::ta($city);
                 if (!$city || $current_city->id != $city->id)
-                    continue;
+                    #continue;
                 ?>
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
                     <div class="col-md-4 _mb30">
