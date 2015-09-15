@@ -824,6 +824,39 @@ $(function()
         }
     });
 
+	// DIRECT COURSE FORM VALIDATION
+
+    $('form#subscription').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true,
+            }
+        },
+
+        messages: {
+            email: {
+                required: 'Необходимо заполнить поле!',
+                email: 'Неверный адрес!',
+            }
+        },
+        submitHandler: function (form) {
+            var options = {
+                success: function (data) {
+                    if(data.status == true) {
+						$(form).slideUp();
+						$(form).prev().slideUp();
+						$(form).closest('nav').find('.success-message').slideDown();
+					}
+                },
+                error: function (data) {
+                    console.log('server error')
+                }
+            };
+            $(form).ajaxSubmit(options);
+        }
+    });
+
 	$('form.signin-course').validate({
         rules: {
             name: {
