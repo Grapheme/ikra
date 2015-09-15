@@ -59,7 +59,6 @@
             bottom: 0;
             left: 0;
         }
-
         .error-page .error-page-text a {
             color: #ef4949;
         }
