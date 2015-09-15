@@ -32,7 +32,7 @@ $stories = $dic_stories;
         unset($stories[$s]);
 }*/
 
-Helper::ta($stories);
+Helper::ta(count($stories));
 
 $courses_dates = [];
 #Helper::ta($dic_course);
