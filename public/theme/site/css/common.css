@@ -1407,12 +1407,15 @@ section.teacher-text .b-about__col {
 }
 .professions-slider .pro-transition {
   transition: all 1s;
+  -webkit-transition: all 1s;
 }
 .professions-slider .pro-transformRight {
   transform: translate(210%, 0);
+  -webkit-transform: translate(210%, 0);
 }
 .professions-slider .pro-transformLeft {
   transform: translate(-210%, 0);
+  -webkit-transform: translate(-210%, 0);
 }
 .overflown-head {
   overflow: hidden;
