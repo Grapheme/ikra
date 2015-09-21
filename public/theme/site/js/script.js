@@ -565,8 +565,11 @@ $(function()
 								if(thisCourseName){
 									coursesListItem.push('<span class="h3"><strong>' + thisCourseName + '</strong></span>');
 								}
-								
-									coursesListItem.push('<span class="b-courses__descr" style="height: auto;"><i>' + thisCourseFor_who + '</i></span>');
+								if(thisCourseShort) {
+									coursesListItem.push('<span class="b-courses__descr" style="height: auto;"><i>' + thisCourseShort + '</i></span>');
+								} else {
+									coursesListItem.push('<span class="b-courses__descr"><i></i></span>');
+								}
 								
 
 								if(thisCourseDate_start){
