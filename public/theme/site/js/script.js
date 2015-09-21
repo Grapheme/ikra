@@ -1007,7 +1007,6 @@ $(function()
     }
     $(window).on('resize', resizeTeachersList);
     resizeTeachersList();
-    $('.b-teachers__list')
 
 	// SMOOTH SCROLL
 	//	var slugs = [kreativ, strategiya, prodyusirovanie, art-direkshn, media, menedjment]
@@ -1048,51 +1047,42 @@ $(function()
 		var imgPath = __SITE.img_path_full,
 		imgThumbPath = __SITE.img_path_thumb;
 
-		var cityId = $('#teacher-city').val();
-		var subjectId = $('[name="teach-subject"]').val();
-		console.log('City: ' + cityId + '; Subject: ' + subjectId);
-
 		// TEACHERS OBJECT DISMEMBERMENT
 
-		var teachersArray = [];
-		$.map(__SITE.teachers, function(value, index) {
-			teachersArray.push(value);
-		});
-
 		var teachersSortArray = [];
+
+		var thisTeacherCity = $('#teacher-city').val().toString(),
+			thisTeacherDirection = $('#derection-teacher').val().toString();
+
+		function sortedTeachers(teacher) {
+			var thisTeacherId = teacher['id'] || false,
+				thisTeacherName = teacher['name'] || false,
+				thisTeacherAvatar = teacher.avatar || false,
+				thisTeacherPosition = teacher['position'] || false,
+				thisTeacherCompany = teacher['company'] || false;
+
+			teachersSortArray.push('<li class="col-sm-4 _mb70">');
+			teachersSortArray.push('<a style="background-image: url(' + imgPath + '/' + thisTeacherAvatar.name + ');" href="/teachers/' + thisTeacherId + '" class="_block _mb20 teacher-list-avatar">');
+			// teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
+			teachersSortArray.push('</a><div class="teacher-list-info">');
+			teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
+			teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
+			teachersSortArray.push('<div class="text-right">');
+			teachersSortArray.push('<a class="btn btn-readmore" href="/teachers/' + thisTeacherId + '">Подробнее</a>');
+			teachersSortArray.push('</div></div>');
+			teachersSortArray.push('</li>');
+
+			$('ul.b-teachers__list').empty();
+			$('ul.b-teachers__list').html(teachersSortArray.join(''));
+			resizeTeachersList();
+		}
+
 		$.each(__SITE.teachers, function(i, v){
-			var thisTeacherCity = $('#teacher-city').val(),
-				thisTeacherDirection = $('#derection-teacher').val();
-			
-			function sortedTeachers() {
-				var thisTeacherId = v['id'] || false,
-					thisTeacherName = v['name'] || false,
-					thisTeacherAvatar = v.avatar || false,
-					thisTeacherPosition = v['position'] || false,
-					thisTeacherCompany = v['company'] || false;
-
-				teachersSortArray.push('<li class="col-sm-4 _mb70">');
-				teachersSortArray.push('<a style="background-image: url(' + imgPath + '/' + thisTeacherAvatar.name + ');" href="/teachers/' + thisTeacherId + '" class="_block _mb20 teacher-list-avatar">');
-				// teachersSortArray.push('<img src="' + imgPath + '/' + thisTeacherAvatar.name + '" alt="' + thisTeacherName + '">');
-				teachersSortArray.push('</a><div class="teacher-list-info">');
-				teachersSortArray.push('<h3 class="_mb5">' + thisTeacherName + '</h3>');
-				teachersSortArray.push('<div class="_block _mb10">' + thisTeacherPosition + ', ' + thisTeacherCompany + '</div>');
-				teachersSortArray.push('<div class="text-right">');
-				teachersSortArray.push('<a class="btn btn-readmore" href="/teachers/' + thisTeacherId + '">Подробнее</a>');
-				teachersSortArray.push('</div></div>');
-				teachersSortArray.push('</li>');
-
-				$('ul.b-teachers__list').empty();
-				$('ul.b-teachers__list').html(teachersSortArray.join(''));
-				resizeTeachersList();
-			}
-
+			console.log(thisTeacherCity, thisTeacherDirection)
+			console.log(v, v.city_id, v.direction)
 			if(v.city_id == thisTeacherCity && v.direction == thisTeacherDirection) {
-				sortedTeachers();
-			}
-
-			if(subjectId == 0 && v.city_id == thisTeacherCity){
-				sortedTeachers();
+				console.log(v)
+				sortedTeachers(v);
 			}
 		});
 	});

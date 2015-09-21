@@ -432,7 +432,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
         <div class="row">
             <div class="col-md-6">
                 <h2>{{ $course->name }}</h2>
-                <div class="h2">{{ $course->price }}</div><br>
+                <div class="_txt4">{{ $course->price }}</div><br>
                 <div class="_txt4">
                     @if ($course->date_start)
                         {{ Helper::rdate('j M', $course->date_start) }}
