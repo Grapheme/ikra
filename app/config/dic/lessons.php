@@ -71,7 +71,7 @@ return array(
             ),
             'teachers' => array(
                 'title' => 'Все преподаватели блока',
-                'type' => 'select-multiple',
+                'type' => 'checkboxes',
                 'columns' => 2, ## Количество колонок
                 'values' => $lists['teachers'],
                 'handler' => function ($value, $element, $field_name = 'teachers') use ($lists_ids) {
