@@ -209,7 +209,7 @@ usort($all_direction, function($a, $b) {
         <section class="b-section">
             <h2>Наши партнеры</h2>
 
-            <div class="b-slider _mb20 owl-carousel">
+            <div class="b-slider _mb20 owl-carousel _medium">
                 @foreach ($dic_partners as $client)
                     <?php
                     if (!is_object($client->logo))
@@ -232,7 +232,7 @@ usort($all_direction, function($a, $b) {
         <section class="b-section">
             <h2>Наши клиенты</h2>
 
-            <div class="b-slider _mb20 owl-carousel">
+            <div class="b-slider _mb20 owl-carousel _medium">
                 @foreach ($dic_clients as $client)
                     <?php
                     if (!is_object($client->logo))

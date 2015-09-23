@@ -113,6 +113,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
                 @endif
             </div>
             <div class="course-form-holder" class="collapse in" aria-expanded="true">
+                <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
                 <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="row _white">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="col-md-5 _mb60 col-md-offset-0">
@@ -357,6 +358,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             <br>
             <div class="row">
                 <div class="col-md-4 col-md-offset-4">
+                    <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
                     <form action="{{ URL::route('app.form_course') }}" method="POST" id="curent-course-form" role="form" class="_white">
                         <input type="hidden" name="course_id" value="{{ $course->id }}">
                         <div class="form-group _mb20">
@@ -381,39 +383,45 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
     @if (isset($reviews) && is_object($reviews) && $reviews->count())
         <section class="b-section">
             <h2>Отзывы выпускников</h2>
-            <ul class="row">
+            <div class="jcarousel-nav-bar black-arrows">
+                <div class="jcarousel-nav arrow-left"></div>
+                <div class="jcarousel-nav arrow-right"></div>
+            </div>
+            <div class="_mb50 jcarousel">
+                <ul class="row">
 
-                @foreach ($reviews as $review)
+                    @foreach ($reviews as $review)
 
-                    <li class="b-textroll col-md-4 _mb50">
-                        @if (isset($review->image) && is_object($review->image))
-                            <span class="b-textroll__img _block _mb20">
-                                    <img src="{{ $review->image->full() }}" alt="">
-                            </span>
-                        @endif
-                        <h3 class="_mb5">{{ $review->fio }}</h3>
-                        <small class="_block _mb25">
-                            <?php
-                            $temp = [];
-                            if ($review->position)
-                                $temp[] = $review->position;
-                            if ($review->company)
-                                $temp[] = $review->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </small>
-                        <p class="b-textroll__content">
-                            {{ $review->content }}
-                        </p>
-                        <div class="text-right">
-                            <a href="#" class="btn btn-readmore b-textroll__show">Показать полностью</a>
-                            <a href="#" class="btn btn-readmore b-textroll__hide">Свернуть</a>
-                        </div>
-                    </li>
+                        <li class="b-textroll col-md-4 _mb50 corousel-element js-cElement">
+                            @if (isset($review->image) && is_object($review->image))
+                                <span class="b-textroll__img _block _mb20">
+                                        <img src="{{ $review->image->full() }}" alt="">
+                                </span>
+                            @endif
+                            <h3 class="_mb5">{{ $review->fio }}</h3>
+                            <small class="_block _mb25">
+                                <?php
+                                $temp = [];
+                                if ($review->position)
+                                    $temp[] = $review->position;
+                                if ($review->company)
+                                    $temp[] = $review->company;
+                                ?>
+                                {{ implode(', ', $temp) }}
+                            </small>
+                            <p class="b-textroll__content">
+                                {{ $review->content }}
+                            </p>
+                            <div class="text-right">
+                                <a href="#" class="btn btn-readmore b-textroll__show">Показать полностью</a>
+                                <a href="#" class="btn btn-readmore b-textroll__hide">Свернуть</a>
+                            </div>
+                        </li>
 
-                @endforeach
+                    @endforeach
 
-            </ul>
+                </ul>
+            </div>
         </section>
     @endif
 
@@ -424,7 +432,7 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
         <div class="row">
             <div class="col-md-6">
                 <h2>{{ $course->name }}</h2>
-                <div class="h2">{{ $course->price }}</div><br>
+                <div class="_txt4">{{ $course->price }}</div><br>
                 <div class="_txt4">
                     @if ($course->date_start)
                         {{ Helper::rdate('j M', $course->date_start) }}
@@ -446,7 +454,8 @@ if (isset($dic_reviews) && is_object($dic_reviews) && $dic_reviews->count()) {
             </div>
             <div class="col-md-4">
                 <div class="_mb70"></div>
-                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="_white">
+                <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
+                <form action="{{ URL::route('app.form_course') }}" method="POST" role="form" class="_white signin-course">
                     <input type="hidden" name="course_id" value="{{ $course->id }}">
                     <div class="form-group _mb20">
                         <input type="text" name="name" placeholder="Имя" id="" class="form-control">

@@ -33,7 +33,7 @@
 
     <section class="b-section _no-padding-bottom">
         <div class="h2 _mb65">Икра
-            <form class="nl-form _text-red" data-nl>
+            <form class="nl-form _text-red" id="cityTabs" data-nl>
                 <select name="city" class="js-city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->name }}</option>
@@ -43,29 +43,30 @@
             </form>
         </div>
 
-
-        @foreach ($dic_city as $city)
-            <div class="row b-contacts__ways _mb50 @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
-                <div class="col-md-4">
-                    @if ($city->address)
-                        <h3 class="_mb40">{{ $city->address }}</h3>
-                    @endif
-                    @if ($city->how2get_text)
-                        <p class="_max-text">
-                            {{ nl2br($city->how2get_text) }}
-                        </p>
-                    @endif
+        <div class="b-contacts__ways-holder">
+            @foreach ($dic_city as $city)
+                <div class="row b-contacts__ways _mb50 @if($city->id != $current_city->id) hidden @endif" data-city_id="{{ $city->id }}" data-city_name="{{ $city->name }}">
+                    <div class="col-md-4">
+                        @if ($city->address)
+                            <h3 class="_mb40">{{ $city->address }}</h3>
+                        @endif
+                        @if ($city->how2get_text)
+                            <p class="_max-text">
+                                {{ nl2br($city->how2get_text) }}
+                            </p>
+                        @endif
+                    </div>
+                    <div class="col-md-6 col-md-push-2">
+                        @if ($city->how2get_way_1 || $city->how2get_way_2 || $city->how2get_way_3)
+                            <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_1) }}</div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_2) }}</div>
+                            <div class="_mb40">{{ nl2br($city->how2get_way_3) }}</div>
+                        @endif
+                    </div>
                 </div>
-                <div class="col-md-6 col-md-push-2">
-                    @if ($city->how2get_way_1 || $city->how2get_way_2 || $city->how2get_way_3)
-                        <div class="_mb40"><br><br><b>На транспорте до нас можно добраться от:</b></div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_1) }}</div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_2) }}</div>
-                        <div class="_mb40">{{ nl2br($city->how2get_way_3) }}</div>
-                    @endif
-                </div>
-            </div>
-        @endforeach
+            @endforeach
+        </div>
 
 
         <div class="row">
@@ -130,14 +131,15 @@
             </div>
 
             <div class="col-md-4 _mb30">
+                <div class="_txt3 text-center _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
                 <div class="h4 _mb30">С удовольствием ответим на вопросы</div>
 
-                <form role="form" class="_max-form">
+                <form role="form" class="_max-form footer-form">
                     <div class="form-group _mb15">
-                        <input type="email" class="form-control" id="" placeholder="E-mail для ответа">
+                        <input type="email" name="email" class="form-control" id="" placeholder="E-mail для ответа">
                     </div>
                     <div class="form-group _mb40">
-                        <input type="text" class="form-control" id="" placeholder="А здесь вопрос">
+                        <input type="text" name="text" class="form-control" id="" placeholder="А здесь вопрос">
                     </div>
                     <button type="submit" class="btn btn-blue btn-wide">Отправить</button>
                 </form>

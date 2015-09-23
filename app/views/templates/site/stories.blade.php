@@ -27,10 +27,10 @@ if (!is_object($city)) {
 $current_city = $city;
 
 $stories = $dic_stories;
-foreach ($stories as $s => $story) {
+/*foreach ($stories as $s => $story) {
     if ($story->city_id != $current_city->id)
         unset($stories[$s]);
-}
+}*/
 $courses_dates = [];
 #Helper::ta($dic_course);
 #Helper::tad($current_city);
@@ -66,7 +66,7 @@ asort($courses_dates);
                 $city = isset($dic_city[$story->city_id]) ? $dic_city[$story->city_id] : null;
                 #Helper::ta($city);
                 if (!$city || $current_city->id != $city->id)
-                    continue;
+                    #continue;
                 ?>
                 <div class="row _mb80 {{ ($s+1) > 5 ? '_hided' : '' }}">
                     <div class="col-md-4 _mb30">
@@ -124,8 +124,8 @@ asort($courses_dates);
 
     <section class="b-section _no-padding-bottom">
         <div class="h2">Ближайшие курсы <br> в
-            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" data-nl>
-                <select name="city" id="">
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" id="courses-filter-form" data-nl>
+                <select name="city" id="city-id" class="js-city-select">
                     @foreach ($dic_city as $city)
                         <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>{{ $city->dp }}</option>
                     @endforeach
@@ -137,7 +137,7 @@ asort($courses_dates);
         {{--@if (isset($courses) && is_object($courses) && $courses->count())--}}
         @if (count($courses_dates))
             <div class="b-courses">
-                <ul class="row">
+                <ul class="row" id="filtered-course">
                     <?php
                     $i = 0;
                     ?>

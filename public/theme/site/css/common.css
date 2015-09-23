@@ -1353,6 +1353,12 @@ section.teacher-text .b-about__col {
   background-image: url(../img/icon/slider-arrow-right.svg);
   right: -30px;
 }
+.jcarousel-nav-bar.black-arrows .arrow-left {
+  background-image: url(../img/icon/slider-arrow-left-black.svg);
+}
+.jcarousel-nav-bar.black-arrows .arrow-right {
+  background-image: url(../img/icon/slider-arrow-right-black.svg);
+}
 .jcarousel {
   position: relative;
 }
@@ -1401,12 +1407,15 @@ section.teacher-text .b-about__col {
 }
 .professions-slider .pro-transition {
   transition: all 1s;
+  -webkit-transition: all 1s;
 }
 .professions-slider .pro-transformRight {
   transform: translate(210%, 0);
+  -webkit-transform: translate(210%, 0);
 }
 .professions-slider .pro-transformLeft {
   transform: translate(-210%, 0);
+  -webkit-transform: translate(-210%, 0);
 }
 .overflown-head {
   overflow: hidden;
@@ -1483,7 +1492,7 @@ section.teacher-text .b-about__col {
   width: 60%;
   height: 120px;
   text-transform: uppercase;
-  font-family: MuseoSansCyrl-500;
+  font-family: 'museo sans', sans-serif;
   font-size: 14px;
   color: #fff;
   letter-spacing: 0.69px;
@@ -1531,10 +1540,6 @@ section.teacher-text .b-about__col {
   background-size: cover;
   background-position: center;
 }
-.b-teachers__list h3,
-.b-teachers__list div {
-  max-width: 380px;
-}
 .main-role-name {
   margin-top: 20px;
 }
@@ -1563,6 +1568,17 @@ section.teacher-text .b-about__col {
   .teacher-text .col-md-4 {
     margin-top: 30px;
   }
+}
+.footer-success {
+  display: none;
+}
+.graduated {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /*
 ------------------------------ Первый слайд страниц (начало) --------------------------*/
@@ -1725,6 +1741,7 @@ section.teacher-text .b-about__col {
   text-align: center;
   font-size: 0;
   height: 80px;
+  margin-bottom: 10px;
 }
 .b-courses__descr:before {
   content: '';

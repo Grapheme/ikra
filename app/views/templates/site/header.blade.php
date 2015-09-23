@@ -26,7 +26,7 @@
                             if (!$city->important)
                                 continue;
                             ?>
-                            <option value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</option>
+                            <option data-city-slug="{{ $city->slug }}" value="{{ $city->id }}"{{ $city->id == $current_city->id ? ' selected' : '' }}>Икра {{ $city->name_mini ?: $city->name }}</option>
                         @endforeach
                     </select>
                 </span>
@@ -64,7 +64,8 @@
     </ul>
     @endif
     <div class="h4 _mb30">Наши полезные письма (<b class="_text-yellow"><a href="#">пример</a></b>)</div>
-    <form action="{{ URL::route('app.form_subscribe') }}" method="POST" role="form" class="_white _max-form row">
+    <div class="h4 _mb30 _mb55 success-message" style="display:none;">Спасибо, ваша заявка отправлена.</div>
+    <form action="{{ URL::route('app.form_subscribe') }}" id="subscription" method="POST" role="form" class="_white _max-form row">
         <div class="col-xs-8 form-group _mb20">
             <input type="email" name="email" class="form-control" id="" placeholder="E-mail">
         </div>

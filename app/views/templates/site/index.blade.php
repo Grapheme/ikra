@@ -33,7 +33,8 @@ if ($route->getName() == 'page.city') {
 
     ## [301] /city/msk => /
     if ($current_city->id == Config::get('site.default_city_id')) {
-        echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('mainpage'), 'redirectCode' => 301]);
+        echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('mainpage'),
+                'redirectCode' => 301]);
         return;
     }
     $page_title = $city->name;
@@ -42,7 +43,8 @@ if ($route->getName() == 'page.city') {
 } else if ($route->getName() == 'mainpage' && $current_city->id != Config::get('site.default_city_id')) {
 
     ## [302] / => /city/spb
-    echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('page.city', [$current_city->slug]), 'redirectCode' => 302]);
+    echo json_encode(['responseType' => 'redirect', 'redirectUrl' => URL::route('page.city', [$current_city->slug]),
+            'redirectCode' => 302]);
     return;
 }
 
@@ -70,13 +72,18 @@ foreach ($dic_teachers as $teacher) {
 
 
 $stories = new Collection();
-foreach ($dic_stories as $story) {
+/* foreach ($dic_stories as $story) {
     if ($story->city_id && $story->city_id == $current_city->id) {
         $stories[$story->id] = $story;
         if (count($stories) >= 2)
             break;
     }
-}
+}*/
+foreach ($dic_stories as $story):
+    if ($story->mainpage):
+        $stories[$story->id] = $story;
+    endif;
+endforeach;
 #Helper::tad($stories);
 ?>
 
@@ -101,7 +108,8 @@ foreach ($dic_stories as $story) {
         <div class="b-title__text">
             <div class="h2 _mb40">Икра &mdash; школа интерактивных коммуникаций</div>
             <div class="_mb40 _max-text _margin-auto">
-                <i>Мы фокусируемся на творческом и стратегическом мышлении и помогаем нашим выпускникам находить себя в любимой профессии</i>
+                <i>Мы фокусируемся на творческом и стратегическом мышлении и помогаем нашим выпускникам находить себя в
+                    любимой профессии</i>
             </div>
             <div class="professions-slider">
                 @if (isset($dic_professions) && is_object($dic_professions) && $dic_professions->count())
@@ -115,7 +123,8 @@ foreach ($dic_stories as $story) {
 
     <section class="b-section">
         <div class="h2">Наши курсы <br> в
-            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red" id="courses-filter-form" data-nl>
+            <form action="{{ URL::route('ajax.get_courses') }}" method="POST" class="nl-form _text-red"
+                  id="courses-filter-form" data-nl>
                 <span data-city-nl>
                     <select name="city" id="city-id" class="js-city-select">
                         @foreach ($dic_city as $city)
@@ -126,11 +135,13 @@ foreach ($dic_stories as $story) {
                     </select>
                 </span>
                 <span class="_text-gray">по</span>
+
                 <div class="js-cross-filter-fuckup js-course-recoloring">
                     <select name="direction" id="course-direction">
                         <option value="0" data-color="#ff0000">всем направлениям</option>
                         @foreach ($dic_direction as $direction)
-                            <option value="{{ $direction->id }}" data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
+                            <option value="{{ $direction->id }}"
+                                    data-color="{{ $direction->color }}">{{ $direction->dp }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -154,7 +165,8 @@ foreach ($dic_stories as $story) {
                         #Helper::tad($course);
                         ?>
                         <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                            <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}" class="b-courses__link" style="background-color: {{ $color }}">
+                            <a href="{{ URL::route('page.course', [$city->slug, $course->id]) }}"
+                               class="b-courses__link" style="background-color: {{ $color }}">
                                 <span class="h3">
                                     <strong>
                                         {{--{{ isset($dic_type[$course->type_id]) ? $dic_type[$course->type_id]->name : '' }}--}}
@@ -164,10 +176,10 @@ foreach ($dic_stories as $story) {
                                 <span class="b-courses__descr"><i>{{ $course->short }}</i></span>
                                 <time class="h5">
                                     @if ($course->date_start)
-                                        {{ Helper::rdate('j M', $course->date_start) }}
+                                    {{ Helper::rdate('j M', $course->date_start) }}
                                     @endif
                                     @if ($course->date_start < $course->date_stop)
-                                        &mdash; {{ Helper::rdate('j M', $course->date_stop) }}
+                                    &mdash; {{ Helper::rdate('j M', $course->date_stop) }}
                                     @endif
                                 </time>
                             </a>
@@ -176,7 +188,8 @@ foreach ($dic_stories as $story) {
 
                     @if ($courses->count() > 5 || true)
                         <li class="text-center _mb30 col-sm-6 col-md-4" data-equalheight>
-                            <a href="{{ URL::route('page.courses', [$current_city->slug]) }}" class="b-courses__link _all">
+                            <a href="{{ URL::route('page.courses', [$current_city->slug]) }}"
+                               class="b-courses__link _all">
                                 <span><span class="h3">Посмотреть все курсы</span></span>
                             </a>
                         </li>
@@ -193,37 +206,45 @@ foreach ($dic_stories as $story) {
         <div class="h2">Преподаватели</div>
 
         @if (isset($teachers) && is_object($teachers) && $teachers->count())
-        <div class="jcarousel-nav-bar">
-            <div class="jcarousel-nav arrow-left"></div>
-            <div class="jcarousel-nav arrow-right"></div>
-        </div>
-        <div class="jcarousel">
-            <ul class="_mb50 row">
-                @foreach ($teachers as $teacher)
-                    <li class="_mb30 corousel-element js-cElement">
-                        <a href="{{ URL::route('page.teacher', $teacher->id) }}" style="background-image: url({{ ($teacher->avatar->full() && is_object($teacher->avatar)) ? $teacher->avatar->full() : '' }});" class="_block _mb20 js-cImage">
+            <div class="jcarousel-nav-bar">
+                <div class="jcarousel-nav arrow-left"></div>
+                <div class="jcarousel-nav arrow-right"></div>
+            </div>
+            <div class="jcarousel">
+                <ul class="_mb50 row">
+                    @foreach ($teachers as $teacher)
+                        <li class="_mb30 corousel-element js-cElement">
+                            <a href="{{ URL::route('page.teacher', $teacher->id) }}"
+                               style="background-image: url({{ ($teacher->avatar->full() && is_object($teacher->avatar)) ? $teacher->avatar->full() : '' }});"
+                               class="_block _mb20 js-cImage">
 
-                        </a>
-                        <div class="_mb5 h3">{{ $teacher->name }}</div>
-                        <div class="small">
-                            <?php
-                            $temp = [];
-                            if ($teacher->position)
-                                $temp[] = $teacher->position;
-                            if ($teacher->company)
-                                $temp[] = $teacher->company;
-                            ?>
-                            {{ implode(', ', $temp) }}
-                        </div>
-                    </li>
-                @endforeach
-            </ul>
-        </div>
+                            </a>
+
+                            <div class="_mb5 h3"><a
+                                        href="{{ URL::route('page.teacher', $teacher->id) }}">{{ $teacher->name }}</a>
+                            </div>
+                            <div class="small">
+                                <a href="{{ URL::route('page.teacher', $teacher->id) }}">
+                                    <?php
+                                    $temp = [];
+                                    if ($teacher->position)
+                                        $temp[] = $teacher->position;
+                                    if ($teacher->company)
+                                        $temp[] = $teacher->company;
+                                    ?>
+                                    {{ implode(', ', $temp) }}
+                                </a>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         @endif
 
         <div class="row">
             <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8">
-                <span class="_text-red"><a href="{{ URL::route('page', pageslug('teachers')) }}" class="btn btn-white btn-wide">Все преподаватели</a></span>
+                <span class="_text-red"><a href="{{ URL::route('page', pageslug('teachers')) }}"
+                                           class="btn btn-white btn-wide">Все преподаватели</a></span>
             </div>
         </div>
     </section>
@@ -237,12 +258,15 @@ foreach ($dic_stories as $story) {
             <ul class="_mb50 row">
                 @foreach ($stories as $story)
                     <li class="col-sm-6 _mb30">
-                        <a class="_block _mb20" href="{{ URL::route('page.story', [$dic_city[$story->city_id]->slug, $story->id]) }}">
-                            @if (isset($story->avatar) && is_object($story->avatar))
+                        <a class="_block _mb20 graduated"
+                           style="background-image: url({{ is_object($story->avatar) ?  $story->avatar->full() : '' }});"
+                           href="{{ URL::route('page.story', [$dic_city[$story->city_id]->slug, $story->id]) }}">
+                            {{--@if (isset($story->avatar) && is_object($story->avatar))
                                 <img src="{{ $story->avatar->full() }}" alt="{{ $story->name }}">
                             @endif
-{{--                            {{ $dic_city[$story->city_id] }}--}}
+                            {{ $dic_city[$story->city_id] }}--}}
                         </a>
+
                         <div class="h3 _mb5">{{ $story->name }}</div>
                         <div class="small _mb20">
                             <?php
@@ -290,7 +314,8 @@ foreach ($dic_stories as $story) {
 
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-6 col-md-4 col-md-offset-8 text-right">
-                    <a href="{{ URL::route('page.stories', [$current_city->slug]) }}" class="btn btn-blue">Ещё про выпускников</a>
+                    <a href="{{ URL::route('page.stories', [$current_city->slug]) }}" class="btn btn-blue">Ещё про
+                        выпускников</a>
                 </div>
             </div>
         </section>
@@ -302,9 +327,11 @@ foreach ($dic_stories as $story) {
     @if (isset($dic_clients) && is_object($dic_clients) && $dic_clients->count())
         <section class="b-section">
             <div class="h2 _with-subtitle">Наши клиенты</div>
-            <div class="h4 _mb85 _max-text">Мы не придумываем задачи нашим студентам &mdash; они работают по реальным брифам известных брендов</div>
+            <div class="h4 _mb85 _max-text">Мы не придумываем задачи нашим студентам &mdash; они работают по реальным
+                брифам известных брендов
+            </div>
 
-            <div class="b-slider _mb20 owl-carousel">
+            <div class="b-slider _mb20 owl-carousel _medium">
                 @foreach ($dic_clients as $client)
                     <?php
                     if (!is_object($client->logo))
@@ -331,7 +358,9 @@ foreach ($dic_stories as $story) {
         <div class="_vertical-center">
             <div>
                 <h2 class="_cta">
-                    Хочу учиться! На какой <span class="_text-yellow"><a href="{{ URL::route('page.courses', [$current_city->slug]) }}">курс</a></span> мне пойти?
+                    Хочу учиться! На какой <span class="_text-yellow"><a
+                                href="{{ URL::route('page.courses', [$current_city->slug]) }}">курс</a></span> мне
+                    пойти?
                     {{--Хочу учиться! На какой <span class="_text-yellow"><a href="#cta_form" data-toggle="collapse">курс</a></span> мне пойти?--}}
                 </h2>
             </div>
@@ -340,6 +369,7 @@ foreach ($dic_stories as $story) {
         @if (0)
             <div id="cta_form" class="collapse">
                 <br>
+
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
                         <form role="form" class="_white">
